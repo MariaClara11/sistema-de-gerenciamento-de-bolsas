@@ -54,12 +54,11 @@ public class Bolsa {
     public void setProfessor(String professor) {
         this.professor = professor;
     }
-    public void setPreRequisitos(List<String> preRequisitos) {
-        this.preRequisitos = preRequisitos;
-    }
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+
     public void setQuantidadeHoras(int quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
     }
@@ -69,5 +68,8 @@ public class Bolsa {
     public void setPreRequisitos(String preRequisitos) {
         this.preRequisitos.add(preRequisitos);
     }
-
+    @Override
+    public String toString() {
+        return "Bolsa{" + "titulo=" + titulo + ", professor=" + professor + ", preRequisitos=" + preRequisitos + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras + ", tipo=" + tipo + '}';
+    }
 }
