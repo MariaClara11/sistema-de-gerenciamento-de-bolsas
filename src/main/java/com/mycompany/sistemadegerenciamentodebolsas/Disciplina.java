@@ -14,7 +14,7 @@ public class Disciplina {
     private String nome;
     private String codigo;
     private int creditos;
-    private List<String> preRequisitos = new ArrayList<>();
+    private List<String> preRequisitos;
 
     public Disciplina(String nome, String codigo, int creditos, List<String> preRequisitos, String metodoAvaliacao, int quantAlunos, String[] Salas) {
         this.nome = nome;
@@ -22,7 +22,14 @@ public class Disciplina {
         this.creditos = creditos;
         this.preRequisitos = preRequisitos;
     }
-
+    
+    public Disciplina() {
+        this.nome = "";
+        this.codigo = "";
+        this.creditos = 0;
+        this.preRequisitos = new ArrayList<>();
+    }
+    
     public String getNome() {
         return nome;
     }
