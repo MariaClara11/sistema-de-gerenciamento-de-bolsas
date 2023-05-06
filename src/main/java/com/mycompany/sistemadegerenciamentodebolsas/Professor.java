@@ -10,19 +10,19 @@ import java.util.List;
  *
  * @author DELL
  */
-public class Funcionario extends Usuario {
+public class Professor extends Usuario {
     private String siap;
     private String dataContratacao;
     List<Bolsa> bolsasCadastradas;
 
-    public Funcionario() {
+    public Professor() {
         super();
         this.siap = "";
         this.dataContratacao = "";
         this.bolsasCadastradas.clear();
     }
 
-    public Funcionario(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
+    public Professor(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
         super(nome, idade, CPF, dataNascimento, login, senha, telefone, DataNascimento);
         this.siap = siap;
         this.dataContratacao = dataContratacao;
