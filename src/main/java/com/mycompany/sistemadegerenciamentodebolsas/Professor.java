@@ -85,7 +85,11 @@ public class Professor extends Usuario {
         this.bolsasCadastradas.clear();
     }
     
-    
+    //O professor cadastra a bolsa
+    public Bolsa cadastraBolsa(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
+        Bolsa bolsa = new Bolsa(titulo, this.siap, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+        return bolsa;
+    }
     
     
     

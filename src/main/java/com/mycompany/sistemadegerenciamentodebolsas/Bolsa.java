@@ -21,66 +21,82 @@ import java.util.*;
  */
 public class Bolsa {
     private String titulo;
-    private String professor;
-    private List<String> preRequisitos;
+    private String SiapProfessor;
+    private String PreRequisitos;
+    private List<Disciplina> DiscilplinasRequisitadas;
     private float valor;
     private int quantidadeHoras;
     private String tipo;
-    
-    public Bolsa(String titulo, String professor, List<String> preRequisitos, float valor, int quantidadeHoras, String tipo) {
+
+    public Bolsa(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
         this.titulo = titulo;
-        this.professor = professor;
-        this.preRequisitos = preRequisitos;
+        this.SiapProfessor = SiapProfessor;
+        this.PreRequisitos = PreRequisitos;
+        this.DiscilplinasRequisitadas = DiscilplinasRequisitadas;
         this.valor = valor;
         this.quantidadeHoras = quantidadeHoras;
         this.tipo = tipo;
-        
     }
-    
+
     public String getTitulo() {
-        return this.titulo;
+        return titulo;
     }
-    public String getProfessor() {
-        return this.professor;
+
+    public String getSiapProfessor() {
+        return SiapProfessor;
     }
-    public float getValor() {
-        return this.valor;
-    }
-    public int getQuantidadeHoras() {
-        return this.quantidadeHoras;
-    }
+
     public String getPreRequisitos() {
-        String lista = ""; //inicio da lista de pre-requisitos vazia
-        for (String preRequisito : preRequisitos) {
-            lista += preRequisito + ", ";
-        }
-        return lista.substring(0, lista.length() - 2); // remove a última vírgula e espaço
+        return PreRequisitos;
     }
-    public String getTipo(String tipo) {
-        return this.tipo;
+
+    public List<Disciplina> getDiscilplinasRequisitadas() {
+        return DiscilplinasRequisitadas;
     }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public int getQuantidadeHoras() {
+        return quantidadeHoras;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    public void setProfessor(String professor) {
-        this.professor = professor;
+
+    public void setSiapProfessor(String SiapProfessor) {
+        this.SiapProfessor = SiapProfessor;
     }
+
+    public void setPreRequisitos(String PreRequisitos) {
+        this.PreRequisitos = PreRequisitos;
+    }
+
+    public void setDiscilplinasRequisitadas(List<Disciplina> DiscilplinasRequisitadas) {
+        this.DiscilplinasRequisitadas = DiscilplinasRequisitadas;
+    }
+
     public void setValor(float valor) {
         this.valor = valor;
     }
 
-
     public void setQuantidadeHoras(int quantidadeHoras) {
         this.quantidadeHoras = quantidadeHoras;
     }
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public void setPreRequisitos(String preRequisitos) {
-        this.preRequisitos.add(preRequisitos);
-    }
+
     @Override
     public String toString() {
-        return "Bolsa{" + "titulo=" + titulo + ", professor=" + professor + ", preRequisitos=" + preRequisitos + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras + ", tipo=" + tipo + '}';
+        return "Bolsa{" + "titulo=" + titulo + ", SiapProfessor=" + SiapProfessor + ", PreRequisitos=" + PreRequisitos + ", DiscilplinasRequisitadas=" + DiscilplinasRequisitadas + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras + ", tipo=" + tipo + '}';
     }
+
 }
