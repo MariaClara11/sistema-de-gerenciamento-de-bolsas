@@ -38,7 +38,7 @@ public class Usuario {
         this.telefone = "";
     };
     
-    public Usuario(String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
+    public Usuario(String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
         this.nome = nome;
         this.idade = idade;
         this.CPF = CPF;

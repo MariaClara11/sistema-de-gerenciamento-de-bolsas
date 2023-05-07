@@ -33,8 +33,8 @@ public class Professor extends Usuario {
         this.bolsasCadastradas.clear();
     }
 
-    public Professor(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super(nome, idade, CPF, dataNascimento, login, senha, telefone, DataNascimento);
+    public Professor(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
+        super(nome, idade, CPF, dataNascimento, login, senha, telefone);
         this.siap = siap;
         this.dataContratacao = dataContratacao;
         this.bolsasCadastradas = bolsasCadastradas;
@@ -86,12 +86,9 @@ public class Professor extends Usuario {
     }
     
     //O professor cadastra a bolsa
-    public Bolsa cadastraBolsa(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
+    public Bolsa cadastraBolsa(String titulo, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
         Bolsa bolsa = new Bolsa(titulo, this.siap, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+        bolsasCadastradas.add(bolsa);
         return bolsa;
     }
-    
-    
-    
-    
 }

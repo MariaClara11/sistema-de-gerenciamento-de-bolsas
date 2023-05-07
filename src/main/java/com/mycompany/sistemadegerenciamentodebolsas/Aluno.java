@@ -37,8 +37,8 @@ public class Aluno extends Usuario{
         this.disciplinas = new ArrayList<>();
     }
 
-    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super(nome, idade, CPF, dataNascimento, login, senha, telefone, DataNascimento);
+    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
+        super(nome, idade, CPF, dataNascimento, login, senha, telefone);
         this.matricula = matricula;
         this.contaBancaria = contaBancaria;
         this.ira = ira;

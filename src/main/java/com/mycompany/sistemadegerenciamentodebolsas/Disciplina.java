@@ -27,13 +27,13 @@ public class Disciplina {
     private int creditos;
     private List<String> preRequisitos;
 
-    public Disciplina(String nome, String codigo, int creditos, List<String> preRequisitos, String metodoAvaliacao, int quantAlunos, String[] Salas) {
+    public Disciplina(String nome, String codigo, int creditos, List<String> preRequisitos) {
         this.nome = nome;
         this.codigo = codigo;
         this.creditos = creditos;
         this.preRequisitos = preRequisitos;
     }
-    
+
     public Disciplina() {
         this.nome = "";
         this.codigo = "";
