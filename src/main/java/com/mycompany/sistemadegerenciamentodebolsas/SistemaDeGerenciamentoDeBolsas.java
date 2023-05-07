@@ -33,7 +33,7 @@ public class SistemaDeGerenciamentoDeBolsas {
     public static String lerString(String mensagem){
         System.out.println(mensagem);
         Scanner ler = new Scanner(System.in);
-        return ler.next(); // next lê a string ate encontrar um espaço. vamos usar muito essa função pata ler (linha,coluna,valor); e vamor supor que o usuario nao digitara espaço no formato
+        return ler.nextLine();
     }
     
     public static int lerInteiro (String mensagem){
@@ -98,9 +98,56 @@ public class SistemaDeGerenciamentoDeBolsas {
         TodasBolsasCadastradas.add(b1);
     }
     
+    public static void vizualizarDados(){
+        int opcao= lerInteiro("Digite o numero correspondente a opcao que deseja visualizar:\n(1)DISCIPLINAS\n(2)ALUNOS\n(3)PROFESSORES\n(4)BOLSAS");
+        if(opcao ==1){
+            //visualizar disciplinas cadastradas
+            System.out.println("\n\nAs disciplinas cadastradas no sistema sao:\n");
+            for (Disciplina disciplina : dCadastradas) {
+                System.out.println(disciplina.toString()+"\n");
+            }
+            System.out.println("");
+        }else if(opcao ==2){
+            //visualizar alunos cadastrados
+            System.out.println("\n\nOs alunos cadastrados no sistema sao:\n");
+            for (Aluno aluno : alunosCadastrados) {
+                System.out.println(aluno.toString()+"\n");
+            }
+            System.out.println("");
+        }else if(opcao == 3){
+            //visualizar professores cadastrados
+            System.out.println("\n\nOs professores cadastrados no sistema sao:\n");
+            for (Professor professor : profsCadastrados) {
+                System.out.println(professor.toString()+"\n");
+            }
+            System.out.println("");
+        }else if(opcao ==4){
+            //visualizar bolsas cadastradas
+            System.out.println("\n\nAs bolsas cadastradas no sistema sao:\n");
+            for (Bolsa bolsa : TodasBolsasCadastradas) {
+                System.out.println(bolsa.toString()+"\n");
+            }
+            System.out.println("");
+        }else{
+            System.out.println("Opcao invalida!!!");
+        }
+    }
+    
     public static void menu(){
-        System.out.println("Bem vindo ao:");
-        System.out.println("SISTEMA DE GERENCIAMENTO DE BOLSAS DE PROJETOS (IC, MONITORIA...)");
+        int opcao= lerInteiro("Digite o numero correspondente a opcao que deseja:\n(1)VISUALIZAR DADOS\n(2)CADASTRAR DADOS\n(3)SAIR");
+        if(opcao ==1){
+            //visualizar dados
+            vizualizarDados();
+            menu();
+        }else if(opcao ==2){
+            //cadastrar dados
+            menu();
+        }else if(opcao ==3){
+            System.out.println("saindo...");
+        }else{
+            System.out.println("Valor invalido. Digite um valor valido");
+            menu();
+        }
     }
 
     public static void main(String[] args) {
@@ -110,6 +157,8 @@ public class SistemaDeGerenciamentoDeBolsas {
 
         //primeiro vamos cadastrar dados de exemplo
         CadastraDadosDeExemplo();
+        System.out.println("Bem vindo ao:");
+        System.out.println("SISTEMA DE GERENCIAMENTO DE BOLSAS DE PROJETOS (IC, MONITORIA...)");
         menu();
     }
 }

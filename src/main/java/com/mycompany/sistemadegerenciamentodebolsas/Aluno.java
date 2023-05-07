@@ -88,8 +88,7 @@ public class Aluno extends Usuario{
 
     @Override
     public String toString() {
-        super.toString();
-        return "Aluno{" + "matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
+        return"Aluno{" + super.toString()+ ", matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
     }
     
     public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {

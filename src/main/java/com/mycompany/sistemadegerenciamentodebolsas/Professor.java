@@ -66,8 +66,7 @@ public class Professor extends Usuario {
 
     @Override
     public String toString() {
-        super.toString();
-        return "Funcionario{" + "siap=" + siap + ", dataContratacao=" + dataContratacao + ", bolsasCadastradas=" + bolsasCadastradas + '}';
+        return "Funcionario{" + super.toString()+ ", siap=" + siap + ", dataContratacao=" + dataContratacao + ", bolsasCadastradas=" + bolsasCadastradas + '}';
     }
     
     public void editaDadosUsuario(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
