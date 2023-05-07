@@ -4,10 +4,20 @@ package Interfaces;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
- *
- * @author chris
+ *Autores do trabalho:
+ * 
+ * Nome: Maria Clara Ribeiro de Menezes
+ * Matricula: 202165101AC
+ * 
+ * Nome: Igor Titoneli Almeida
+ * Matricula: 202165064AB
+ * 
+ * Nome: Christian Rafael De Oliveira Coelho
+ * Matricula: 202065249AC
+ * 
+ * Nome: Marlon Ruffo Nascimento
+ * Matricula: 202065165AC
  */
 public class Home extends javax.swing.JFrame {
 
