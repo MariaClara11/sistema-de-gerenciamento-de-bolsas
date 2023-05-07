@@ -37,7 +37,7 @@ public class Bolsa {
         this.quantidadeHoras = quantidadeHoras;
         this.tipo = tipo;
     }
-
+    
     public String getTitulo() {
         return titulo;
     }
