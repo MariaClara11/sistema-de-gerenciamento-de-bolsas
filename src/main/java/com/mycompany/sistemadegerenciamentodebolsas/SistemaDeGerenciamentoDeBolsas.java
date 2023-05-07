@@ -88,12 +88,16 @@ public class SistemaDeGerenciamentoDeBolsas {
 
         //professor cadastra bolsa
         Bolsa b1 = p1.cadastraBolsa("Monitoria de Algoritmos", "Ira maior que 60", disBolsa, 400, 12, "Monitoria");
+        Bolsa b2 = p1.cadastraBolsa("Monitoria de OO", "Ira maior que 60", disBolsa, 400, 12, "Monitoria");
+        TodasBolsasCadastradas.add(b2);
         TodasBolsasCadastradas.add(b1);
     }
 
     public static void vizualizarDados() {
 
         int opcao = lerInteiro("""
+                               
+                               
                                 Digite o numero correspondente a opcao que deseja visualizar:
                                 (1)DISCIPLINAS
                                 (2)ALUNOS
@@ -109,17 +113,32 @@ public class SistemaDeGerenciamentoDeBolsas {
             imprimeAluno();
         } else if (opcao == 3) {
             //visualizar professores cadastrados
-            System.out.println("\n\nOs professores cadastrados no sistema sao:\n");
-            for (Professor professor : profsCadastrados) {
-                System.out.println(professor.toString() + "\n");
-            }
-            System.out.println("");
+            imprimeProfessor();
         } else if (opcao == 4) {
             //visualizar bolsas cadastradas
             imprimebolsa();
         } else {
             System.out.println("Opcao invalida!!!");
         }
+    }
+
+    public static void imprimeProfessor() {
+        System.out.println("\n\nOs professores cadastrados no sistema sao:\n");
+        for (Professor professor : profsCadastrados) {
+            System.out.println("---------------------------------x-------------------------------");
+            System.out.println("Nome\t\t- " + professor.getNome());
+            System.out.println("Idade\t\t- " + professor.getIdade());
+            System.out.println("CPF\t\t- " + professor.getCPF());
+            System.out.println("Nacimento\t- " + professor.getDataNascimento());
+            System.out.println("Telefone\t- " + professor.getTelefone());
+            System.out.println("Siap\t\t- " + professor.getSiap());
+            System.out.println("Contratação\t- " + professor.getDataContratacao());
+            System.out.print("Bolsas Cadastradas  ");
+            for (Bolsa bolsa : TodasBolsasCadastradas) {
+                System.out.print(" - " + bolsa.getTitulo());
+            }
+        }
+        System.out.println("\n---------------------------------x-------------------------------\n");
     }
 
     public static void imprimeAluno() {
@@ -197,7 +216,6 @@ public class SistemaDeGerenciamentoDeBolsas {
                 //}
             }
         }
-        System.out.println("");
     }
 
     public static void menu() {
