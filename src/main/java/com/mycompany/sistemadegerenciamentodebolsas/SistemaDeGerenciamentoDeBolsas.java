@@ -175,7 +175,32 @@ public class SistemaDeGerenciamentoDeBolsas {
             
         } else if (opcao == 3) {
             //cadastrar professores
-            imprimeProfessor();
+                        do{
+            String nome, cpf, dataNascimento, login, senha, telefone, siap, dataContratacao;
+            int idade;
+            
+            nome = lerString("Digite o nome do Professor: ");
+            cpf = lerString("Digite o CPF do professor: ");
+            dataNascimento = lerString("Digite a data do nascimento do professor no formato DD/MM/YYYY: ");
+            login = lerString("Digite o login do professor: ");
+            senha = lerString("Digite a senha do professor: ");
+            telefone = lerString("Digite o telefone do professor: ");
+            siap = lerString("Digite a matrícula do professor: ");
+            dataContratacao = lerString("Digite a data da contratação do professor no formato DD/MM/YYYY: ");
+            idade = lerInteiro("Digite a idade do aluno: ");
+            cadastraProfessor(siap, dataContratacao, TodasBolsasCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
+            String resposta;
+        do {
+            resposta = lerString("Deseja criar outro professor? (Y/N) ");
+            resposta = resposta.toLowerCase();
+        } while (!resposta.equals("y") && !resposta.equals("n"));
+        if (resposta.equals("n")) {
+            menu();
+        } else if (resposta.equals("y")) {
+            continue;
+        } 
+            }while(true);
+            
         } else if (opcao == 4) {
             //cadastrar bolsas
             imprimebolsa();
