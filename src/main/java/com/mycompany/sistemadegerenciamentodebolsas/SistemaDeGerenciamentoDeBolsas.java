@@ -37,6 +37,12 @@ public class SistemaDeGerenciamentoDeBolsas {
         Scanner ler = new Scanner(System.in);
         return ler.nextInt();
     }
+    
+    public static float lerFloat(String mensagem) {
+        System.out.print(mensagem);
+        Scanner ler = new Scanner(System.in);
+        return ler.nextFloat();
+    }
 
     public static Disciplina cadastraDisciplina(String nome, String codigo, int creditos, List<String> preRequisitos) {
         Disciplina disciplina = new Disciplina(nome, codigo, creditos, preRequisitos);
@@ -54,6 +60,12 @@ public class SistemaDeGerenciamentoDeBolsas {
         Professor professor = new Professor(siap, dataContratacao, bolsasCadastradas, nome, idade, CPF, dataNascimento, login, senha, telefone);
         profsCadastrados.add(professor);
         return professor;
+    }
+    
+    public static Bolsa cadastraBolsa (String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
+        Bolsa bolsa = new Bolsa(titulo, SiapProfessor, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+        TodasBolsasCadastradas.add(bolsa);
+        return bolsa;
     }
 
     public static void CadastraDadosDeExemplo() {
@@ -136,74 +148,115 @@ public class SistemaDeGerenciamentoDeBolsas {
 
         if (opcao == 1) {
             //cadastrar disciplinas
-            imprimeDisciplina();
+            do{
+                String nome, codigo;
+                int creditos;
+                List<String> preRequisitos = new ArrayList<>();
+
+                nome = lerString("Digite o nome da Disciplina: ");
+                codigo = lerString("Digite o codigo da Disciplina: ");
+                creditos = lerInteiro("Digite o numero de creditos da Disciplina: ");
+                String requisitos = lerString("Digite os pre requisitos da Disciplina: ");
+                preRequisitos.add(requisitos);
+
+                
+                cadastraDisciplina(nome,codigo, creditos,preRequisitos);
+                String resposta;
+                do {
+                    resposta = lerString("Deseja criar outra disciplina? (Y/N) ");
+                    resposta = resposta.toLowerCase();
+                } while (!resposta.equals("y") && !resposta.equals("n"));
+                if (resposta.equals("n")) {
+                    menu();
+                } else if (resposta.equals("y")) {
+                    continue;
+                } 
+            }while(true);
         } else if (opcao == 2) {
             //cadastrar alunos
             do{
-            String nome, cpf, dataNascimento, login, senha, telefone, matricula, contaBancaria, dataIngresso;
-            int idade, ira;
-            
-            nome = lerString("Digite o nome do aluno: ");
-            cpf = lerString("Digite o CPF do aluno: ");
-            dataNascimento = lerString("Digite a data do nascimento do aluno no formato DD/MM/YYYY: ");
-            login = lerString("Digite o login do aluno: ");
-            senha = lerString("Digite a senha do aluno: ");
-            telefone = lerString("Digite o telefone do aluno: ");
-            matricula = lerString("Digite a matrícula do aluno: ");
-            contaBancaria = lerString("Digite a conta bancária do aluno: ");
-            dataIngresso = lerString("Digite a data do ingresso do aluno no formato DD/MM/YYYY: ");
-            idade = lerInteiro("Digite a idade do aluno: ");
-            ira = lerInteiro("Digite o IRA do aluno: "); //pode ser calculado depois de alguma forma
-            cadastraAluno(matricula, contaBancaria, ira, dataIngresso, dCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
-            String resposta;
-        do {
-            resposta = lerString("Deseja criar outro aluno? (Y/N) ");
-            resposta = resposta.toLowerCase();
-        } while (!resposta.equals("y") && !resposta.equals("n"));
-        if (resposta.equals("n")) {
-            menu();
-        } else if (resposta.equals("y")) {
-            continue;
-        } 
+                String nome, cpf, dataNascimento, login, senha, telefone, matricula, contaBancaria, dataIngresso;
+                int idade, ira;
+
+                nome = lerString("Digite o nome do aluno: ");
+                cpf = lerString("Digite o CPF do aluno: ");
+                dataNascimento = lerString("Digite a data do nascimento do aluno no formato DD/MM/YYYY: ");
+                login = lerString("Digite o login do aluno: ");
+                senha = lerString("Digite a senha do aluno: ");
+                telefone = lerString("Digite o telefone do aluno: ");
+                matricula = lerString("Digite a matrícula do aluno: ");
+                contaBancaria = lerString("Digite a conta bancária do aluno: ");
+                dataIngresso = lerString("Digite a data do ingresso do aluno no formato DD/MM/YYYY: ");
+                idade = lerInteiro("Digite a idade do aluno: ");
+                ira = lerInteiro("Digite o IRA do aluno: "); //pode ser calculado depois de alguma forma
+                cadastraAluno(matricula, contaBancaria, ira, dataIngresso, dCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
+                String resposta;
+                do {
+                    resposta = lerString("Deseja criar outro aluno? (Y/N) ");
+                    resposta = resposta.toLowerCase();
+                } while (!resposta.equals("y") && !resposta.equals("n"));
+                if (resposta.equals("n")) {
+                    menu();
+                } else if (resposta.equals("y")) {
+                    continue;
+                } 
             }while(true);
-            
-                    
-         
-         
-
-
             
         } else if (opcao == 3) {
             //cadastrar professores
-                        do{
-            String nome, cpf, dataNascimento, login, senha, telefone, siap, dataContratacao;
-            int idade;
-            
-            nome = lerString("Digite o nome do Professor: ");
-            cpf = lerString("Digite o CPF do professor: ");
-            dataNascimento = lerString("Digite a data do nascimento do professor no formato DD/MM/YYYY: ");
-            login = lerString("Digite o login do professor: ");
-            senha = lerString("Digite a senha do professor: ");
-            telefone = lerString("Digite o telefone do professor: ");
-            siap = lerString("Digite a matrícula do professor: ");
-            dataContratacao = lerString("Digite a data da contratação do professor no formato DD/MM/YYYY: ");
-            idade = lerInteiro("Digite a idade do aluno: ");
-            cadastraProfessor(siap, dataContratacao, TodasBolsasCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
-            String resposta;
-        do {
-            resposta = lerString("Deseja criar outro professor? (Y/N) ");
-            resposta = resposta.toLowerCase();
-        } while (!resposta.equals("y") && !resposta.equals("n"));
-        if (resposta.equals("n")) {
-            menu();
-        } else if (resposta.equals("y")) {
-            continue;
-        } 
+            do{
+                String nome, cpf, dataNascimento, login, senha, telefone, siap, dataContratacao;
+                int idade;
+
+                nome = lerString("Digite o nome do Professor: ");
+                cpf = lerString("Digite o CPF do professor: ");
+                dataNascimento = lerString("Digite a data do nascimento do professor no formato DD/MM/YYYY: ");
+                login = lerString("Digite o login do professor: ");
+                senha = lerString("Digite a senha do professor: ");
+                telefone = lerString("Digite o telefone do professor: ");
+                siap = lerString("Digite a matrícula do professor: ");
+                dataContratacao = lerString("Digite a data da contratação do professor no formato DD/MM/YYYY: ");
+                idade = lerInteiro("Digite a idade do aluno: ");
+                cadastraProfessor(siap, dataContratacao, TodasBolsasCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
+                String resposta;
+                do {
+                    resposta = lerString("Deseja criar outro professor? (Y/N) ");
+                    resposta = resposta.toLowerCase();
+                } while (!resposta.equals("y") && !resposta.equals("n"));
+                if (resposta.equals("n")) {
+                    menu();
+                } else if (resposta.equals("y")) {
+                    continue;
+                } 
             }while(true);
             
         } else if (opcao == 4) {
             //cadastrar bolsas
-            imprimebolsa();
+            do{
+                String titulo, SiapProfessor, PreRequisitos, tipo;
+                List<Disciplina> DiscilplinasRequisitadas = new ArrayList();
+                float valor;
+                int quantidadeHoras;
+
+                titulo = lerString("Digite o Título da Bolsa: ");
+                SiapProfessor = lerString("Digite o SIAPE do professor: ");
+                PreRequisitos = lerString("Digite os pre requisitos da Bolsa: ");
+                tipo = lerString("Digite o tipo da Bolsa (IC, Monitoria...): ");
+                valor = lerFloat("Digite o valor da Bolsa: ");
+                quantidadeHoras = lerInteiro("Digite a quantidade de horas semanais: ");
+                
+                cadastraBolsa(titulo,SiapProfessor,PreRequisitos,DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+                String resposta;
+                do {
+                    resposta = lerString("Deseja criar outra Bolsa? (Y/N) ");
+                    resposta = resposta.toLowerCase();
+                } while (!resposta.equals("y") && !resposta.equals("n"));
+                if (resposta.equals("n")) {
+                    menu();
+                } else if (resposta.equals("y")) {
+                    continue;
+                } 
+            }while(true);
         } else {
             System.out.println("Opcao invalida!!!");
         }
@@ -220,8 +273,8 @@ public class SistemaDeGerenciamentoDeBolsas {
             System.out.println("Telefone\t- " + professor.getTelefone());
             System.out.println("Siap\t\t- " + professor.getSiap());
             System.out.println("Contratação\t- " + professor.getDataContratacao());
-            System.out.print("Bolsas Cadastradas  ");
-            for (Bolsa bolsa : TodasBolsasCadastradas) {
+            System.out.print("Bolsas Cadastradas pelo professor");
+            for (Bolsa bolsa : professor.getBolsasCadastradas()) {
                 System.out.print(" - " + bolsa.getTitulo());
             }
         }
@@ -246,7 +299,7 @@ public class SistemaDeGerenciamentoDeBolsas {
                 System.out.println("Nenhuma disciplina");
             } else {
                 System.out.print("Disciplinas\t");
-                for (Disciplina disciplina : dCadastradas) {
+                for (Disciplina disciplina : aluno.getDisciplinas()) {
                     System.out.print("- " + disciplina.getNome() + " ");
                 }
                 System.out.println("\n---------------------------------x-------------------------------");
@@ -263,9 +316,13 @@ public class SistemaDeGerenciamentoDeBolsas {
             System.out.println("Titulo\t\t- " + bolsa.getTitulo());
             System.out.println("Siap Prof\t- " + bolsa.getSiapProfessor());
             System.out.println("Pré-Req\t\t- " + bolsa.getPreRequisitos());
-            imprimeDisciplinaBolsa();
+            System.out.print("Disciplinas requisitadas:\t");
+                for (Disciplina disciplina : bolsa.getDiscilplinasRequisitadas()) {
+                    System.out.print("- " + disciplina.getNome() + " ");
+                }
+            System.out.println("");
             System.out.println("Valor\t\t- R$" + (int) bolsa.getValor() + ",00");
-            System.out.println("Volume\t\t- " + bolsa.getQuantidadeHoras() + " Horas");
+            System.out.println("Volume\t\t- " + bolsa.getQuantidadeHoras() + " Horas Semanais");
             System.out.println("Tipo\t\t- " + bolsa.getTipo());
             System.out.println("---------------------------------x-------------------------------");
         }
@@ -281,7 +338,7 @@ public class SistemaDeGerenciamentoDeBolsas {
             System.out.println("Nome\t\t- " + disciplina.getNome());
             System.out.println("Codigo\t\t- " + disciplina.getCodigo());
             System.out.println("Creditos\t- " + disciplina.getCreditos());
-            if (disciplina.getPreRequisitos().size() == 0) {
+            if (disciplina.getPreRequisitos().isEmpty()) {
                 System.out.println("Sem Pre-Requisitos");
             } else {
                 System.out.println("Pré-Requisitos\t -" + disciplina.getPreRequisitos() + "\n");
@@ -295,7 +352,7 @@ public class SistemaDeGerenciamentoDeBolsas {
     public static void imprimeDisciplinaBolsa() {
 
         for (Bolsa bolsa : TodasBolsasCadastradas) {
-            if (bolsa.getDiscilplinasRequisitadas().size() == 0) {
+            if (bolsa.getDiscilplinasRequisitadas().isEmpty()) {
                 System.out.println("Sem Pre-Requisitos");
             } else {
                 //for(Bolsa disciplina : TodasBolsasCadastradas){
