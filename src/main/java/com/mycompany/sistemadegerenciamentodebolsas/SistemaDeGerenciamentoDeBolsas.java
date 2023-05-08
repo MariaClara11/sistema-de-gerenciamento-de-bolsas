@@ -122,6 +122,68 @@ public class SistemaDeGerenciamentoDeBolsas {
         }
     }
 
+     public static void cadastrarDados() {
+
+        int opcao = lerInteiro("""
+                               
+                               
+                                Digite o numero correspondente a opcao que deseja cadastrar:
+                                (1)DISCIPLINAS
+                                (2)ALUNOS
+                                (3)PROFESSORES
+                                (4)BOLSAS
+                                Opcao :  """);
+
+        if (opcao == 1) {
+            //cadastrar disciplinas
+            imprimeDisciplina();
+        } else if (opcao == 2) {
+            //cadastrar alunos
+            do{
+            String nome, cpf, dataNascimento, login, senha, telefone, matricula, contaBancaria, dataIngresso;
+            int idade, ira;
+            
+            nome = lerString("Digite o nome do aluno: ");
+            cpf = lerString("Digite o CPF do aluno: ");
+            dataNascimento = lerString("Digite a data do nascimento do aluno no formato DD/MM/YYYY: ");
+            login = lerString("Digite o login do aluno: ");
+            senha = lerString("Digite a senha do aluno: ");
+            telefone = lerString("Digite o telefone do aluno: ");
+            matricula = lerString("Digite a matrícula do aluno: ");
+            contaBancaria = lerString("Digite a conta bancária do aluno: ");
+            dataIngresso = lerString("Digite a data do ingresso do aluno no formato DD/MM/YYYY: ");
+            idade = lerInteiro("Digite a idade do aluno: ");
+            ira = lerInteiro("Digite o IRA do aluno: "); //pode ser calculado depois de alguma forma
+            cadastraAluno(matricula, contaBancaria, ira, dataIngresso, dCadastradas, nome, idade, cpf, dataNascimento, login, senha, telefone);
+            String resposta;
+        do {
+            resposta = lerString("Deseja criar outro aluno? (Y/N) ");
+            resposta = resposta.toLowerCase();
+        } while (!resposta.equals("y") && !resposta.equals("n"));
+        if (resposta.equals("n")) {
+            menu();
+        } else if (resposta.equals("y")) {
+            continue;
+        } 
+            }while(true);
+            
+                    
+         
+         
+
+
+            
+        } else if (opcao == 3) {
+            //cadastrar professores
+            imprimeProfessor();
+        } else if (opcao == 4) {
+            //cadastrar bolsas
+            imprimebolsa();
+        } else {
+            System.out.println("Opcao invalida!!!");
+        }
+    }
+    
     public static void imprimeProfessor() {
         System.out.println("\n\nOs professores cadastrados no sistema sao:\n");
         for (Professor professor : profsCadastrados) {
@@ -231,7 +293,7 @@ public class SistemaDeGerenciamentoDeBolsas {
             vizualizarDados();
             menu();
         } else if (opcao == 2) {
-            //cadastrar dados
+            cadastrarDados();
             menu();
         } else if (opcao == 3) {
             System.out.println("saindo...");
