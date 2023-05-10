@@ -3,6 +3,7 @@
  */
 package com.mycompany.sistemadegerenciamentodebolsas;
 
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -167,7 +168,7 @@ public class SistemaDeGerenciamentoDeBolsas {
                     resposta = resposta.toLowerCase();
                 } while (!resposta.equals("y") && !resposta.equals("n"));
                 if (resposta.equals("n")) {
-                    menu();
+                    break;
                 } else if (resposta.equals("y")) {
                     continue;
                 } 
@@ -196,7 +197,7 @@ public class SistemaDeGerenciamentoDeBolsas {
                     resposta = resposta.toLowerCase();
                 } while (!resposta.equals("y") && !resposta.equals("n"));
                 if (resposta.equals("n")) {
-                    menu();
+                    break;
                 } else if (resposta.equals("y")) {
                     continue;
                 } 
@@ -224,7 +225,7 @@ public class SistemaDeGerenciamentoDeBolsas {
                     resposta = resposta.toLowerCase();
                 } while (!resposta.equals("y") && !resposta.equals("n"));
                 if (resposta.equals("n")) {
-                    menu();
+                    break;
                 } else if (resposta.equals("y")) {
                     continue;
                 } 
@@ -252,7 +253,7 @@ public class SistemaDeGerenciamentoDeBolsas {
                     resposta = resposta.toLowerCase();
                 } while (!resposta.equals("y") && !resposta.equals("n"));
                 if (resposta.equals("n")) {
-                    menu();
+                    break;
                 } else if (resposta.equals("y")) {
                     continue;
                 } 
@@ -379,6 +380,7 @@ public class SistemaDeGerenciamentoDeBolsas {
             menu();
         } else if (opcao == 3) {
             System.out.println("saindo...");
+            exit(0);
         } else {
             System.out.println("Valor invalido. Digite um valor valido");
             menu();
