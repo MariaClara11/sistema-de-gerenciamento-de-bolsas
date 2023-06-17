@@ -26,7 +26,7 @@ public class Bolsa {
     private List<Disciplina> DiscilplinasRequisitadas;
     private float valor;
     private int quantidadeHoras;
-    private String tipo;
+    
 
     public Bolsa(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
         this.titulo = titulo;
@@ -62,9 +62,7 @@ public class Bolsa {
         return quantidadeHoras;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
+
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -90,9 +88,6 @@ public class Bolsa {
         this.quantidadeHoras = quantidadeHoras;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     @Override
     public String toString() {
