@@ -35,7 +35,6 @@ public class Bolsa {
         this.DiscilplinasRequisitadas = DiscilplinasRequisitadas;
         this.valor = valor;
         this.quantidadeHoras = quantidadeHoras;
-        this.tipo = tipo;
     }
     
     public String getTitulo() {
@@ -91,7 +90,7 @@ public class Bolsa {
 
     @Override
     public String toString() {
-        return "Bolsa{" + "titulo=" + titulo + ", SiapProfessor=" + SiapProfessor + ", PreRequisitos=" + PreRequisitos + ", DiscilplinasRequisitadas=" + DiscilplinasRequisitadas + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras + ", tipo=" + tipo + '}';
+        return "Bolsa{" + "titulo=" + titulo + ", SiapProfessor=" + SiapProfessor + ", PreRequisitos=" + PreRequisitos + ", DiscilplinasRequisitadas=" + DiscilplinasRequisitadas + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras +'}';
     }
 
 }

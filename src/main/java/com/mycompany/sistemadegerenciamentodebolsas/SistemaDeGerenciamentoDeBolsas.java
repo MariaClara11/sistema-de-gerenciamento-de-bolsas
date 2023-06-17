@@ -324,7 +324,6 @@ public class SistemaDeGerenciamentoDeBolsas {
             System.out.println("");
             System.out.println("Valor\t\t- R$" + (int) bolsa.getValor() + ",00");
             System.out.println("Volume\t\t- " + bolsa.getQuantidadeHoras() + " Horas Semanais");
-            System.out.println("Tipo\t\t- " + bolsa.getTipo());
             System.out.println("---------------------------------x-------------------------------");
         }
         System.out.println("");
