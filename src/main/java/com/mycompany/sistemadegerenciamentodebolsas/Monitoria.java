@@ -4,6 +4,8 @@
  */
 package com.mycompany.sistemadegerenciamentodebolsas;
 
+import java.util.List;
+
 /**
  *
  * @author Marlon Ruffo
@@ -11,6 +13,10 @@ package com.mycompany.sistemadegerenciamentodebolsas;
 public class Monitoria extends Bolsa{
     private boolean prova;
     private String sala;
+
+    public Monitoria(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
+        super(titulo, SiapProfessor, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+    }
     
     
 }
