@@ -3,10 +3,13 @@
  */
 package com.mycompany.sistemadegerenciamentodebolsas;
 
+import Interfaces.HomeAluno;
+import Interfaces.HomeAluno1;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 /**
  * Autores do trabalho:
@@ -107,7 +110,7 @@ public class SistemaDeGerenciamentoDeBolsas {
     }
 
     public static void vizualizarDados() {
-
+        
         int opcao = lerInteiro("""
                                
                                
@@ -136,7 +139,7 @@ public class SistemaDeGerenciamentoDeBolsas {
     }
 
      public static void cadastrarDados() {
-
+         
         int opcao = lerInteiro("""
                                
                                
@@ -363,6 +366,10 @@ public class SistemaDeGerenciamentoDeBolsas {
     }
 
     public static void menu() {
+        
+        HomeAluno menu = new HomeAluno();
+        menu.setVisible(true);
+        
         int opcao = lerInteiro("""
                               Digite o numero correspondente a opcao que deseja:
                               (1)VISUALIZAR DADOS
