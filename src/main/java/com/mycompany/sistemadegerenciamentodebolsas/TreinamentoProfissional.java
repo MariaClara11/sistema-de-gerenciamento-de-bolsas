@@ -11,9 +11,11 @@ import java.util.List;
  * @author Marlon Ruffo
  */
 public class TreinamentoProfissional extends Bolsa{
-    
-    public TreinamentoProfissional(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
-        super(titulo, SiapProfessor, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+
+    public TreinamentoProfissional(String titulo, String preRequisitos, List<Disciplina> discilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
+        super(titulo, preRequisitos, discilplinasRequisitadas, valor, quantidadeHoras, tipo);
     }
+    
+
     
 }

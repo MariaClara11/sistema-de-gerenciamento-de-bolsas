@@ -19,12 +19,12 @@ package Interfaces;
  * Nome: Marlon Ruffo Nascimento
  * Matricula: 202065165AC
  */
-public class VisualizaçãoBolsa extends javax.swing.JFrame {
+public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     /**
      * Creates new form Home
      */
-    public VisualizaçãoBolsa() {
+    public VisualizacaoBolsa() {
         initComponents();
     }
 
@@ -172,21 +172,23 @@ public class VisualizaçãoBolsa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VisualizaçãoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VisualizaçãoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VisualizaçãoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VisualizaçãoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizaçãoBolsa().setVisible(true);
+                new VisualizacaoBolsa().setVisible(true);
             }
         });
     }

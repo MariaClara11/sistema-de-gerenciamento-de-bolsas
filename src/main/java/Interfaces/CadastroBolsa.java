@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+
 /**
  *Autores do trabalho:
  * 
@@ -24,9 +26,57 @@ public class CadastroBolsa extends javax.swing.JFrame {
     /**
      * Creates new form VisualizaçãoBolsa
      */
+    
     public CadastroBolsa() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+
+        cadastrar.addActionListener(e -> {
+            
+            
+            
+            String titulo = tituloTf.getText();
+            int tipo =  tipoBolsaSelect.getSelectedIndex();
+            String professor = professorTf.getText();
+            String preRequisitos = preRequisitostf.getText();
+            String valor = valorTf.getText();
+            
+            
+            if(tipo == 0){
+    JOptionPane.showMessageDialog(null, "Por favor, selecione um tipo de bolsa",
+            "Aviso", JOptionPane.WARNING_MESSAGE);
+                //volta para o programa.
+            }
+            if (tipo == 1) {
+                //Construtor da bolsa MONITORIA
+                JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
+            }
+            if (tipo == 2) {
+                //Construtor da bolsa Inic.Cientifica
+                JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
+            }
+            if (tipo == 3) {
+                //Construtor da bolsa Treinamento P.
+                JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional. cadastrada com sucesso!");
+            }
+            if (tipo == 4) {
+                //Construtor da bolsa Extensão
+                JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
+            }
+           
+            
+
+            tituloTf.setText("");
+            tipoBolsaSelect.setSelectedIndex(0);
+            professorTf.setText("");
+            preRequisitostf.setText("");
+            valorTf.setText("");
+            
+            }
+        );
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,222 +87,181 @@ public class CadastroBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jDialog1 = new javax.swing.JDialog();
-        jDialog2 = new javax.swing.JDialog();
-        jFrame1 = new javax.swing.JFrame();
-        menuBar1 = new java.awt.MenuBar();
-        menu1 = new java.awt.Menu();
-        menu2 = new java.awt.Menu();
-        button1 = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        tituloPrincipal = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenuItem2.setText("jMenuItem2");
-
-        jMenu1.setText("jMenu1");
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        menu1.setLabel("File");
-        menuBar1.add(menu1);
-
-        menu2.setLabel("Edit");
-        menuBar1.add(menu2);
+        professorTf = new javax.swing.JTextField();
+        preRequisitostf = new javax.swing.JTextField();
+        valorTf = new javax.swing.JTextField();
+        cadastrar = new javax.swing.JButton();
+        tipoBolsaSelect = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        tituloTf = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        metodoEntradaSelect = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        cargaHorariaTf1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        qtdVagasSpinner = new javax.swing.JSpinner();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(6, 345, 0, 0);
 
-        button1.setActionCommand("voltar");
-        button1.setLabel("<--");
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cadastro de Bolsa");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tituloPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        tituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPrincipal.setText("Cadastro de Bolsa");
+        tituloPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(tituloPrincipal);
+        tituloPrincipal.setBounds(40, 40, 350, 32);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Professor :");
+        jLabel3.setText("Professor:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 170, 60, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Pré-Requisitos :");
+        jLabel4.setText("Pré-Requisitos:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 200, 91, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Valor :");
+        jLabel5.setText("Valor:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 230, 35, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Carga Horária :");
+        jLabel6.setText("Carga Horária:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 260, 88, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Tipo :");
+        jLabel7.setText("Tipo:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(20, 140, 29, 20);
+        getContentPane().add(professorTf);
+        professorTf.setBounds(150, 170, 311, 22);
+        professorTf.getAccessibleContext().setAccessibleName("");
 
-        jTextField1.setText("Monitoria");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        preRequisitostf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                preRequisitostfActionPerformed(evt);
             }
         });
+        getContentPane().add(preRequisitostf);
+        preRequisitostf.setBounds(150, 200, 311, 22);
 
-        jTextField2.setText("Gleiph Ghiotto Lima de Menezes");
-
-        jTextField3.setText("DCC025");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        valorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                valorTfActionPerformed(evt);
             }
         });
+        getContentPane().add(valorTf);
+        valorTf.setBounds(150, 230, 311, 22);
 
-        jTextField4.setText("R$ 450,00");
-
-        jTextField5.setText("12 Horas");
-
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrar.setText("Cadastrar");
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarActionPerformed(evt);
             }
         });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(160, 450, 91, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField5))
-                                .addGap(76, 76, 76))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
+        tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoBolsaSelectActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tipoBolsaSelect);
+        tipoBolsaSelect.setBounds(150, 140, 311, 22);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Título: ");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(20, 110, 41, 16);
+        jLabel8.getAccessibleContext().setAccessibleName("Título");
+
+        getContentPane().add(tituloTf);
+        tituloTf.setBounds(150, 110, 311, 22);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Descrição:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(20, 350, 61, 20);
+
+        metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Prova", "Entrevista" }));
+        metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                metodoEntradaSelectActionPerformed(evt);
+            }
+        });
+        getContentPane().add(metodoEntradaSelect);
+        metodoEntradaSelect.setBounds(150, 290, 311, 22);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Vagas:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(20, 320, 40, 20);
+
+        cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargaHorariaTf1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cargaHorariaTf1);
+        cargaHorariaTf1.setBounds(150, 260, 311, 22);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Método de Entrada:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(20, 290, 122, 20);
+        getContentPane().add(qtdVagasSpinner);
+        qtdVagasSpinner.setBounds(150, 320, 310, 22);
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(150, 350, 310, 96);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+    private void preRequisitostfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preRequisitostfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    }//GEN-LAST:event_preRequisitostfActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cadastrarActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void tipoBolsaSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoBolsaSelectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_tipoBolsaSelectActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void valorTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_valorTfActionPerformed
+
+    private void metodoEntradaSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metodoEntradaSelectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_metodoEntradaSelectActionPerformed
+
+    private void cargaHorariaTf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaHorariaTf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargaHorariaTf1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,28 +300,27 @@ public class CadastroBolsa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JButton cadastrar;
+    private javax.swing.JTextField cargaHorariaTf1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private java.awt.Menu menu1;
-    private java.awt.Menu menu2;
-    private java.awt.MenuBar menuBar1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JComboBox<String> metodoEntradaSelect;
+    private javax.swing.JTextField preRequisitostf;
+    private javax.swing.JTextField professorTf;
+    private javax.swing.JSpinner qtdVagasSpinner;
+    private javax.swing.JComboBox<String> tipoBolsaSelect;
+    private javax.swing.JLabel tituloPrincipal;
+    private javax.swing.JTextField tituloTf;
+    private javax.swing.JTextField valorTf;
     // End of variables declaration//GEN-END:variables
 }
