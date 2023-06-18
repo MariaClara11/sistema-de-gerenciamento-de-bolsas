@@ -4,7 +4,6 @@
 package com.mycompany.sistemadegerenciamentodebolsas;
 
 import Interfaces.HomeAluno;
-import Interfaces.HomeAluno1;
 import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,21 +65,21 @@ public class SistemaDeGerenciamentoDeBolsas {
         return professor;
     }
     
-    public static Bolsa cadastraBolsa (String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
-        Bolsa bolsa = new Bolsa(titulo, SiapProfessor, PreRequisitos, DiscilplinasRequisitadas, valor, quantidadeHoras, tipo);
+    public static Bolsa cadastraBolsa (String titulo, String siapProfessor, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
+        Bolsa bolsa = new Bolsa(titulo,  preRequisitos, disciplinasRequisitadas, valor, quantidadeHoras, tipo);
         TodasBolsasCadastradas.add(bolsa);
         return bolsa;
     }
 
     public static void CadastraDadosDeExemplo() {
         //Criando os arrays lists de Pre requisitos para disciplinas
-        List<String> PreRequisitosNenhum = new ArrayList<>();
+        List<String> preRequisitosNenhum = new ArrayList<>();
 
         //instanciando algumas disciplinas
-        Disciplina d1 = cadastraDisciplina("GA", "MAT155", 4, PreRequisitosNenhum);
-        Disciplina d2 = cadastraDisciplina("Calculo1", "MAT154", 4, PreRequisitosNenhum);
-        Disciplina d3 = cadastraDisciplina("Algoritmos", "MAT119", 4, PreRequisitosNenhum);
-        Disciplina d4 = cadastraDisciplina("Lab de Quimica", "MAT126", 4, PreRequisitosNenhum);
+        Disciplina d1 = cadastraDisciplina("GA", "MAT155", 4, preRequisitosNenhum);
+        Disciplina d2 = cadastraDisciplina("Calculo1", "MAT154", 4, preRequisitosNenhum);
+        Disciplina d3 = cadastraDisciplina("Algoritmos", "MAT119", 4, preRequisitosNenhum);
+        Disciplina d4 = cadastraDisciplina("Lab de Quimica", "MAT126", 4, preRequisitosNenhum);
 
         //instanciando alguns alunos de exemplo inicial
         List<Disciplina> disA1 = new ArrayList<>();
@@ -318,10 +317,9 @@ public class SistemaDeGerenciamentoDeBolsas {
         for (Bolsa bolsa : TodasBolsasCadastradas) {
             System.out.println("---------------------------------x-------------------------------");
             System.out.println("Titulo\t\t- " + bolsa.getTitulo());
-            System.out.println("Siap Prof\t- " + bolsa.getSiapProfessor());
             System.out.println("Pré-Req\t\t- " + bolsa.getPreRequisitos());
             System.out.print("Disciplinas requisitadas:\t");
-                for (Disciplina disciplina : bolsa.getDiscilplinasRequisitadas()) {
+                for (Disciplina disciplina : bolsa.getDisciplinasRequisitadas()) {
                     System.out.print("- " + disciplina.getNome() + " ");
                 }
             System.out.println("");
@@ -355,11 +353,11 @@ public class SistemaDeGerenciamentoDeBolsas {
     public static void imprimeDisciplinaBolsa() {
 
         for (Bolsa bolsa : TodasBolsasCadastradas) {
-            if (bolsa.getDiscilplinasRequisitadas().isEmpty()) {
+            if (bolsa.getDisciplinasRequisitadas().isEmpty()) {
                 System.out.println("Sem Pre-Requisitos");
             } else {
                 //for(Bolsa disciplina : TodasBolsasCadastradas){
-                System.out.println("Requisitos\t- " + bolsa.getDiscilplinasRequisitadas());
+                System.out.println("Requisitos\t- " + bolsa.getDisciplinasRequisitadas());
                 //}
             }
         }

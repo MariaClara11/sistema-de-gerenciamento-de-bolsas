@@ -37,9 +37,9 @@ public class HomeProfessor extends JFrame {
             
         botaoViewBolsas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Fecha a tela atual
-                VisualizaçãoBolsa visualizacaoBolsa = new VisualizaçãoBolsa();
-                visualizacaoBolsa.setVisible(true); // Abre a nova tela
+                //dispose(); // Fecha a tela atual
+                //VisualizacaoBolsa visualizacaoBolsa = new VisualizacaoBolsa();
+                //visualizacaoBolsa.setVisible(true); // Abre a nova tela
             }
         });
         

@@ -21,36 +21,31 @@ import java.util.*;
  */
 public class Bolsa {
     private String titulo;
-    private String SiapProfessor;
-    private String PreRequisitos;
-    private List<Disciplina> DiscilplinasRequisitadas;
+    private String preRequisitos;
+    private List<Disciplina> disciplinasRequisitadas;
     private float valor;
     private int quantidadeHoras;
+    private String professorResponsavel;
     
-
-    public Bolsa(String titulo, String SiapProfessor, String PreRequisitos, List<Disciplina> DiscilplinasRequisitadas, float valor, int quantidadeHoras, String tipo) {
+    public Bolsa(String titulo, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String professorResponsavel) {
         this.titulo = titulo;
-        this.SiapProfessor = SiapProfessor;
-        this.PreRequisitos = PreRequisitos;
-        this.DiscilplinasRequisitadas = DiscilplinasRequisitadas;
+        this.preRequisitos = preRequisitos;
+        this.disciplinasRequisitadas = disciplinasRequisitadas;
         this.valor = valor;
         this.quantidadeHoras = quantidadeHoras;
+        this.professorResponsavel = professorResponsavel;
     }
     
     public String getTitulo() {
         return titulo;
     }
 
-    public String getSiapProfessor() {
-        return SiapProfessor;
-    }
-
     public String getPreRequisitos() {
-        return PreRequisitos;
+        return preRequisitos;
     }
 
-    public List<Disciplina> getDiscilplinasRequisitadas() {
-        return DiscilplinasRequisitadas;
+    public List<Disciplina> getDisciplinasRequisitadas() {
+        return disciplinasRequisitadas;
     }
 
     public float getValor() {
@@ -61,22 +56,20 @@ public class Bolsa {
         return quantidadeHoras;
     }
 
-
+    public String getProfessorResponsavel() {
+        return professorResponsavel;
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public void setSiapProfessor(String SiapProfessor) {
-        this.SiapProfessor = SiapProfessor;
+    public void setPreRequisitos(String preRequisitos) {
+        this.preRequisitos = preRequisitos;
     }
 
-    public void setPreRequisitos(String PreRequisitos) {
-        this.PreRequisitos = PreRequisitos;
-    }
-
-    public void setDiscilplinasRequisitadas(List<Disciplina> DiscilplinasRequisitadas) {
-        this.DiscilplinasRequisitadas = DiscilplinasRequisitadas;
+    public void setDisciplinasRequisitadas(List<Disciplina> disciplinasRequisitadas) {
+        this.disciplinasRequisitadas = disciplinasRequisitadas;
     }
 
     public void setValor(float valor) {
@@ -87,10 +80,20 @@ public class Bolsa {
         this.quantidadeHoras = quantidadeHoras;
     }
 
+    public void setProfessorResponsavel(String professorResponsavel) {
+        this.professorResponsavel = professorResponsavel;
+    }
 
     @Override
     public String toString() {
-        return "Bolsa{" + "titulo=" + titulo + ", SiapProfessor=" + SiapProfessor + ", PreRequisitos=" + PreRequisitos + ", DiscilplinasRequisitadas=" + DiscilplinasRequisitadas + ", valor=" + valor + ", quantidadeHoras=" + quantidadeHoras +'}';
+        return "Bolsa{" +
+                "titulo='" + titulo + '\'' +
+                ", preRequisitos='" + preRequisitos + '\'' +
+                ", disciplinasRequisitadas=" + disciplinasRequisitadas +
+                ", valor=" + valor +
+                ", quantidadeHoras=" + quantidadeHoras +
+                ", professorResponsavel='" + professorResponsavel + '\'' +
+                '}';
     }
-
 }
+
