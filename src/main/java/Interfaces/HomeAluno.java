@@ -44,8 +44,8 @@ public class HomeAluno extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         ListIC = new javax.swing.JList<>();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jMenuPerfil = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName(""); // NOI18N
@@ -93,6 +93,11 @@ public class HomeAluno extends javax.swing.JFrame {
         ListExtensao.setToolTipText("");
         ListExtensao.setMinimumSize(new java.awt.Dimension(100, 200));
         ListExtensao.setName(""); // NOI18N
+        ListExtensao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListExtensaoMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(ListExtensao);
 
         getContentPane().add(jScrollPane4);
@@ -136,6 +141,11 @@ public class HomeAluno extends javax.swing.JFrame {
         ListTP.setToolTipText("");
         ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
         ListTP.setName(""); // NOI18N
+        ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListTPMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(ListTP);
 
         getContentPane().add(jScrollPane9);
@@ -155,18 +165,33 @@ public class HomeAluno extends javax.swing.JFrame {
         ListIC.setToolTipText("");
         ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
         ListIC.setName(""); // NOI18N
+        ListIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListICMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(ListIC);
 
         getContentPane().add(jScrollPane10);
         jScrollPane10.setBounds(470, 40, 220, 270);
 
-        jMenu4.setText("Perfil");
-        jMenuBar2.add(jMenu4);
+        jMenuPerfil.setText("Perfil");
+        jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuPerfilMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(jMenuPerfil);
 
-        jMenu5.setText("Sair");
-        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenuBar2.add(jMenu5);
+        jMenuSair.setText("Sair");
+        jMenuSair.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jMenuSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSairMouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(jMenuSair);
 
         setJMenuBar(jMenuBar2);
 
@@ -182,9 +207,60 @@ public class HomeAluno extends javax.swing.JFrame {
                 InscricaoBolsa ViewBolsa = new InscricaoBolsa();
                 ViewBolsa.setVisible(true);
             }
-
         }
     }//GEN-LAST:event_ListMonitoriaMouseClicked
+
+    private void ListExtensaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListExtensaoMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListMonitoria.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListExtensaoMouseClicked
+
+    private void ListICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListICMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListMonitoria.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListICMouseClicked
+
+    private void ListTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListTPMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListMonitoria.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListTPMouseClicked
+
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
+        if (evt.getClickCount() == 2) {
+            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (option == JOptionPane.YES_OPTION) {
+                Login login = new Login();
+                login.setVisible(true);
+                // Fechar a tela atual
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_jMenuSairMouseClicked
+
+    private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
+        if (evt.getClickCount() == 2) {
+            VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno();
+            viewPerfilAluno.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuPerfilMouseClicked
 
     private void abrirTelaSelecionada(int selectedIndex) {
         switch (selectedIndex) {
@@ -207,9 +283,10 @@ public class HomeAluno extends javax.swing.JFrame {
             case 4:
                 // Abrir a quinta tela
                 abrirTela5();
-                break;
+            break;
         }
     }
+
     private void abrirTela1() {
         // Lógica para abrir a primeira tela
         JOptionPane.showMessageDialog(this, "Abrindo Tela 1");
@@ -234,8 +311,7 @@ public class HomeAluno extends javax.swing.JFrame {
         // Lógica para abrir a quinta tela
         JOptionPane.showMessageDialog(this, "Abrindo Tela 5");
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -280,9 +356,9 @@ public class HomeAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuPerfil;
+    private javax.swing.JMenu jMenuSair;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane8;

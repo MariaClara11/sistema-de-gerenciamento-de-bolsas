@@ -50,7 +50,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         button1 = new java.awt.Button();
         jTextField9 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextField1.setText("Nome");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {

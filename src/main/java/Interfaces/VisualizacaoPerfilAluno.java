@@ -15,7 +15,7 @@ package Interfaces;
  *
  * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
-public class VisualizacaoPerfilAluno extends javax.swing.JPanel {
+public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
     /**
      * Creates new form VisualizaçãoPerfilAluno
