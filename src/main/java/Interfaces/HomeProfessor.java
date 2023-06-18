@@ -16,8 +16,8 @@ public class HomeProfessor extends javax.swing.JFrame {
      * Creates new form HomeProfessor
      */
     public HomeProfessor() {
-        setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**

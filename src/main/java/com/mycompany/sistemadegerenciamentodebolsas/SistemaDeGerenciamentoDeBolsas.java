@@ -24,7 +24,7 @@ import java.util.Scanner;
 public class SistemaDeGerenciamentoDeBolsas {
 
     //criando listas para armazenar todos os objetos cadastrados
-    static List<Disciplina> dCadastradas = new ArrayList<>();
+    /*static List<Disciplina> dCadastradas = new ArrayList<>();
     static List<Aluno> alunosCadastrados = new ArrayList<>();
     static List<Professor> profsCadastrados = new ArrayList<>();
     static List<Bolsa> TodasBolsasCadastradas = new ArrayList<>();
@@ -392,15 +392,17 @@ public class SistemaDeGerenciamentoDeBolsas {
     }
 
     public static void main(String[] args) {
-        /*Como ainda nao temos um banco de dados e nem aprendemos a integracao com interface
-        vamos simular uma interacao com o usuario pelo terminal mesmo
-         */
+        //Como ainda nao temos um banco de dados e nem aprendemos a integracao com interface
+        //vamos simular uma interacao com o usuario pelo terminal mesmo
 
         //primeiro vamos cadastrar dados de exemplo
-        CadastraDadosDeExemplo();
+        /*CadastraDadosDeExemplo();
         System.out.println("Bem vindo ao:");
         System.out.println("SISTEMA DE GERENCIAMENTO DE BOLSAS DE PROJETOS (IC, MONITORIA...)");
         menu();
+    }*/
+    public static void main(String[] args) {
+        
     }
 
 }
