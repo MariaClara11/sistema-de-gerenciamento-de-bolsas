@@ -27,6 +27,8 @@ public class Bolsa {
     private int quantidadeHoras;
     private String professorResponsavel;
     
+    
+    
     public Bolsa(String titulo, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String professorResponsavel) {
         this.titulo = titulo;
         this.preRequisitos = preRequisitos;

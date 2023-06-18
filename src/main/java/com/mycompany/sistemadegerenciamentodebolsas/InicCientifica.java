@@ -11,11 +11,12 @@ import java.util.List;
  * @author Marlon Ruffo
  */
 public class InicCientifica extends Bolsa {
-   private int duracao; 
 
-    public InicCientifica(int duracao, String titulo, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String professorResponsavel) {
+   
+
+    public InicCientifica( String titulo, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String professorResponsavel) {
         super(titulo, preRequisitos, disciplinasRequisitadas, valor, quantidadeHoras, professorResponsavel);
-        this.duracao = duracao;
+
     }
 }
 
