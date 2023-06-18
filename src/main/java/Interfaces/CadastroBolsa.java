@@ -35,8 +35,9 @@ public class CadastroBolsa extends javax.swing.JFrame {
      */
     
     public CadastroBolsa() {
+        
         initComponents();
-
+        setSize(500,500);
 
 
     }
@@ -72,7 +73,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         preRequisitosTf1 = new javax.swing.JTextField();
         labelPreRequisitos1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(6, 345, 0, 0);
