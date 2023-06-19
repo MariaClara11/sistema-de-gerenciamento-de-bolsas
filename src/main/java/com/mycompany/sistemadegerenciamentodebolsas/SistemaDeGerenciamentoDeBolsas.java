@@ -402,7 +402,7 @@ public class SistemaDeGerenciamentoDeBolsas {
         menu();
     }*/
     public static void main(String[] args) {
-        
+        VerificarLogin.iniciar();
     }
 
 }

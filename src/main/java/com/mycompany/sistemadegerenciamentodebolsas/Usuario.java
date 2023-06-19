@@ -24,7 +24,6 @@ public class Usuario {
     private int idade;
     private String CPF;
     private String dataNascimento;
-    private String login;
     private String senha;
     private String telefone;
 
@@ -33,17 +32,15 @@ public class Usuario {
         this.idade = 0;
         this.CPF = "";
         this.dataNascimento = "";
-        this.login = "";
         this.senha = "";
         this.telefone = "";
     };
     
-    public Usuario(String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
+    public Usuario(String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
         this.nome = nome;
         this.idade = idade;
         this.CPF = CPF;
         this.dataNascimento = dataNascimento;
-        this.login = login;
         this.senha = senha;
         this.telefone = telefone;
     }
@@ -64,9 +61,6 @@ public class Usuario {
         return dataNascimento;
     }
 
-    public String getLogin() {
-        return login;
-    }
 
     public String getSenha() {
         return senha;
@@ -92,10 +86,6 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -104,12 +94,11 @@ public class Usuario {
         this.telefone = telefone;
     }
     
-    public void editaDadosUsuario(String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
+    public void editaDadosUsuario(String nome, int idade, String CPF, String dataNascimento, String senha, String telefone, String DataNascimento) {
         this.nome = nome;
         this.idade = idade;
         this.CPF = CPF;
         this.dataNascimento = dataNascimento;
-        this.login = login;
         this.senha = senha;
         this.telefone = telefone;
     }
@@ -119,13 +108,12 @@ public class Usuario {
         this.idade = 0;
         this.CPF = "";
         this.dataNascimento = "";
-        this.login = "";
         this.senha = "";
         this.telefone = "";
     }
 
     @Override
     public String toString() {
-        return "nome=" + nome + ", idade=" + idade + ", CPF=" + CPF + ", dataNascimento=" + dataNascimento + ", login=" + login + ", senha=" + senha + ", telefone=" + telefone;
+        return "nome=" + nome + ", idade=" + idade + ", CPF=" + CPF + ", dataNascimento=" + dataNascimento + ", senha=" + senha + ", telefone=" + telefone;
     }
 }

@@ -36,9 +36,9 @@ public class Aluno extends Usuario{
         this.dataIngresso = "";
         this.disciplinas = new ArrayList<>();
     }
-
-    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
-        super(nome, idade, CPF, dataNascimento, login, senha, telefone);
+    
+    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
+        super(nome, idade, CPF, dataNascimento, senha, telefone);
         this.matricula = matricula;
         this.contaBancaria = contaBancaria;
         this.ira = ira;
@@ -46,6 +46,16 @@ public class Aluno extends Usuario{
         this.disciplinas = disciplinas;
     }
 
+    
+    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
+        super(nome, idade, CPF, dataNascimento, senha, telefone);
+        this.matricula = matricula;
+        this.contaBancaria = contaBancaria;
+        this.ira = ira;
+        this.dataIngresso = dataIngresso;
+        this.disciplinas = new ArrayList<>();
+    }
+    
     public String getMatricula() {
         return matricula;
     }
@@ -92,7 +102,7 @@ public class Aluno extends Usuario{
     }
     
     public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, login, senha, telefone, DataNascimento);
+        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
         this.matricula = matricula;
         this.contaBancaria = contaBancaria;
         this.ira = ira;
