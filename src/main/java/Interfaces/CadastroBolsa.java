@@ -38,6 +38,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         
         initComponents();
         setSize(500,500);
+        setLocationRelativeTo(null);
 
 
     }
@@ -83,27 +84,27 @@ public class CadastroBolsa extends javax.swing.JFrame {
         tituloPrincipal.setText("Cadastro de Bolsa");
         tituloPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(tituloPrincipal);
-        tituloPrincipal.setBounds(70, 40, 350, 32);
+        tituloPrincipal.setBounds(70, 40, 350, 29);
 
         labelProfessor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelProfessor.setText("Professor:");
         getContentPane().add(labelProfessor);
-        labelProfessor.setBounds(20, 170, 60, 20);
+        labelProfessor.setBounds(20, 170, 130, 20);
 
         labelValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelValor.setText("Valor:");
         getContentPane().add(labelValor);
-        labelValor.setBounds(20, 230, 35, 20);
+        labelValor.setBounds(20, 230, 130, 17);
 
         labelCargaHor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCargaHor.setText("Carga Horária:");
         getContentPane().add(labelCargaHor);
-        labelCargaHor.setBounds(20, 260, 88, 20);
+        labelCargaHor.setBounds(20, 260, 130, 17);
 
         labelTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTipo.setText("Tipo:");
         getContentPane().add(labelTipo);
-        labelTipo.setBounds(20, 140, 29, 20);
+        labelTipo.setBounds(20, 140, 130, 17);
 
         professorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +112,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(professorTf);
-        professorTf.setBounds(150, 170, 311, 22);
+        professorTf.setBounds(161, 170, 300, 24);
 
         valorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,7 +120,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(valorTf);
-        valorTf.setBounds(150, 230, 311, 22);
+        valorTf.setBounds(161, 230, 300, 24);
 
         cadastrar.setText("Cadastrar");
         cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,7 +129,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(200, 360, 91, 23);
+        cadastrar.setBounds(190, 360, 100, 24);
 
         tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
         tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -137,16 +138,16 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tipoBolsaSelect);
-        tipoBolsaSelect.setBounds(150, 140, 311, 22);
+        tipoBolsaSelect.setBounds(161, 140, 300, 24);
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTitulo.setText("Título: ");
         getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(20, 110, 41, 16);
+        labelTitulo.setBounds(20, 110, 130, 16);
         labelTitulo.getAccessibleContext().setAccessibleName("Título");
 
         getContentPane().add(tituloTf);
-        tituloTf.setBounds(150, 110, 311, 22);
+        tituloTf.setBounds(161, 110, 300, 24);
 
         metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Prova", "Entrevista" }));
         metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -155,12 +156,12 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(metodoEntradaSelect);
-        metodoEntradaSelect.setBounds(150, 290, 311, 22);
+        metodoEntradaSelect.setBounds(161, 290, 300, 24);
 
         labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelVagas.setText("Vagas:");
         getContentPane().add(labelVagas);
-        labelVagas.setBounds(20, 320, 40, 20);
+        labelVagas.setBounds(20, 320, 130, 17);
 
         cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,17 +169,17 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cargaHorariaTf1);
-        cargaHorariaTf1.setBounds(150, 260, 311, 22);
+        cargaHorariaTf1.setBounds(161, 260, 300, 24);
 
         labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelMetodoEntrada.setText("Método de Entrada:");
         getContentPane().add(labelMetodoEntrada);
-        labelMetodoEntrada.setBounds(20, 290, 122, 20);
+        labelMetodoEntrada.setBounds(20, 290, 140, 17);
 
         qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(qtdVagasSpinner);
-        qtdVagasSpinner.setBounds(150, 320, 310, 22);
+        qtdVagasSpinner.setBounds(160, 320, 300, 24);
 
         preRequisitosTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,12 +187,12 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(preRequisitosTf1);
-        preRequisitosTf1.setBounds(150, 200, 311, 22);
+        preRequisitosTf1.setBounds(161, 200, 300, 24);
 
         labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPreRequisitos1.setText("Pré-Requisitos:");
         getContentPane().add(labelPreRequisitos1);
-        labelPreRequisitos1.setBounds(20, 200, 91, 20);
+        labelPreRequisitos1.setBounds(20, 200, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

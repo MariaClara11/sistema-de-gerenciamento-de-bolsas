@@ -4,16 +4,18 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author igor
  */
-public class InscricaoBolsa extends javax.swing.JFrame {
+public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     /**
-     * Creates new form InscricaoBolsa
+     * Creates new form VisualizacaoBolsa
      */
-    public InscricaoBolsa() {
+    public VisualizacaoBolsa() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -27,9 +29,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        bInscrever = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -38,13 +40,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         fieldHoraria = new javax.swing.JTextField();
         fieldTipo = new javax.swing.JTextField();
         fieldProfessor = new javax.swing.JTextField();
-        bInscrever = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nome da Monitoria");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -53,6 +51,19 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Pre-Requisitos : ");
+
+        bInscrever.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        bInscrever.setText("Alterar");
+        bInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bInscreverMouseClicked(evt);
+            }
+        });
+        bInscrever.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInscreverActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -106,18 +117,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        bInscrever.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        bInscrever.setText("Inscrever");
-        bInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bInscreverMouseClicked(evt);
-            }
-        });
-        bInscrever.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInscreverActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nome da Monitoria");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,7 +139,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fieldProfessor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldRequisitos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(fieldRequisitos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                             .addComponent(fieldTipo)
                             .addComponent(fieldValor)
                             .addComponent(fieldHoraria, javax.swing.GroupLayout.Alignment.LEADING))))
@@ -174,11 +176,30 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                     .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
+        // TODO add your handling code here:
+        String professor = fieldProfessor.getText();
+        String requisitos = fieldRequisitos.getText();
+        String valor = fieldValor.getText();
+        String horaria = fieldHoraria.getText();
+        String tipo = fieldTipo.getText();
+
+        if (bolsaIsValid()) {
+
+        }
+
+
+    }//GEN-LAST:event_bInscreverMouseClicked
+
+    private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bInscreverActionPerformed
 
     private void fieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldValorActionPerformed
         // TODO add your handling code here:
@@ -200,17 +221,44 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldProfessorActionPerformed
 
-    private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bInscreverActionPerformed
-
-    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bInscreverMouseClicked
-
     /**
      * @param args the command line arguments
      */
+    private boolean bolsaIsValid() {
+
+        String professor = fieldProfessor.getText();
+        String requisitos = fieldRequisitos.getText();
+        String valorS = fieldValor.getText();
+        String horariaS = fieldHoraria.getText();
+        String tipo = fieldTipo.getText();
+        
+        int valor;
+        int horaria;
+        
+        try {
+            valor = Integer.parseInt(valorS);
+            horaria = Integer.parseInt(horariaS);
+            // Código a ser executado se a conversão for bem-sucedida
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
+                "Aviso", JOptionPane.WARNING_MESSAGE);
+            return false;
+            // Código de tratamento para quando a conversão falha
+        }
+
+        if (valor<=0 || horaria<=0) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return false; // Verifica se campos obrigatórios estão vazios
+        } else if (tipoBolsa == 0 || vagas < 1 || metodoEntrada == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecione as informações corretamente",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -225,20 +273,20 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InscricaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InscricaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InscricaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InscricaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VisualizacaoBolsa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InscricaoBolsa().setVisible(true);
+                new VisualizacaoBolsa().setVisible(true);
             }
         });
     }

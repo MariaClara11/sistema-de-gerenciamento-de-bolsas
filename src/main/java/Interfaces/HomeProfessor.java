@@ -45,8 +45,7 @@ public class HomeProfessor extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jListBolsaMouseClicked(evt);
@@ -62,7 +61,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
         jButton1.setText("Cadastrar Bolsa");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -118,22 +117,22 @@ public class HomeProfessor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        if (evt.getClickCount() == 2) {
-            VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor();
-            viewPerfil.setVisible(true);
-        }
+
+        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor();
+        viewPerfil.setVisible(true);
+
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        if (evt.getClickCount() == 2) {
-            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if (option == JOptionPane.YES_OPTION) {
-                Login login = new Login();
-                login.setVisible(true);
-                // Fechar a tela atual
-                dispose();
-            }
+
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            // Fechar a tela atual
+            dispose();
         }
+
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -147,7 +146,7 @@ public class HomeProfessor extends javax.swing.JFrame {
             int selectedIndex = jListBolsa.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa();
                 ViewBolsa.setVisible(true);
             }
 

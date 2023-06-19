@@ -16,10 +16,9 @@ public class HomeAluno extends javax.swing.JFrame {
      * Creates new form HomeAluno
      */
     public HomeAluno() {
-
-        setExtendedState(MAXIMIZED_BOTH);
-
         initComponents();
+        setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -211,7 +210,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListMonitoriaMouseClicked
 
     private void ListExtensaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListExtensaoMouseClicked
-        if (evt.getClickCount() == 2) {
+         if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -222,7 +221,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListExtensaoMouseClicked
 
     private void ListICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListICMouseClicked
-        if (evt.getClickCount() == 2) {
+         if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -233,7 +232,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListICMouseClicked
 
     private void ListTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListTPMouseClicked
-        if (evt.getClickCount() == 2) {
+         if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -244,7 +243,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListTPMouseClicked
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-        if (evt.getClickCount() == 2) {
+        
             int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
             if (option == JOptionPane.YES_OPTION) {
                 Login login = new Login();
@@ -252,14 +251,14 @@ public class HomeAluno extends javax.swing.JFrame {
                 // Fechar a tela atual
                 dispose();
             }
-        }
+        
     }//GEN-LAST:event_jMenuSairMouseClicked
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
-        if (evt.getClickCount() == 2) {
+        
             VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno();
             viewPerfilAluno.setVisible(true);
-        }
+        
     }//GEN-LAST:event_jMenuPerfilMouseClicked
 
     private void abrirTelaSelecionada(int selectedIndex) {

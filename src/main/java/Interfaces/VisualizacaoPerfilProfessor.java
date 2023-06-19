@@ -22,6 +22,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
      */
     public VisualizacaoPerfilProfessor() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
