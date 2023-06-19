@@ -4,6 +4,11 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import java.awt.event.InputMethodEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,7 +16,13 @@ import javax.swing.JOptionPane;
  * @author igor
  */
 public class HomeProfessor extends javax.swing.JFrame {
-
+    
+    
+    public List<Bolsa> listaIC = new ArrayList<>();
+    public List<Bolsa> listaTP = new ArrayList<>();
+    public List<Bolsa> listaMonitoria = new ArrayList<>();
+    public List<Bolsa> listaBExtensao = new ArrayList<>();
+    
     /**
      * Creates new form HomeProfessor
      */
@@ -50,6 +61,13 @@ public class HomeProfessor extends javax.swing.JFrame {
         jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jListBolsaMouseClicked(evt);
+            }
+        });
+        jListBolsa.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jListBolsaInputMethodTextChanged(evt);
             }
         });
         jScrollPane1.setViewportView(jListBolsa);
@@ -119,7 +137,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
 
-        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor();
+        HomeAluno viewPerfil = new HomeAluno();
         viewPerfil.setVisible(true);
 
     }//GEN-LAST:event_jMenu1MouseClicked
@@ -154,6 +172,25 @@ public class HomeProfessor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListBolsaMouseClicked
 
+    private void jListBolsaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jListBolsaInputMethodTextChanged
+        
+        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        listaMonitoria = lista.listaMonitoria;
+
+        model.addElement(lista.getTitulo());
+        
+        jListBolsa.setModel(model);
+        jListBolsa.revalidate();
+        jListBolsa.repaint();
+    }//GEN-LAST:event_jListBolsaInputMethodTextChanged
+    
+    public void inputListBolsa(){
+        InputMethodEvent evt = null;
+        jListBolsaInputMethodTextChanged(evt);
+    }
+    
     /**
      * @param args the command line arguments
      */
