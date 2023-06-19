@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +19,13 @@ public class HomeAluno extends javax.swing.JFrame {
     /**
      * Creates new form HomeAluno
      */
+    
+    public List<Bolsa> listaIC = new ArrayList<>();
+    public List<Bolsa> listaTP = new ArrayList<>();
+    public List<Bolsa> listaMonitoria = new ArrayList<>();
+    public List<Bolsa> listaBExtensao = new ArrayList<>();
+    
+    
     public HomeAluno() {
         initComponents();
         setLocationRelativeTo(null);
@@ -83,11 +94,6 @@ public class HomeAluno extends javax.swing.JFrame {
 
         ListExtensao.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
         ListExtensao.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        ListExtensao.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListExtensao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListExtensao.setToolTipText("");
         ListExtensao.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -95,6 +101,13 @@ public class HomeAluno extends javax.swing.JFrame {
         ListExtensao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListExtensaoMouseClicked(evt);
+            }
+        });
+        ListExtensao.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                ListExtensaoInputMethodTextChanged(evt);
             }
         });
         jScrollPane4.setViewportView(ListExtensao);
@@ -107,11 +120,6 @@ public class HomeAluno extends javax.swing.JFrame {
 
         ListMonitoria.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
         ListMonitoria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        ListMonitoria.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListMonitoria.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListMonitoria.setToolTipText("");
         ListMonitoria.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -119,6 +127,18 @@ public class HomeAluno extends javax.swing.JFrame {
         ListMonitoria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListMonitoriaMouseClicked(evt);
+            }
+        });
+        ListMonitoria.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                ListMonitoriaInputMethodTextChanged(evt);
+            }
+        });
+        ListMonitoria.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ListMonitoriaValueChanged(evt);
             }
         });
         jScrollPane8.setViewportView(ListMonitoria);
@@ -131,18 +151,29 @@ public class HomeAluno extends javax.swing.JFrame {
 
         ListTP.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
         ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        ListTP.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListTP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListTP.setToolTipText("");
         ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
         ListTP.setName(""); // NOI18N
+        ListTP.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                ListTPAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListTPMouseClicked(evt);
+            }
+        });
+        ListTP.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                ListTPInputMethodTextChanged(evt);
             }
         });
         jScrollPane9.setViewportView(ListTP);
@@ -155,11 +186,6 @@ public class HomeAluno extends javax.swing.JFrame {
 
         ListIC.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
         ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        ListIC.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         ListIC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListIC.setToolTipText("");
         ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -167,6 +193,13 @@ public class HomeAluno extends javax.swing.JFrame {
         ListIC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListICMouseClicked(evt);
+            }
+        });
+        ListIC.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                ListICInputMethodTextChanged(evt);
             }
         });
         jScrollPane10.setViewportView(ListIC);
@@ -210,7 +243,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListMonitoriaMouseClicked
 
     private void ListExtensaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListExtensaoMouseClicked
-         if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -221,7 +254,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListExtensaoMouseClicked
 
     private void ListICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListICMouseClicked
-         if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -232,7 +265,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListICMouseClicked
 
     private void ListTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListTPMouseClicked
-         if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
@@ -243,23 +276,77 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListTPMouseClicked
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-        
-            int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if (option == JOptionPane.YES_OPTION) {
-                Login login = new Login();
-                login.setVisible(true);
-                // Fechar a tela atual
-                dispose();
-            }
-        
+
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            // Fechar a tela atual
+            dispose();
+        }
+
     }//GEN-LAST:event_jMenuSairMouseClicked
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
-        
-            VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno();
-            viewPerfilAluno.setVisible(true);
-        
+
+        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno();
+        viewPerfilAluno.setVisible(true);
+
     }//GEN-LAST:event_jMenuPerfilMouseClicked
+
+    private void ListMonitoriaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListMonitoriaValueChanged
+
+    }//GEN-LAST:event_ListMonitoriaValueChanged
+
+    private void ListTPAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListTPAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ListTPAncestorAdded
+
+    private void ListMonitoriaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListMonitoriaInputMethodTextChanged
+
+        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        listaMonitoria = lista.listaMonitoria;
+
+        model.addElement(lista.getTitulo());
+
+        ListMonitoria.setModel(model);
+
+    }//GEN-LAST:event_ListMonitoriaInputMethodTextChanged
+
+    private void ListExtensaoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListExtensaoInputMethodTextChanged
+        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        listaBExtensao = lista.listaBExtensao;
+
+        model.addElement(lista.getTitulo());
+
+        ListExtensao.setModel(model);        // TODO add your handling code here:
+    }//GEN-LAST:event_ListExtensaoInputMethodTextChanged
+
+    private void ListICInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListICInputMethodTextChanged
+       CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        listaIC = lista.listaIC;
+
+        model.addElement(lista.getTitulo());
+
+        ListIC.setModel(model);   
+    }//GEN-LAST:event_ListICInputMethodTextChanged
+
+    private void ListTPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListTPInputMethodTextChanged
+        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        listaTP = lista.listaTP;
+
+        model.addElement(lista.getTitulo());
+
+        ListTP.setModel(model);   
+    }//GEN-LAST:event_ListTPInputMethodTextChanged
 
     private void abrirTelaSelecionada(int selectedIndex) {
         switch (selectedIndex) {
@@ -282,7 +369,7 @@ public class HomeAluno extends javax.swing.JFrame {
             case 4:
                 // Abrir a quinta tela
                 abrirTela5();
-            break;
+                break;
         }
     }
 

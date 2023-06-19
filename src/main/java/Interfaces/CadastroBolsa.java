@@ -32,11 +32,35 @@ public class CadastroBolsa extends javax.swing.JFrame {
      * Creates new form VisualizaçãoBolsa
      */
     
+
+    public List<Bolsa> getListaIC() {
+        return listaIC;
+    }
+
+    public List<Bolsa> getListaTP() {
+        return listaTP;
+    }
+
+    public List<Bolsa> getListaMonitoria() {
+        return listaMonitoria;
+    }
+
+    public List<Bolsa> getListaBExtensao() {
+        return listaBExtensao;
+    }
+    
+    public List<Bolsa> listaIC = new ArrayList<>();
+    public List<Bolsa> listaTP = new ArrayList<>();
+    public List<Bolsa> listaMonitoria = new ArrayList<>();
+    public List<Bolsa> listaBExtensao = new ArrayList<>();
+    public String titulo;
+    
     public CadastroBolsa() {
+        
         
         initComponents();
         setSize(500,600);
-
+        
 
     }
     
@@ -219,7 +243,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_cargaHorariaTf1ActionPerformed
 
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
-    String titulo = tituloTf.getText();
+    titulo = tituloTf.getText();
     int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
     String professor = professorTf.getText();
     String valor = valorTf.getText();
@@ -230,10 +254,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
     int vagas = (int) qtdVagasSpinner.getValue();
     List<Disciplina> lista = new ArrayList<>();
     List<String> listaPreRequisitos = new ArrayList<>();
-    List<Bolsa> listaIC = new ArrayList<>();
-    List<Bolsa> listaTP = new ArrayList<>();
-    List<Bolsa> listaMonitoria = new ArrayList<>();
-    List<Bolsa> listaBExtensao = new ArrayList<>();
+    
     for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
             listaPreRequisitos.add(preRequisito);
         }
@@ -265,6 +286,11 @@ public class CadastroBolsa extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_cadastrarMouseClicked
+
+    public String getTitulo() {
+        return titulo;
+    }
+    
 private boolean bolsaIsValid() {
     String titulo = tituloTf.getText();
     int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
