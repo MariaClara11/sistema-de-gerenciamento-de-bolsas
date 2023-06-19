@@ -4,11 +4,9 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
-import com.mycompany.sistemadegerenciamentodebolsas.InicCientifica;
-import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
-import com.mycompany.sistemadegerenciamentodebolsas.ProjetoExtensao;
-import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -72,7 +70,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         qtdVagasSpinner = new javax.swing.JSpinner();
         labelPreRequisitos1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaPreRequisitosSelect = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -186,13 +184,13 @@ public class CadastroBolsa extends javax.swing.JFrame {
         getContentPane().add(labelPreRequisitos1);
         labelPreRequisitos1.setBounds(20, 320, 91, 20);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaPreRequisitosSelect.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "ANE40", "CAD076", "DCC001", "DCC008", "DCC012", "DCC013", "DCC014", "DCC019", "DCC025", "DCC033", "DCC037", "DCC042", "DCC045", "DCC055", "DCC059", "DCC060", "DCC061", "DCC062", "DCC063", "DCC064", "DCC065", "DCC066", "DCC067", "DCC068", "DCC069", "DCC070", "DCC071", "DCC072", "DCC073", "DCC074", "DCC075", "DCC076", "DCC078", "DCC080", "DCC082", "DCC083", "DCC086", "DCC088", "DCC089", "DCC090", "DCC091", "DCC092", "DCC093", "DCC094", "DCC095", "DCC096", "DCC097", "DCC098", "DCC099", "DCC100", "DCC101", "DCC102", "DCC103", "DCC104", "DCC105", "DCC117", "DCC122", "DCC123", "DCC124", "DCC125", "DCC126", "DCC127", "DCC128", "DCC129", "DCC130", "DCC131", "DCC132", "DCC133", "DCC136", "DCC137", "DCC138", "DCC139", "DCC140", "DCC141", "DCC142", "DCC143", "DCC144", "DCC145", "DCC147", "DCC148", "DCC149", "DCC152", "DCC153", "DCC154", "DCC155", "DCC159", "DCC160", "DCC161", "DCC162", "DCC163", "DCC164", "DCC165", "DCC166", "DCC167", "DCC168", "DCC171", "DCC172", "DCC174", "DCC176", "DCC177", "DCC178", "DCC179", "DCC180", "DCC181", "DCC182", "DCC183", "DCC184", "DCC185", "DCC186", "DCC187", "DCC188", "DCC189", "DCC190", "DCC199", "DCC200", "DC5199", "DC5200", "DPR032", "EADCC037", "EADCC043", "EADCC044", "EADDCC048", "EADDCC049", "EST028", "EST029", "EST030", "FIL012", "FIN001", "FIS073", "FIS074", "FIS075", "FIS077", "FIS122", "ICE001", "LEC003", "LEM184", "MAC011", "MAC013", "MAT013", "MAT029", "MAT143", "MAT154", "MAT155", "MAT156", "MAT157", "MAT158", "QUI125", "QUI126", "QUI168", "UNI001", "UNI002", "UNI003" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(jList1);
+        listaPreRequisitosSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(listaPreRequisitosSelect);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(150, 320, 310, 110);
@@ -224,7 +222,6 @@ public class CadastroBolsa extends javax.swing.JFrame {
     String titulo = tituloTf.getText();
     int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
     String professor = professorTf.getText();
-    String preRequisitos = preRequisitosTf1.getText();
     String valor = valorTf.getText();
     float valorFloat = Float.parseFloat(valor);
     String cargaHoraria = cargaHorariaTf1.getText();
@@ -232,26 +229,38 @@ public class CadastroBolsa extends javax.swing.JFrame {
     int metodoEntrada = metodoEntradaSelect.getSelectedIndex();
     int vagas = (int) qtdVagasSpinner.getValue();
     List<Disciplina> lista = new ArrayList<>();
+    List<String> listaPreRequisitos = new ArrayList<>();
+    List<Bolsa> listaIC = new ArrayList<>();
+    List<Bolsa> listaTP = new ArrayList<>();
+    List<Bolsa> listaMonitoria = new ArrayList<>();
+    List<Bolsa> listaBExtensao = new ArrayList<>();
+    for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
+            listaPreRequisitos.add(preRequisito);
+        }
 
     if (bolsaIsValid()) {
         if (tipoBolsa == 1) {
             // Construtor da bolsa MONITORIA
-            Monitoria bolsaMonitoria = new Monitoria(titulo, preRequisitos, lista, valorFloat, cargaHorariaInt,professor);
+            Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+            listaMonitoria.add(bolsaMonitoria);
             JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
         }
         if (tipoBolsa == 2) {
             // Construtor da bolsa Inic.Cientifica
-            InicCientifica bolsaIC = new InicCientifica(titulo, preRequisitos, lista, valorFloat, cargaHorariaInt,professor);
+           Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+            listaIC.add(bolsaIC);
             JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
         }
         if (tipoBolsa == 3) {
             // Construtor da bolsa Treinamento P.
-            TreinamentoProfissional bolsaTP = new TreinamentoProfissional(titulo, preRequisitos, lista, valorFloat, cargaHorariaInt,professor);
+            Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+            listaTP.add(bolsaTP);
             JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional cadastrada com sucesso!");
         }
         if (tipoBolsa == 4) {
             // Construtor da bolsa Extensão
-            ProjetoExtensao bolsaPE = new ProjetoExtensao(titulo, preRequisitos, lista, valorFloat, cargaHorariaInt,professor);
+            Bolsa bolsaExtensao = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+            listaBExtensao.add(bolsaExtensao);
             JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
         }
     }
@@ -317,7 +326,6 @@ private boolean bolsaIsValid() {
     private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cargaHorariaTf1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCargaHor;
     private javax.swing.JLabel labelMetodoEntrada;
@@ -327,6 +335,7 @@ private boolean bolsaIsValid() {
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel labelVagas;
     private javax.swing.JLabel labelValor;
+    private javax.swing.JList<String> listaPreRequisitosSelect;
     private javax.swing.JComboBox<String> metodoEntradaSelect;
     private javax.swing.JTextField professorTf;
     private javax.swing.JSpinner qtdVagasSpinner;
