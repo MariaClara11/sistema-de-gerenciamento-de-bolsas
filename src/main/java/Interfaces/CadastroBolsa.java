@@ -4,9 +4,14 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.Persistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
-import java.awt.event.ActionEvent;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,38 +29,15 @@ import javax.swing.JOptionPane;
  * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
 public class CadastroBolsa extends javax.swing.JFrame {
-
+    public CadastroBolsa(){
+         initComponents();
+       setSize(700,700);
+    }
+   
     /**
      * Creates new form VisualizaçãoBolsa
      */
-    public List<Bolsa> getListaIC() {
-        return listaIC;
-    }
-
-    public List<Bolsa> getListaTP() {
-        return listaTP;
-    }
-
-    public List<Bolsa> getListaMonitoria() {
-        return listaMonitoria;
-    }
-
-    public List<Bolsa> getListaBExtensao() {
-        return listaBExtensao;
-    }
-
-    public List<Bolsa> listaIC = new ArrayList<>();
-    public List<Bolsa> listaTP = new ArrayList<>();
-    public List<Bolsa> listaMonitoria = new ArrayList<>();
-    public List<Bolsa> listaBExtensao = new ArrayList<>();
-    public String titulo;
-
-    public CadastroBolsa() {
-
-        initComponents();
-        setSize(500, 600);
-
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -239,8 +221,11 @@ public class CadastroBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_cargaHorariaTf1ActionPerformed
 
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
-        titulo = tituloTf.getText();
+        String titulo = tituloTf.getText();
         int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
+        String nomeTipo = (String) tipoBolsaSelect.getSelectedItem();
+        String nomeMetodoEntrada = (String) metodoEntradaSelect.getSelectedItem();
+        int qtdVagas = (int) qtdVagasSpinner.getValue();
         String professor = professorTf.getText();
         String valor = valorTf.getText();
         float valorFloat = Float.parseFloat(valor);
@@ -250,7 +235,10 @@ public class CadastroBolsa extends javax.swing.JFrame {
         int vagas = (int) qtdVagasSpinner.getValue();
         List<Disciplina> lista = new ArrayList<>();
         List<String> listaPreRequisitos = new ArrayList<>();
-
+        List<Bolsa> listaMonitoria = new ArrayList<>();
+        List<Bolsa> listaIC = new ArrayList<>();
+        List<Bolsa> listaTP = new ArrayList<>();
+        List<Bolsa> listaBExtensao = new ArrayList<>();
         for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
             listaPreRequisitos.add(preRequisito);
         }
@@ -259,40 +247,47 @@ public class CadastroBolsa extends javax.swing.JFrame {
             if (tipoBolsa == 1) {
                 // Construtor da bolsa MONITORIA
                 
-                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
                 listaMonitoria.add(bolsaMonitoria);
+                Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
+                monitoriaPersistence.save(listaMonitoria);
                 JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
+                
             }
             if (tipoBolsa == 2) {
                 // Construtor da bolsa Inic.Cientifica
-                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
                 listaIC.add(bolsaIC);
+                Persistence<Bolsa> icPersistence = new IniciacaoCientificaPersistence();
+                icPersistence.save(listaIC);
+                
                 JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
             }
             if (tipoBolsa == 3) {
                 // Construtor da bolsa Treinamento P.
-                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
+                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
                 listaTP.add(bolsaTP);
+                Persistence<Bolsa> tpPersistence = new TreinamentoProfissionalPersistence();
+                tpPersistence.save(listaTP);
                 JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional cadastrada com sucesso!");
             }
             if (tipoBolsa == 4) {
                 // Construtor da bolsa Extensão
-                Bolsa bolsaExtensao = new Bolsa(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, professor);
-                listaBExtensao.add(bolsaExtensao);
+                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
+                listaBExtensao.add(bolsaBE);
+                Persistence<Bolsa> bePersistence = new BolsaExtensaoPersistence();
+                bePersistence.save(listaBExtensao);
+                
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }
     }//GEN-LAST:event_cadastrarMouseClicked
     
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        HomeProfessor chamada = new HomeProfessor();
-        //ActionEvent event = evt;
-        chamada.adicionarElementoJList(this.titulo);
+
     }//GEN-LAST:event_cadastrarActionPerformed
 
-    public String getTitulo() {
-        return titulo;
-    }
+
 
     private boolean bolsaIsValid() {
         String titulo = tituloTf.getText();
