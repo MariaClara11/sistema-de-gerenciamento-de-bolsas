@@ -4,6 +4,7 @@
  */
 package com.mycompany.sistemadegerenciamentodebolsas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,11 +34,11 @@ public class Professor extends Usuario {
         this.bolsasCadastradas.clear();
     }
 
-    public Professor(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone) {
-        super(nome, idade, CPF, dataNascimento, login, senha, telefone);
-        this.siap = siap;
-        this.dataContratacao = dataContratacao;
-        this.bolsasCadastradas = bolsasCadastradas;
+    public Professor(String siape, String nome, String CPF, String dataNascimento, String senha) {
+        super(nome, 0, CPF, dataNascimento, senha, "");
+        this.siap = siape;
+        this.dataContratacao = "";
+        this.bolsasCadastradas = new ArrayList<>();
     }
 
     public String getSiap() {
@@ -70,7 +71,7 @@ public class Professor extends Usuario {
     }
     
     public void editaDadosUsuario(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, login, senha, telefone, DataNascimento);
+        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
         this.siap = siap;
         this.dataContratacao = dataContratacao;
         this.bolsasCadastradas = bolsasCadastradas;

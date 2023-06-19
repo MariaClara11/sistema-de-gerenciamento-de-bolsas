@@ -6,8 +6,10 @@ package Interfaces;
 
 import Persistence.AlunoPersistence;
 import Persistence.Persistence;
+import Persistence.ProfessorPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractButton;
@@ -323,20 +325,35 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (tipoDeUsuario.getSelection() != null) {
+
+            String nome = nomeTF.getText();
+            String cpf = cpfTF.getText();
+            String nascimento = nascimentoTF.getText();
+            String matricula = matriculaTF.getText();
+            char[] senhaC = senhaTF.getPassword();
+            String senha = String.valueOf(senhaC);
+            char[] senhaCc = confirmarSenhaTF.getPassword();
+            String confirmarSenha = String.valueOf(senhaCc);
+
             if (rbProfessor.isSelected()) {
                 // Código para quando o RadioButton 'rbProfessor' estiver selecionado
-                System.out.println("Tipo de usuário selecionado: Professor");
+
+                if (senha.equals(confirmarSenha)) {
+
+                    // calcular a idade apartir da data de nascimento
+                    //validar dados dos campos
+                    Professor professor = new Professor(matricula, nome, cpf, nascimento, senha);
+                    List<Professor> listaProfessor = new ArrayList<>();
+                    listaProfessor.add(professor);
+
+                    Persistence<Professor> professorPersistence = new ProfessorPersistence();
+
+                    professorPersistence.save(listaProfessor);
+                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                    dispose();
+
+                }
             } else if (rbAluno.isSelected()) {
-
-                String nome = nomeTF.getText();
-                String cpf = cpfTF.getText();
-                String nascimento = nascimentoTF.getText();
-                String matricula = matriculaTF.getText();
-                char[] senhaC = senhaTF.getPassword();
-                String senha = String.valueOf(senhaC);
-                char[] senhaCc = confirmarSenhaTF.getPassword();
-                String confirmarSenha = String.valueOf(senhaCc);
-
                 if (senha.equals(confirmarSenha)) {
 
                     // calcular a idade apartir da data de nascimento
@@ -344,21 +361,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     Aluno aluno = new Aluno(matricula, "", 0, "", nome, 0, cpf, nascimento, senha, "");
                     List<Aluno> listaAluno = new ArrayList<>();
                     listaAluno.add(aluno);
-                    
+
                     Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
                     alunoPersistence.save(listaAluno);
-                    JOptionPane.showMessageDialog(this, "Cadastrado com Sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
                     dispose();
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Senhas Diferentes", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-
-                Aluno aluno = new Aluno();
-
                 // Código para quando o RadioButton 'rbAluno' estiver selecionado
-                System.out.println("Tipo de usuário selecionado: Aluno");
             }
         } else {
             // Nenhum RadioButton selecionado
@@ -376,10 +389,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         addUsuario();
          */
     }//GEN-LAST:event_cadastrarBTNMouseClicked
-
-    private void addUsuario() {
-
-    }
 
     /**
      * @param args the command line arguments
