@@ -285,9 +285,9 @@ public class CadastroBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarMouseClicked
     
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
-        HomeProfessor chamada;
-        ActionEvent event = evt;
-        chamada.jListBolsaInputMethodTextChanged(event);
+        HomeProfessor chamada = new HomeProfessor();
+        //ActionEvent event = evt;
+        chamada.adicionarElementoJList(this.titulo);
     }//GEN-LAST:event_cadastrarActionPerformed
 
     public String getTitulo() {

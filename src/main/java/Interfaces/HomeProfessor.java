@@ -9,7 +9,9 @@ import java.awt.event.InputMethodEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -51,11 +53,7 @@ public class HomeProfessor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jListBolsa.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
-        jListBolsa.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jListBolsa.setModel(model);
         jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,6 +184,14 @@ public class HomeProfessor extends javax.swing.JFrame {
         jListBolsa.repaint();
     }//GEN-LAST:event_jListBolsaInputMethodTextChanged
     
+    public void adicionarElementoJList(String elemento) {
+        DefaultListModel<String> model = (DefaultListModel<String>) jListBolsa.getModel();
+        model.addElement(elemento);
+        
+        jListBolsa.updateUI();
+        jScrollPane1 = new JScrollPane(jListBolsa);
+    }
+    
     public void inputListBolsa(){
         InputMethodEvent evt = null;
         jListBolsaInputMethodTextChanged(evt);
@@ -225,7 +231,9 @@ public class HomeProfessor extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    DefaultListModel<String> model = new DefaultListModel<>();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
