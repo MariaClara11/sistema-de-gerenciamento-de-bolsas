@@ -37,7 +37,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
     public CadastroBolsa() {
         
         initComponents();
-        setSize(500,500);
+        setSize(500,600);
 
 
     }
@@ -70,8 +70,9 @@ public class CadastroBolsa extends javax.swing.JFrame {
         cargaHorariaTf1 = new javax.swing.JTextField();
         labelMetodoEntrada = new javax.swing.JLabel();
         qtdVagasSpinner = new javax.swing.JSpinner();
-        preRequisitosTf1 = new javax.swing.JTextField();
         labelPreRequisitos1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -93,12 +94,12 @@ public class CadastroBolsa extends javax.swing.JFrame {
         labelValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelValor.setText("Valor:");
         getContentPane().add(labelValor);
-        labelValor.setBounds(20, 230, 35, 20);
+        labelValor.setBounds(20, 200, 35, 20);
 
         labelCargaHor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCargaHor.setText("Carga Horária:");
         getContentPane().add(labelCargaHor);
-        labelCargaHor.setBounds(20, 260, 88, 20);
+        labelCargaHor.setBounds(20, 230, 88, 20);
 
         labelTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTipo.setText("Tipo:");
@@ -119,7 +120,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(valorTf);
-        valorTf.setBounds(150, 230, 311, 22);
+        valorTf.setBounds(150, 200, 311, 22);
 
         cadastrar.setText("Cadastrar");
         cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,9 +129,9 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(200, 360, 91, 23);
+        cadastrar.setBounds(200, 450, 91, 23);
 
-        tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
+        tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
         tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoBolsaSelectActionPerformed(evt);
@@ -148,19 +149,19 @@ public class CadastroBolsa extends javax.swing.JFrame {
         getContentPane().add(tituloTf);
         tituloTf.setBounds(150, 110, 311, 22);
 
-        metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha", "Prova", "Entrevista" }));
+        metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Prova", "Entrevista" }));
         metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 metodoEntradaSelectActionPerformed(evt);
             }
         });
         getContentPane().add(metodoEntradaSelect);
-        metodoEntradaSelect.setBounds(150, 290, 311, 22);
+        metodoEntradaSelect.setBounds(150, 260, 311, 22);
 
         labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelVagas.setText("Vagas:");
         getContentPane().add(labelVagas);
-        labelVagas.setBounds(20, 320, 40, 20);
+        labelVagas.setBounds(20, 290, 40, 20);
 
         cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,30 +169,33 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cargaHorariaTf1);
-        cargaHorariaTf1.setBounds(150, 260, 311, 22);
+        cargaHorariaTf1.setBounds(150, 230, 311, 22);
 
         labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelMetodoEntrada.setText("Método de Entrada:");
         getContentPane().add(labelMetodoEntrada);
-        labelMetodoEntrada.setBounds(20, 290, 122, 20);
+        labelMetodoEntrada.setBounds(20, 260, 122, 20);
 
         qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(qtdVagasSpinner);
-        qtdVagasSpinner.setBounds(150, 320, 310, 22);
-
-        preRequisitosTf1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                preRequisitosTf1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(preRequisitosTf1);
-        preRequisitosTf1.setBounds(150, 200, 311, 22);
+        qtdVagasSpinner.setBounds(150, 290, 310, 22);
 
         labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPreRequisitos1.setText("Pré-Requisitos:");
         getContentPane().add(labelPreRequisitos1);
-        labelPreRequisitos1.setBounds(20, 200, 91, 20);
+        labelPreRequisitos1.setBounds(20, 320, 91, 20);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "ANE40", "CAD076", "DCC001", "DCC008", "DCC012", "DCC013", "DCC014", "DCC019", "DCC025", "DCC033", "DCC037", "DCC042", "DCC045", "DCC055", "DCC059", "DCC060", "DCC061", "DCC062", "DCC063", "DCC064", "DCC065", "DCC066", "DCC067", "DCC068", "DCC069", "DCC070", "DCC071", "DCC072", "DCC073", "DCC074", "DCC075", "DCC076", "DCC078", "DCC080", "DCC082", "DCC083", "DCC086", "DCC088", "DCC089", "DCC090", "DCC091", "DCC092", "DCC093", "DCC094", "DCC095", "DCC096", "DCC097", "DCC098", "DCC099", "DCC100", "DCC101", "DCC102", "DCC103", "DCC104", "DCC105", "DCC117", "DCC122", "DCC123", "DCC124", "DCC125", "DCC126", "DCC127", "DCC128", "DCC129", "DCC130", "DCC131", "DCC132", "DCC133", "DCC136", "DCC137", "DCC138", "DCC139", "DCC140", "DCC141", "DCC142", "DCC143", "DCC144", "DCC145", "DCC147", "DCC148", "DCC149", "DCC152", "DCC153", "DCC154", "DCC155", "DCC159", "DCC160", "DCC161", "DCC162", "DCC163", "DCC164", "DCC165", "DCC166", "DCC167", "DCC168", "DCC171", "DCC172", "DCC174", "DCC176", "DCC177", "DCC178", "DCC179", "DCC180", "DCC181", "DCC182", "DCC183", "DCC184", "DCC185", "DCC186", "DCC187", "DCC188", "DCC189", "DCC190", "DCC199", "DCC200", "DC5199", "DC5200", "DPR032", "EADCC037", "EADCC043", "EADCC044", "EADDCC048", "EADDCC049", "EST028", "EST029", "EST030", "FIL012", "FIN001", "FIS073", "FIS074", "FIS075", "FIS077", "FIS122", "ICE001", "LEC003", "LEM184", "MAC011", "MAC013", "MAT013", "MAT029", "MAT143", "MAT154", "MAT155", "MAT156", "MAT157", "MAT158", "QUI125", "QUI126", "QUI168", "UNI001", "UNI002", "UNI003" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jList1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(150, 320, 310, 110);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,10 +256,6 @@ public class CadastroBolsa extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_cadastrarMouseClicked
-
-    private void preRequisitosTf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preRequisitosTf1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_preRequisitosTf1ActionPerformed
 private boolean bolsaIsValid() {
     String titulo = tituloTf.getText();
     int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
@@ -317,6 +317,8 @@ private boolean bolsaIsValid() {
     private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cargaHorariaTf1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCargaHor;
     private javax.swing.JLabel labelMetodoEntrada;
     private javax.swing.JLabel labelPreRequisitos1;
@@ -326,7 +328,6 @@ private boolean bolsaIsValid() {
     private javax.swing.JLabel labelVagas;
     private javax.swing.JLabel labelValor;
     private javax.swing.JComboBox<String> metodoEntradaSelect;
-    private javax.swing.JTextField preRequisitosTf1;
     private javax.swing.JTextField professorTf;
     private javax.swing.JSpinner qtdVagasSpinner;
     private javax.swing.JComboBox<String> tipoBolsaSelect;
