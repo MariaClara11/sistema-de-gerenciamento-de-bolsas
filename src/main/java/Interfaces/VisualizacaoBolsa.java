@@ -191,7 +191,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         String tipo = fieldTipo.getText();
 
         if (bolsaIsValid()) {
-
+            
         }
 
 
@@ -247,14 +247,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         }
 
         if (valor<=0 || horaria<=0) {
-            JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
+            JOptionPane.showMessageDialog(null, "Digite um Valor e uma Carga Horaria valida",
                     "Aviso", JOptionPane.WARNING_MESSAGE);
             return false; // Verifica se campos obrigatórios estão vazios
-        } else if (tipoBolsa == 0 || vagas < 1 || metodoEntrada == 0) {
-            JOptionPane.showMessageDialog(null, "Por favor, selecione as informações corretamente",
-                    "Aviso", JOptionPane.WARNING_MESSAGE);
-            return false;
-        } else {
+        }
+        else {
             return true;
         }
     }

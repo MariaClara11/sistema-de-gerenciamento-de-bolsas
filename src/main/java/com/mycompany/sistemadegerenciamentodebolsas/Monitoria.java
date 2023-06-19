@@ -12,9 +12,6 @@ import java.util.List;
  */
 public class Monitoria extends Bolsa {
 
-
-    
-
     public Monitoria( String titulo, String preRequisitos, List<Disciplina> disciplinasRequisitadas, float valor, int quantidadeHoras, String professorResponsavel) {
         super(titulo, preRequisitos, disciplinasRequisitadas, valor, quantidadeHoras, professorResponsavel);
         

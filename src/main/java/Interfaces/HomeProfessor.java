@@ -45,6 +45,7 @@ public class HomeProfessor extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
