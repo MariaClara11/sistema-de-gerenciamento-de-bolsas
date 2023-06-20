@@ -42,7 +42,10 @@ public class Disciplina {
     }
     
     public Disciplina(String codigo){
+        this.nome = "";
         this.codigo = codigo;
+        this.creditos = 0;
+        this.preRequisitos = new ArrayList<>();
     }
     
     public String getNome() {

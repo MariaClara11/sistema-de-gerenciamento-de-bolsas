@@ -4,8 +4,15 @@
  */
 package Interfaces;
 
+import Persistence.Arquivo;
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.Persistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import java.awt.event.InputMethodEvent;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -18,13 +25,7 @@ import javax.swing.JScrollPane;
  * @author igor
  */
 public class HomeProfessor extends javax.swing.JFrame {
-    
-    
-    public List<Bolsa> listaIC = new ArrayList<>();
-    public List<Bolsa> listaTP = new ArrayList<>();
-    public List<Bolsa> listaMonitoria = new ArrayList<>();
-    public List<Bolsa> listaBExtensao = new ArrayList<>();
-    
+
     /**
      * Creates new form HomeProfessor
      */
@@ -53,7 +54,6 @@ public class HomeProfessor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jListBolsa.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
-        jListBolsa.setModel(model);
         jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,7 +135,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
 
-        HomeAluno viewPerfil = new HomeAluno();
+        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor();
         viewPerfil.setVisible(true);
 
     }//GEN-LAST:event_jMenu1MouseClicked
@@ -171,32 +171,62 @@ public class HomeProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jListBolsaMouseClicked
 
     private void jListBolsaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jListBolsaInputMethodTextChanged
-        
+
         CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
-        listaMonitoria = lista.listaMonitoria;
-
-        model.addElement(lista.getTitulo());
-        
+        //listaMonitoria = lista.listaMonitoria;
+        //model.addElement(lista.getTitulo());
         jListBolsa.setModel(model);
         jListBolsa.revalidate();
         jListBolsa.repaint();
     }//GEN-LAST:event_jListBolsaInputMethodTextChanged
-    
-    public void adicionarElementoJList(String elemento) {
-        DefaultListModel<String> model = (DefaultListModel<String>) jListBolsa.getModel();
-        model.addElement(elemento);
+
+    public void windowOpened(WindowEvent e) {
+        Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
+        Persistence<Bolsa> ICPersistence = new IniciacaoCientificaPersistence();
+        Persistence<Bolsa> BEPersistence = new BolsaExtensaoPersistence();
+        Persistence<Bolsa> TPPersistence = new TreinamentoProfissionalPersistence();
         
-        jListBolsa.updateUI();
-        jScrollPane1 = new JScrollPane(jListBolsa);
+        
+        
+        List<Bolsa> all = new ArrayList<>();
+
+        for (Bolsa b : monitoriaPersistence.findAll()) {
+            all.add(b);
+        }
+        for (Bolsa b : ICPersistence.findAll()) {
+            all.add(b);
+        }
+        for (Bolsa b : BEPersistence.findAll()) {
+            all.add(b);
+        }
+        for (Bolsa b : TPPersistence.findAll()) {
+            all.add(b);
+        }
+        
+        carregaContatos(all);
+        
+        //for()
+        //Arquivo.salva(all);
+        
     }
-    
-    public void inputListBolsa(){
+
+    public void carregaContatos(List<Bolsa> bolsa) {
+
+        DefaultListModel<String> model = (DefaultListModel<String>) jListBolsa.getModel();
+
+        for (Bolsa b : bolsa) {
+            model.addElement(b.getTitulo());
+        }
+
+    }
+
+    public void inputListBolsa() {
         InputMethodEvent evt = null;
         jListBolsaInputMethodTextChanged(evt);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -231,9 +261,9 @@ public class HomeProfessor extends javax.swing.JFrame {
             }
         });
     }
-    
+
     DefaultListModel<String> model = new DefaultListModel<>();
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
