@@ -234,20 +234,21 @@ public class CadastroBolsa extends javax.swing.JFrame {
         int metodoEntrada = metodoEntradaSelect.getSelectedIndex();
         int vagas = (int) qtdVagasSpinner.getValue();
         List<Disciplina> lista = new ArrayList<>();
-        List<String> listaPreRequisitos = new ArrayList<>();
+        List<Disciplina> listaPreRequisitos = new ArrayList<>();
         List<Bolsa> listaMonitoria = new ArrayList<>();
         List<Bolsa> listaIC = new ArrayList<>();
         List<Bolsa> listaTP = new ArrayList<>();
         List<Bolsa> listaBExtensao = new ArrayList<>();
         for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
-            listaPreRequisitos.add(preRequisito);
+            Disciplina materia = new Disciplina(preRequisito); // construindo uma Disciplina
+            listaPreRequisitos.add(materia); // adicionando na lista de pre requisitos
         }
 
         if (bolsaIsValid()) {
             if (tipoBolsa == 1) {
                 // Construtor da bolsa MONITORIA
                 
-                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
+                Bolsa bolsaMonitoria = new Bolsa(titulo, nomeTipo, professor, valorFloat, cargaHorariaInt, nomeMetodoEntrada, qtdVagas, listaPreRequisitos);
                 listaMonitoria.add(bolsaMonitoria);
                 Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
                 monitoriaPersistence.save(listaMonitoria);
@@ -256,7 +257,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 2) {
                 // Construtor da bolsa Inic.Cientifica
-                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
+                Bolsa bolsaIC = new Bolsa(titulo, nomeTipo, professor, valorFloat, cargaHorariaInt, nomeMetodoEntrada, qtdVagas, listaPreRequisitos);
                 listaIC.add(bolsaIC);
                 Persistence<Bolsa> icPersistence = new IniciacaoCientificaPersistence();
                 icPersistence.save(listaIC);
@@ -265,7 +266,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 3) {
                 // Construtor da bolsa Treinamento P.
-                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
+                Bolsa bolsaTP = new Bolsa(titulo, nomeTipo, professor, valorFloat, cargaHorariaInt, nomeMetodoEntrada, qtdVagas, listaPreRequisitos);
                 listaTP.add(bolsaTP);
                 Persistence<Bolsa> tpPersistence = new TreinamentoProfissionalPersistence();
                 tpPersistence.save(listaTP);
@@ -273,7 +274,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 4) {
                 // Construtor da bolsa Extensão
-                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, professor,nomeMetodoEntrada);
+                Bolsa bolsaBE = new Bolsa(titulo, nomeTipo, professor, valorFloat, cargaHorariaInt, nomeMetodoEntrada, qtdVagas, listaPreRequisitos);
                 listaBExtensao.add(bolsaBE);
                 Persistence<Bolsa> bePersistence = new BolsaExtensaoPersistence();
                 bePersistence.save(listaBExtensao);

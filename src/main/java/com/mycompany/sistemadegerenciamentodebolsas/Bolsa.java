@@ -21,7 +21,7 @@ import java.util.*;
  */
 public class Bolsa {
     private String titulo;
-    private List<String> preRequisitos;
+    private List<Disciplina> preRequisitos;
     private String tipo;
     private float valor;
     private int quantidadeHoras;
@@ -29,21 +29,21 @@ public class Bolsa {
     private String professorResponsavel;
     private String metodoEntrada;
     
-    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
+    public Bolsa(String titulo, String tipo, String professorResponsavel, float valor, int quantidadeHoras, String metodoEntrada, int vagas, List<Disciplina> preRequisitos) {
         this.titulo = titulo;
-        this.preRequisitos = preRequisitos;
         this.tipo = tipo;
+        this.professorResponsavel = professorResponsavel;
         this.valor = valor;
         this.quantidadeHoras = quantidadeHoras;
-        this.vagas = vagas;
-        this.professorResponsavel = professorResponsavel;
         this.metodoEntrada = metodoEntrada;
+        this.vagas = vagas;
+        this.preRequisitos = preRequisitos;
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public void setPreRequisitos(List<String> preRequisitos) {
+    public void setPreRequisitos(List<Disciplina> preRequisitos) {
         this.preRequisitos = preRequisitos;
     }
 
@@ -75,7 +75,7 @@ public class Bolsa {
         return titulo;
     }
 
-    public List<String> getPreRequisitos() {
+    public List<Disciplina> getPreRequisitos() {
         return preRequisitos;
     }
 

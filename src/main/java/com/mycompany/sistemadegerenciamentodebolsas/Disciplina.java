@@ -41,6 +41,10 @@ public class Disciplina {
         this.preRequisitos = new ArrayList<>();
     }
     
+    public Disciplina(String codigo){
+        this.codigo = codigo;
+    }
+    
     public String getNome() {
         return nome;
     }

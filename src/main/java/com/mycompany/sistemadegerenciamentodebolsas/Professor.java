@@ -86,8 +86,9 @@ public class Professor extends Usuario {
     }
     
     //O professor cadastra a bolsa
-    public Bolsa cadastraBolsa(String titulo, List <String> preRequisitos, List<Disciplina> discilplinasRequisitadas, float valor, int quantidadeHoras, String tipo){
-        Bolsa bolsa = new Bolsa(titulo,  preRequisitos,  valor, quantidadeHoras, tipo);
+    public Bolsa cadastraBolsa(String Titulo, String Tipo, String Professor, float valor, int cargaHoraria, String metodoEntrada, int vagas, List<Disciplina> preRequisitos){
+        
+        Bolsa bolsa = new Bolsa(Titulo, Tipo, Professor, valor, cargaHoraria, metodoEntrada, vagas, preRequisitos);
         bolsasCadastradas.add(bolsa);
         return bolsa;
     }
