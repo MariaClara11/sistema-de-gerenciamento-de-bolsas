@@ -62,6 +62,7 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
 
+        senhaTF.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         senhaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 senhaTFActionPerformed(evt);
@@ -83,6 +84,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Senha:");
 
+        loginTF.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         loginTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginTFActionPerformed(evt);
@@ -176,7 +178,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(loginTF)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1))
-                .addGap(285, 285, 285))
+                .addGap(271, 271, 271))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +303,9 @@ public class Login extends javax.swing.JFrame {
 
             }
 
+        }else {
+            // Nenhum RadioButton selecionado
+            JOptionPane.showMessageDialog(this, "Por favor, selecione o tipo de usuario", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
 

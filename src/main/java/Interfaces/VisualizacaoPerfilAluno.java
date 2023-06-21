@@ -4,7 +4,6 @@
  */
 package Interfaces;
 
-import static Interfaces.CadastroUsuario.validarData;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -273,7 +272,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
        
         int cont = 0;
-        if (validarData(this.telTF.getText())) {
+        
+        CadastroUsuario user = new CadastroUsuario();
+        
+        if (user.validarData(this.telTF.getText())) {
             this.user.setDataContratacao(this.ingressoTF.getText());
             cont++;
         } else {

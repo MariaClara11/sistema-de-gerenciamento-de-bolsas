@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import java.util.regex.Pattern;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 /**
  * Autores do trabalho:
@@ -38,8 +40,22 @@ public class CadastroUsuario extends javax.swing.JFrame {
      * Creates new form CadastroUsuario
      */
     public CadastroUsuario() {
+
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+
+    }
+
+    public MaskFormatter Mascara(String Mascara) {
+
+        MaskFormatter F_Mascara = new MaskFormatter();
+        try {
+            F_Mascara.setMask(Mascara); //Atribui a mascara
+            F_Mascara.setPlaceholderCharacter('_'); //Caracter para preencimento 
+        } catch (Exception excecao) {
+            excecao.printStackTrace();
+        }
+        return F_Mascara;
 
     }
 
@@ -59,18 +75,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
         nomeTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtCPForSIAPE = new javax.swing.JLabel();
-        cpfTF = new javax.swing.JTextField();
         rbProfessor = new javax.swing.JRadioButton();
         rbAluno = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        nascimentoTF = new javax.swing.JTextField();
         jLabelUser = new javax.swing.JLabel();
-        matriculaTF = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         senhaTF = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         confirmarSenhaTF = new javax.swing.JPasswordField();
+        cpfTF = new javax.swing.JFormattedTextField(Mascara("###.###.###-##"));
+        nascimentoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
+        matriculaTF = new javax.swing.JFormattedTextField(Mascara("#########AA"));
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -109,12 +125,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         txtCPForSIAPE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtCPForSIAPE.setText("CPF:");
 
-        cpfTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpfTFActionPerformed(evt);
-            }
-        });
-
         tipoDeUsuario.add(rbProfessor);
         rbProfessor.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
         rbProfessor.setForeground(new java.awt.Color(51, 51, 51));
@@ -151,20 +161,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel10.setText("Data de Nascimento:");
 
-        nascimentoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nascimentoTFActionPerformed(evt);
-            }
-        });
-
         jLabelUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelUser.setText("Matrícula:");
-
-        matriculaTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matriculaTFActionPerformed(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setText("Senha:");
@@ -199,11 +197,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .addGap(288, 288, 288)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(200, 200, 200)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCPForSIAPE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -215,19 +213,22 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nascimentoTF)
-                            .addComponent(matriculaTF)
-                            .addComponent(senhaTF)
-                            .addComponent(nomeTF)
-                            .addComponent(cpfTF)
-                            .addComponent(confirmarSenhaTF))
-                        .addGap(230, 230, 230))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(rbProfessor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(499, 499, 499))))
+                        .addGap(499, 499, 499))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cpfTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(senhaTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirmarSenhaTF, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(200, 200, 200))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nascimentoTF)
+                            .addComponent(matriculaTF))
+                        .addGap(200, 200, 200))))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -246,40 +247,36 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addComponent(rbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(txtCPForSIAPE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCPForSIAPE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmarSenhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(cadastrarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {confirmarSenhaTF, cpfTF, matriculaTF, nascimentoTF, nomeTF, senhaTF});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -292,10 +289,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFActionPerformed
 
-    private void cpfTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpfTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cpfTFActionPerformed
-
     private void rbProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProfessorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbProfessorActionPerformed
@@ -303,14 +296,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void rbAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlunoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbAlunoActionPerformed
-
-    private void nascimentoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nascimentoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nascimentoTFActionPerformed
-
-    private void matriculaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculaTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matriculaTFActionPerformed
 
     private void senhaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTFActionPerformed
         // TODO add your handling code here:
@@ -322,7 +307,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -343,111 +327,99 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
             if (rbProfessor.isSelected()) {
                 // Código para quando o RadioButton 'rbProfessor' estiver selecionado
+
                 if (validarNome(nome)) {
-                    try {
-                        double cpfValido = Double.parseDouble(cpf);
-                        if (validarCPF(cpf)) {
-                            if (validarData(nascimento)) {
-                                if (validarSiape(matricula)) {
-                                    try {
-                                        double matriculaValida = Double.parseDouble(matricula);
-                                        if (senha.length() >= 8) {
-                                            if (senha.equals(confirmarSenha)) {
-                                                // calcular a idade apartir da data de nascimento
-                                                //validar dados dos campos
+                    if (validarCPF(cpf)) {
+                        if (validarData(nascimento)) {
+                            if (validarSiape(matricula)) {
+                                try {
+                                    double matriculaValida = Double.parseDouble(matricula);
+                                    if (senha.length() >= 8) {
+                                        if (senha.equals(confirmarSenha)) {
+                                            // calcular a idade apartir da data de nascimento
+                                            //validar dados dos campos
 
-                                                try {
-                                                    String hash = gerarHash(senha);
-                                                    Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
-                                                    List<Professor> listaProfessor = new ArrayList<>();
-                                                    listaProfessor.add(professor);
+                                            try {
+                                                String hash = gerarHash(senha);
+                                                Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
+                                                List<Professor> listaProfessor = new ArrayList<>();
+                                                listaProfessor.add(professor);
 
-                                                    Persistence<Professor> professorPersistence = new ProfessorPersistence();
+                                                Persistence<Professor> professorPersistence = new ProfessorPersistence();
 
-                                                    professorPersistence.save(listaProfessor);
-                                                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                                    dispose();
+                                                professorPersistence.save(listaProfessor);
+                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                dispose();
 
-                                                } catch (NoSuchAlgorithmException e) {
-                                                    System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
-                                                }
-
-                                            } else {
-                                                JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            } catch (NoSuchAlgorithmException e) {
+                                                System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
                                             }
-                                        } else {
-                                            JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
-                                        }
 
-                                    } catch (NumberFormatException e) {
-                                        JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        } else {
+                                            JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
+
+                                } catch (NumberFormatException e) {
+                                    JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
                         }
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 }
 
             } else if (rbAluno.isSelected()) {
 
                 if (validarNome(nome)) {
-                    try {
-                        double cpfValido = Double.parseDouble(cpf);
-                        if (validarCPF(cpf)) {
-                            if (validarData(nascimento)) {
-                                if (validarMatricula(matricula)) {
-                                    try {
-                                        String mat = matricula.substring(0, 8);
-                                        double matValida = Double.parseDouble(mat);
-                                        if (senha.length() >= 8) {
-                                            if (senha.equals(confirmarSenha) && senha.length() >= 8) {
+                    if (validarCPF(cpf)) {
+                        if (validarData(nascimento)) {
+                            if (validarMatricula(matricula)) {
+                                try {
+                                    String mat = matricula.substring(0, 8);
+                                    double matValida = Double.parseDouble(mat);
+                                    if (senha.length() >= 8) {
+                                        if (senha.equals(confirmarSenha) && senha.length() >= 8) {
 
-                                                // calcular a idade apartir da data de nascimento
-                                                //validar dados dos campos
-                                                try {
-                                                    String hash = gerarHash(senha);
-                                                    Aluno aluno = new Aluno(matricula, nome, cpf, nascimento, hash);
-                                                    List<Aluno> listaAluno = new ArrayList<>();
-                                                    listaAluno.add(aluno);
+                                            // calcular a idade apartir da data de nascimento
+                                            //validar dados dos campos
+                                            try {
+                                                String hash = gerarHash(senha);
+                                                Aluno aluno = new Aluno(matricula, nome, cpf, nascimento, hash);
+                                                List<Aluno> listaAluno = new ArrayList<>();
+                                                listaAluno.add(aluno);
 
-                                                    Persistence<Aluno> alunoPersistence = new AlunoPersistence();
+                                                Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
-                                                    alunoPersistence.save(listaAluno);
-                                                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                                    dispose();
-                                                } catch (NoSuchAlgorithmException e) {
-                                                    System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
-                                                }
-
-                                            } else {
-                                                JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                                alunoPersistence.save(listaAluno);
+                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                dispose();
+                                            } catch (NoSuchAlgorithmException e) {
+                                                System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
                                             }
-                                        } else {
-                                            JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
-                                        }
 
-                                    } catch (NumberFormatException e) {
-                                        JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        } else {
+                                            JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
 
-                                } else {
-                                    //JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                } catch (NumberFormatException e) {
+                                    JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
+
+                            } else {
+                                //JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
                             }
-
                         }
-
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                // Código para quando o RadioButton 'rbAluno' estiver selecionado
             }
         } else {
             // Nenhum RadioButton selecionado
-            JOptionPane.showMessageDialog(this, "Por favor, selecione o tipo de usuario", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, selecione o tipo de usuario", "Erro", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_cadastrarBTNMouseClicked
@@ -455,11 +427,16 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
         // TODO add your handling code here:
         jLabelUser.setText("Siape:");
+        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#####"));
+        matriculaTF.setFormatterFactory(newFactory);
+
 
     }//GEN-LAST:event_rbProfessorMouseClicked
 
     private void rbAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbAlunoMouseClicked
         jLabelUser.setText("Matricula:");
+        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#########AA"));
+        matriculaTF.setFormatterFactory(newFactory);
 
     }//GEN-LAST:event_rbAlunoMouseClicked
 
@@ -509,7 +486,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarBTN;
     private javax.swing.JPasswordField confirmarSenhaTF;
-    private javax.swing.JTextField cpfTF;
+    private javax.swing.JFormattedTextField cpfTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -520,8 +497,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField matriculaTF;
-    private javax.swing.JTextField nascimentoTF;
+    private javax.swing.JFormattedTextField matriculaTF;
+    private javax.swing.JFormattedTextField nascimentoTF;
     private javax.swing.JTextField nomeTF;
     private javax.swing.JRadioButton rbAluno;
     private javax.swing.JRadioButton rbProfessor;
@@ -578,7 +555,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     public boolean validarCPF(String cpf) {
         String cpfRegex = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}";
-        cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
+
         if (Pattern.matches(cpfRegex, cpf) && cpf.length() == 14) {
             return true;
         } else {
@@ -587,13 +564,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
     }
 
-    public static String formatarCPF(String cpfNumeros) {
-        String regex = "(\\d{3})(\\d{3})(\\d{3})(\\d{2})";
-        String cpfFormatado = cpfNumeros.replaceAll(regex, "$1.$2.$3-$4");
-        return cpfFormatado;
-    }
-
     public boolean validarData(String nascimento) {
+
         String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
 
         if (!Pattern.matches(regexData, nascimento)) {
