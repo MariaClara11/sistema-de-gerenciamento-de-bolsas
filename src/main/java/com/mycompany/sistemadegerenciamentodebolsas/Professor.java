@@ -26,14 +26,14 @@ public class Professor extends Usuario {
     private String siap;
     private String dataContratacao;
     List<Bolsa> bolsasCadastradas;
-
+    /*
     public Professor() {
         super();
         this.siap = "";
         this.dataContratacao = "";
         this.bolsasCadastradas.clear();
     }
-
+    */
     public Professor(String siape, String nome, String CPF, String dataNascimento, String senha) {
         super(nome, 0, CPF, dataNascimento, senha, "");
         this.siap = siape;

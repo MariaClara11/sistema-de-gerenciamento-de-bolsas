@@ -33,18 +33,18 @@ public class ProfessorPersistence implements Persistence<Professor> {
 
         String json = Arquivo.le(PATH);
 
-        List<Professor> alunos = new ArrayList<>();
+        List<Professor> prof = new ArrayList<>();
         if(!json.trim().equals("")) {
 
             Type tipoLista = new TypeToken<List<Professor>>() {
             }.getType();
-        alunos = gson.fromJson(json, tipoLista);
+        prof = gson.fromJson(json, tipoLista);
 
-            if (alunos == null)
-                alunos = new ArrayList<>();
+            if (prof == null)
+                prof = new ArrayList<>();
         }
 
-        return alunos;
+        return prof;
     }
 
 

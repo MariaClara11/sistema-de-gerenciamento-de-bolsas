@@ -4,20 +4,25 @@
  */
 package Interfaces;
 
+import static Interfaces.CadastroUsuario.gerarHash;
+import Persistence.AlunoPersistence;
+import Persistence.ProfessorPersistence;
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
- *Autores do trabalho:
- * 
- * Nome: Maria Clara Ribeiro de Menezes
- * Matricula: 202165101AC
- * 
- * Nome: Igor Titoneli Almeida
- * Matricula: 202165064AB
- * 
- * Nome: Christian Rafael De Oliveira Coelho
- * Matricula: 202065249AC
- * 
- * Nome: Marlon Ruffo Nascimento
- * Matricula: 202065165AC
+ * Autores do trabalho:
+ *
+ * Nome: Maria Clara Ribeiro de Menezes Matricula: 202165101AC
+ *
+ * Nome: Igor Titoneli Almeida Matricula: 202165064AB
+ *
+ * Nome: Christian Rafael De Oliveira Coelho Matricula: 202065249AC
+ *
+ * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
 public class Login extends javax.swing.JFrame {
 
@@ -38,15 +43,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
+        tipoDeUsuario = new javax.swing.ButtonGroup();
+        senhaTF = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        loginTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        rbProfessor = new javax.swing.JRadioButton();
+        rbAluno = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -54,13 +62,18 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        senhaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                senhaTFActionPerformed(evt);
             }
         });
 
         jButton1.setText("Entrar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -70,9 +83,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Senha:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        loginTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                loginTFActionPerformed(evt);
             }
         });
 
@@ -95,11 +108,41 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText("Matrícula:");
+        jLabelUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelUser.setText("Matrícula:");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Sistema de Gerenciamento de Bolsas");
+
+        tipoDeUsuario.add(rbProfessor);
+        rbProfessor.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
+        rbProfessor.setForeground(new java.awt.Color(51, 51, 51));
+        rbProfessor.setText("Professor");
+        rbProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbProfessorMouseClicked(evt);
+            }
+        });
+        rbProfessor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbProfessorActionPerformed(evt);
+            }
+        });
+
+        tipoDeUsuario.add(rbAluno);
+        rbAluno.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
+        rbAluno.setForeground(new java.awt.Color(51, 51, 51));
+        rbAluno.setText("Aluno");
+        rbAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbAlunoMouseClicked(evt);
+            }
+        });
+        rbAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAlunoActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Criar conta");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -119,12 +162,18 @@ public class Login extends javax.swing.JFrame {
                 .addGap(271, 271, 271)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
-                    .addComponent(jPasswordField1)
+                    .addComponent(senhaTF)
                     .addComponent(jLabel5)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(52, 52, 52)
+                        .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(rbProfessor)
+                        .addGap(1, 1, 1))
+                    .addComponent(loginTF)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1))
                 .addGap(285, 285, 285))
@@ -137,13 +186,16 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(rbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(loginTF, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                .addComponent(senhaTF, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,21 +208,21 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void senhaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_senhaTFActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void loginTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_loginTFActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        
+
         CadastroUsuario cadusuario = new CadastroUsuario();
         cadusuario.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
@@ -184,6 +236,75 @@ public class Login extends javax.swing.JFrame {
         CadastroUsuario cadusuario = new CadastroUsuario();
         cadusuario.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
+        // TODO add your handling code here:
+        jLabelUser.setText("Siape:");
+    }//GEN-LAST:event_rbProfessorMouseClicked
+
+    private void rbProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProfessorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbProfessorActionPerformed
+
+    private void rbAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbAlunoMouseClicked
+        jLabelUser.setText("Matricula:");
+    }//GEN-LAST:event_rbAlunoMouseClicked
+
+    private void rbAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbAlunoActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        if (tipoDeUsuario.getSelection() != null) {
+
+            String login = loginTF.getText();
+            char[] senhac = senhaTF.getPassword();
+            String senha = String.valueOf(senhac);
+            try {
+                String hash = gerarHash(senha);
+                
+                int verifica = 0;
+                if (rbProfessor.isSelected()) {
+                    ProfessorPersistence prof = new ProfessorPersistence();
+                    List<Professor> professores = prof.findAll();
+                    for (Professor p : professores) {
+                        if (p.getSiap().equals(login) && p.getSenha().equals(hash)) {
+                            HomeProfessor tela = new HomeProfessor();
+                            tela.setVisible(true);
+                            dispose();
+                            verifica++;
+                        }
+                    }if (verifica == 0) {
+                        JOptionPane.showMessageDialog(this, "Credenciais Inválidas", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                if (rbAluno.isSelected()) {
+                    AlunoPersistence aluno = new AlunoPersistence();
+                    List<Aluno> alunos = aluno.findAll();
+                    
+                    for (Aluno a : alunos) {
+                        if (a.getMatricula().equals(login) && a.getSenha().equals(hash)) {
+                            HomeAluno tela = new HomeAluno();
+                            tela.setVisible(true);
+                            dispose();
+                            verifica++;
+                        }
+                    }
+                    if (verifica == 0) {
+                        JOptionPane.showMessageDialog(this, "Credenciais Inválidas", "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
+                }
+            } catch (NoSuchAlgorithmException e) {
+                System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,10 +348,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelUser;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField loginTF;
+    private javax.swing.JRadioButton rbAluno;
+    private javax.swing.JRadioButton rbProfessor;
+    private javax.swing.JPasswordField senhaTF;
+    private javax.swing.ButtonGroup tipoDeUsuario;
     // End of variables declaration//GEN-END:variables
 }
