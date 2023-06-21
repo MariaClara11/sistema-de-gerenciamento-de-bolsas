@@ -14,7 +14,7 @@ public class AlunoPersistence implements Persistence<Aluno> {
     private static final String PATH = DIRECTORY+ File.separator +"alunos.json";
     @Override
     public void save(List<Aluno> alunos) {
-        Gson gson = new Gson();
+        Gson gson = new Gson(); 
         String json = gson.toJson(alunos);
 
         File diretorio = new File(DIRECTORY);
