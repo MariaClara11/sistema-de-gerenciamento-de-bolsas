@@ -307,9 +307,9 @@ public class HomeAluno extends javax.swing.JFrame {
         CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
-        listaMonitoria = lista.listaMonitoria;
+        //listaMonitoria = lista.listaMonitoria;
 
-        model.addElement(lista.getTitulo());
+        //model.addElement(lista.getTitulo());
 
         ListMonitoria.setModel(model);
 
@@ -319,9 +319,9 @@ public class HomeAluno extends javax.swing.JFrame {
         CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
-        listaBExtensao = lista.listaBExtensao;
+        //listaBExtensao = lista.listaBExtensao;
 
-        model.addElement(lista.getTitulo());
+        //model.addElement(lista.geTitulo());
 
         ListExtensao.setModel(model);        // TODO add your handling code here:
     }//GEN-LAST:event_ListExtensaoInputMethodTextChanged
@@ -330,9 +330,9 @@ public class HomeAluno extends javax.swing.JFrame {
        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
-        listaIC = lista.listaIC;
+        //listaIC = lista.listaIC;
 
-        model.addElement(lista.getTitulo());
+        //model.addElement(lista.getTitulo());
 
         ListIC.setModel(model);   
     }//GEN-LAST:event_ListICInputMethodTextChanged
@@ -341,9 +341,9 @@ public class HomeAluno extends javax.swing.JFrame {
         CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
-        listaTP = lista.listaTP;
+        //listaTP = lista.listaTP;
 
-        model.addElement(lista.getTitulo());
+        //model.addElement(lista.getTitulo());
 
         ListTP.setModel(model);   
     }//GEN-LAST:event_ListTPInputMethodTextChanged

@@ -17,36 +17,41 @@ import java.util.List;
  *
  * @author marlo
  */
-public class IniciacaoCientificaPersistence implements Persistence<Bolsa>{
-    private static final String PATH = DIRECTORY+ File.separator +"iniciacaoCientifica.json";
+public class IniciacaoCientificaPersistence implements Persistence<Bolsa> {
+
+    private static final String PATH = DIRECTORY + File.separator + "iniciacaoCientifica.json";
+
     @Override
     public void save(List<Bolsa> bolsasIC) {
         Gson gson = new Gson();
         String json = gson.toJson(bolsasIC);
 
         File diretorio = new File(DIRECTORY);
-        if(!diretorio.exists())
+        if (!diretorio.exists()) {
             diretorio.mkdirs();
+        }
 
         Arquivo.salva(PATH, json);
-}
-@Override
+    }
+
+    @Override
     public List<Bolsa> findAll() {
         Gson gson = new Gson();
 
         String json = Arquivo.le(PATH);
 
         List<Bolsa> listaBolsasIC = new ArrayList<>();
-        if(!json.trim().equals("")) {
+        if (!json.trim().equals("")) {
 
             Type tipoLista = new TypeToken<List<Bolsa>>() {
             }.getType();
-        listaBolsasIC = gson.fromJson(json, tipoLista);
+            listaBolsasIC = gson.fromJson(json, tipoLista);
 
-            if (listaBolsasIC == null)
+            if (listaBolsasIC == null) {
                 listaBolsasIC = new ArrayList<>();
+            }
         }
 
         return listaBolsasIC;
     }
-    }
+}

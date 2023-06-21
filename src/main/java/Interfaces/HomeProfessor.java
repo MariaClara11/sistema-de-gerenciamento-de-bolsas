@@ -11,6 +11,7 @@ import Persistence.MonitoriaPersistence;
 import Persistence.Persistence;
 import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Usuario;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -26,12 +27,37 @@ import javax.swing.JScrollPane;
  */
 public class HomeProfessor extends javax.swing.JFrame {
 
+    private DefaultListModel<String> listModel;
+    private Usuario user;
+
     /**
      * Creates new form HomeProfessor
      */
     public HomeProfessor() {
+
+        this.user = user;
+        listModel = new DefaultListModel<>();
+        this.jListBolsa = new JList<>(listModel);
+
+        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
+        this.getContentPane().add(this.jScrollPane1);
+
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+
+    }
+    public HomeProfessor(Usuario user) {
+
+        this.user = user;
+        listModel = new DefaultListModel<>();
+        this.jListBolsa = new JList<>(listModel);
+
+        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
+        this.getContentPane().add(this.jScrollPane1);
+
+        initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+
     }
 
     /**
@@ -156,9 +182,11 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         CadastroBolsa cadbolsa = new CadastroBolsa();
         cadbolsa.setVisible(true);
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jListBolsaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListBolsaMouseClicked
+
         if (evt.getClickCount() == 2) {
             int selectedIndex = jListBolsa.getSelectedIndex();
             if (selectedIndex != -1) {
@@ -183,33 +211,45 @@ public class HomeProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jListBolsaInputMethodTextChanged
 
     public void windowOpened(WindowEvent e) {
+
         Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
         Persistence<Bolsa> ICPersistence = new IniciacaoCientificaPersistence();
         Persistence<Bolsa> BEPersistence = new BolsaExtensaoPersistence();
         Persistence<Bolsa> TPPersistence = new TreinamentoProfissionalPersistence();
-        
-        
-        
+
         List<Bolsa> all = new ArrayList<>();
 
         for (Bolsa b : monitoriaPersistence.findAll()) {
-            all.add(b);
+            if (b.getProfessorResponsavel() == user.getNome()) {
+                all.add(b);
+            }
         }
         for (Bolsa b : ICPersistence.findAll()) {
-            all.add(b);
+            if (b.getProfessorResponsavel() == user.getNome()) {
+                all.add(b);
+            }
         }
         for (Bolsa b : BEPersistence.findAll()) {
-            all.add(b);
+            if (b.getProfessorResponsavel() == user.getNome()) {
+                all.add(b);
+            }
         }
         for (Bolsa b : TPPersistence.findAll()) {
-            all.add(b);
+            if (b.getProfessorResponsavel() == user.getNome()) {
+                all.add(b);
+            }
         }
-        
-        carregaContatos(all);
+
+        addLista(all);
         
         //for()
         //Arquivo.salva(all);
-        
+    }
+
+    public void addLista(List<Bolsa> bolsa) {
+        for (Bolsa b : bolsa) {
+            listModel.addElement(b.getTitulo());
+        }
     }
 
     public void carregaContatos(List<Bolsa> bolsa) {
