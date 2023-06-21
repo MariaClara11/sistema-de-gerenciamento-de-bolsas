@@ -221,7 +221,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_cargaHorariaTf1ActionPerformed
 
     private void cadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarMouseClicked
-        
+
     }//GEN-LAST:event_cadastrarMouseClicked
 
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
@@ -287,26 +287,65 @@ public class CadastroBolsa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cadastrarActionPerformed
 
+    public static boolean validarValor(String valor) {
+        if (valor.isEmpty()) {
+            return false;
+        }
+        String regex = "^[0-9]{1,45}$";
+        return valor.matches(regex);
+    }
+
+    public static boolean validarTitulo(String titulo) {
+        // Regex para verificar se o nome contém apenas letras e espaços em branco
+        if (titulo.length() < 3) {
+            return false;
+        }
+
+        String regex = "^[a-zA-Z\\s]+$";
+
+        // Verifica se o nome corresponde ao regex
+        return titulo.matches(regex);
+    }
+
     private boolean bolsaIsValid() {
         String titulo = tituloTf.getText();
         int tipoBolsa = tipoBolsaSelect.getSelectedIndex();
-        String preRequisitos = professorTf.getText();
+        String professor = professorTf.getText();
         String valor = valorTf.getText();
         String cargaHoraria = cargaHorariaTf1.getText();
         int metodoEntrada = metodoEntradaSelect.getSelectedIndex();
         int vagas = (int) qtdVagasSpinner.getValue();
 
-        if (titulo.isEmpty() || preRequisitos.isEmpty() || valor.isEmpty() || cargaHoraria.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
-                    "Aviso", JOptionPane.WARNING_MESSAGE);
-            return false; // Verifica se campos obrigatórios estão vazios
-        } else if (tipoBolsa == 0 || vagas < 1 || metodoEntrada == 0) {
-            JOptionPane.showMessageDialog(null, "Por favor, selecione as informações corretamente",
-                    "Aviso", JOptionPane.WARNING_MESSAGE);
-            return false;
+        if (validarTitulo(titulo)) {
+            if (tipoBolsa != 0) {
+                if (validarTitulo(professor)) {
+                    if (validarValor(valor)) {
+                        if (validarValor(cargaHoraria)) {
+                            if(metodoEntrada !=0){
+                                return true;
+                            }else{
+                                 JOptionPane.showMessageDialog(this, "Escolha um método de entrada", "Erro", JOptionPane.ERROR_MESSAGE);
+
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Adicione uma carga horaria valida", "Erro", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Adicione um valor válido", "Erro", JOptionPane.ERROR_MESSAGE);
+
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "SEscreva corretamente o nome do professor", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione o tipo de bolsa", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            return true;
+            JOptionPane.showMessageDialog(this, "Insira um título válido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+        return false;
     }
 
     /**
