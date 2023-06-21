@@ -32,6 +32,8 @@ public class CadastroBolsa extends javax.swing.JFrame {
     public CadastroBolsa() {
         initComponents();
         setSize(700, 700);
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -105,7 +107,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(professorTf);
-        professorTf.setBounds(150, 170, 311, 24);
+        professorTf.setBounds(160, 170, 311, 24);
 
         valorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +115,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(valorTf);
-        valorTf.setBounds(150, 200, 311, 24);
+        valorTf.setBounds(160, 200, 311, 24);
 
         cadastrar.setText("Cadastrar");
         cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,7 +129,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(200, 450, 91, 24);
+        cadastrar.setBounds(200, 450, 100, 24);
 
         tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
         tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +138,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tipoBolsaSelect);
-        tipoBolsaSelect.setBounds(150, 140, 311, 24);
+        tipoBolsaSelect.setBounds(160, 140, 311, 24);
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTitulo.setText("Título: ");
@@ -145,7 +147,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         labelTitulo.getAccessibleContext().setAccessibleName("Título");
 
         getContentPane().add(tituloTf);
-        tituloTf.setBounds(150, 110, 311, 24);
+        tituloTf.setBounds(160, 110, 311, 24);
 
         metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Prova", "Entrevista" }));
         metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -154,12 +156,12 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(metodoEntradaSelect);
-        metodoEntradaSelect.setBounds(150, 260, 311, 24);
+        metodoEntradaSelect.setBounds(160, 260, 311, 24);
 
         labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelVagas.setText("Vagas:");
         getContentPane().add(labelVagas);
-        labelVagas.setBounds(20, 290, 40, 17);
+        labelVagas.setBounds(20, 290, 50, 17);
 
         cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +169,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cargaHorariaTf1);
-        cargaHorariaTf1.setBounds(150, 230, 311, 24);
+        cargaHorariaTf1.setBounds(160, 230, 311, 24);
 
         labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelMetodoEntrada.setText("Método de Entrada:");
@@ -177,7 +179,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(qtdVagasSpinner);
-        qtdVagasSpinner.setBounds(150, 290, 310, 24);
+        qtdVagasSpinner.setBounds(160, 290, 310, 24);
 
         labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPreRequisitos1.setText("Pré-Requisitos:");
@@ -193,7 +195,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaPreRequisitosSelect);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(150, 320, 310, 110);
+        jScrollPane1.setBounds(160, 320, 310, 110);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -270,7 +270,7 @@ public class Login extends javax.swing.JFrame {
                     List<Professor> professores = prof.findAll();
                     for (Professor p : professores) {
                         if (p.getSiap().equals(login) && p.getSenha().equals(hash)) {
-                            HomeProfessor tela = new HomeProfessor();
+                            HomeProfessor tela = new HomeProfessor(p);
                             tela.setVisible(true);
                             dispose();
                             verifica++;

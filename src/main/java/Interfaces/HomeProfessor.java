@@ -11,6 +11,7 @@ import Persistence.MonitoriaPersistence;
 import Persistence.Persistence;
 import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 import com.mycompany.sistemadegerenciamentodebolsas.Usuario;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.WindowEvent;
@@ -28,7 +29,7 @@ import javax.swing.JScrollPane;
 public class HomeProfessor extends javax.swing.JFrame {
 
     private DefaultListModel<String> listModel;
-    private Usuario user;
+    private Professor user;
 
     /**
      * Creates new form HomeProfessor
@@ -46,7 +47,8 @@ public class HomeProfessor extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
 
     }
-    public HomeProfessor(Usuario user) {
+    
+    public HomeProfessor(Professor user) {
 
         this.user = user;
         listModel = new DefaultListModel<>();
@@ -161,7 +163,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
 
-        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor();
+        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor(user);
         viewPerfil.setVisible(true);
 
     }//GEN-LAST:event_jMenu1MouseClicked
@@ -220,22 +222,22 @@ public class HomeProfessor extends javax.swing.JFrame {
         List<Bolsa> all = new ArrayList<>();
 
         for (Bolsa b : monitoriaPersistence.findAll()) {
-            if (b.getProfessorResponsavel() == user.getNome()) {
+            if (b.getProfessorResponsavel().equals(user.getNome())) {
                 all.add(b);
             }
         }
         for (Bolsa b : ICPersistence.findAll()) {
-            if (b.getProfessorResponsavel() == user.getNome()) {
+            if (b.getProfessorResponsavel().equals(user.getNome())) {
                 all.add(b);
             }
         }
         for (Bolsa b : BEPersistence.findAll()) {
-            if (b.getProfessorResponsavel() == user.getNome()) {
+            if (b.getProfessorResponsavel().equals(user.getNome())) {
                 all.add(b);
             }
         }
         for (Bolsa b : TPPersistence.findAll()) {
-            if (b.getProfessorResponsavel() == user.getNome()) {
+            if (b.getProfessorResponsavel().equals(user.getNome())) {
                 all.add(b);
             }
         }

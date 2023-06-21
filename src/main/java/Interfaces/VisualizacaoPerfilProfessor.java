@@ -4,6 +4,15 @@
  */
 package Interfaces;
 
+import static Interfaces.CadastroUsuario.validarData;
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.util.List;
+import java.util.regex.Pattern;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 /**
  * Autores do trabalho:
  *
@@ -17,10 +26,22 @@ package Interfaces;
  */
 public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
+    private Professor user;
+
+    private DefaultListModel<String> listModel;
+
     /**
      * Creates new form VisualizaçãoPerfilProfessor
      */
-    public VisualizacaoPerfilProfessor() {
+    public VisualizacaoPerfilProfessor(Professor user) {
+        this.user = user;
+
+        listModel = new DefaultListModel<>();
+        this.jListBolsas = new JList<>(listModel);
+
+        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsas);
+        this.getContentPane().add(this.jScrollPane1);
+
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -34,29 +55,36 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        nomeTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        cpfTF = new javax.swing.JTextField();
+        siapeTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        ingressoTF = new javax.swing.JTextField();
+        telTF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        nascimentoTF = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         button1 = new java.awt.Button();
         jTextField9 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListBolsas = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jTextField1.setText("Nome");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nomeTF.setText("Nome");
+        nomeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nomeTFActionPerformed(evt);
             }
         });
 
@@ -64,35 +92,38 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
         jLabel3.setText("CPF:");
 
-        jTextField2.setText("XXX.XXX.XXX-XX");
+        cpfTF.setText("XXX.XXX.XXX-XX");
 
-        jTextField3.setText("XXXXXXXXX");
+        siapeTF.setText("XXXXXXXXX");
 
         jLabel4.setText("SIAPE:");
 
         jLabel5.setText("Ingresso:");
 
-        jTextField4.setText("DD/MM/YYYY");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        ingressoTF.setText("DD/MM/YYYY");
+        ingressoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                ingressoTFActionPerformed(evt);
             }
         });
 
-        jTextField5.setText("(XX)YYYY-YYYY");
+        telTF.setText("(XX)YYYY-YYYY");
 
         jLabel6.setText("Telefone:");
 
         jLabel7.setText("Nascimento:");
 
-        jTextField6.setText("DD/MM/YYYY");
-
-        jTextField7.setText("Título bolsa");
+        nascimentoTF.setText("DD/MM/YYYY");
 
         jLabel8.setText("Bolsas atuais:");
 
         button1.setLabel("<--");
         button1.setName(""); // NOI18N
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button1ActionPerformed(evt);
@@ -104,6 +135,25 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
+            }
+        });
+
+        jListBolsas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jListBolsas);
+
+        jButton1.setText("Alterar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -120,36 +170,42 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                         .addGap(113, 113, 113)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
+                        .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(siapeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nascimentoTF)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton1)))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,55 +215,112 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(siapeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nomeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nomeTFActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingressoTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_ingressoTFActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        this.nomeTF.setText(this.user.getNome());
+        this.cpfTF.setText(this.user.getCPF());
+        this.siapeTF.setText(this.user.getSiap());
+        this.ingressoTF.setText(this.user.getDataContratacao());
+        this.telTF.setText(this.user.getTelefone());
+        this.nascimentoTF.setText(this.user.getDataNascimento());
+        addLista(this.user.getBolsasCadastradas());
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        int cont = 0;
+        if (validarData(this.telTF.getText())) {
+            this.user.setDataContratacao(this.ingressoTF.getText());
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "Data Inválida", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        if (ValidarTelefone(this.telTF.getText())) {
+            this.user.setTelefone(this.telTF.getText());
+            cont++;
+        } else {
+            JOptionPane.showMessageDialog(this, "Telefone Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+
+        }
+        if (cont == 2) {
+            JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.OK_OPTION);
+
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        dispose();
+    }//GEN-LAST:event_button1MouseClicked
+
+    private boolean ValidarTelefone(String telefone) {
+        String PHONE_NUMBER_REGEX = "(\\([1-9]{2}\\)\\s)?[2-9][0-9]{3,4}\\-[0-9]{4}";
+        Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
+        return pattern.matcher(telefone).matches();
+    }
+
+    public void addLista(List<Bolsa> bolsa) {
+        for (Bolsa b : bolsa) {
+            listModel.addElement(b.getTitulo());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -240,13 +353,17 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizacaoPerfilProfessor().setVisible(true);
+                Professor user = null;
+                new VisualizacaoPerfilProfessor(user).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
+    private javax.swing.JTextField cpfTF;
+    private javax.swing.JTextField ingressoTF;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -254,13 +371,13 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JList<String> jListBolsas;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField nascimentoTF;
+    private javax.swing.JTextField nomeTF;
+    private javax.swing.JTextField siapeTF;
+    private javax.swing.JTextField telTF;
     // End of variables declaration//GEN-END:variables
+
 }
