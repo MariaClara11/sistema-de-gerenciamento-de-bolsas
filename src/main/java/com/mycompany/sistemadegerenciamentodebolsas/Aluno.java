@@ -36,6 +36,11 @@ public class Aluno extends Usuario{
         this.dataIngresso = "";
         this.disciplinas = new ArrayList<>();
     }
+
+    public Aluno(String matricula, String nome, String CPF, String dataNascimento, String senha) {
+        super(nome,0, CPF, dataNascimento, senha, "");
+        this.matricula = matricula;
+    }
     
     public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
         super(nome, idade, CPF, dataNascimento, senha, telefone);

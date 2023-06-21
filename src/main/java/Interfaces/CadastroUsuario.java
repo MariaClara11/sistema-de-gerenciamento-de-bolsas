@@ -8,14 +8,18 @@ import Persistence.AlunoPersistence;
 import Persistence.Persistence;
 import Persistence.ProfessorPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
-import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import javax.swing.AbstractButton;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * Autores do trabalho:
@@ -36,6 +40,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     public CadastroUsuario() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
+
     }
 
     /**
@@ -60,7 +65,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         nascimentoTF = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        jLabelUser = new javax.swing.JLabel();
         matriculaTF = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         senhaTF = new javax.swing.JPasswordField();
@@ -114,6 +119,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         rbProfessor.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
         rbProfessor.setForeground(new java.awt.Color(51, 51, 51));
         rbProfessor.setText("Professor");
+        rbProfessor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbProfessorMouseClicked(evt);
+            }
+        });
         rbProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbProfessorActionPerformed(evt);
@@ -124,6 +134,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         rbAluno.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
         rbAluno.setForeground(new java.awt.Color(51, 51, 51));
         rbAluno.setText("Aluno");
+        rbAluno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbAlunoMouseClicked(evt);
+            }
+        });
         rbAluno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbAlunoActionPerformed(evt);
@@ -142,8 +157,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setText("Matrícula:");
+        jLabelUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelUser.setText("Matrícula:");
 
         matriculaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,20 +200,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(281, 281, 281)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
-                .addGap(291, 291, 291))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .addGap(288, 288, 288))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7))
                     .addComponent(txtCPForSIAPE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabelUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -228,17 +241,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(4, 4, 4)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -256,17 +264,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(matriculaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -274,7 +278,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                     .addComponent(confirmarSenhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cadastrarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -322,6 +326,18 @@ public class CadastroUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    public static boolean validarNome(String name) {
+        // Regex para verificar se o nome contém apenas letras e espaços em branco
+        if (name.length() < 3) {
+            return false;
+        }
+
+        String regex = "^[a-zA-Z\\s]+$";
+
+        // Verifica se o nome corresponde ao regex
+        return name.matches(regex);
+    }
+
     public static String formatarCPF(String cpfNumeros) {
         String regex = "(\\d{3})(\\d{3})(\\d{3})(\\d{2})";
         String cpfFormatado = cpfNumeros.replaceAll(regex, "$1.$2.$3-$4");
@@ -331,6 +347,43 @@ public class CadastroUsuario extends javax.swing.JFrame {
     public static boolean validarCPF(String cpf) {
         String cpfRegex = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}";
         return Pattern.matches(cpfRegex, cpf);
+    }
+
+    public static boolean validarData(String nascimento) {
+        String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if (!Pattern.matches(regexData, nascimento)) {
+            return false;
+        }
+
+        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date nascimentoD = formato.parse(nascimento);
+            Date dataAtual = new Date();
+
+            if (nascimentoD.after(dataAtual)) {
+                return false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
+    public static String gerarHash(String texto) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hashBytes = digest.digest(texto.getBytes(StandardCharsets.UTF_8));
+        return bytesToHex(hashBytes);
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder result = new StringBuilder();
+        for (byte b : bytes) {
+            result.append(String.format("%02x", b));
+        }
+        return result.toString();
     }
 
 
@@ -350,90 +403,134 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
             if (rbProfessor.isSelected()) {
                 // Código para quando o RadioButton 'rbProfessor' estiver selecionado
+                if (validarNome(nome)) {
+                    try {
+                        double cpfValido = Double.parseDouble(cpf);
+                        if (cpf.length() == 11) {
+                            cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
+                            if (validarCPF(cpf)) {
+                                if (validarData(nascimento)) {
+                                    if (matricula.length() == 5) {
+                                        try {
+                                            double matriculaValida = Double.parseDouble(matricula);
+                                            if (senha.length() >= 8) {
+                                                if (senha.equals(confirmarSenha)) {
+                                                    // calcular a idade apartir da data de nascimento
+                                                    //validar dados dos campos
 
-                try {
-                    double cpfValido = Double.parseDouble(cpf);
-                    if (cpf.length() == 11) {
+                                                    try {
+                                                        String hash = gerarHash(senha);
+                                                        Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
+                                                        List<Professor> listaProfessor = new ArrayList<>();
+                                                        listaProfessor.add(professor);
 
-                        cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
-                        if (validarCPF(cpf)) {
+                                                        Persistence<Professor> professorPersistence = new ProfessorPersistence();
 
-                            if (matricula.length() == 5) {
-                                try {
-                                    double matriculaValida = Double.parseDouble(matricula);
-                                    if (senha.equals(confirmarSenha)) {
-                                        // calcular a idade apartir da data de nascimento
-                                        //validar dados dos campos
-                                        Professor professor = new Professor(matricula, nome, cpf, nascimento, senha);
-                                        List<Professor> listaProfessor = new ArrayList<>();
-                                        listaProfessor.add(professor);
+                                                        professorPersistence.save(listaProfessor);
+                                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                        dispose();
 
-                                        Persistence<Professor> professorPersistence = new ProfessorPersistence();
+                                                    } catch (NoSuchAlgorithmException e) {
+                                                        System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
+                                                    }
 
-                                        professorPersistence.save(listaProfessor);
-                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                        dispose();
+                                                } else {
+                                                    JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            }
+
+                                        } catch (NumberFormatException e) {
+                                            JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        }
 
                                     } else {
-                                        JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showMessageDialog(this, "SIAPE INCORRETO!", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
-                                } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
 
                             } else {
-                                JOptionPane.showMessageDialog(this, "SIAPE INCORRETO!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+
                             }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                         }
-                    } else {
+                    } catch (NumberFormatException e) {
                         JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Digite um nome valido", "Erro", JOptionPane.ERROR_MESSAGE);
+
                 }
 
             } else if (rbAluno.isSelected()) {
 
-                try {
-                    if (cpf.length() == 11) {
-                        double cpfValido = Double.parseDouble(cpf);
-                        cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
-                        if (validarCPF(cpf)) {
-                            if (matricula.length() >= 9 && matricula.length() <= 11) {
+                if (validarNome(nome)) {
+                    try {
+                        if (cpf.length() == 11) {
+                            double cpfValido = Double.parseDouble(cpf);
+                            cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
+                            if (validarCPF(cpf)) {
+                                if (validarData(nascimento)) {
+                                    if (matricula.length() >= 9 && matricula.length() <= 11) {
+                                        try {
+                                            String mat = matricula.substring(0, 8);
+                                            double matValida = Double.parseDouble(mat);
+                                            if (senha.length() >= 8) {
+                                                if (senha.equals(confirmarSenha) && senha.length() >= 8) {
 
-                                try {
-                                    String mat = matricula.substring(0, 8);
-                                    double matValida = Double.parseDouble(mat);
-                                    if (senha.equals(confirmarSenha)) {
+                                                    // calcular a idade apartir da data de nascimento
+                                                    //validar dados dos campos
+                                                    try {
+                                                        String hash = gerarHash(senha);
+                                                        Aluno aluno = new Aluno(matricula,nome,cpf,nascimento,hash);
+                                                        List<Aluno> listaAluno = new ArrayList<>();
+                                                        listaAluno.add(aluno);
 
-                                        // calcular a idade apartir da data de nascimento
-                                        //validar dados dos campos
-                                        Aluno aluno = new Aluno(matricula, "", 0, "", nome, 0, cpf, nascimento, senha, "");
-                                        List<Aluno> listaAluno = new ArrayList<>();
-                                        listaAluno.add(aluno);
+                                                        Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
-                                        Persistence<Aluno> alunoPersistence = new AlunoPersistence();
+                                                        alunoPersistence.save(listaAluno);
+                                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                        dispose();
+                                                    } catch (NoSuchAlgorithmException e) {
+                                                        System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
+                                                    }
 
-                                        alunoPersistence.save(listaAluno);
-                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                        dispose();
+                                                } else {
+                                                    JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            }
+
+                                        } catch (NumberFormatException e) {
+                                            JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        }
 
                                     } else {
-                                        JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
-                                } catch (NumberFormatException e) {
-                                    JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+
                                 }
 
                             } else {
                                 JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
                             }
                         } else {
-                            JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+
                         }
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Digite um nome valido", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
                 // Código para quando o RadioButton 'rbAluno' estiver selecionado
             }
@@ -453,6 +550,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
         addUsuario();
          */
     }//GEN-LAST:event_cadastrarBTNMouseClicked
+
+    private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
+        // TODO add your handling code here:
+        jLabelUser.setText("Siape:");
+
+    }//GEN-LAST:event_rbProfessorMouseClicked
+
+    private void rbAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbAlunoMouseClicked
+        jLabelUser.setText("Matricula:");
+
+    }//GEN-LAST:event_rbAlunoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -503,12 +611,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField cpfTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelUser;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField matriculaTF;

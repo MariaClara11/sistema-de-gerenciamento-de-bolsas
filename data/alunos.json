@@ -1,1 +1,2 @@
-[{"matricula":"","contaBancaria":"","ira":0,"dataIngresso":"","disciplinas":[],"nome":"vitor","idade":0,"CPF":"","dataNascimento":"","senha":"1","telefone":""}]
+[{"matricula":"123456789ac","contaBancaria":"","ira":0,"dataIngresso":"","disciplinas":[],"nome":"marlon","idade":0,"CPF":"123.456.789-00","dataNascimento":"09/09/2003","senha":"1q2w3e4r","telefone":"","dataDeInscricao":"Jun 21, 2023, 12:52:50 AM"},
+{"matricula":"123456789","ira":0,"nome":"nome","idade":0,"CPF":"123.456.789-00","dataNascimento":"09/09/2002","senha":"ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f","telefone":"","dataDeInscricao":"Jun 21, 2023, 1:01:43 AM"}]
