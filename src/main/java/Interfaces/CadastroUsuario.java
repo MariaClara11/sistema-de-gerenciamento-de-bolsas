@@ -326,66 +326,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    public static boolean validarNome(String name) {
-        // Regex para verificar se o nome contém apenas letras e espaços em branco
-        if (name.length() < 3) {
-            return false;
-        }
-
-        String regex = "^[a-zA-Z\\s]+$";
-
-        // Verifica se o nome corresponde ao regex
-        return name.matches(regex);
-    }
-
-    public static String formatarCPF(String cpfNumeros) {
-        String regex = "(\\d{3})(\\d{3})(\\d{3})(\\d{2})";
-        String cpfFormatado = cpfNumeros.replaceAll(regex, "$1.$2.$3-$4");
-        return cpfFormatado;
-    }
-
-    public static boolean validarCPF(String cpf) {
-        String cpfRegex = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}";
-        return Pattern.matches(cpfRegex, cpf);
-    }
-
-    public static boolean validarData(String nascimento) {
-        String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
-
-        if (!Pattern.matches(regexData, nascimento)) {
-            return false;
-        }
-
-        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            Date nascimentoD = formato.parse(nascimento);
-            Date dataAtual = new Date();
-
-            if (nascimentoD.after(dataAtual)) {
-                return false;
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return true;
-    }
-
-    public static String gerarHash(String texto) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] hashBytes = digest.digest(texto.getBytes(StandardCharsets.UTF_8));
-        return bytesToHex(hashBytes);
-    }
-
-    public static String bytesToHex(byte[] bytes) {
-        StringBuilder result = new StringBuilder();
-        for (byte b : bytes) {
-            result.append(String.format("%02x", b));
-        }
-        return result.toString();
-    }
-
 
     private void cadastrarBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseClicked
         // TODO add your handling code here:
@@ -406,131 +346,102 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 if (validarNome(nome)) {
                     try {
                         double cpfValido = Double.parseDouble(cpf);
-                        if (cpf.length() == 11) {
-                            cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
-                            if (validarCPF(cpf)) {
-                                if (validarData(nascimento)) {
-                                    if (matricula.length() == 5) {
-                                        try {
-                                            double matriculaValida = Double.parseDouble(matricula);
-                                            if (senha.length() >= 8) {
-                                                if (senha.equals(confirmarSenha)) {
-                                                    // calcular a idade apartir da data de nascimento
-                                                    //validar dados dos campos
+                        if (validarCPF(cpf)) {
+                            if (validarData(nascimento)) {
+                                if (validarSiape(matricula)) {
+                                    try {
+                                        double matriculaValida = Double.parseDouble(matricula);
+                                        if (senha.length() >= 8) {
+                                            if (senha.equals(confirmarSenha)) {
+                                                // calcular a idade apartir da data de nascimento
+                                                //validar dados dos campos
 
-                                                    try {
-                                                        String hash = gerarHash(senha);
-                                                        Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
-                                                        List<Professor> listaProfessor = new ArrayList<>();
-                                                        listaProfessor.add(professor);
+                                                try {
+                                                    String hash = gerarHash(senha);
+                                                    Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
+                                                    List<Professor> listaProfessor = new ArrayList<>();
+                                                    listaProfessor.add(professor);
 
-                                                        Persistence<Professor> professorPersistence = new ProfessorPersistence();
+                                                    Persistence<Professor> professorPersistence = new ProfessorPersistence();
 
-                                                        professorPersistence.save(listaProfessor);
-                                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                                        dispose();
+                                                    professorPersistence.save(listaProfessor);
+                                                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                    dispose();
 
-                                                    } catch (NoSuchAlgorithmException e) {
-                                                        System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
-                                                    }
-
-                                                } else {
-                                                    JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                                } catch (NoSuchAlgorithmException e) {
+                                                    System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
                                                 }
-                                            } else {
-                                                JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
-                                            }
 
-                                        } catch (NumberFormatException e) {
-                                            JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            } else {
+                                                JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
                                         }
 
-                                    } else {
-                                        JOptionPane.showMessageDialog(this, "SIAPE INCORRETO!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para SIAPE!", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
-                                } else {
-                                    JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
-
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
-
                             }
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (NumberFormatException e) {
                         JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Digite um nome valido", "Erro", JOptionPane.ERROR_MESSAGE);
-
                 }
 
             } else if (rbAluno.isSelected()) {
 
                 if (validarNome(nome)) {
                     try {
-                        if (cpf.length() == 11) {
-                            double cpfValido = Double.parseDouble(cpf);
-                            cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
-                            if (validarCPF(cpf)) {
-                                if (validarData(nascimento)) {
-                                    if (matricula.length() >= 9 && matricula.length() <= 11) {
-                                        try {
-                                            String mat = matricula.substring(0, 8);
-                                            double matValida = Double.parseDouble(mat);
-                                            if (senha.length() >= 8) {
-                                                if (senha.equals(confirmarSenha) && senha.length() >= 8) {
+                        double cpfValido = Double.parseDouble(cpf);
+                        if (validarCPF(cpf)) {
+                            if (validarData(nascimento)) {
+                                if (validarMatricula(matricula)) {
+                                    try {
+                                        String mat = matricula.substring(0, 8);
+                                        double matValida = Double.parseDouble(mat);
+                                        if (senha.length() >= 8) {
+                                            if (senha.equals(confirmarSenha) && senha.length() >= 8) {
 
-                                                    // calcular a idade apartir da data de nascimento
-                                                    //validar dados dos campos
-                                                    try {
-                                                        String hash = gerarHash(senha);
-                                                        Aluno aluno = new Aluno(matricula,nome,cpf,nascimento,hash);
-                                                        List<Aluno> listaAluno = new ArrayList<>();
-                                                        listaAluno.add(aluno);
+                                                // calcular a idade apartir da data de nascimento
+                                                //validar dados dos campos
+                                                try {
+                                                    String hash = gerarHash(senha);
+                                                    Aluno aluno = new Aluno(matricula, nome, cpf, nascimento, hash);
+                                                    List<Aluno> listaAluno = new ArrayList<>();
+                                                    listaAluno.add(aluno);
 
-                                                        Persistence<Aluno> alunoPersistence = new AlunoPersistence();
+                                                    Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
-                                                        alunoPersistence.save(listaAluno);
-                                                        JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
-                                                        dispose();
-                                                    } catch (NoSuchAlgorithmException e) {
-                                                        System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
-                                                    }
-
-                                                } else {
-                                                    JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                                    alunoPersistence.save(listaAluno);
+                                                    JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                    dispose();
+                                                } catch (NoSuchAlgorithmException e) {
+                                                    System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
                                                 }
-                                            } else {
-                                                JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
-                                            }
 
-                                        } catch (NumberFormatException e) {
-                                            JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            } else {
+                                                JOptionPane.showMessageDialog(this, "Senhas diferentes!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(this, "Insira uma senha de no minimo 8 digitos", "Erro", JOptionPane.ERROR_MESSAGE);
                                         }
 
-                                    } else {
-                                        JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(this, "Por favor, digite apenas numeros para MATRICULA!", "Erro", JOptionPane.ERROR_MESSAGE);
                                     }
+
                                 } else {
-                                    JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
-
+                                    //JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
                                 }
-
-                            } else {
-                                JOptionPane.showMessageDialog(this, "MATRICULA INCORRETA!", "Erro", JOptionPane.ERROR_MESSAGE);
                             }
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
 
                         }
+
                     } catch (NumberFormatException e) {
                         JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Digite um nome valido", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
                 // Código para quando o RadioButton 'rbAluno' estiver selecionado
             }
@@ -539,16 +450,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, selecione o tipo de usuario", "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
-        /*
-        Persistence<Aluno> contatoPersistence = new AlunoPersistence();
-
-        Usuario user = new Usuario
-        
-        
-        
-        contatoPersistence.save(tela.listaContatos());
-        addUsuario();
-         */
     }//GEN-LAST:event_cadastrarBTNMouseClicked
 
     private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
@@ -628,4 +529,104 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.ButtonGroup tipoDeUsuario;
     private javax.swing.JLabel txtCPForSIAPE;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validarSiape(String siape) {
+        if (siape.length() == 5) {
+            ProfessorPersistence professores = new ProfessorPersistence();
+            for (Professor p : professores.findAll()) {
+                if (p.getSiap().equals(siape)) {
+                    JOptionPane.showMessageDialog(this, "Siape ja cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Siape incorreto!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    private boolean validarMatricula(String matricula) {
+        if (matricula.length() >= 9 && matricula.length() <= 11) {
+            AlunoPersistence alunos = new AlunoPersistence();
+            for (Aluno p : alunos.findAll()) {
+                if (p.getMatricula().equals(matricula)) {
+                    JOptionPane.showMessageDialog(this, "Matricula ja cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Matricula incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean validarNome(String name) {
+        // Regex para verificar se o nome contém apenas letras e espaços em branco
+
+        String regex = "^[a-zA-Z\\s]+$";
+        // Verifica se o nome corresponde ao regex
+        if (name.matches(regex) == true && name.length() > 3) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Digite um nome valido", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+
+    public boolean validarCPF(String cpf) {
+        String cpfRegex = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}";
+        cpf = formatarCPF(cpf); // aqui a variavel cpf recebe o novo cpf formato no formato 123.456.789-99
+        if (Pattern.matches(cpfRegex, cpf) && cpf.length() == 14) {
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, insira 11 numeros para o CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public static String formatarCPF(String cpfNumeros) {
+        String regex = "(\\d{3})(\\d{3})(\\d{3})(\\d{2})";
+        String cpfFormatado = cpfNumeros.replaceAll(regex, "$1.$2.$3-$4");
+        return cpfFormatado;
+    }
+
+    public boolean validarData(String nascimento) {
+        String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if (!Pattern.matches(regexData, nascimento)) {
+            JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date nascimentoD = formato.parse(nascimento);
+            Date dataAtual = new Date();
+
+            if (nascimentoD.after(dataAtual)) {
+                JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        return true;
+    }
+
+    public static String gerarHash(String texto) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hashBytes = digest.digest(texto.getBytes(StandardCharsets.UTF_8));
+        return bytesToHex(hashBytes);
+    }
+
+    public static String bytesToHex(byte[] bytes) {
+        StringBuilder result = new StringBuilder();
+        for (byte b : bytes) {
+            result.append(String.format("%02x", b));
+        }
+        return result.toString();
+    }
 }
