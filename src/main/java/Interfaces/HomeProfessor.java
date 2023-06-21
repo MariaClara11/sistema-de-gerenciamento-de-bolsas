@@ -35,7 +35,7 @@ public class HomeProfessor extends javax.swing.JFrame {
      */
     public HomeProfessor() {
 
-        this.user = user;
+       
         listModel = new DefaultListModel<>();
         this.jListBolsa = new JList<>(listModel);
 
