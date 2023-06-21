@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,12 @@ public class HomeAluno extends javax.swing.JFrame {
     public List<Bolsa> listaMonitoria = new ArrayList<>();
     public List<Bolsa> listaBExtensao = new ArrayList<>();
     
+    Aluno user;
     
-    public HomeAluno() {
+    public HomeAluno(Aluno user) {
+        
+        this.user = user;
+        
         initComponents();
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
@@ -289,7 +294,7 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
 
-        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno();
+        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user);
         viewPerfilAluno.setVisible(true);
 
     }//GEN-LAST:event_jMenuPerfilMouseClicked
@@ -426,10 +431,9 @@ public class HomeAluno extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeAluno().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            Aluno user1 = null;
+            new HomeAluno(user1).setVisible(true);
         });
     }
 

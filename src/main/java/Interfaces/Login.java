@@ -285,7 +285,7 @@ public class Login extends javax.swing.JFrame {
                     
                     for (Aluno a : alunos) {
                         if (a.getMatricula().equals(login) && a.getSenha().equals(hash)) {
-                            HomeAluno tela = new HomeAluno();
+                            HomeAluno tela = new HomeAluno(a);
                             tela.setVisible(true);
                             dispose();
                             verifica++;

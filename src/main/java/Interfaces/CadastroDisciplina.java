@@ -187,8 +187,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
                         txtCodigo.setText("");
                         txtNota.setText("");
                     } else if (opcao == JOptionPane.NO_OPTION) {
-                        HomeAluno telaHome = new HomeAluno();
-                        telaHome.setVisible(true);
+                        
                         dispose();
                     }
                 } else {
@@ -201,8 +200,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        HomeAluno telaHome = new HomeAluno();
-        telaHome.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 

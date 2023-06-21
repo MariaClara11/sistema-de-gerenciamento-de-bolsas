@@ -15,6 +15,8 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
      */
     public VisualizacaoDisciplinas() {
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -31,7 +33,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -84,8 +86,6 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        HomeAluno telaHome = new HomeAluno();
-        telaHome.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
