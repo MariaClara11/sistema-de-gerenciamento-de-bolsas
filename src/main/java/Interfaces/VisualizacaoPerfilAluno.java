@@ -7,6 +7,7 @@ package Interfaces;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  * Autores do trabalho:
@@ -34,6 +35,19 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
     }
+    
+    public MaskFormatter Mascara(String Mascara) {
+
+        MaskFormatter F_Mascara = new MaskFormatter();
+        try {
+            F_Mascara.setMask(Mascara); //Atribui a mascara
+            F_Mascara.setPlaceholderCharacter('_'); //Caracter para preencimento 
+        } catch (Exception excecao) {
+            excecao.printStackTrace();
+        }
+        return F_Mascara;
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,13 +58,12 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        telTF = new javax.swing.JTextField();
+        telTF = new javax.swing.JFormattedTextField(Mascara("(##)# ####-####"));
         nascimentoTF = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
         nomeTF = new javax.swing.JTextField();
         cpfTF = new javax.swing.JTextField();
         matriculaTF = new javax.swing.JTextField();
-        ingressoTF = new javax.swing.JTextField();
+        data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -60,6 +73,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         button1 = new java.awt.Button();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -69,19 +83,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             }
         });
 
-        telTF.setText("(XX)YYYY-YYYY");
-
+        nascimentoTF.setEditable(false);
         nascimentoTF.setText("DD/MM/YYYY");
 
-        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText("Perfil do aluno");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
+        nomeTF.setEditable(false);
         nomeTF.setText("Nome");
         nomeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,14 +94,15 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             }
         });
 
+        cpfTF.setEditable(false);
         cpfTF.setText("XXX.XXX.XXX-XX");
 
+        matriculaTF.setEditable(false);
         matriculaTF.setText("XXXXXXXXX");
 
-        ingressoTF.setText("DD/MM/YYYY");
-        ingressoTF.addActionListener(new java.awt.event.ActionListener() {
+        data_ingressoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingressoTFActionPerformed(evt);
+                data_ingressoTFActionPerformed(evt);
             }
         });
 
@@ -108,7 +114,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Matérias cursadas");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
@@ -147,6 +153,9 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setText("Perfil");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +163,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(161, 161, 161)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,40 +175,35 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nascimentoTF)
-                            .addComponent(telTF)
-                            .addComponent(ingressoTF)
-                            .addComponent(nomeTF)
-                            .addComponent(cpfTF)
-                            .addComponent(matriculaTF)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField9)
-                        .addGap(34, 34, 34)))
+                    .addComponent(nascimentoTF)
+                    .addComponent(telTF)
+                    .addComponent(data_ingressoTF)
+                    .addComponent(nomeTF)
+                    .addComponent(cpfTF)
+                    .addComponent(matriculaTF))
                 .addGap(106, 106, 106))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
+                .addContainerGap()
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,7 +217,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(data_ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -231,17 +235,13 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void nomeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFActionPerformed
 
-    private void ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingressoTFActionPerformed
+    private void data_ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_ingressoTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ingressoTFActionPerformed
+    }//GEN-LAST:event_data_ingressoTFActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         dispose();
@@ -252,9 +252,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         this.nomeTF.setText(this.user.getNome());
         this.cpfTF.setText(this.user.getCPF());
         this.matriculaTF.setText(this.user.getMatricula());
-        this.ingressoTF.setText(this.user.getDataIngresso());
+        this.data_ingressoTF.setText(this.user.getDataIngresso());
         this.telTF.setText(this.user.getTelefone());
         this.nascimentoTF.setText(this.user.getDataNascimento());
+        this.data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
 
     }//GEN-LAST:event_formWindowOpened
 
@@ -271,24 +272,29 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
        
-        int cont = 0;
         
         CadastroUsuario user = new CadastroUsuario();
         
-        if (user.validarData(this.telTF.getText())) {
-            this.user.setDataContratacao(this.ingressoTF.getText());
-            cont++;
-        } else {
-            JOptionPane.showMessageDialog(this, "Data Inválida", "Erro", JOptionPane.ERROR_MESSAGE);
+        //erro = false;
+        boolean erro = false;
+        
+        String dataIngresso = data_ingressoTF.getText();
+        
+        System.out.println(dataIngresso);
+        
+        if (user.validarData(dataIngresso)) {
+            this.user.setDataIngresso(dataIngresso);
+        }else{
+            erro = true;
         }
         if (ValidarTelefone(this.telTF.getText())) {
             this.user.setTelefone(this.telTF.getText());
-            cont++;
         } else {
+            erro = true;
             JOptionPane.showMessageDialog(this, "Telefone Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }
-        if (cont == 2) {
+        if (erro== false) {//ou seja, não tem erro
             JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.OK_OPTION);
         }
     }//GEN-LAST:event_jButton1MouseClicked
@@ -329,8 +335,9 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JTextField cpfTF;
-    private javax.swing.JTextField ingressoTF;
+    private javax.swing.JTextField data_ingressoTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -338,7 +345,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField matriculaTF;
     private javax.swing.JTextField nascimentoTF;
     private javax.swing.JTextField nomeTF;
@@ -346,7 +352,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean ValidarTelefone(String telefone) {
-        String PHONE_NUMBER_REGEX = "(\\([1-9]{2}\\)\\s)?[2-9][0-9]{3,4}\\-[0-9]{4}";
+        String PHONE_NUMBER_REGEX = "\\(\\d{2}\\)9 \\d{4}-\\d{4}";
         Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
         return pattern.matcher(telefone).matches();
     }

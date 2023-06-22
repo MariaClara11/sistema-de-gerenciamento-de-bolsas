@@ -182,6 +182,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        nascimentoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nascimentoTFActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Voltar");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -439,6 +445,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         matriculaTF.setFormatterFactory(newFactory);
 
     }//GEN-LAST:event_rbAlunoMouseClicked
+
+    private void nascimentoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nascimentoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nascimentoTFActionPerformed
 
     /**
      * @param args the command line arguments
