@@ -269,8 +269,11 @@ public class Login extends javax.swing.JFrame {
         if (tipoDeUsuario.getSelection() != null) {
 
             String login = loginTF.getText();
+            login = login.toUpperCase();
+            
             char[] senhac = senhaTF.getPassword();
             String senha = String.valueOf(senhac);
+            
             try {
                 String hash = gerarHash(senha);
                 

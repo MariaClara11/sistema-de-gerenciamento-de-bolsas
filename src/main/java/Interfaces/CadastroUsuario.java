@@ -508,6 +508,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean validarSiape(String siape) {
+        
+        siape = siape.toUpperCase();
         if (siape.length() == 5) {
             ProfessorPersistence professores = new ProfessorPersistence();
             for (Professor p : professores.findAll()) {
@@ -524,6 +526,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }
 
     private boolean validarMatricula(String matricula) {
+        
+        matricula = matricula.toUpperCase();
         if (matricula.length() >= 9 && matricula.length() <= 11) {
             AlunoPersistence alunos = new AlunoPersistence();
             for (Aluno p : alunos.findAll()) {

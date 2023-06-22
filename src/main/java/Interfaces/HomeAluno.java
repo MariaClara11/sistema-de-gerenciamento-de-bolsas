@@ -309,7 +309,7 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void ListMonitoriaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListMonitoriaInputMethodTextChanged
 
-        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
         //listaMonitoria = lista.listaMonitoria;
@@ -321,7 +321,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListMonitoriaInputMethodTextChanged
 
     private void ListExtensaoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListExtensaoInputMethodTextChanged
-        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
         //listaBExtensao = lista.listaBExtensao;
@@ -332,7 +332,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListExtensaoInputMethodTextChanged
 
     private void ListICInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListICInputMethodTextChanged
-       CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+       //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
         //listaIC = lista.listaIC;
@@ -343,7 +343,7 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListICInputMethodTextChanged
 
     private void ListTPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListTPInputMethodTextChanged
-        CadastroBolsa lista = new CadastroBolsa(); // Inicialize a variável lista com um objeto válido
+        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
         DefaultListModel<String> model = new DefaultListModel<>();
 
         //listaTP = lista.listaTP;
