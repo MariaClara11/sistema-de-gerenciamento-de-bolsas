@@ -399,7 +399,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                                 Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
                                                 alunoPersistence.save(listaAluno);
-                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Cadastrado realizado!", JOptionPane.DEFAULT_OPTION);
                                                 dispose();
                                             } catch (NoSuchAlgorithmException e) {
                                                 System.out.println("Algoritmo de hash não encontrado: " + e.getMessage());
