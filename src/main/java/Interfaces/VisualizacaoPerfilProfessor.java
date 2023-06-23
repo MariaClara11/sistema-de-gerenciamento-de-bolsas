@@ -27,19 +27,11 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
     private Professor user;
 
-    private DefaultListModel<String> listModel;
-
     /**
      * Creates new form VisualizaçãoPerfilProfessor
      */
     public VisualizacaoPerfilProfessor(Professor user) {
         this.user = user;
-
-        listModel = new DefaultListModel<>();
-        this.jListBolsas = new JList<>(listModel);
-
-        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsas);
-        this.getContentPane().add(this.jScrollPane1);
 
         initComponents();
         setLocationRelativeTo(null);
@@ -66,11 +58,8 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nascimentoTF = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         button1 = new java.awt.Button();
         jTextField9 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListBolsas = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -114,8 +103,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
         nascimentoTF.setText("DD/MM/YYYY");
 
-        jLabel8.setText("Bolsas atuais:");
-
         button1.setLabel("<--");
         button1.setName(""); // NOI18N
         button1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,13 +123,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 jTextField9ActionPerformed(evt);
             }
         });
-
-        jListBolsas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jListBolsas);
 
         jButton1.setText("Alterar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,7 +149,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                         .addGap(113, 113, 113)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(102, 102, 102)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -192,18 +172,11 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(nascimentoTF)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(175, 175, 175)
                         .addComponent(jButton1)))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
@@ -238,13 +211,9 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -274,7 +243,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         this.ingressoTF.setText(this.user.getDataContratacao());
         this.telTF.setText(this.user.getTelefone());
         this.nascimentoTF.setText(this.user.getDataNascimento());
-        addLista(this.user.getBolsasCadastradas());
 
     }//GEN-LAST:event_formWindowOpened
 
@@ -316,12 +284,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         String PHONE_NUMBER_REGEX = "(\\([1-9]{2}\\)\\s)?[2-9][0-9]{3,4}\\-[0-9]{4}";
         Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
         return pattern.matcher(telefone).matches();
-    }
-
-    public void addLista(List<Bolsa> bolsa) {
-        for (Bolsa b : bolsa) {
-            listModel.addElement(b.getTitulo());
-        }
     }
 
     /**
@@ -372,9 +334,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jListBolsas;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField nascimentoTF;
     private javax.swing.JTextField nomeTF;

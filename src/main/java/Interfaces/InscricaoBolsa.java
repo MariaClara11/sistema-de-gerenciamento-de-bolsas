@@ -81,38 +81,39 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Tipo :");
 
+        fieldValor.setEditable(false);
         fieldValor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldValor.setText("fieldValor");
         fieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldValorActionPerformed(evt);
             }
         });
 
+        fieldRequisitos.setEditable(false);
         fieldRequisitos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldRequisitos.setText("fieldRequisitos");
         fieldRequisitos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldRequisitosActionPerformed(evt);
             }
         });
 
+        fieldHoraria.setEditable(false);
         fieldHoraria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldHoraria.setText("fieldHoraria");
         fieldHoraria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldHorariaActionPerformed(evt);
             }
         });
 
+        fieldTipo.setEditable(false);
         fieldTipo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldTipo.setText("fieldTipo");
         fieldTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldTipoActionPerformed(evt);
             }
         });
 
+        fieldProfessor.setEditable(false);
         fieldProfessor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         fieldProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

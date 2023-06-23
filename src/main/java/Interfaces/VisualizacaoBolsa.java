@@ -53,7 +53,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         horaTF = new javax.swing.JTextField();
         tipoTF = new javax.swing.JTextField();
         professorTF = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        Lnome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listAlunos = new javax.swing.JList<>();
 
@@ -137,9 +137,9 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nome da Monitoria");
+        Lnome.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lnome.setText("Nome da Monitoria");
 
         listAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -152,7 +152,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                    .addComponent(Lnome, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
@@ -179,7 +179,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(Lnome)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -251,6 +251,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_professorTFActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        this.Lnome.setText(this.bolsa.getTitulo());
         
         this.professorTF.setText(this.bolsa.getProfessorResponsavel());
         
@@ -346,9 +348,9 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lnome;
     private javax.swing.JButton bInscrever;
     private javax.swing.JTextField horaTF;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
