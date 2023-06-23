@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import java.util.ArrayList;
@@ -21,6 +25,11 @@ public class HomeAluno extends javax.swing.JFrame {
      * Creates new form HomeAluno
      */
     
+    DefaultListModel modelIC = new DefaultListModel();
+    DefaultListModel modelTP = new DefaultListModel();
+    DefaultListModel modelMo = new DefaultListModel();
+    DefaultListModel modelBE = new DefaultListModel();
+    
     public List<Bolsa> listaIC = new ArrayList<>();
     public List<Bolsa> listaTP = new ArrayList<>();
     public List<Bolsa> listaMonitoria = new ArrayList<>();
@@ -33,6 +42,12 @@ public class HomeAluno extends javax.swing.JFrame {
         this.user = user;
         
         initComponents();
+        
+        this.ListExtensao.setModel(modelBE);
+        this.ListIC.setModel(modelIC);
+        this.ListMonitoria.setModel(modelMo);
+        this.ListTP.setModel(modelTP);
+        
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
     }
@@ -64,6 +79,11 @@ public class HomeAluno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName(""); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
@@ -353,6 +373,33 @@ public class HomeAluno extends javax.swing.JFrame {
         ListTP.setModel(model);   
     }//GEN-LAST:event_ListTPInputMethodTextChanged
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.modelBE.removeAllElements();
+        this.modelIC.removeAllElements();
+        this.modelMo.removeAllElements();
+        this.modelTP.removeAllElements();
+        
+        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
+        this.addLista(pExtensao.findAll(), this.modelBE);
+        
+        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
+        this.addLista(pIC.findAll(), this.modelIC);
+        
+        MonitoriaPersistence pMoni = new MonitoriaPersistence();
+        this.addLista(pMoni.findAll(), this.modelMo);
+        
+        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
+        this.addLista(pTP.findAll(),this.modelTP);
+             
+    }//GEN-LAST:event_formWindowOpened
+    
+     public void addLista(List<Bolsa> bolsa, DefaultListModel model) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (Bolsa b : bolsa) {
+            model.addElement(b.getTitulo());
+        }
+    }
+    
     private void abrirTelaSelecionada(int selectedIndex) {
         switch (selectedIndex) {
             case 0:
