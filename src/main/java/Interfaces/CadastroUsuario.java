@@ -84,7 +84,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         senhaTF = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         confirmarSenhaTF = new javax.swing.JPasswordField();
-        cpfTF = new javax.swing.JFormattedTextField(Mascara("###.###.###-##"));
+        javax.swing.JFormattedTextField cpfTF = new javax.swing.JFormattedTextField(Mascara("###.###.###-##"));
         nascimentoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
         matriculaTF = new javax.swing.JFormattedTextField(Mascara("#########AA"));
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -486,7 +486,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarBTN;
     private javax.swing.JPasswordField confirmarSenhaTF;
-    private javax.swing.JFormattedTextField cpfTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

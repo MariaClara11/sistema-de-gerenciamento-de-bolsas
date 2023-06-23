@@ -281,6 +281,8 @@
     <Component class="javax.swing.JFormattedTextField" name="cpfTF">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;###.###.###-##&quot;))"/>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="nascimentoTF">
