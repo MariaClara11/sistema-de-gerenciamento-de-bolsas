@@ -241,7 +241,7 @@ public class HomeAluno extends javax.swing.JFrame {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaMonitoria.get(selectedIndex),user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -249,10 +249,10 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void ListExtensaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListExtensaoMouseClicked
         if (evt.getClickCount() == 2) {
-            int selectedIndex = ListMonitoria.getSelectedIndex();
+            int selectedIndex = ListExtensao.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaBExtensao.get(selectedIndex),user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -260,10 +260,10 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void ListICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListICMouseClicked
         if (evt.getClickCount() == 2) {
-            int selectedIndex = ListMonitoria.getSelectedIndex();
+            int selectedIndex = ListIC.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaIC.get(selectedIndex),user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -271,10 +271,10 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void ListTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListTPMouseClicked
         if (evt.getClickCount() == 2) {
-            int selectedIndex = ListMonitoria.getSelectedIndex();
+            int selectedIndex = ListTP.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa();
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaTP.get(selectedIndex),user);
                 ViewBolsa.setVisible(true);
             }
         }

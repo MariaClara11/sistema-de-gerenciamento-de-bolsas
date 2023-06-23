@@ -4,16 +4,26 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author igor
  */
 public class InscricaoBolsa extends javax.swing.JFrame {
 
+    private Bolsa bolsa;
+    private Aluno user;
+
     /**
      * Creates new form InscricaoBolsa
      */
-    public InscricaoBolsa() {
+    public InscricaoBolsa(Bolsa bolsa, Aluno user) {
+
+        this.bolsa = bolsa;
+        this.user = user;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -27,7 +37,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Lnome = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -41,10 +51,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         bInscrever = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nome da Monitoria");
+        Lnome.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lnome.setText("Nome da Monitoria");
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -99,7 +114,6 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         });
 
         fieldProfessor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldProfessor.setText("fieldProfessor");
         fieldProfessor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldProfessorActionPerformed(evt);
@@ -126,7 +140,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Lnome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
@@ -151,7 +165,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(Lnome)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -205,8 +219,35 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_bInscreverActionPerformed
 
     private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
-        // TODO add your handling code here:
+
+        if (this.user.getDisciplinas().containsAll(this.bolsa.getPreRequisitos()))
+            this.bolsa.addAlunosCadastrados(user);
+        else {
+            JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_bInscreverMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        this.Lnome.setText(this.bolsa.getTitulo());
+
+        this.fieldProfessor.setText(this.bolsa.getProfessorResponsavel());
+
+        String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
+        this.fieldHoraria.setText(hora);
+
+        String req = new String();
+        for (String p : this.bolsa.getPreRequisitos()) {
+            req = req.concat("[");
+            req = req.concat(p);
+            req = req.concat("]");
+        }
+        this.fieldRequisitos.setText(req);
+
+        String valor = String.format("%.2f", this.bolsa.getValor());
+        this.fieldValor.setText(valor);
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -236,21 +277,19 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InscricaoBolsa().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new InscricaoBolsa(null, null).setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lnome;
     private javax.swing.JButton bInscrever;
     private javax.swing.JTextField fieldHoraria;
     private javax.swing.JTextField fieldProfessor;
     private javax.swing.JTextField fieldRequisitos;
     private javax.swing.JTextField fieldTipo;
     private javax.swing.JTextField fieldValor;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

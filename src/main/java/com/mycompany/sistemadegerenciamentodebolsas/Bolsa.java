@@ -28,8 +28,9 @@ public class Bolsa {
     private int vagas;
     private String professorResponsavel;
     private String metodoEntrada;
+    private List<Aluno> alunosCadastrados;
     
-    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
+    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada, Aluno aluno) {
         this.titulo = titulo;
         this.preRequisitos = preRequisitos;
         this.tipo = tipo;
@@ -38,6 +39,15 @@ public class Bolsa {
         this.vagas = vagas;
         this.professorResponsavel = professorResponsavel;
         this.metodoEntrada = metodoEntrada;
+        this.alunosCadastrados.add(aluno);
+    }
+
+        public void addAlunosCadastrados(Aluno aluno) {
+        this.alunosCadastrados.add(aluno);
+    }
+
+    public List<Aluno> getAlunosCadastrados() {
+        return alunosCadastrados;
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;

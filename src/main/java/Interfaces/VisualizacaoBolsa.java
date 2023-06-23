@@ -4,7 +4,11 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +17,9 @@ import javax.swing.JOptionPane;
  */
 public class VisualizacaoBolsa extends javax.swing.JFrame {
     
+    
+    List<Aluno> alunoLista = new ArrayList();
+    DefaultListModel model = new DefaultListModel();
     Bolsa bolsa;
     
     
@@ -22,6 +29,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     public VisualizacaoBolsa(Bolsa bolsa) {
         initComponents();
         this.bolsa = bolsa;
+        this.listAlunos.setModel(model);
         setLocationRelativeTo(null);
     }
 
@@ -47,7 +55,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         professorTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listAlunos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -133,12 +141,9 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Nome da Monitoria");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        listAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setViewportView(listAlunos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,13 +256,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         
         String listb = new String();
         for(String p : this.bolsa.getPreRequisitos()){
-            listb.concat("[");
-            listb.concat(p);
-            listb.concat("]");
-            listb.concat(",");
+            listb = listb.concat("[");
+            listb = listb.concat(p);
+            listb = listb.concat("]");
         }
         this.reqTF.setText(listb);
-        
         
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.valorTF.setText(valor);
@@ -266,6 +269,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         this.horaTF.setText(hora);
         
         this.tipoTF.setText(this.bolsa.getTipo());
+         
+        for(Aluno a : this.bolsa.getAlunosCadastrados()){
+            model.addElement(a.getNome());
+        }
+
         
         
     }//GEN-LAST:event_formWindowOpened
@@ -346,8 +354,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Aluno> listAlunos;
     private javax.swing.JTextField professorTF;
     private javax.swing.JTextField reqTF;
     private javax.swing.JTextField tipoTF;
