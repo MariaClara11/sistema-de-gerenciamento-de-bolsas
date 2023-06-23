@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
 
         tipoDeUsuario = new javax.swing.ButtonGroup();
         senhaTF = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnEntrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -72,15 +72,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Entrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEntrar.setText("Entrar");
+        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnEntrarMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
 
@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(senhaTF)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -201,7 +201,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,52 +220,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_senhaTFActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-
-        CadastroUsuario cadusuario = new CadastroUsuario();
-        cadusuario.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jLabel5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel5KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5KeyPressed
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-        CadastroUsuario cadusuario = new CadastroUsuario();
-        cadusuario.setVisible(true);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
-        // TODO add your handling code here:
-        jLabelUser.setText("Siape:");
-        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#####"));
-        loginTF.setFormatterFactory(newFactory);
-
-    }//GEN-LAST:event_rbProfessorMouseClicked
-
-    private void rbProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProfessorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbProfessorActionPerformed
-
-    private void rbAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbAlunoMouseClicked
-        jLabelUser.setText("Matricula:");
-        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#########AA"));
-        loginTF.setFormatterFactory(newFactory);
-
-    }//GEN-LAST:event_rbAlunoMouseClicked
-
-    private void rbAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlunoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbAlunoActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
+        
+        
         if (tipoDeUsuario.getSelection() != null) {
 
             String login = loginTF.getText();
@@ -320,7 +278,51 @@ public class Login extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+
+        CadastroUsuario cadusuario = new CadastroUsuario();
+        cadusuario.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jLabel5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5KeyPressed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        CadastroUsuario cadusuario = new CadastroUsuario();
+        cadusuario.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void rbProfessorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbProfessorMouseClicked
+        // TODO add your handling code here:
+        jLabelUser.setText("Siape:");
+        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#####"));
+        loginTF.setFormatterFactory(newFactory);
+
+    }//GEN-LAST:event_rbProfessorMouseClicked
+
+    private void rbProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbProfessorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbProfessorActionPerformed
+
+    private void rbAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbAlunoMouseClicked
+        jLabelUser.setText("Matricula:");
+        DefaultFormatterFactory newFactory = new DefaultFormatterFactory(Mascara("#########AA"));
+        loginTF.setFormatterFactory(newFactory);
+
+    }//GEN-LAST:event_rbAlunoMouseClicked
+
+    private void rbAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbAlunoActionPerformed
+
+    private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
+
+    }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void loginTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTFActionPerformed
         // TODO add your handling code here:
@@ -376,7 +378,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
