@@ -28,7 +28,8 @@ import javax.swing.JScrollPane;
  */
 public class HomeProfessor extends javax.swing.JFrame {
 
-    private DefaultListModel<String> listModel;
+    List<Bolsa> bolsasLista = new ArrayList();
+    DefaultListModel<Bolsa> model = new DefaultListModel();
     private Professor user;
 
     /**
@@ -36,11 +37,13 @@ public class HomeProfessor extends javax.swing.JFrame {
      */
     public HomeProfessor() {
         
-        this.jListBolsa = new JList<>(listModel);
-        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
-        this.getContentPane().add(this.jScrollPane1);
 
         initComponents();
+        /*this.jListBolsa = new JList<>(listModel);
+        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
+        this.getContentPane().add(this.jScrollPane1);*/
+        jListBolsa.setModel(model);
+        //jListBolsa.removeAll();
         setExtendedState(MAXIMIZED_BOTH);
 
     }
@@ -49,11 +52,14 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         initComponents();
         this.user = user;
-        //listModel = new DefaultListModel<>();
-        //this.jListBolsa = new JList<>(listModel);
+        /*listModel = new DefaultListModel<>();
+        this.jListBolsa = new JList<>(listModel);
 
-        //this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
-        //this.getContentPane().add(this.jScrollPane1);
+        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
+        this.getContentPane().add(this.jScrollPane1);*/
+        
+        jListBolsa.setModel(model);
+        
 
         
         setExtendedState(MAXIMIZED_BOTH);
@@ -108,6 +114,11 @@ public class HomeProfessor extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -200,8 +211,8 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jListBolsaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jListBolsaInputMethodTextChanged
 
-        CadastroBolsa lista = new CadastroBolsa(this.user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<String> model = new DefaultListModel<>();
+        /*CadastroBolsa lista = new CadastroBolsa(this.user); // Inicialize a variável lista com um objeto válido
+        DefaultListModel<Bolsa> model = new DefaultListModel<>();
         
         
         
@@ -209,31 +220,42 @@ public class HomeProfessor extends javax.swing.JFrame {
         //model.addElement(lista.getTitulo());
         jListBolsa.setModel(model);
         jListBolsa.revalidate();
-        jListBolsa.repaint();
+        jListBolsa.repaint();*/
     }//GEN-LAST:event_jListBolsaInputMethodTextChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void windowOpened(WindowEvent e) {
 
         List<Bolsa> bolsasCadastradas = user.getBolsasCadastradas();
         addLista(bolsasCadastradas);
+        
+        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
+        this.addLista(pExtensao.findAll());
+        
+        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
+        this.addLista(pIC.findAll());
+        
+        MonitoriaPersistence pMoni = new MonitoriaPersistence();
+        this.addLista(pMoni.findAll());
+        
+        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
+        this.addLista(pTP.findAll());
 
     }
 
     public void addLista(List<Bolsa> bolsa) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Bolsa b : bolsa) {
-            this.listModel.addElement(b.getTitulo());
+            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+                model.addElement(b);
+                //this.bolsasLista.add(b);
+            }
         }
     }
 
-    public void carregaContatos(List<Bolsa> bolsa) {
-
-        DefaultListModel<String> model = (DefaultListModel<String>) jListBolsa.getModel();
-
-        for (Bolsa b : bolsa) {
-            model.addElement(b.getTitulo());
-        }
-
-    }
 
     public void inputListBolsa() {
         InputMethodEvent evt = null;
@@ -275,12 +297,12 @@ public class HomeProfessor extends javax.swing.JFrame {
         });
     }
 
-    DefaultListModel<String> model = new DefaultListModel<>();
+    //DefaultListModel<String> model = new DefaultListModel<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jListBolsa;
+    private javax.swing.JList<Bolsa> jListBolsa;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
