@@ -279,6 +279,27 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }
+        HomeProfessor home = new HomeProfessor(this.user);
+        
+        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
+        home.addLista(pExtensao.findAll());
+        
+        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
+        home.addLista(pIC.findAll());
+        
+        MonitoriaPersistence pMoni = new MonitoriaPersistence();
+        home.addLista(pMoni.findAll());
+        
+        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
+        home.addLista(pTP.findAll());
+        
+        home.model.removeAllElements();
+        
+        for(int i=0; i < home.bolsasLista.size(); i++){
+            home.model.addElement(home.bolsasLista.get(i).getTitulo());
+        }
+        
+        home.jListBolsa.setModel(home.model);
     }//GEN-LAST:event_cadastrarActionPerformed
 
     public static boolean validarValor(String valor) {

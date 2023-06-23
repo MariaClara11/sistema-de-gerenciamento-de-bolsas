@@ -84,9 +84,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         senhaTF = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         confirmarSenhaTF = new javax.swing.JPasswordField();
-        javax.swing.JFormattedTextField cpfTF = new javax.swing.JFormattedTextField(Mascara("###.###.###-##"));
         nascimentoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
         matriculaTF = new javax.swing.JFormattedTextField(Mascara("#########AA"));
+        cpfTF = new javax.swing.JFormattedTextField(Mascara("###.###.###-##"));
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -223,17 +223,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(499, 499, 499))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nascimentoTF)
+                            .addComponent(matriculaTF))
+                        .addGap(200, 200, 200))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cpfTF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(senhaTF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeTF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(confirmarSenhaTF, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(200, 200, 200))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nascimentoTF)
-                            .addComponent(matriculaTF))
                         .addGap(200, 200, 200))))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -260,7 +260,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCPForSIAPE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpfTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +315,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
-
 
     private void cadastrarBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseClicked
         // TODO add your handling code here:
@@ -496,6 +495,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarBTN;
     private javax.swing.JPasswordField confirmarSenhaTF;
+    private javax.swing.JFormattedTextField cpfTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

@@ -64,19 +64,19 @@
                       <Component id="rbAluno" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="499" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="nascimentoTF" max="32767" attributes="0"/>
+                          <Component id="matriculaTF" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="cpfTF" alignment="0" max="32767" attributes="0"/>
                           <Component id="senhaTF" alignment="0" max="32767" attributes="0"/>
                           <Component id="nomeTF" alignment="0" max="32767" attributes="0"/>
                           <Component id="confirmarSenhaTF" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nascimentoTF" max="32767" attributes="0"/>
-                          <Component id="matriculaTF" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
@@ -106,32 +106,32 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="nomeTF" linkSize="2" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="nomeTF" linkSize="5" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtCPForSIAPE" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="cpfTF" linkSize="2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="cpfTF" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel10" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="nascimentoTF" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nascimentoTF" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelUser" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="matriculaTF" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="matriculaTF" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel12" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="senhaTF" linkSize="2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="senhaTF" linkSize="5" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel13" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="confirmarSenhaTF" linkSize="2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="confirmarSenhaTF" linkSize="5" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="38" max="32767" attributes="0"/>
               <Component id="cadastrarBTN" min="-2" pref="61" max="-2" attributes="0"/>
@@ -278,13 +278,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarSenhaTFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="cpfTF">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;###.###.###-##&quot;))"/>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JFormattedTextField" name="nascimentoTF">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nascimentoTFActionPerformed"/>
@@ -296,6 +289,11 @@
     <Component class="javax.swing.JFormattedTextField" name="matriculaTF">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;#########AA&quot;))"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="cpfTF">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;###.###.###-##&quot;))"/>
       </AuxValues>
     </Component>
   </SubComponents>

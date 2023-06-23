@@ -29,7 +29,8 @@ import javax.swing.JScrollPane;
 public class HomeProfessor extends javax.swing.JFrame {
 
     List<Bolsa> bolsasLista = new ArrayList();
-    DefaultListModel<Bolsa> model = new DefaultListModel();
+    DefaultListModel model = new DefaultListModel();
+    
     private Professor user;
 
     /**
@@ -52,6 +53,8 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         initComponents();
         this.user = user;
+        this.jListBolsa.setModel(model);
+        
         /*listModel = new DefaultListModel<>();
         this.jListBolsa = new JList<>(listModel);
 
@@ -84,6 +87,11 @@ public class HomeProfessor extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jListBolsa.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
         jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -202,7 +210,7 @@ public class HomeProfessor extends javax.swing.JFrame {
             int selectedIndex = jListBolsa.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa();
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.bolsasLista.get(selectedIndex));
                 ViewBolsa.setVisible(true);
             }
 
@@ -227,10 +235,7 @@ public class HomeProfessor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void windowOpened(WindowEvent e) {
-
-        List<Bolsa> bolsasCadastradas = user.getBolsasCadastradas();
-        addLista(bolsasCadastradas);
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
         this.addLista(pExtensao.findAll());
@@ -243,15 +248,22 @@ public class HomeProfessor extends javax.swing.JFrame {
         
         TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
         this.addLista(pTP.findAll());
+        
+        this.model.removeAllElements();
+        
+        for(int i=0; i < this.bolsasLista.size(); i++){
+            model.addElement(this.bolsasLista.get(i).getTitulo());
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
 
-    }
 
     public void addLista(List<Bolsa> bolsa) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Bolsa b : bolsa) {
             if(b.getProfessorResponsavel().equals(this.user.getSiap())){
-                model.addElement(b);
-                //this.bolsasLista.add(b);
+           
+                this.bolsasLista.add(b);
             }
         }
     }
@@ -290,10 +302,8 @@ public class HomeProfessor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeProfessor().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new HomeProfessor().setVisible(true);
         });
     }
 
@@ -302,7 +312,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<Bolsa> jListBolsa;
+    public javax.swing.JList<Bolsa> jListBolsa;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,12 +12,16 @@ import javax.swing.JOptionPane;
  * @author igor
  */
 public class VisualizacaoBolsa extends javax.swing.JFrame {
-
+    
+    Bolsa bolsa;
+    
+    
     /**
      * Creates new form VisualizacaoBolsa
      */
-    public VisualizacaoBolsa() {
+    public VisualizacaoBolsa(Bolsa bolsa) {
         initComponents();
+        this.bolsa = bolsa;
         setLocationRelativeTo(null);
     }
 
@@ -35,16 +40,21 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        fieldValor = new javax.swing.JTextField();
-        fieldRequisitos = new javax.swing.JTextField();
-        fieldHoraria = new javax.swing.JTextField();
-        fieldTipo = new javax.swing.JTextField();
-        fieldProfessor = new javax.swing.JTextField();
+        valorTF = new javax.swing.JTextField();
+        reqTF = new javax.swing.JTextField();
+        horaTF = new javax.swing.JTextField();
+        tipoTF = new javax.swing.JTextField();
+        professorTF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -79,43 +89,43 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Tipo :");
 
-        fieldValor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldValor.setText("fieldValor");
-        fieldValor.addActionListener(new java.awt.event.ActionListener() {
+        valorTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        valorTF.setText("fieldValor");
+        valorTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldValorActionPerformed(evt);
+                valorTFActionPerformed(evt);
             }
         });
 
-        fieldRequisitos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldRequisitos.setText("fieldRequisitos");
-        fieldRequisitos.addActionListener(new java.awt.event.ActionListener() {
+        reqTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        reqTF.setText("fieldRequisitos");
+        reqTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldRequisitosActionPerformed(evt);
+                reqTFActionPerformed(evt);
             }
         });
 
-        fieldHoraria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldHoraria.setText("fieldHoraria");
-        fieldHoraria.addActionListener(new java.awt.event.ActionListener() {
+        horaTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        horaTF.setText("fieldHoraria");
+        horaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldHorariaActionPerformed(evt);
+                horaTFActionPerformed(evt);
             }
         });
 
-        fieldTipo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldTipo.setText("fieldTipo");
-        fieldTipo.addActionListener(new java.awt.event.ActionListener() {
+        tipoTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tipoTF.setText("fieldTipo");
+        tipoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldTipoActionPerformed(evt);
+                tipoTFActionPerformed(evt);
             }
         });
 
-        fieldProfessor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldProfessor.setText("fieldProfessor");
-        fieldProfessor.addActionListener(new java.awt.event.ActionListener() {
+        professorTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        professorTF.setText("fieldProfessor");
+        professorTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldProfessorActionPerformed(evt);
+                professorTFActionPerformed(evt);
             }
         });
 
@@ -147,11 +157,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fieldRequisitos, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldValor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldProfessor)
-                            .addComponent(fieldHoraria, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(reqTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(valorTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tipoTF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(professorTF)
+                            .addComponent(horaTF, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1)))
                 .addGap(62, 62, 62))
@@ -170,23 +180,23 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(fieldProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(professorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(fieldRequisitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(reqTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(valorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(fieldHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(horaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tipoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,11 +208,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
         // TODO add your handling code here:
-        String professor = fieldProfessor.getText();
-        String requisitos = fieldRequisitos.getText();
-        String valor = fieldValor.getText();
-        String horaria = fieldHoraria.getText();
-        String tipo = fieldTipo.getText();
+        String professor = professorTF.getText();
+        String requisitos = reqTF.getText();
+        String valor = valorTF.getText();
+        String horaria = horaTF.getText();
+        String tipo = tipoTF.getText();
 
         if (bolsaIsValid()) {
             
@@ -215,36 +225,61 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bInscreverActionPerformed
 
-    private void fieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldValorActionPerformed
+    private void valorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldValorActionPerformed
+    }//GEN-LAST:event_valorTFActionPerformed
 
-    private void fieldRequisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldRequisitosActionPerformed
+    private void reqTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldRequisitosActionPerformed
+    }//GEN-LAST:event_reqTFActionPerformed
 
-    private void fieldHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldHorariaActionPerformed
+    private void horaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldHorariaActionPerformed
+    }//GEN-LAST:event_horaTFActionPerformed
 
-    private void fieldTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTipoActionPerformed
+    private void tipoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldTipoActionPerformed
+    }//GEN-LAST:event_tipoTFActionPerformed
 
-    private void fieldProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProfessorActionPerformed
+    private void professorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fieldProfessorActionPerformed
+    }//GEN-LAST:event_professorTFActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        this.professorTF.setText(this.bolsa.getProfessorResponsavel());
+        
+        String listb = new String();
+        for(String p : this.bolsa.getPreRequisitos()){
+            listb.concat("[");
+            listb.concat(p);
+            listb.concat("]");
+            listb.concat(",");
+        }
+        this.reqTF.setText(listb);
+        
+        
+        String valor = String.format("%.2f", this.bolsa.getValor());
+        this.valorTF.setText(valor);
+        
+        String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
+        this.horaTF.setText(hora);
+        
+        this.tipoTF.setText(this.bolsa.getTipo());
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
      */
     private boolean bolsaIsValid() {
 
-        String professor = fieldProfessor.getText();
-        String requisitos = fieldRequisitos.getText();
-        String valorS = fieldValor.getText();
-        String horariaS = fieldHoraria.getText();
-        String tipo = fieldTipo.getText();
+        String professor = professorTF.getText();
+        String requisitos = reqTF.getText();
+        String valorS = valorTF.getText();
+        String horariaS = horaTF.getText();
+        String tipo = tipoTF.getText();
         
         int valor;
         int horaria;
@@ -297,18 +332,14 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizacaoBolsa().setVisible(true);
+                new VisualizacaoBolsa(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bInscrever;
-    private javax.swing.JTextField fieldHoraria;
-    private javax.swing.JTextField fieldProfessor;
-    private javax.swing.JTextField fieldRequisitos;
-    private javax.swing.JTextField fieldTipo;
-    private javax.swing.JTextField fieldValor;
+    private javax.swing.JTextField horaTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -317,5 +348,9 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField professorTF;
+    private javax.swing.JTextField reqTF;
+    private javax.swing.JTextField tipoTF;
+    private javax.swing.JTextField valorTF;
     // End of variables declaration//GEN-END:variables
 }
