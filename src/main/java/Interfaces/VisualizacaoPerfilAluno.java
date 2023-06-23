@@ -63,7 +63,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         nomeTF = new javax.swing.JTextField();
         cpfTF = new javax.swing.JTextField();
         matriculaTF = new javax.swing.JTextField();
-        data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -74,6 +73,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         button1 = new java.awt.Button();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -99,12 +99,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
         matriculaTF.setEditable(false);
         matriculaTF.setText("XXXXXXXXX");
-
-        data_ingressoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                data_ingressoTFActionPerformed(evt);
-            }
-        });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Telefone:");
@@ -156,6 +150,13 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("Perfil");
 
+        data_ingressoTF.setText("");
+        data_ingressoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                data_ingressoTFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,7 +171,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                         .addGap(25, 25, 25)))
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
@@ -186,10 +187,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nascimentoTF)
                     .addComponent(telTF)
-                    .addComponent(data_ingressoTF)
                     .addComponent(nomeTF)
                     .addComponent(cpfTF)
-                    .addComponent(matriculaTF))
+                    .addComponent(matriculaTF)
+                    .addComponent(data_ingressoTF))
                 .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addGap(160, 160, 160)
@@ -217,8 +218,8 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(data_ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(data_ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,10 +240,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFActionPerformed
 
-    private void data_ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_ingressoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_data_ingressoTFActionPerformed
-
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         dispose();
     }//GEN-LAST:event_button1ActionPerformed
@@ -255,7 +252,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         this.data_ingressoTF.setText(this.user.getDataIngresso());
         this.telTF.setText(this.user.getTelefone());
         this.nascimentoTF.setText(this.user.getDataNascimento());
-        this.data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
 
     }//GEN-LAST:event_formWindowOpened
 
@@ -299,6 +295,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void data_ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_ingressoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_data_ingressoTFActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -335,7 +335,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JTextField cpfTF;
-    private javax.swing.JTextField data_ingressoTF;
+    private javax.swing.JFormattedTextField data_ingressoTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -39,7 +39,7 @@
                   <Component id="jLabel8" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="jButton1" pref="176" max="32767" attributes="0"/>
                       <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -59,10 +59,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="nascimentoTF" alignment="0" max="32767" attributes="0"/>
                   <Component id="telTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="data_ingressoTF" alignment="0" max="32767" attributes="0"/>
                   <Component id="nomeTF" max="32767" attributes="0"/>
                   <Component id="cpfTF" alignment="0" max="32767" attributes="0"/>
                   <Component id="matriculaTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="data_ingressoTF" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
           </Group>
@@ -97,8 +97,8 @@
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="data_ingressoTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="data_ingressoTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -151,14 +151,6 @@
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="XXXXXXXXX"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="data_ingressoTF">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="data_ingressoTFActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;##/##/####&quot;))"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -233,6 +225,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Perfil"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="data_ingressoTF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="data_ingressoTFActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(Mascara(&quot;##/##/####&quot;))"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
