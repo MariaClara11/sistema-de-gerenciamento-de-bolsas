@@ -84,41 +84,32 @@ public class HomeAluno extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Monitoria");
         jLabel1.setAlignmentX(0.5F);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 10, 220, 22);
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Extensão");
         jLabel2.setAlignmentX(0.5F);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 10, 220, 22);
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Iniciação Cientifica");
         jLabel3.setAlignmentX(0.5F);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(470, 10, 220, 22);
 
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Treinamento Profissional");
         jLabel4.setAlignmentX(0.5F);
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(700, 10, 219, 22);
 
         jScrollPane4.setAlignmentX(getAlignmentX());
         jScrollPane4.setPreferredSize(new java.awt.Dimension(1014, 375));
 
-        ListExtensao.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
-        ListExtensao.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        ListExtensao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListExtensao.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         ListExtensao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListExtensao.setToolTipText("");
         ListExtensao.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -128,23 +119,13 @@ public class HomeAluno extends javax.swing.JFrame {
                 ListExtensaoMouseClicked(evt);
             }
         });
-        ListExtensao.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                ListExtensaoInputMethodTextChanged(evt);
-            }
-        });
         jScrollPane4.setViewportView(ListExtensao);
-
-        getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(240, 40, 220, 270);
 
         jScrollPane8.setAlignmentX(getAlignmentX());
         jScrollPane8.setPreferredSize(new java.awt.Dimension(1014, 375));
 
-        ListMonitoria.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
-        ListMonitoria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        ListMonitoria.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListMonitoria.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         ListMonitoria.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListMonitoria.setToolTipText("");
         ListMonitoria.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -154,63 +135,29 @@ public class HomeAluno extends javax.swing.JFrame {
                 ListMonitoriaMouseClicked(evt);
             }
         });
-        ListMonitoria.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                ListMonitoriaInputMethodTextChanged(evt);
-            }
-        });
-        ListMonitoria.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                ListMonitoriaValueChanged(evt);
-            }
-        });
         jScrollPane8.setViewportView(ListMonitoria);
-
-        getContentPane().add(jScrollPane8);
-        jScrollPane8.setBounds(10, 40, 220, 270);
 
         jScrollPane9.setAlignmentX(getAlignmentX());
         jScrollPane9.setPreferredSize(new java.awt.Dimension(1014, 375));
 
-        ListTP.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
-        ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        ListTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         ListTP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListTP.setToolTipText("");
         ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
         ListTP.setName(""); // NOI18N
-        ListTP.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                ListTPAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListTPMouseClicked(evt);
             }
         });
-        ListTP.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                ListTPInputMethodTextChanged(evt);
-            }
-        });
         jScrollPane9.setViewportView(ListTP);
-
-        getContentPane().add(jScrollPane9);
-        jScrollPane9.setBounds(700, 40, 220, 270);
 
         jScrollPane10.setAlignmentX(getAlignmentX());
         jScrollPane10.setPreferredSize(new java.awt.Dimension(1014, 375));
 
-        ListIC.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
-        ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        ListIC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         ListIC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ListIC.setToolTipText("");
         ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
@@ -220,17 +167,7 @@ public class HomeAluno extends javax.swing.JFrame {
                 ListICMouseClicked(evt);
             }
         });
-        ListIC.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                ListICInputMethodTextChanged(evt);
-            }
-        });
         jScrollPane10.setViewportView(ListIC);
-
-        getContentPane().add(jScrollPane10);
-        jScrollPane10.setBounds(470, 40, 220, 270);
 
         jMenuPerfil.setText("Perfil");
         jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,6 +188,51 @@ public class HomeAluno extends javax.swing.JFrame {
         jMenuBar2.add(jMenuSair);
 
         setJMenuBar(jMenuBar2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel4))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(107, 107, 107))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -319,30 +301,6 @@ public class HomeAluno extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuPerfilMouseClicked
 
-    private void ListMonitoriaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListMonitoriaValueChanged
-
-    }//GEN-LAST:event_ListMonitoriaValueChanged
-
-    private void ListTPAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListTPAncestorAdded
-        
-    }//GEN-LAST:event_ListTPAncestorAdded
-
-    private void ListMonitoriaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListMonitoriaInputMethodTextChanged
-        
-    }//GEN-LAST:event_ListMonitoriaInputMethodTextChanged
-
-    private void ListExtensaoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListExtensaoInputMethodTextChanged
-        
-    }//GEN-LAST:event_ListExtensaoInputMethodTextChanged
-
-    private void ListICInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListICInputMethodTextChanged
-        
-    }//GEN-LAST:event_ListICInputMethodTextChanged
-
-    private void ListTPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListTPInputMethodTextChanged
-        
-    }//GEN-LAST:event_ListTPInputMethodTextChanged
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         this.modelBE.removeAllElements();
@@ -372,58 +330,7 @@ public class HomeAluno extends javax.swing.JFrame {
         }
         
     }
-     
-    /*
-    private void abrirTelaSelecionada(int selectedIndex) {
-        switch (selectedIndex) {
-            case 0:
-                // Abrir a primeira tela
-                abrirTela1();
-                break;
-            case 1:
-                // Abrir a segunda tela
-                abrirTela2();
-                break;
-            case 2:
-                // Abrir a terceira tela
-                abrirTela3();
-                break;
-            case 3:
-                // Abrir a quarta tela
-                abrirTela4();
-                break;
-            case 4:
-                // Abrir a quinta tela
-                abrirTela5();
-                break;
-        }
-    }
-     
-    private void abrirTela1() {
-        // Lógica para abrir a primeira tela
-        JOptionPane.showMessageDialog(this, "Abrindo Tela 1");
-    }
-
-    private void abrirTela2() {
-        // Lógica para abrir a segunda tela
-        JOptionPane.showMessageDialog(this, "Abrindo Tela 2");
-    }
-
-    private void abrirTela3() {
-        // Lógica para abrir a terceira tela
-        JOptionPane.showMessageDialog(this, "Abrindo Tela 3");
-    }
-
-    private void abrirTela4() {
-        // Lógica para abrir a quarta tela
-        JOptionPane.showMessageDialog(this, "Abrindo Tela 4");
-    }
-
-    private void abrirTela5() {
-        // Lógica para abrir a quinta tela
-        JOptionPane.showMessageDialog(this, "Abrindo Tela 5");
-    }
-     */
+    
     /**
      * @param args the command line arguments
      */
