@@ -324,82 +324,56 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListMonitoriaValueChanged
 
     private void ListTPAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ListTPAncestorAdded
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ListTPAncestorAdded
 
     private void ListMonitoriaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListMonitoriaInputMethodTextChanged
-
-        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<String> model = new DefaultListModel<>();
-
-        //listaMonitoria = lista.listaMonitoria;
-
-        //model.addElement(lista.getTitulo());
-
-        ListMonitoria.setModel(model);
-
+        
     }//GEN-LAST:event_ListMonitoriaInputMethodTextChanged
 
     private void ListExtensaoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListExtensaoInputMethodTextChanged
-        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<String> model = new DefaultListModel<>();
-
-        //listaBExtensao = lista.listaBExtensao;
-
-        //model.addElement(lista.geTitulo());
-
-        ListExtensao.setModel(model);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ListExtensaoInputMethodTextChanged
 
     private void ListICInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListICInputMethodTextChanged
-       //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<String> model = new DefaultListModel<>();
-
-        //listaIC = lista.listaIC;
-
-        //model.addElement(lista.getTitulo());
-
-        ListIC.setModel(model);   
+        
     }//GEN-LAST:event_ListICInputMethodTextChanged
 
     private void ListTPInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_ListTPInputMethodTextChanged
-        //CadastroBolsa lista = new CadastroBolsa(user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<String> model = new DefaultListModel<>();
-
-        //listaTP = lista.listaTP;
-
-        //model.addElement(lista.getTitulo());
-
-        ListTP.setModel(model);   
+        
     }//GEN-LAST:event_ListTPInputMethodTextChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
         this.modelBE.removeAllElements();
         this.modelIC.removeAllElements();
         this.modelMo.removeAllElements();
         this.modelTP.removeAllElements();
         
         BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
-        this.addLista(pExtensao.findAll(), this.modelBE);
+        this.addLista(listaBExtensao, this.modelBE, pExtensao.findAll());
         
         IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
-        this.addLista(pIC.findAll(), this.modelIC);
+        this.addLista(listaIC, this.modelIC, pIC.findAll());
         
         MonitoriaPersistence pMoni = new MonitoriaPersistence();
-        this.addLista(pMoni.findAll(), this.modelMo);
+        this.addLista(listaMonitoria, this.modelMo, pMoni.findAll());
         
         TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        this.addLista(pTP.findAll(),this.modelTP);
+        this.addLista(listaTP,this.modelTP, pTP.findAll());
              
     }//GEN-LAST:event_formWindowOpened
     
-     public void addLista(List<Bolsa> bolsa, DefaultListModel model) {
+     public void addLista(List<Bolsa> bolsa, DefaultListModel model, List<Bolsa> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
-        for (Bolsa b : bolsa) {
+        for (Bolsa b : persistence) {
+            bolsa.add(b);
             model.addElement(b.getTitulo());
         }
+        
     }
-    
+     
+    /*
     private void abrirTelaSelecionada(int selectedIndex) {
         switch (selectedIndex) {
             case 0:
@@ -424,7 +398,7 @@ public class HomeAluno extends javax.swing.JFrame {
                 break;
         }
     }
-
+     
     private void abrirTela1() {
         // Lógica para abrir a primeira tela
         JOptionPane.showMessageDialog(this, "Abrindo Tela 1");
@@ -449,7 +423,7 @@ public class HomeAluno extends javax.swing.JFrame {
         // Lógica para abrir a quinta tela
         JOptionPane.showMessageDialog(this, "Abrindo Tela 5");
     }
-
+     */
     /**
      * @param args the command line arguments
      */

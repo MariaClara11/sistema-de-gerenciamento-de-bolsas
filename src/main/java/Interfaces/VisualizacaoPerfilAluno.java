@@ -275,9 +275,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         boolean erro = false;
         
         String dataIngresso = data_ingressoTF.getText();
-        
-        System.out.println(dataIngresso);
-        
+      
         if (user.validarData(dataIngresso)) {
             this.user.setDataIngresso(dataIngresso);
         }else{

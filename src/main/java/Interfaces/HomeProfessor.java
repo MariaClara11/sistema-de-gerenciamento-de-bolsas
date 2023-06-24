@@ -218,17 +218,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jListBolsaMouseClicked
 
     private void jListBolsaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jListBolsaInputMethodTextChanged
-
-        /*CadastroBolsa lista = new CadastroBolsa(this.user); // Inicialize a variável lista com um objeto válido
-        DefaultListModel<Bolsa> model = new DefaultListModel<>();
         
-        
-        
-        //listaMonitoria = lista.listaMonitoria;
-        //model.addElement(lista.getTitulo());
-        jListBolsa.setModel(model);
-        jListBolsa.revalidate();
-        jListBolsa.repaint();*/
     }//GEN-LAST:event_jListBolsaInputMethodTextChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

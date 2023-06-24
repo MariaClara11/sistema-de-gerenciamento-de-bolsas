@@ -245,6 +245,7 @@ public class Login extends javax.swing.JFrame {
                             tela.setVisible(true);
                             dispose();
                             verifica++;
+                            break;
                         }
                     }if (verifica == 0) {
                         JOptionPane.showMessageDialog(this, "Credenciais Inválidas", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -260,6 +261,7 @@ public class Login extends javax.swing.JFrame {
                             tela.setVisible(true);
                             dispose();
                             verifica++;
+                            break;
                         }
                     }
                     if (verifica == 0) {

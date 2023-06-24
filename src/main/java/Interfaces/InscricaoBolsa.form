@@ -152,9 +152,6 @@
     <Component class="javax.swing.JTextField" name="fieldValor">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>
@@ -166,9 +163,6 @@
     <Component class="javax.swing.JTextField" name="fieldRequisitos">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>
@@ -180,9 +174,6 @@
     <Component class="javax.swing.JTextField" name="fieldHoraria">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>
@@ -194,9 +185,6 @@
     <Component class="javax.swing.JTextField" name="fieldTipo">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>
@@ -208,9 +196,6 @@
     <Component class="javax.swing.JTextField" name="fieldProfessor">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Liberation Sans" size="18" style="0"/>
         </Property>

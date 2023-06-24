@@ -247,6 +247,8 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
+        
+        this.fieldTipo.setText(this.bolsa.getTipo());
 
     }//GEN-LAST:event_formWindowOpened
 
