@@ -21,7 +21,7 @@ import java.util.Date;
  * Nome: Marlon Ruffo Nascimento
  * Matricula: 202065165AC
  */
-public class Usuario {
+public abstract class Usuario {
     private String nome;
     private int idade;
     private String CPF;
@@ -119,6 +119,8 @@ public class Usuario {
         this.senha = "";
         this.telefone = "";
     }
+    
+    public abstract String retornaId();
 
     @Override
     public String toString() {
