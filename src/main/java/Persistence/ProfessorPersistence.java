@@ -46,6 +46,19 @@ public class ProfessorPersistence implements Persistence<Professor> {
 
         return prof;
     }
+    
+    public void replace(List<Professor> professor) {
+        Gson gson = new Gson();
+        String json = gson.toJson(professor);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
+    }
 
 
 }

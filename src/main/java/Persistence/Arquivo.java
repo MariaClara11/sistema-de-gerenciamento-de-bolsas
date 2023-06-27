@@ -40,10 +40,19 @@ public class Arquivo {
         
         
     }
+     public static void replace(String filePath, String content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
+            writer.write(content);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     
     public static void salvaAux(String filePath, String content) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,    false))) {
             writer.write(content);
         } catch (IOException e) {
             e.printStackTrace();

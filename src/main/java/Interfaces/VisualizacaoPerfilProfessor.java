@@ -4,13 +4,19 @@
  */
 package Interfaces;
 
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import Persistence.ProfessorPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  * Autores do trabalho:
@@ -37,6 +43,19 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
+    public MaskFormatter Mascara(String Mascara) {
+
+        MaskFormatter F_Mascara = new MaskFormatter();
+        try {
+            F_Mascara.setMask(Mascara); //Atribui a mascara
+            F_Mascara.setPlaceholderCharacter('_'); //Caracter para preencimento 
+        } catch (Exception excecao) {
+            excecao.printStackTrace();
+        }
+        return F_Mascara;
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,14 +72,14 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         siapeTF = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        ingressoTF = new javax.swing.JTextField();
-        telTF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nascimentoTF = new javax.swing.JTextField();
         button1 = new java.awt.Button();
         jTextField9 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
+        telTF = new javax.swing.JFormattedTextField(Mascara("(##)9 ####-####"));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -87,15 +106,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         jLabel4.setText("SIAPE:");
 
         jLabel5.setText("Ingresso:");
-
-        ingressoTF.setText("DD/MM/YYYY");
-        ingressoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingressoTFActionPerformed(evt);
-            }
-        });
-
-        telTF.setText("(XX)YYYY-YYYY");
 
         jLabel6.setText("Telefone:");
 
@@ -136,6 +146,18 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
             }
         });
 
+        ingressoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingressoTFActionPerformed(evt);
+            }
+        });
+
+        telTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telTFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,7 +171,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                         .addGap(113, 113, 113)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(116, 116, 116)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -164,17 +186,15 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
-                                .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(ingressoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ingressoTF)
+                                    .addComponent(telTF)
+                                    .addComponent(nascimentoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(jButton1)))
@@ -205,7 +225,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telTF, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -226,10 +246,6 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
-
-    private void ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingressoTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingressoTFActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
@@ -254,34 +270,92 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
         int cont = 0;
-        
+
         CadastroUsuario user = new CadastroUsuario();
         
-        if (user.validarData(this.telTF.getText())) {
-            this.user.setDataContratacao(this.ingressoTF.getText());
+        ProfessorPersistence prof = new ProfessorPersistence();
+                
+        List<Professor> professores = new ArrayList<>();
+        professores = prof.findAll();
+        
+        if (validarData(this.ingressoTF.getText()) || this.ingressoTF.getText().isEmpty()) {
+            if(!this.ingressoTF.getText().isEmpty()){
+                this.user.setDataContratacao(this.ingressoTF.getText());
+                
+                
+                for(Professor p : professores){
+                    if(p.getSiap().equals(this.user.getSiap())){
+                        p.setDataContratacao(this.ingressoTF.getText());
+                        prof.save(professores);
+                        break;
+                    }
+                }
+            }
             cont++;
         } else {
             JOptionPane.showMessageDialog(this, "Data Inválida", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         if (ValidarTelefone(this.telTF.getText())) {
-            this.user.setTelefone(this.telTF.getText());
+            if(!this.telTF.getText().isEmpty()){
+                this.user.setTelefone(this.telTF.getText());
+                for(Professor p : professores){
+                    if(p.getSiap().equals(this.user.getSiap())){
+                        p.setTelefone(this.telTF.getText());
+                        prof.replace(professores);
+                        break;
+                    }
+                }
+            }
             cont++;
         } else {
             JOptionPane.showMessageDialog(this, "Telefone Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
 
         }
         if (cont == 2) {
-            JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.DEFAULT_OPTION);
 
         }
     }//GEN-LAST:event_jButton1MouseClicked
+     
+   public boolean validarData(String ingresso) {
 
+        String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if (!Pattern.matches(regexData, ingresso)) {
+            return false;
+        }
+
+        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date ingressoD = formato.parse(ingresso);
+            Date nascimentoD = formato.parse(this.user.getDataNascimento());
+            Date dataAtual = new Date();
+
+            if (ingressoD.after(nascimentoD) && ingressoD.before(dataAtual)) {
+                return true;
+            }
+        } catch (ParseException e) {
+            return false;
+        }
+        return false;
+    }
+
+    
     private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
         dispose();
     }//GEN-LAST:event_button1MouseClicked
 
+    private void ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingressoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingressoTFActionPerformed
+
+    private void telTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telTFActionPerformed
+
     private boolean ValidarTelefone(String telefone) {
-        String PHONE_NUMBER_REGEX = "(\\([1-9]{2}\\)\\s)?[2-9][0-9]{3,4}\\-[0-9]{4}";
+        String PHONE_NUMBER_REGEX = "^\\(\\d{2}\\)9 \\d{4}-\\d{4}$";
         Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
         return pattern.matcher(telefone).matches();
     }
@@ -326,7 +400,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JTextField cpfTF;
-    private javax.swing.JTextField ingressoTF;
+    private javax.swing.JFormattedTextField ingressoTF;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -338,7 +412,8 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField nascimentoTF;
     private javax.swing.JTextField nomeTF;
     private javax.swing.JTextField siapeTF;
-    private javax.swing.JTextField telTF;
+    private javax.swing.JFormattedTextField telTF;
     // End of variables declaration//GEN-END:variables
 
+    
 }
