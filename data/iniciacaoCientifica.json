@@ -13,4 +13,5 @@
 {"titulo":"Monitoria OO","preRequisitos":["DCC013","DCC014","DCC019","DCC025"],"tipo":"Monitoria","valor":400.0,"quantidadeHoras":400,"vagas":1,"professorResponsavel":"54321","metodoEntrada":"Prova"},
 {"titulo":"monitoria","preRequisitos":["CAD076","DCC001","DCC008"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
 {"titulo":"aipapai","preRequisitos":["DCC001","DCC008","DCC012","DCC013"],"tipo":"Monitoria","valor":12345.0,"quantidadeHoras":1234,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
-{"titulo":"agr vai","preRequisitos":["DCC001","DCC008","DCC012","DCC013","DCC014"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"}]
+{"titulo":"agr vai","preRequisitos":["DCC001","DCC008","DCC012","DCC013","DCC014"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
+{"titulo":"teste final","preRequisitos":["CAD076","DCC008","DCC013"],"tipo":"Iniciação Científica","valor":400.0,"quantidadeHoras":400,"vagas":9,"professorResponsavel":"71278","metodoEntrada":"Prova","alunosCadastrados":[]}]

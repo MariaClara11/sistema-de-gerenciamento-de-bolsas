@@ -199,7 +199,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
-        CadastroBolsa cadbolsa = new CadastroBolsa(this.user);
+        CadastroBolsa cadbolsa = new CadastroBolsa(this.user, this);
         cadbolsa.setVisible(true);
 
     }//GEN-LAST:event_jButton1MouseClicked

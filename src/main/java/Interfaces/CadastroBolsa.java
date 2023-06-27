@@ -15,7 +15,9 @@ import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  * Autores do trabalho:
@@ -31,11 +33,12 @@ import javax.swing.JOptionPane;
 public class CadastroBolsa extends javax.swing.JFrame {
 
     private Professor user;
+    HomeProfessor tela;
 
-    public CadastroBolsa(Professor user) {
+    public CadastroBolsa(Professor user, HomeProfessor tela) {
 
         this.user = user;
-
+        this.tela = tela;
         initComponents();
         setSize(700, 700);
         setLocationRelativeTo(null);
@@ -74,6 +77,11 @@ public class CadastroBolsa extends javax.swing.JFrame {
         listaPreRequisitosSelect = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(null);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(6, 345, 0, 0);
@@ -83,22 +91,22 @@ public class CadastroBolsa extends javax.swing.JFrame {
         tituloPrincipal.setText("Cadastro de Bolsa");
         tituloPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(tituloPrincipal);
-        tituloPrincipal.setBounds(70, 40, 350, 29);
+        tituloPrincipal.setBounds(70, 40, 350, 32);
 
         labelValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelValor.setText("Valor:");
         getContentPane().add(labelValor);
-        labelValor.setBounds(20, 170, 39, 17);
+        labelValor.setBounds(20, 170, 35, 20);
 
         labelCargaHor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCargaHor.setText("Carga Horária:");
         getContentPane().add(labelCargaHor);
-        labelCargaHor.setBounds(20, 200, 97, 17);
+        labelCargaHor.setBounds(20, 200, 88, 20);
 
         labelTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTipo.setText("Tipo:");
         getContentPane().add(labelTipo);
-        labelTipo.setBounds(20, 140, 35, 17);
+        labelTipo.setBounds(20, 140, 29, 20);
 
         valorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +114,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(valorTf);
-        valorTf.setBounds(160, 170, 311, 24);
+        valorTf.setBounds(160, 170, 311, 22);
 
         cadastrar.setText("Cadastrar");
         cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,7 +128,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(200, 450, 100, 24);
+        cadastrar.setBounds(200, 450, 100, 23);
 
         tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
         tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -129,16 +137,16 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tipoBolsaSelect);
-        tipoBolsaSelect.setBounds(160, 140, 311, 24);
+        tipoBolsaSelect.setBounds(160, 140, 311, 22);
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTitulo.setText("Título: ");
         getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(20, 110, 47, 16);
+        labelTitulo.setBounds(20, 110, 41, 16);
         labelTitulo.getAccessibleContext().setAccessibleName("Título");
 
         getContentPane().add(tituloTf);
-        tituloTf.setBounds(160, 110, 311, 24);
+        tituloTf.setBounds(160, 110, 311, 22);
 
         metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Prova", "Entrevista" }));
         metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
@@ -147,12 +155,12 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(metodoEntradaSelect);
-        metodoEntradaSelect.setBounds(160, 230, 311, 24);
+        metodoEntradaSelect.setBounds(160, 230, 311, 22);
 
         labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelVagas.setText("Vagas:");
         getContentPane().add(labelVagas);
-        labelVagas.setBounds(20, 260, 50, 17);
+        labelVagas.setBounds(20, 260, 50, 20);
 
         cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,22 +168,22 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cargaHorariaTf1);
-        cargaHorariaTf1.setBounds(160, 200, 311, 24);
+        cargaHorariaTf1.setBounds(160, 200, 311, 22);
 
         labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelMetodoEntrada.setText("Método de Entrada:");
         getContentPane().add(labelMetodoEntrada);
-        labelMetodoEntrada.setBounds(20, 230, 137, 17);
+        labelMetodoEntrada.setBounds(20, 230, 122, 20);
 
         qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
         qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(qtdVagasSpinner);
-        qtdVagasSpinner.setBounds(160, 260, 310, 24);
+        qtdVagasSpinner.setBounds(160, 260, 310, 22);
 
         labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPreRequisitos1.setText("Pré-Requisitos:");
         getContentPane().add(labelPreRequisitos1);
-        labelPreRequisitos1.setBounds(20, 290, 106, 20);
+        labelPreRequisitos1.setBounds(20, 290, 91, 20);
 
         listaPreRequisitosSelect.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "ANE40", "CAD076", "DCC001", "DCC008", "DCC012", "DCC013", "DCC014", "DCC019", "DCC025", "DCC033", "DCC037", "DCC042", "DCC045", "DCC055", "DCC059", "DCC060", "DCC061", "DCC062", "DCC063", "DCC064", "DCC065", "DCC066", "DCC067", "DCC068", "DCC069", "DCC070", "DCC071", "DCC072", "DCC073", "DCC074", "DCC075", "DCC076", "DCC078", "DCC080", "DCC082", "DCC083", "DCC086", "DCC088", "DCC089", "DCC090", "DCC091", "DCC092", "DCC093", "DCC094", "DCC095", "DCC096", "DCC097", "DCC098", "DCC099", "DCC100", "DCC101", "DCC102", "DCC103", "DCC104", "DCC105", "DCC117", "DCC122", "DCC123", "DCC124", "DCC125", "DCC126", "DCC127", "DCC128", "DCC129", "DCC130", "DCC131", "DCC132", "DCC133", "DCC136", "DCC137", "DCC138", "DCC139", "DCC140", "DCC141", "DCC142", "DCC143", "DCC144", "DCC145", "DCC147", "DCC148", "DCC149", "DCC152", "DCC153", "DCC154", "DCC155", "DCC159", "DCC160", "DCC161", "DCC162", "DCC163", "DCC164", "DCC165", "DCC166", "DCC167", "DCC168", "DCC171", "DCC172", "DCC174", "DCC176", "DCC177", "DCC178", "DCC179", "DCC180", "DCC181", "DCC182", "DCC183", "DCC184", "DCC185", "DCC186", "DCC187", "DCC188", "DCC189", "DCC190", "DCC199", "DCC200", "DC5199", "DC5200", "DPR032", "EADCC037", "EADCC043", "EADCC044", "EADDCC048", "EADDCC049", "EST028", "EST029", "EST030", "FIL012", "FIN001", "FIS073", "FIS074", "FIS075", "FIS077", "FIS122", "ICE001", "LEC003", "LEM184", "MAC011", "MAC013", "MAT013", "MAT029", "MAT143", "MAT154", "MAT155", "MAT156", "MAT157", "MAT158", "QUI125", "QUI126", "QUI168", "UNI001", "UNI002", "UNI003" };
@@ -235,72 +243,55 @@ public class CadastroBolsa extends javax.swing.JFrame {
         for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
             listaPreRequisitos.add(preRequisito);
         }
-
+        
         if (bolsaIsValid()) {
             if (tipoBolsa == 1) {
                 // Construtor da bolsa MONITORIA
 
-                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada, null);
+                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaMonitoria.add(bolsaMonitoria);
                 Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
                 monitoriaPersistence.save(listaMonitoria);
                 this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
                 JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
-
+                
             }
             if (tipoBolsa == 2) {
                 // Construtor da bolsa Inic.Cientifica
-                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada, null);
+                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaIC.add(bolsaIC);
                 Persistence<Bolsa> icPersistence = new IniciacaoCientificaPersistence();
                 icPersistence.save(listaIC);
                 this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
-
                 JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
             }
             if (tipoBolsa == 3) {
                 // Construtor da bolsa Treinamento P.
-                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada, null);
+                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaTP.add(bolsaTP);
                 Persistence<Bolsa> tpPersistence = new TreinamentoProfissionalPersistence();
                 tpPersistence.save(listaTP);
                 this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
-
                 JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional cadastrada com sucesso!");
             }
             if (tipoBolsa == 4) {
                 // Construtor da bolsa Extensão
-                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada, null);
+                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaBExtensao.add(bolsaBE);
                 Persistence<Bolsa> bePersistence = new BolsaExtensaoPersistence();
                 bePersistence.save(listaBExtensao);
                 this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
-
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }
-        HomeProfessor home = new HomeProfessor(this.user);
         
-        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
-        home.addLista(pExtensao.findAll());
-        
-        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
-        home.addLista(pIC.findAll());
-        
-        MonitoriaPersistence pMoni = new MonitoriaPersistence();
-        home.addLista(pMoni.findAll());
-        
-        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        home.addLista(pTP.findAll());
-        
-        home.model.removeAllElements();
-        
-        for(int i=0; i < home.bolsasLista.size(); i++){
-            home.model.addElement(home.bolsasLista.get(i).getTitulo());
-        }
-        
-        home.jListBolsa.setModel(home.model);
     }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        tela.dispose();
+        HomeProfessor telaRecarregar = new HomeProfessor(this.user);
+        telaRecarregar.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     public static boolean validarValor(String valor) {
         if (valor.isEmpty()) {
@@ -386,11 +377,11 @@ public class CadastroBolsa extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CadastroBolsa(null).setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -30,7 +30,7 @@ public class Bolsa {
     private String metodoEntrada;
     private List<Aluno> alunosCadastrados;
     
-    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada, Aluno aluno) {
+    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
         this.titulo = titulo;
         this.preRequisitos = preRequisitos;
         this.tipo = tipo;
@@ -39,7 +39,7 @@ public class Bolsa {
         this.vagas = vagas;
         this.professorResponsavel = professorResponsavel;
         this.metodoEntrada = metodoEntrada;
-        this.alunosCadastrados.add(aluno);
+        this.alunosCadastrados = new ArrayList<>();
     }
 
         public void addAlunosCadastrados(Aluno aluno) {
