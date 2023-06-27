@@ -286,7 +286,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 for(Professor p : professores){
                     if(p.getSiap().equals(this.user.getSiap())){
                         p.setDataContratacao(this.ingressoTF.getText());
-                        prof.save(professores);
+                        prof.replace(professores);
                         break;
                     }
                 }

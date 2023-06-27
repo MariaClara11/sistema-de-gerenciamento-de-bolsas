@@ -40,6 +40,7 @@ public class Arquivo {
         
         
     }
+    
      public static void replace(String filePath, String content) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             writer.write(content);

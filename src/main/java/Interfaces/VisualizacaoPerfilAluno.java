@@ -58,7 +58,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        telTF = new javax.swing.JFormattedTextField(Mascara("(##)# ####-####"));
+        telTF = new javax.swing.JFormattedTextField(Mascara("(##)9 ####-####"));
         nascimentoTF = new javax.swing.JTextField();
         nomeTF = new javax.swing.JTextField();
         cpfTF = new javax.swing.JTextField();
@@ -150,7 +150,6 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("Perfil");
 
-        data_ingressoTF.setText("");
         data_ingressoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 data_ingressoTFActionPerformed(evt);
@@ -277,11 +276,13 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         String dataIngresso = data_ingressoTF.getText();
       
         if (user.validarData(dataIngresso)) {
+            System.out.println(dataIngresso);
             this.user.setDataIngresso(dataIngresso);
         }else{
             erro = true;
         }
         if (ValidarTelefone(this.telTF.getText())) {
+            System.out.println(this.telTF.getText());
             this.user.setTelefone(this.telTF.getText());
         } else {
             erro = true;
