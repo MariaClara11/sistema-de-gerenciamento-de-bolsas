@@ -4,7 +4,12 @@
  */
 package Interfaces;
 
+import Persistence.AlunoPersistence;
+import Persistence.ProfessorPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -269,6 +274,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
        
         
         CadastroUsuario user = new CadastroUsuario();
+        AlunoPersistence aluno = new AlunoPersistence();
+                
+        List<Aluno> alunos = new ArrayList<>();
+        alunos = aluno.findAll();
         
         //erro = false;
         boolean erro = false;
@@ -278,12 +287,25 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         if (user.validarData(dataIngresso)) {
             System.out.println(dataIngresso);
             this.user.setDataIngresso(dataIngresso);
+            
+            for(Aluno a : alunos){
+                    if(a.getMatricula().equals(this.user.getMatricula())){
+                        a.setDataIngresso(this.data_ingressoTF.getText());
+                        aluno.replace(alunos);
+                        break;
+                    }
+                }
         }else{
             erro = true;
         }
         if (ValidarTelefone(this.telTF.getText())) {
-            System.out.println(this.telTF.getText());
-            this.user.setTelefone(this.telTF.getText());
+            for(Aluno a : alunos){
+                    if(a.getMatricula().equals(this.user.getMatricula())){
+                        a.setDataIngresso(this.telTF.getText());
+                        aluno.replace(alunos);
+                        break;
+                    }
+                }
         } else {
             erro = true;
             JOptionPane.showMessageDialog(this, "Telefone Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
