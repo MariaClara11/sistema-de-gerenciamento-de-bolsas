@@ -1,5 +1,6 @@
 package Persistence;
 
+import static Persistence.Persistence.DIRECTORY;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 
 public class AlunoPersistence implements Persistence<Aluno> {
 
@@ -44,6 +46,19 @@ public class AlunoPersistence implements Persistence<Aluno> {
         }
 
         return alunos;
+    }
+    
+    public void replace(List<Aluno> alunos) {
+        Gson gson = new Gson();
+        String json = gson.toJson(alunos);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
     }
 
 
