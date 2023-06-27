@@ -92,4 +92,9 @@ public class Professor extends Usuario {
         bolsasCadastradas.add(bolsa);
         return bolsa;
     }
+    
+    @Override 
+    public String retornaId(){
+        return siap;
+    }
 }
