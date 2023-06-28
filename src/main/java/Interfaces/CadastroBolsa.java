@@ -248,7 +248,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             if (tipoBolsa == 1) {
                 // Construtor da bolsa MONITORIA
 
-                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
+                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
                 listaMonitoria.add(bolsaMonitoria);
                 Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
                 monitoriaPersistence.save(listaMonitoria);
@@ -258,7 +258,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 2) {
                 // Construtor da bolsa Inic.Cientifica
-                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
+                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
                 listaIC.add(bolsaIC);
                 Persistence<Bolsa> icPersistence = new IniciacaoCientificaPersistence();
                 icPersistence.save(listaIC);
@@ -267,7 +267,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 3) {
                 // Construtor da bolsa Treinamento P.
-                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
+                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
                 listaTP.add(bolsaTP);
                 Persistence<Bolsa> tpPersistence = new TreinamentoProfissionalPersistence();
                 tpPersistence.save(listaTP);
@@ -276,7 +276,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
             }
             if (tipoBolsa == 4) {
                 // Construtor da bolsa Extensão
-                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
+                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
                 listaBExtensao.add(bolsaBE);
                 Persistence<Bolsa> bePersistence = new BolsaExtensaoPersistence();
                 bePersistence.save(listaBExtensao);

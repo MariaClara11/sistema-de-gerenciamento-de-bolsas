@@ -6,6 +6,7 @@ package Interfaces;
 
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,6 +50,8 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         fieldTipo = new javax.swing.JTextField();
         fieldProfessor = new javax.swing.JTextField();
         bInscrever = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        preRequisitoComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -134,6 +137,14 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("Pre-Requisitos : ");
+
+        preRequisitoComboBox.setEditable(false);
+        preRequisitoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        preRequisitoComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,17 +159,19 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fieldProfessor, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldRequisitos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                             .addComponent(fieldTipo)
                             .addComponent(fieldValor)
-                            .addComponent(fieldHoraria, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addComponent(fieldHoraria, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(preRequisitoComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(62, 62, 62))
             .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(168, 168, 168)
                 .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -188,8 +201,12 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(preRequisitoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
 
         pack();
@@ -198,10 +215,6 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     private void fieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldValorActionPerformed
-
-    private void fieldRequisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldRequisitosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fieldRequisitosActionPerformed
 
     private void fieldHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldHorariaActionPerformed
         // TODO add your handling code here:
@@ -229,9 +242,10 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_bInscreverMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+        comboBoxModel.addElement("Veja mais");
         this.Lnome.setText(this.bolsa.getTitulo());
-
+        
         this.fieldProfessor.setText(this.bolsa.getProfessorResponsavel());
 
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
@@ -239,18 +253,24 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
         String req = new String();
         for (String p : this.bolsa.getPreRequisitos()) {
+            comboBoxModel.addElement(p);
             req = req.concat("[");
             req = req.concat(p);
             req = req.concat("]");
         }
+        this.preRequisitoComboBox.setModel(comboBoxModel);
         this.fieldRequisitos.setText(req);
 
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
         
         this.fieldTipo.setText(this.bolsa.getTipo());
-
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void fieldRequisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldRequisitosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldRequisitosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,5 +318,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JComboBox<String> preRequisitoComboBox;
     // End of variables declaration//GEN-END:variables
 }
