@@ -353,7 +353,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                                 Persistence<Professor> professorPersistence = new ProfessorPersistence();
 
                                                 professorPersistence.save(listaProfessor);
-                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.OK_OPTION);
+                                                JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.DEFAULT_OPTION);
                                                 dispose();
 
                                             } catch (NoSuchAlgorithmException e) {
