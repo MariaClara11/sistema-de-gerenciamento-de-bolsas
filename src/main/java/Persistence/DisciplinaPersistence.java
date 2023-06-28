@@ -7,7 +7,6 @@ package Persistence;
 import static Persistence.Persistence.DIRECTORY;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import java.io.File;
 import java.lang.reflect.Type;
