@@ -5,6 +5,7 @@
 package Interfaces;
 
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -234,11 +235,22 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
     private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
 
-        if (this.user.getDisciplinas().containsAll(this.bolsa.getPreRequisitos()))
+        int counter=0;
+        for(Disciplina d: user.getDisciplinas()){
+            for(String b: this.bolsa.getPreRequisitos()){
+                if(d.getCodigo().equals(b)){
+                    counter++;
+                }
+            }
+        }
+        if(counter>=this.bolsa.getPreRequisitos().size()){
             this.bolsa.addAlunosCadastrados(user);
-        else {
+        }else {
             JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+        
+       
+        
     }//GEN-LAST:event_bInscreverMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

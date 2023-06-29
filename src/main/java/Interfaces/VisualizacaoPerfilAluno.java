@@ -79,6 +79,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         data_ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -161,14 +162,22 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Excluir Perfil");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(161, 161, 161)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +209,15 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 .addGap(160, 160, 160)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +254,9 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,6 +340,33 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_data_ingressoTFActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        AlunoPersistence aluno = new AlunoPersistence();
+
+        List<Aluno> alunos = new ArrayList<>();
+        alunos = aluno.findAll();
+        int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+        for (Aluno a : alunos) {
+            if (a.getMatricula().equals(this.user.getMatricula())) {
+                alunos.remove(a);
+                aluno.replace(alunos);
+                break;
+            }
+        }
+        if (resposta == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
+            dispose();
+
+        } else if (resposta == JOptionPane.NO_OPTION) {
+            dispose();
+        }
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -358,6 +405,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     private javax.swing.JTextField cpfTF;
     private javax.swing.JFormattedTextField data_ingressoTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

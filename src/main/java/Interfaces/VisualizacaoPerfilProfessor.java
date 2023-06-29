@@ -80,6 +80,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         ingressoTF = new javax.swing.JFormattedTextField(Mascara("##/##/####"));
         telTF = new javax.swing.JFormattedTextField(Mascara("(##)9 ####-####"));
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -158,6 +159,18 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Excluir Perfil");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,7 +210,9 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                                     .addComponent(nascimentoTF, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1))))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,9 +246,10 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nascimentoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2))
         );
 
         pack();
@@ -354,6 +370,33 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_telTFActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                ProfessorPersistence professor = new ProfessorPersistence();
+
+        List<Professor> professores = new ArrayList<>();
+        professores = professor.findAll();
+        int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+        for (Professor p : professores) {
+            if (p.getSiap().equals(this.user.getSiap())) {
+                professores.remove(p);
+                professor.replace(professores);
+                break;
+            }
+        }
+        if (resposta == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
+            dispose();
+
+        } else if (resposta == JOptionPane.NO_OPTION) {
+            dispose();
+        }
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
     private boolean ValidarTelefone(String telefone) {
         String PHONE_NUMBER_REGEX = "^\\(\\d{2}\\)9 \\d{4}-\\d{4}$";
         Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
@@ -402,6 +445,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField cpfTF;
     private javax.swing.JFormattedTextField ingressoTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
