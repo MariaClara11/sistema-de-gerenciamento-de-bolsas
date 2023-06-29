@@ -21,12 +21,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
      */
     List<Disciplina> DisciplinaLista = new ArrayList();
     private Aluno user = new Aluno();
-    
-    public CadastroDisciplina(){
+
+    public CadastroDisciplina() {
         initComponents();
     }
-    
-    
+
     public CadastroDisciplina(Aluno user) {
         this.user = user;
         initComponents();
@@ -147,40 +146,45 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
- String nota = notaTF.getText();
- float notaFloat= Float.parseFloat(nota);
-  String codigo = (String) codigoDisciplinaSelect.getSelectedItem();
-    if (disciplinaIsValid()) {
-        this.user.getDisciplinas().add(new Disciplina(notaFloat, codigo));
-        JOptionPane.showMessageDialog(this, "Bolsa cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        dispose();
-    }
+        String nota = notaTF.getText();
+        if (disciplinaIsValid()) {
+            float notaFloat = Float.parseFloat(nota);
+            String codigo = (String) codigoDisciplinaSelect.getSelectedItem();
+            Disciplina cadDisciplina = new Disciplina(notaFloat, codigo);
+            this.user.getDisciplinas().add(cadDisciplina);
+            JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-
     public boolean disciplinaIsValid() {
+
         int codigoIndex = codigoDisciplinaSelect.getSelectedIndex();
+        String nota = notaTF.getText();
+
         if (codigoIndex == 0) {
             JOptionPane.showMessageDialog(this, "Selecione o código da disciplina", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
-
-        String nota = notaTF.getText();
-        float notaInt = Float.parseFloat(nota);
-        if (notaInt < 0 || notaInt > 100) {
-            JOptionPane.showMessageDialog(this, "Nota deve estar entre 0 e 100", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (nota.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informe a nota da disciplina", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
-        }
+        } else {
+            float notaFloat = Float.parseFloat(nota);
+            if (notaFloat > 100 || notaFloat < 0) {
+                JOptionPane.showMessageDialog(this, "Nota deve estar entre 0 e 100", "Erro", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
 
+        }
         return true;
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -207,6 +211,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CadastroDisciplina().setVisible(true);
             }

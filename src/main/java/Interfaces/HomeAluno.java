@@ -28,30 +28,29 @@ public class HomeAluno extends javax.swing.JFrame {
     /**
      * Creates new form HomeAluno
      */
-    
     DefaultListModel modelIC = new DefaultListModel();
     DefaultListModel modelTP = new DefaultListModel();
     DefaultListModel modelMo = new DefaultListModel();
     DefaultListModel modelBE = new DefaultListModel();
-    
+
     public List<IniciacaoCientifica> listaIC = new ArrayList<>();
     public List<TreinamentoProfissional> listaTP = new ArrayList<>();
     public List<Monitoria> listaMonitoria = new ArrayList<>();
     public List<Extensao> listaBExtensao = new ArrayList<>();
-    
+
     Aluno user;
-    
+
     public HomeAluno(Aluno user) {
-        
+
         this.user = user;
-        
+
         initComponents();
-        
+
         this.ListExtensao.setModel(modelBE);
         this.ListIC.setModel(modelIC);
         this.ListMonitoria.setModel(modelMo);
         this.ListTP.setModel(modelTP);
-        
+
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
     }
@@ -79,6 +78,7 @@ public class HomeAluno extends javax.swing.JFrame {
         ListIC = new javax.swing.JList<>();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuPerfil = new javax.swing.JMenu();
+        jMenuPerfil1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -181,6 +181,14 @@ public class HomeAluno extends javax.swing.JFrame {
         });
         jMenuBar2.add(jMenuPerfil);
 
+        jMenuPerfil1.setText("Cadastrar Disciplinas");
+        jMenuPerfil1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuPerfil1MouseClicked(evt);
+            }
+        });
+        jMenuBar2.add(jMenuPerfil1);
+
         jMenuSair.setText("Sair");
         jMenuSair.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jMenuSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -247,7 +255,7 @@ public class HomeAluno extends javax.swing.JFrame {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaMonitoria.get(selectedIndex),user);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaMonitoria.get(selectedIndex), user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -258,7 +266,7 @@ public class HomeAluno extends javax.swing.JFrame {
             int selectedIndex = ListExtensao.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaBExtensao.get(selectedIndex),user);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaBExtensao.get(selectedIndex), user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -269,7 +277,7 @@ public class HomeAluno extends javax.swing.JFrame {
             int selectedIndex = ListIC.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaIC.get(selectedIndex),user);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaIC.get(selectedIndex), user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -280,7 +288,7 @@ public class HomeAluno extends javax.swing.JFrame {
             int selectedIndex = ListTP.getSelectedIndex();
             if (selectedIndex != -1) {
                 //abrirTelaSelecionada(selectedIndex);
-                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaTP.get(selectedIndex),user);
+                InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaTP.get(selectedIndex), user);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -303,61 +311,67 @@ public class HomeAluno extends javax.swing.JFrame {
         VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user);
         viewPerfilAluno.setVisible(true);
 
+
     }//GEN-LAST:event_jMenuPerfilMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         this.modelBE.removeAllElements();
         this.modelIC.removeAllElements();
         this.modelMo.removeAllElements();
         this.modelTP.removeAllElements();
-        
+
         BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
         this.addListaExtensao(listaBExtensao, this.modelBE, pExtensao.findAll());
-        
+
         IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
         this.addListaIniciacaoCientifica(listaIC, this.modelIC, pIC.findAll());
-        
+
         MonitoriaPersistence pMoni = new MonitoriaPersistence();
         this.addListaMonitoria(listaMonitoria, this.modelMo, pMoni.findAll());
-        
+
         TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        this.addListaTreinamentoProfissional(listaTP,this.modelTP, pTP.findAll());
-             
+        this.addListaTreinamentoProfissional(listaTP, this.modelTP, pTP.findAll());
+
     }//GEN-LAST:event_formWindowOpened
-    
-     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
+
+    private void jMenuPerfil1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfil1MouseClicked
+        CadastroDisciplina viewCadastroDisciplinas = new CadastroDisciplina(user);
+        viewCadastroDisciplinas.setVisible(true);
+    }//GEN-LAST:event_jMenuPerfil1MouseClicked
+
+    public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Extensao b : persistence) {
             bolsa.add(b);
             model.addElement(b.getTitulo());
-        } 
+        }
     }
-     
-     public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
+
+    public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (IniciacaoCientifica b : persistence) {
             bolsa.add(b);
             model.addElement(b.getTitulo());
-        } 
+        }
     }
-     
-     public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
+
+    public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Monitoria b : persistence) {
             bolsa.add(b);
             model.addElement(b.getTitulo());
-        } 
+        }
     }
-     
-     public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
+
+    public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (TreinamentoProfissional b : persistence) {
             bolsa.add(b);
             model.addElement(b.getTitulo());
-        } 
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -403,6 +417,7 @@ public class HomeAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuPerfil;
+    private javax.swing.JMenu jMenuPerfil1;
     private javax.swing.JMenu jMenuSair;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane4;
