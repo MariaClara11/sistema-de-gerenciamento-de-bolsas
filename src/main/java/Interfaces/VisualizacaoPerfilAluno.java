@@ -301,7 +301,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         if (ValidarTelefone(this.telTF.getText())) {
             for(Aluno a : alunos){
                     if(a.getMatricula().equals(this.user.getMatricula())){
-                        a.setDataIngresso(this.telTF.getText());
+                        a.setTelefone(this.telTF.getText());
                         aluno.replace(alunos);
                         break;
                     }
