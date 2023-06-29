@@ -9,9 +9,13 @@ import Persistence.IniciacaoCientificaPersistence;
 import Persistence.MonitoriaPersistence;
 import Persistence.Persistence;
 import Persistence.TreinamentoProfissionalPersistence;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -235,10 +239,10 @@ public class CadastroBolsa extends javax.swing.JFrame {
 
         List<Disciplina> lista = new ArrayList<>();
         List<String> listaPreRequisitos = new ArrayList<>();
-        List<Bolsa> listaMonitoria = new ArrayList<>();
-        List<Bolsa> listaIC = new ArrayList<>();
-        List<Bolsa> listaTP = new ArrayList<>();
-        List<Bolsa> listaBExtensao = new ArrayList<>();
+        List<Monitoria> listaMonitoria = new ArrayList<>();
+        List<IniciacaoCientifica> listaIC = new ArrayList<>();
+        List<TreinamentoProfissional> listaTP = new ArrayList<>();
+        List<Extensao> listaBExtensao = new ArrayList<>();
 
         for (String preRequisito : listaPreRequisitosSelect.getSelectedValuesList()) {
             listaPreRequisitos.add(preRequisito);
@@ -248,39 +252,39 @@ public class CadastroBolsa extends javax.swing.JFrame {
             if (tipoBolsa == 1) {
                 // Construtor da bolsa MONITORIA
 
-                Bolsa bolsaMonitoria = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
+                Monitoria bolsaMonitoria = new Monitoria(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaMonitoria.add(bolsaMonitoria);
-                Persistence<Bolsa> monitoriaPersistence = new MonitoriaPersistence();
+                Persistence<Monitoria> monitoriaPersistence = new MonitoriaPersistence();
                 monitoriaPersistence.save(listaMonitoria);
-                this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
                 JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
                 
             }
             if (tipoBolsa == 2) {
                 // Construtor da bolsa Inic.Cientifica
-                Bolsa bolsaIC = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
+                IniciacaoCientifica bolsaIC = new IniciacaoCientifica(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaIC.add(bolsaIC);
-                Persistence<Bolsa> icPersistence = new IniciacaoCientificaPersistence();
+                Persistence<IniciacaoCientifica> icPersistence = new IniciacaoCientificaPersistence();
                 icPersistence.save(listaIC);
-                this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
                 JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
             }
             if (tipoBolsa == 3) {
                 // Construtor da bolsa Treinamento P.
-                Bolsa bolsaTP = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
+                TreinamentoProfissional bolsaTP = new TreinamentoProfissional(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaTP.add(bolsaTP);
-                Persistence<Bolsa> tpPersistence = new TreinamentoProfissionalPersistence();
+                Persistence<TreinamentoProfissional> tpPersistence = new TreinamentoProfissionalPersistence();
                 tpPersistence.save(listaTP);
-                this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
                 JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional cadastrada com sucesso!");
             }
             if (tipoBolsa == 4) {
                 // Construtor da bolsa Extensão
-                Bolsa bolsaBE = new Bolsa(titulo, listaPreRequisitos, nomeTipo, valorFloat, cargaHorariaInt, qtdVagas, user.getNome(), nomeMetodoEntrada);
+                Extensao bolsaBE = new Extensao(titulo, listaPreRequisitos, valorFloat, cargaHorariaInt, qtdVagas, user.getSiap(), nomeMetodoEntrada);
                 listaBExtensao.add(bolsaBE);
-                Persistence<Bolsa> bePersistence = new BolsaExtensaoPersistence();
+                Persistence<Extensao> bePersistence = new BolsaExtensaoPersistence();
                 bePersistence.save(listaBExtensao);
-                this.user.cadastraBolsa(titulo, nomeTipo, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }

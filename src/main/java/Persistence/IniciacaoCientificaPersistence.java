@@ -7,7 +7,8 @@ package Persistence;
 import static Persistence.Persistence.DIRECTORY;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -17,12 +18,12 @@ import java.util.List;
  *
  * @author marlo
  */
-public class IniciacaoCientificaPersistence implements Persistence<Bolsa> {
+public class IniciacaoCientificaPersistence implements Persistence<IniciacaoCientifica> {
 
     private static final String PATH = DIRECTORY + File.separator + "iniciacaoCientifica.json";
 
     @Override
-    public void save(List<Bolsa> bolsasIC) {
+    public void save(List<IniciacaoCientifica> bolsasIC) {
         Gson gson = new Gson();
         String json = gson.toJson(bolsasIC);
 
@@ -35,15 +36,15 @@ public class IniciacaoCientificaPersistence implements Persistence<Bolsa> {
     }
 
     @Override
-    public List<Bolsa> findAll() {
+    public List<IniciacaoCientifica> findAll() {
         Gson gson = new Gson();
 
         String json = Arquivo.le(PATH);
 
-        List<Bolsa> listaBolsasIC = new ArrayList<>();
+        List<IniciacaoCientifica> listaBolsasIC = new ArrayList<>();
         if (!json.trim().equals("")) {
 
-            Type tipoLista = new TypeToken<List<Bolsa>>() {
+            Type tipoLista = new TypeToken<List<IniciacaoCientifica>>() {
             }.getType();
             listaBolsasIC = gson.fromJson(json, tipoLista);
 

@@ -25,7 +25,7 @@ import java.util.List;
 public class Professor extends Usuario {
     private String siap;
     private String dataContratacao;
-    List<Bolsa> bolsasCadastradas;
+    List<Projeto> bolsasCadastradas;
     /*
     public Professor() {
         super();
@@ -49,7 +49,7 @@ public class Professor extends Usuario {
         return dataContratacao;
     }
 
-    public List<Bolsa> getBolsasCadastradas() {
+    public List<Projeto> getBolsasCadastradas() {
         return bolsasCadastradas;
     }
 
@@ -61,7 +61,7 @@ public class Professor extends Usuario {
         this.dataContratacao = dataContratacao;
     }
 
-    public void setBolsasCadastradas(List<Bolsa> bolsasCadastradas) {
+    public void setBolsasCadastradas(List<Projeto> bolsasCadastradas) {
         this.bolsasCadastradas = bolsasCadastradas;
     }
 
@@ -70,7 +70,7 @@ public class Professor extends Usuario {
         return "Funcionario{" + super.toString()+ ", siap=" + siap + ", dataContratacao=" + dataContratacao + ", bolsasCadastradas=" + bolsasCadastradas + '}';
     }
     
-    public void editaDadosUsuario(String siap, String dataContratacao, List<Bolsa> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
+    public void editaDadosUsuario(String siap, String dataContratacao, List<Projeto> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
         super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
         this.siap = siap;
         this.dataContratacao = dataContratacao;
@@ -86,9 +86,17 @@ public class Professor extends Usuario {
     }
     
     //O professor cadastra a bolsa
-    public Bolsa cadastraBolsa(String titulo, String tipo, String professor, float valor, int cargaHoraria, String metodoEntrada, int vagas, List<String> preRequisitos){
-        
-        Bolsa bolsa = new Bolsa(titulo, preRequisitos, tipo, valor, cargaHoraria, vagas, professor, metodoEntrada);
+    public Projeto cadastraBolsa(String titulo, int tipo, String professor, float valor, int cargaHoraria, String metodoEntrada, int vagas, List<String> preRequisitos){
+        Projeto bolsa;
+        if (tipo == 1){
+            bolsa = new Monitoria(titulo, preRequisitos, valor, cargaHoraria, vagas, professor, metodoEntrada);
+        }else if(tipo == 2){
+            bolsa = new IniciacaoCientifica(titulo, preRequisitos, valor, cargaHoraria, vagas, professor, metodoEntrada);
+        }else if(tipo == 3){
+            bolsa = new TreinamentoProfissional(titulo, preRequisitos, valor, cargaHoraria, vagas, professor, metodoEntrada);
+        }else{
+            bolsa = new Extensao(titulo, preRequisitos, valor, cargaHoraria, vagas, professor, metodoEntrada);
+        }
         bolsasCadastradas.add(bolsa);
         return bolsa;
     }

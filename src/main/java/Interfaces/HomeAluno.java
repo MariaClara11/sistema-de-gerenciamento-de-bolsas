@@ -9,7 +9,11 @@ import Persistence.IniciacaoCientificaPersistence;
 import Persistence.MonitoriaPersistence;
 import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -30,10 +34,10 @@ public class HomeAluno extends javax.swing.JFrame {
     DefaultListModel modelMo = new DefaultListModel();
     DefaultListModel modelBE = new DefaultListModel();
     
-    public List<Bolsa> listaIC = new ArrayList<>();
-    public List<Bolsa> listaTP = new ArrayList<>();
-    public List<Bolsa> listaMonitoria = new ArrayList<>();
-    public List<Bolsa> listaBExtensao = new ArrayList<>();
+    public List<IniciacaoCientifica> listaIC = new ArrayList<>();
+    public List<TreinamentoProfissional> listaTP = new ArrayList<>();
+    public List<Monitoria> listaMonitoria = new ArrayList<>();
+    public List<Extensao> listaBExtensao = new ArrayList<>();
     
     Aluno user;
     
@@ -309,26 +313,49 @@ public class HomeAluno extends javax.swing.JFrame {
         this.modelTP.removeAllElements();
         
         BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
-        this.addLista(listaBExtensao, this.modelBE, pExtensao.findAll());
+        this.addListaExtensao(listaBExtensao, this.modelBE, pExtensao.findAll());
         
         IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
-        this.addLista(listaIC, this.modelIC, pIC.findAll());
+        this.addListaIniciacaoCientifica(listaIC, this.modelIC, pIC.findAll());
         
         MonitoriaPersistence pMoni = new MonitoriaPersistence();
-        this.addLista(listaMonitoria, this.modelMo, pMoni.findAll());
+        this.addListaMonitoria(listaMonitoria, this.modelMo, pMoni.findAll());
         
         TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        this.addLista(listaTP,this.modelTP, pTP.findAll());
+        this.addListaTreinamentoProfissional(listaTP,this.modelTP, pTP.findAll());
              
     }//GEN-LAST:event_formWindowOpened
     
-     public void addLista(List<Bolsa> bolsa, DefaultListModel model, List<Bolsa> persistence) {
+     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
-        for (Bolsa b : persistence) {
+        for (Extensao b : persistence) {
             bolsa.add(b);
             model.addElement(b.getTitulo());
-        }
-        
+        } 
+    }
+     
+     public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (IniciacaoCientifica b : persistence) {
+            bolsa.add(b);
+            model.addElement(b.getTitulo());
+        } 
+    }
+     
+     public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (Monitoria b : persistence) {
+            bolsa.add(b);
+            model.addElement(b.getTitulo());
+        } 
+    }
+     
+     public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (TreinamentoProfissional b : persistence) {
+            bolsa.add(b);
+            model.addElement(b.getTitulo());
+        } 
     }
     
     /**

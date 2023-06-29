@@ -1,16 +1,2 @@
-[{"titulo":"Marlon","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"123","metodoEntrada":"Prova"},
-{"titulo":"Marlon","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"123","metodoEntrada":"Prova"},
-{"titulo":"Marlon","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"123","metodoEntrada":"Prova"},
-{"titulo":"Marlon","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"123","metodoEntrada":"Prova"},
-{"titulo":"Marlon","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"123","metodoEntrada":"Prova"},
-{"titulo":"123123","preRequisitos":["DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":13,"vagas":1,"professorResponsavel":"12312","metodoEntrada":"Prova"},
-{"titulo":"monitoria do marlon","preRequisitos":["DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":12345.0,"quantidadeHoras":1,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
-{"titulo":"monitoria","preRequisitos":["CAD076"],"tipo":"Monitoria","valor":1.0,"quantidadeHoras":1,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
-{"titulo":"qweqwe","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":1233.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"qweqweqw","metodoEntrada":"Prova"},
-{"titulo":"qwer","preRequisitos":["DCC001","DCC008","DCC012","DCC013"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"qwer","metodoEntrada":"Prova"},
-{"titulo":"monitoria","preRequisitos":["CAD076","DCC001","DCC008","DCC012","DCC013"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":11,"professorResponsavel":"roney","metodoEntrada":"Prova"},
-{"titulo":"monitoria","preRequisitos":["CAD076","DCC001","DCC008","DCC012"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"roney","metodoEntrada":"Prova"},
-{"titulo":"Monitoria OO","preRequisitos":["DCC013","DCC014","DCC019","DCC025"],"tipo":"Monitoria","valor":400.0,"quantidadeHoras":400,"vagas":1,"professorResponsavel":"54321","metodoEntrada":"Prova"},
-{"titulo":"monitoria","preRequisitos":["CAD076","DCC001","DCC008"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
-{"titulo":"aipapai","preRequisitos":["DCC001","DCC008","DCC012","DCC013"],"tipo":"Monitoria","valor":12345.0,"quantidadeHoras":1234,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"},
-{"titulo":"agr vai","preRequisitos":["DCC001","DCC008","DCC012","DCC013","DCC014"],"tipo":"Monitoria","valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12345","metodoEntrada":"Prova"}]
+[{"titulo":"teste","preRequisitos":["DCC001"],"valor":62.0,"quantidadeHoras":4,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
+{"titulo":"testeeeeeeeeeeeeeee","preRequisitos":["CAD076"],"valor":4.0,"quantidadeHoras":2,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]}]

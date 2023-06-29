@@ -19,10 +19,10 @@ import java.util.*;
  * Nome: Marlon Ruffo Nascimento
  * Matricula: 202065165AC
  */
-public class Bolsa {
+public class Projeto {
     private String titulo;
     private List<String> preRequisitos;
-    private String tipo;
+    //private String tipo;
     private float valor;
     private int quantidadeHoras;
     private int vagas;
@@ -30,10 +30,9 @@ public class Bolsa {
     private String metodoEntrada;
     private List<Aluno> alunosCadastrados;
     
-    public Bolsa(String titulo, List<String> preRequisitos, String tipo, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
+    public Projeto(String titulo, List<String> preRequisitos, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
         this.titulo = titulo;
         this.preRequisitos = preRequisitos;
-        this.tipo = tipo;
         this.valor = valor;
         this.quantidadeHoras = quantidadeHoras;
         this.vagas = vagas;
@@ -55,10 +54,6 @@ public class Bolsa {
 
     public void setPreRequisitos(List<String> preRequisitos) {
         this.preRequisitos = preRequisitos;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public void setValor(float valor) {
@@ -89,9 +84,6 @@ public class Bolsa {
         return preRequisitos;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
 
     public float getValor() {
         return valor;
@@ -111,6 +103,10 @@ public class Bolsa {
 
     public String getMetodoEntrada() {
         return metodoEntrada;
+    }
+    
+    public String retornaTipo(){
+        return "";
     }
 
     

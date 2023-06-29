@@ -4,23 +4,21 @@
  */
 package Interfaces;
 
-import Persistence.Arquivo;
 import Persistence.BolsaExtensaoPersistence;
 import Persistence.IniciacaoCientificaPersistence;
 import Persistence.MonitoriaPersistence;
-import Persistence.Persistence;
 import Persistence.TreinamentoProfissionalPersistence;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
-import com.mycompany.sistemadegerenciamentodebolsas.Usuario;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.WindowEvent;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -28,45 +26,35 @@ import javax.swing.JScrollPane;
  */
 public class HomeProfessor extends javax.swing.JFrame {
 
-    List<Bolsa> bolsasLista = new ArrayList();
-    DefaultListModel model = new DefaultListModel();
-    
-    private Professor user;
-
     /**
-     * Creates new form HomeProfessor
+     * Creates new form HomeAluno
      */
-    public HomeProfessor() {
-        
-
-        initComponents();
-        /*this.jListBolsa = new JList<>(listModel);
-        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
-        this.getContentPane().add(this.jScrollPane1);*/
-        jListBolsa.setModel(model);
-        //jListBolsa.removeAll();
-        setExtendedState(MAXIMIZED_BOTH);
-
-    }
+    
+    DefaultListModel modelProfIC = new DefaultListModel();
+    DefaultListModel modelProfTP = new DefaultListModel();
+    DefaultListModel modelProfMo = new DefaultListModel();
+    DefaultListModel modelProfBE = new DefaultListModel();
+    
+    public List<IniciacaoCientifica> listaIC = new ArrayList<>();
+    public List<TreinamentoProfissional> listaTP = new ArrayList<>();
+    public List<Monitoria> listaMonitoria = new ArrayList<>();
+    public List<Extensao> listaBExtensao = new ArrayList<>();
+    
+    Professor user;
     
     public HomeProfessor(Professor user) {
-
-        initComponents();
+        
         this.user = user;
-        this.jListBolsa.setModel(model);
         
-        /*listModel = new DefaultListModel<>();
-        this.jListBolsa = new JList<>(listModel);
-
-        this.jScrollPane1 = new javax.swing.JScrollPane(this.jListBolsa);
-        this.getContentPane().add(this.jScrollPane1);*/
+        initComponents();
         
-        jListBolsa.setModel(model);
+        this.ListExtensao.setModel(modelProfBE);
+        this.ListIC.setModel(modelProfIC);
+        this.ListMonitoria.setModel(modelProfMo);
+        this.ListTP.setModel(modelProfTP);
         
-
-        
+        setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
-
     }
 
     /**
@@ -78,43 +66,114 @@ public class HomeProfessor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListBolsa = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListExtensao = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ListMonitoria = new javax.swing.JList<>();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        ListTP = new javax.swing.JList<>();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        ListIC = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenuPerfil = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName(""); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jListBolsa.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
-        jListBolsa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jListBolsa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jListBolsa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListBolsaMouseClicked(evt);
-            }
-        });
-        jListBolsa.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jListBolsaInputMethodTextChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jListBolsa);
-
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Minhas Bolsas");
-        jLabel1.setToolTipText("");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Monitoria");
+        jLabel1.setAlignmentX(0.5F);
+
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Extensão");
+        jLabel2.setAlignmentX(0.5F);
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Iniciação Cientifica");
+        jLabel3.setAlignmentX(0.5F);
+
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Treinamento Profissional");
+        jLabel4.setAlignmentX(0.5F);
+
+        jScrollPane4.setAlignmentX(getAlignmentX());
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(1014, 375));
+
+        ListExtensao.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListExtensao.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListExtensao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListExtensao.setToolTipText("");
+        ListExtensao.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListExtensao.setName(""); // NOI18N
+        ListExtensao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListExtensaoMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(ListExtensao);
+
+        jScrollPane8.setAlignmentX(getAlignmentX());
+        jScrollPane8.setPreferredSize(new java.awt.Dimension(1014, 375));
+
+        ListMonitoria.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListMonitoria.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListMonitoria.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListMonitoria.setToolTipText("");
+        ListMonitoria.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListMonitoria.setName(""); // NOI18N
+        ListMonitoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListMonitoriaMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(ListMonitoria);
+
+        jScrollPane9.setAlignmentX(getAlignmentX());
+        jScrollPane9.setPreferredSize(new java.awt.Dimension(1014, 375));
+
+        ListTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListTP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListTP.setToolTipText("");
+        ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListTP.setName(""); // NOI18N
+        ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListTPMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(ListTP);
+
+        jScrollPane10.setAlignmentX(getAlignmentX());
+        jScrollPane10.setPreferredSize(new java.awt.Dimension(1014, 375));
+
+        ListIC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListIC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListIC.setToolTipText("");
+        ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListIC.setName(""); // NOI18N
+        ListIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListICMouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(ListIC);
 
         jButton1.setFont(new java.awt.Font("Liberation Sans", 0, 36)); // NOI18N
         jButton1.setText("Cadastrar Bolsa");
@@ -130,62 +189,134 @@ public class HomeProfessor extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Perfil");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuPerfil.setText("Perfil");
+        jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenuPerfilMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar2.add(jMenuPerfil);
 
-        jMenu2.setText("Sair");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuSair.setText("Sair");
+        jMenuSair.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jMenuSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                jMenuSairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar2.add(jMenuSair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(88, 88, 88))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(105, 105, 105))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(311, 311, 311)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel4))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void ListMonitoriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMonitoriaMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListMonitoria.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaMonitoria.get(selectedIndex),user);
+                //ViewBolsa.setVisible(true);
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaMonitoria.get(selectedIndex));
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListMonitoriaMouseClicked
 
-        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor(user);
-        viewPerfil.setVisible(true);
+    private void ListExtensaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListExtensaoMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListExtensao.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaBExtensao.get(selectedIndex),user);
+                //ViewBolsa.setVisible(true);
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaBExtensao.get(selectedIndex));
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListExtensaoMouseClicked
 
-    }//GEN-LAST:event_jMenu1MouseClicked
+    private void ListICMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListICMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListIC.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaIC.get(selectedIndex),user);
+                //ViewBolsa.setVisible(true);
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaIC.get(selectedIndex));
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListICMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void ListTPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListTPMouseClicked
+        if (evt.getClickCount() == 2) {
+            int selectedIndex = ListTP.getSelectedIndex();
+            if (selectedIndex != -1) {
+                //abrirTelaSelecionada(selectedIndex);
+                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaTP.get(selectedIndex),user);
+                //ViewBolsa.setVisible(true);
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaTP.get(selectedIndex));
+                ViewBolsa.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ListTPMouseClicked
+
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
 
         int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
@@ -195,75 +326,86 @@ public class HomeProfessor extends javax.swing.JFrame {
             dispose();
         }
 
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }//GEN-LAST:event_jMenuSairMouseClicked
+
+    private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
+
+        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor(user);
+        viewPerfil.setVisible(true);
+
+    }//GEN-LAST:event_jMenuPerfilMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        this.modelProfBE.removeAllElements();
+        this.modelProfIC.removeAllElements();
+        this.modelProfMo.removeAllElements();
+        this.modelProfTP.removeAllElements();
+        
+        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
+        this.addListaExtensao(listaBExtensao, this.modelProfBE, pExtensao.findAll());
+        
+        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
+        this.addListaIniciacaoCientifica(listaIC, this.modelProfIC, pIC.findAll());
+        
+        MonitoriaPersistence pMoni = new MonitoriaPersistence();
+        this.addListaMonitoria(listaMonitoria, this.modelProfMo, pMoni.findAll());
+        
+        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
+        this.addListaTreinamentoProfissional(listaTP,this.modelProfTP, pTP.findAll());
+             
+    }//GEN-LAST:event_formWindowOpened
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
         CadastroBolsa cadbolsa = new CadastroBolsa(this.user, this);
         cadbolsa.setVisible(true);
-
     }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jListBolsaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListBolsaMouseClicked
-
-        if (evt.getClickCount() == 2) {
-            int selectedIndex = jListBolsa.getSelectedIndex();
-            if (selectedIndex != -1) {
-                //abrirTelaSelecionada(selectedIndex);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.bolsasLista.get(selectedIndex));
-                ViewBolsa.setVisible(true);
-            }
-
-        }
-    }//GEN-LAST:event_jListBolsaMouseClicked
-
-    private void jListBolsaInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jListBolsaInputMethodTextChanged
-        
-    }//GEN-LAST:event_jListBolsaInputMethodTextChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
-        this.addLista(pExtensao.findAll());
-        
-        IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
-        this.addLista(pIC.findAll());
-        
-        MonitoriaPersistence pMoni = new MonitoriaPersistence();
-        this.addLista(pMoni.findAll());
-        
-        TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        this.addLista(pTP.findAll());
-        
-        this.model.removeAllElements();
-        
-        for(int i=0; i < this.bolsasLista.size(); i++){
-            model.addElement(this.bolsasLista.get(i).getTitulo());
-        }
-        
-    }//GEN-LAST:event_formWindowOpened
-
-
-    public void addLista(List<Bolsa> bolsa) {
+    
+     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
-        for (Bolsa b : bolsa) {
+        for (Extensao b : persistence) {
             if(b.getProfessorResponsavel().equals(this.user.getSiap())){
-           
-                this.bolsasLista.add(b);
+                bolsa.add(b);
+                model.addElement(b.getTitulo());
             }
-        }
+        } 
     }
-
-
-    public void inputListBolsa() {
-        InputMethodEvent evt = null;
-        jListBolsaInputMethodTextChanged(evt);
+     
+     public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (IniciacaoCientifica b : persistence) {
+            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+                bolsa.add(b);
+                model.addElement(b.getTitulo());
+            }
+        } 
     }
-
+     
+     public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (Monitoria b : persistence) {
+            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+                bolsa.add(b);
+                model.addElement(b.getTitulo());
+            }
+        } 
+    }
+     
+     public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (TreinamentoProfissional b : persistence) {
+            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+                bolsa.add(b);
+                model.addElement(b.getTitulo());
+            }
+        } 
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -290,22 +432,31 @@ public class HomeProfessor extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HomeProfessor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new HomeProfessor().setVisible(true);
+            Professor user1 = null;
+            new HomeProfessor(user1).setVisible(true);
         });
     }
 
-    //DefaultListModel<String> model = new DefaultListModel<>();
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> ListExtensao;
+    private javax.swing.JList<String> ListIC;
+    private javax.swing.JList<String> ListMonitoria;
+    private javax.swing.JList<String> ListTP;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    public javax.swing.JList<Bolsa> jListBolsa;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuPerfil;
+    private javax.swing.JMenu jMenuSair;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
 }

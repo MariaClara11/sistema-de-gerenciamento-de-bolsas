@@ -5,7 +5,7 @@
 package Interfaces;
 
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -20,13 +20,13 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     
     List<Aluno> alunoLista = new ArrayList();
     DefaultListModel model = new DefaultListModel();
-    Bolsa bolsa;
+    Projeto bolsa;
     
     
     /**
      * Creates new form VisualizacaoBolsa
      */
-    public VisualizacaoBolsa(Bolsa bolsa) {
+    public VisualizacaoBolsa(Projeto bolsa) {
         initComponents();
         this.bolsa = bolsa;
         this.listAlunos.setModel(model);
@@ -270,7 +270,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
         this.horaTF.setText(hora);
         
-        this.tipoTF.setText(this.bolsa.getTipo());
+        this.tipoTF.setText(this.bolsa.retornaTipo());
          
         for(Aluno a : this.bolsa.getAlunosCadastrados()){
             model.addElement(a.getNome());

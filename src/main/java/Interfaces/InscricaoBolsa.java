@@ -5,7 +5,7 @@
 package Interfaces;
 
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
-import com.mycompany.sistemadegerenciamentodebolsas.Bolsa;
+import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class InscricaoBolsa extends javax.swing.JFrame {
 
-    private Bolsa bolsa;
+    private Projeto bolsa;
     private Aluno user;
 
     /**
      * Creates new form InscricaoBolsa
      */
-    public InscricaoBolsa(Bolsa bolsa, Aluno user) {
+    public InscricaoBolsa(Projeto bolsa, Aluno user) {
 
         this.bolsa = bolsa;
         this.user = user;
@@ -264,7 +264,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
         
-        this.fieldTipo.setText(this.bolsa.getTipo());
+        this.fieldTipo.setText(this.bolsa.retornaTipo());
         
     }//GEN-LAST:event_formWindowOpened
 
