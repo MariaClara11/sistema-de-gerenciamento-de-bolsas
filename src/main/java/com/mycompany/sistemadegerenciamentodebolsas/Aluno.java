@@ -40,6 +40,8 @@ public class Aluno extends Usuario{
     public Aluno(String matricula, String nome, String CPF, String dataNascimento, String senha) {
         super(nome,0, CPF, dataNascimento, senha, "");
         this.matricula = matricula;
+        this.disciplinas = new ArrayList<>();
+        this.ira= 0;
     }
     
     public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {

@@ -26,6 +26,7 @@ public class Disciplina {
     private String codigo;
     private int creditos;
     private List<String> preRequisitos;
+    private float nota;
 
     public Disciplina(String nome, String codigo, int creditos, List<String> preRequisitos) {
         this.nome = nome;
@@ -33,7 +34,10 @@ public class Disciplina {
         this.creditos = creditos;
         this.preRequisitos = preRequisitos;
     }
-
+    public Disciplina(float nota, String codigo) {
+        this.nota = nota;
+        this.codigo = codigo;
+    }
     public Disciplina() {
         this.nome = "";
         this.codigo = "";

@@ -148,9 +148,10 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
  String nota = notaTF.getText();
+ float notaFloat= Float.parseFloat(nota);
   String codigo = (String) codigoDisciplinaSelect.getSelectedItem();
     if (disciplinaIsValid()) {
-        this.user.getDisciplinas().add(new Disciplina(codigo));
+        this.user.getDisciplinas().add(new Disciplina(notaFloat, codigo));
         JOptionPane.showMessageDialog(this, "Bolsa cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
