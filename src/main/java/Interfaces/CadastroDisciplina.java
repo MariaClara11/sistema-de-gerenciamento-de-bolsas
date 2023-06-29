@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Persistence.AlunoPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import java.util.ArrayList;
@@ -147,13 +148,27 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         String nota = notaTF.getText();
+
+        AlunoPersistence alunoP = new AlunoPersistence();
+        List<Aluno> todosAlunos = new ArrayList<>();
+        todosAlunos = alunoP.findAll();
+
         if (disciplinaIsValid()) {
             float notaFloat = Float.parseFloat(nota);
             String codigo = (String) codigoDisciplinaSelect.getSelectedItem();
             Disciplina cadDisciplina = new Disciplina(notaFloat, codigo);
-            this.user.getDisciplinas().add(cadDisciplina);
-            JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+            for (Aluno a : todosAlunos) {
+                if (a.getMatricula().equals(this.user.getMatricula())) {
+                        a.getDisciplinas().add(cadDisciplina);
+                        alunoP.replace(todosAlunos);
+                        JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                        break;
+
+                    
+
+                }
+            }
         }
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -162,6 +177,17 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    public boolean ehIgual(Disciplina newDisciplina) {
+
+        for (Disciplina a : this.user.getDisciplinas()) {
+            if (a.getCodigo().equals(newDisciplina.getCodigo())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     public boolean disciplinaIsValid() {
 
