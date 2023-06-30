@@ -4,6 +4,13 @@
  */
 package Interfaces;
 
+import Persistence.AlunoPersistence;
+import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author chris
@@ -13,9 +20,23 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
     /**
      * Creates new form VisualizacaoDisciplinas
      */
+    private Aluno user;
+
+    DefaultListModel modelDisCursadas = new DefaultListModel();
+
+    public List<Disciplina> disciplinaCursada = new ArrayList<>();
+
     public VisualizacaoDisciplinas() {
         initComponents();
         setLocationRelativeTo(null);
+
+    }
+
+    public VisualizacaoDisciplinas(Aluno user) {
+        this.user = user;
+
+        initComponents();
+        this.listDisc.setModel(modelDisCursadas);
 
     }
 
@@ -31,10 +52,15 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnVoltar = new java.awt.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listDisc = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -49,12 +75,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listDisc);
 
         jButton1.setText("Cadastrar Disciplina");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,13 +100,14 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addGap(69, 69, 69))
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,25 +118,52 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
                     .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        HomeAluno homeAluno = new HomeAluno(this.user);
+        homeAluno.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        CadastroDisciplina cadDisciplina = new CadastroDisciplina(this.user);
+        cadDisciplina.setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-    CadastroDisciplina telaCadastro = new CadastroDisciplina();
-    telaCadastro.setVisible(true);// TODO add your handling code here:
+        CadastroDisciplina telaCadastro = new CadastroDisciplina();
+        telaCadastro.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        this.modelDisCursadas.removeAllElements();
+
+        AlunoPersistence materiasCursadas = new AlunoPersistence();
+        this.addListaCursadas(disciplinaCursada, this.modelDisCursadas, materiasCursadas.findAll());
+
+    }//GEN-LAST:event_formWindowOpened
+
+    public void addListaCursadas(List<Disciplina> disciplina, DefaultListModel model, List<Aluno> persistence) {
+        //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
+        for (Aluno a : persistence) {
+            if (this.user.getMatricula().equals(a.getMatricula())) {
+                disciplinaCursada = this.user.getDisciplinas();
+                for (Disciplina b : disciplinaCursada) {
+                    model.addElement(b.getCodigo());
+                }
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -155,7 +204,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
     private java.awt.Button btnVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<Disciplina> listDisc;
     // End of variables declaration//GEN-END:variables
 }

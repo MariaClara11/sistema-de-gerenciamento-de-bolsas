@@ -265,6 +265,8 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeTFActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        HomeAluno homeAluno = new HomeAluno(this.user);
+        homeAluno.setVisible(true);
         dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -281,7 +283,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         
-        VisualizacaoDisciplinas tela = new VisualizacaoDisciplinas();
+        VisualizacaoDisciplinas tela = new VisualizacaoDisciplinas(this.user);
         tela.setVisible(true);
         
     }//GEN-LAST:event_jLabel8MouseClicked

@@ -159,13 +159,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             Disciplina cadDisciplina = new Disciplina(notaFloat, codigo);
             for (Aluno a : todosAlunos) {
                 if (a.getMatricula().equals(this.user.getMatricula())) {
-                        a.getDisciplinas().add(cadDisciplina);
-                        alunoP.replace(todosAlunos);
-                        JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                        dispose();
-                        break;
-
-                    
+                    a.getDisciplinas().add(cadDisciplina);
+                    alunoP.replace(todosAlunos);
+                    JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                    break;
 
                 }
             }
@@ -175,6 +173,8 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 
+        HomeAluno homeAluno = new HomeAluno(this.user);
+        homeAluno.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
