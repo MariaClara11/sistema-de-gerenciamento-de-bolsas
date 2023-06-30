@@ -1,2 +1,1 @@
-[{"titulo":"teste","preRequisitos":["DCC001"],"valor":62.0,"quantidadeHoras":4,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"ESSA BOLSA AQUI","preRequisitos":["CAD076","DCC012"],"valor":1000.0,"quantidadeHoras":421,"vagas":12,"professorResponsavel":"00000","metodoEntrada":"Prova","alunosCadastrados":[]}]
+[{"titulo":"teste","preRequisitos":["DCC001"],"valor":62.0,"quantidadeHoras":4,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},{"titulo":"ESSA BOLSA AQUI","preRequisitos":["CAD076","DCC012"],"valor":1000.0,"quantidadeHoras":421,"vagas":12,"professorResponsavel":"00000","metodoEntrada":"Prova","alunosCadastrados":[]}]

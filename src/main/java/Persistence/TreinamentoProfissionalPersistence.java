@@ -52,4 +52,16 @@ public class TreinamentoProfissionalPersistence implements Persistence<Treinamen
 
         return listaBolsasTP;
     }
+            public void replace(List<TreinamentoProfissional> bolsasTP) {
+        Gson gson = new Gson();
+        String json = gson.toJson(bolsasTP);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
+    }
      }

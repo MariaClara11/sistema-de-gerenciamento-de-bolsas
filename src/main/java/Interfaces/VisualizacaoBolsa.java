@@ -4,8 +4,16 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -57,8 +65,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         valorTF = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tipoTF = new javax.swing.JTextField();
-        bInscrever = new javax.swing.JButton();
-        bInscrever1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -136,31 +144,31 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        bInscrever.setBackground(new java.awt.Color(255, 51, 51));
-        bInscrever.setForeground(new java.awt.Color(255, 255, 255));
-        bInscrever.setText("Excluir");
-        bInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bInscreverMouseClicked(evt);
+                btnExcluirMouseClicked(evt);
             }
         });
-        bInscrever.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInscreverActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
-        bInscrever1.setBackground(new java.awt.Color(65, 142, 218));
-        bInscrever1.setForeground(new java.awt.Color(255, 255, 255));
-        bInscrever1.setText("Editar");
-        bInscrever1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEditar.setBackground(new java.awt.Color(65, 142, 218));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bInscrever1MouseClicked(evt);
+                btnEditarMouseClicked(evt);
             }
         });
-        bInscrever1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInscrever1ActionPerformed(evt);
+                btnEditarActionPerformed(evt);
             }
         });
 
@@ -176,9 +184,9 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bInscrever1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,8 +248,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bInscrever1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -263,24 +271,99 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
-        String professor = professorTF.getText();
-        String requisitos = reqTF.getText();
-        String valor = valorTF.getText();
-        String horaria = horaTF.getText();
-        String tipo = tipoTF.getText();
-
-        if (bolsaIsValid()) {
+        String tipoDaBolsa = this.bolsa.retornaTipo();
+        
+        if(tipoDaBolsa.equals("Iniciação Científica")){
             
+            IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+            List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
+            bolsasIC = ic.findAll();
+            
+        int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (IniciacaoCientifica a : bolsasIC) {
+                if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                bolsasIC.remove(a);
+                ic.replace(bolsasIC);
+                    dispose();
+                break;
+                }
+            }
+            }else{
+                dispose();
+            }
+            
+            
+        }
+        else if (tipoDaBolsa.equals("Treinamento Profissional")){
+            TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+            List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
+            bolsasTP = tp.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (TreinamentoProfissional a : bolsasTP) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasTP.remove(a);
+                        tp.replace(bolsasTP);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
+        }
+        else if (tipoDaBolsa.equals("Monitoria")){
+            MonitoriaPersistence mo = new MonitoriaPersistence();
+            List<Monitoria> bolsasMonitoria = new ArrayList<>();
+            bolsasMonitoria = mo.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (Monitoria a : bolsasMonitoria) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasMonitoria.remove(a);
+                        mo.replace(bolsasMonitoria);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
+        }
+        else if (tipoDaBolsa.equals("Bolsa Extensao")) {
+                        BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+            List<Extensao> bolsasBE = new ArrayList<>();
+            bolsasBE = be.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (Extensao a : bolsasBE) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasBE.remove(a);
+                        be.replace(bolsasBE);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
         }
 
 
-    }//GEN-LAST:event_bInscreverMouseClicked
+    }//GEN-LAST:event_btnExcluirMouseClicked
 
-    private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bInscreverActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void valorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTFActionPerformed
         // TODO add your handling code here:
@@ -332,13 +415,13 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void bInscrever1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscrever1MouseClicked
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_bInscrever1MouseClicked
+    }//GEN-LAST:event_btnEditarMouseClicked
 
-    private void bInscrever1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscrever1ActionPerformed
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bInscrever1ActionPerformed
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,8 +492,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lnome;
-    private javax.swing.JButton bInscrever;
-    private javax.swing.JButton bInscrever1;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JTextField horaTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

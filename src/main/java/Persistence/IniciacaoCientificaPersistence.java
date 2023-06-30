@@ -55,4 +55,16 @@ public class IniciacaoCientificaPersistence implements Persistence<IniciacaoCien
 
         return listaBolsasIC;
     }
+            public void replace(List<IniciacaoCientifica> bolsasIC) {
+        Gson gson = new Gson();
+        String json = gson.toJson(bolsasIC);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
+    }
 }
