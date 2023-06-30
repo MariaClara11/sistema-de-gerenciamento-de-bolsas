@@ -230,14 +230,14 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldProfessorActionPerformed
 
     private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bInscreverActionPerformed
-
-    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
-
+        
         int counter=0;
+        
         for(Disciplina d: user.getDisciplinas()){
             for(String b: this.bolsa.getPreRequisitos()){
+                
+                System.out.println("Disciplina -> "+d);
+                System.out.println("Bolsa -> "+b);
                 if(d.getCodigo().equals(b)){
                     counter++;
                 }
@@ -245,12 +245,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         }
         if(counter>=this.bolsa.getPreRequisitos().size()){
             this.bolsa.addAlunosCadastrados(user);
+            JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }else {
             JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         
-       
-        
+    }//GEN-LAST:event_bInscreverActionPerformed
+
+    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
+
     }//GEN-LAST:event_bInscreverMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

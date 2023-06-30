@@ -100,7 +100,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1110, 552));
 
         Esquerda.setBackground(new java.awt.Color(65, 142, 218));
         Esquerda.setForeground(new java.awt.Color(255, 255, 255));

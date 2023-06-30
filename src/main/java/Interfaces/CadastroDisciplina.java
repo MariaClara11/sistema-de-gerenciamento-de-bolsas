@@ -49,7 +49,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         btnVoltar = new java.awt.Button();
         codigoDisciplinaSelect = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setText("Código:");
 

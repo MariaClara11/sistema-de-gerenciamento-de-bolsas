@@ -215,7 +215,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
+                        .addGap(219, 219, 219)
                         .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -254,7 +254,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -348,21 +348,20 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         List<Aluno> alunos = new ArrayList<>();
         alunos = aluno.findAll();
         int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
-        for (Aluno a : alunos) {
-            if (a.getMatricula().equals(this.user.getMatricula())) {
+        
+        if (resposta == JOptionPane.YES_OPTION) {
+            for (Aluno a : alunos) {
+                if (a.getMatricula().equals(this.user.getMatricula())) {
                 alunos.remove(a);
                 aluno.replace(alunos);
                 break;
+                }
             }
-        }
-        if (resposta == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
             dispose();
 
-        } else if (resposta == JOptionPane.NO_OPTION) {
-            dispose();
         }
-        dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
