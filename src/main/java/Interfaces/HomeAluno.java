@@ -64,50 +64,73 @@ public class HomeAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        ListExtensao = new javax.swing.JList<>();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        ListMonitoria = new javax.swing.JList<>();
+        BemVindo = new javax.swing.JLabel();
+        Container = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         ListTP = new javax.swing.JList<>();
         jScrollPane10 = new javax.swing.JScrollPane();
         ListIC = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListExtensao = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ListMonitoria = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        BemVindo1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuPerfil = new javax.swing.JMenu();
         jMenuPerfil1 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
 
+        BemVindo.setText("Bem-Vindo:");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1288, 532));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Monitoria");
-        jLabel1.setAlignmentX(0.5F);
+        Container.setBackground(new java.awt.Color(255, 255, 255));
+        Container.setMinimumSize(new java.awt.Dimension(935, 444));
+        Container.setPreferredSize(new java.awt.Dimension(935, 444));
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Extensão");
-        jLabel2.setAlignmentX(0.5F);
+        jScrollPane9.setAlignmentX(getAlignmentX());
+        jScrollPane9.setPreferredSize(new java.awt.Dimension(1014, 375));
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Iniciação Cientifica");
-        jLabel3.setAlignmentX(0.5F);
+        ListTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListTP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListTP.setToolTipText("");
+        ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListTP.setName(""); // NOI18N
+        ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListTPMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(ListTP);
 
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Treinamento Profissional");
-        jLabel4.setAlignmentX(0.5F);
+        jScrollPane10.setAlignmentX(getAlignmentX());
+        jScrollPane10.setPreferredSize(new java.awt.Dimension(1014, 375));
+
+        ListIC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        ListIC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ListIC.setToolTipText("");
+        ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
+        ListIC.setName(""); // NOI18N
+        ListIC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListICMouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(ListIC);
 
         jScrollPane4.setAlignmentX(getAlignmentX());
         jScrollPane4.setPreferredSize(new java.awt.Dimension(1014, 375));
@@ -141,37 +164,83 @@ public class HomeAluno extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(ListMonitoria);
 
-        jScrollPane9.setAlignmentX(getAlignmentX());
-        jScrollPane9.setPreferredSize(new java.awt.Dimension(1014, 375));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(65, 142, 218));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("MONITORIA");
+        jLabel1.setAlignmentX(0.5F);
 
-        ListTP.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ListTP.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        ListTP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        ListTP.setToolTipText("");
-        ListTP.setMinimumSize(new java.awt.Dimension(100, 200));
-        ListTP.setName(""); // NOI18N
-        ListTP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListTPMouseClicked(evt);
-            }
-        });
-        jScrollPane9.setViewportView(ListTP);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(65, 142, 218));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("EXTENSÃO");
+        jLabel2.setAlignmentX(0.5F);
 
-        jScrollPane10.setAlignmentX(getAlignmentX());
-        jScrollPane10.setPreferredSize(new java.awt.Dimension(1014, 375));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(65, 142, 218));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("IC");
+        jLabel3.setAlignmentX(0.5F);
 
-        ListIC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ListIC.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        ListIC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        ListIC.setToolTipText("");
-        ListIC.setMinimumSize(new java.awt.Dimension(100, 200));
-        ListIC.setName(""); // NOI18N
-        ListIC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListICMouseClicked(evt);
-            }
-        });
-        jScrollPane10.setViewportView(ListIC);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(65, 142, 218));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("TP");
+        jLabel4.setAlignmentX(0.5F);
+
+        BemVindo1.setText("Bem-Vindo:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("BOLSAS DISPONÍVEIS PARA INSCRIÇÃO:");
+
+        javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
+        Container.setLayout(ContainerLayout);
+        ContainerLayout.setHorizontalGroup(
+            ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContainerLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ContainerLayout.createSequentialGroup()
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5)
+                    .addComponent(BemVindo1))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        ContainerLayout.setVerticalGroup(
+            ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContainerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BemVindo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
+        );
 
         jMenuPerfil.setText("Perfil");
         jMenuPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,44 +275,12 @@ public class HomeAluno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(15, 15, 15))
+                .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel4))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(107, 107, 107))
+            .addComponent(Container, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
         );
 
         pack();
@@ -316,6 +353,7 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        this.BemVindo1.setText("Bem-vindo: "+this.user.getNome());
         this.modelBE.removeAllElements();
         this.modelIC.removeAllElements();
         this.modelMo.removeAllElements();
@@ -407,6 +445,9 @@ public class HomeAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BemVindo;
+    private javax.swing.JLabel BemVindo1;
+    private javax.swing.JPanel Container;
     private javax.swing.JList<String> ListExtensao;
     private javax.swing.JList<String> ListIC;
     private javax.swing.JList<String> ListMonitoria;
@@ -415,6 +456,7 @@ public class HomeAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuPerfil;
     private javax.swing.JMenu jMenuPerfil1;
