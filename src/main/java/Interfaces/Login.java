@@ -110,6 +110,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setText("Não tem cadastro?");
 
+        jLabel5.setForeground(new java.awt.Color(65, 142, 218));
         jLabel5.setText("Clique aqui para criar uma conta");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,8 +127,9 @@ public class Login extends javax.swing.JFrame {
         jLabelUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelUser.setText("Matrícula:");
 
+        rbProfessor.setBackground(new java.awt.Color(255, 255, 255));
         tipoDeUsuario.add(rbProfessor);
-        rbProfessor.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
+        rbProfessor.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         rbProfessor.setForeground(new java.awt.Color(51, 51, 51));
         rbProfessor.setText("Professor");
         rbProfessor.setBorder(null);
@@ -142,8 +144,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        rbAluno.setBackground(new java.awt.Color(255, 255, 255));
         tipoDeUsuario.add(rbAluno);
-        rbAluno.setFont(new java.awt.Font("Nunito", 0, 15)); // NOI18N
+        rbAluno.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         rbAluno.setForeground(new java.awt.Color(51, 51, 51));
         rbAluno.setText("Aluno");
         rbAluno.setBorder(null);
@@ -180,12 +183,12 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(senhaTF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DireitaLayout.createSequentialGroup()
-                                .addComponent(rbProfessor)
+                                .addComponent(rbProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(loginTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginTF, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(19, 19, 19))
                     .addGroup(DireitaLayout.createSequentialGroup()
                         .addGroup(DireitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
