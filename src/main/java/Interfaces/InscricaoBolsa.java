@@ -4,9 +4,19 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -244,26 +254,90 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldProfessorActionPerformed
 
     private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
-        
-        int counter=0;
-        
-        for(Disciplina d: user.getDisciplinas()){
-            for(String b: this.bolsa.getPreRequisitos()){
-                
-                System.out.println("Disciplina -> "+d);
-                System.out.println("Bolsa -> "+b);
-                if(d.getCodigo().equals(b)){
+
+        int counter = 0;
+
+        for (Disciplina d : user.getDisciplinas()) {
+            for (String b : this.bolsa.getPreRequisitos()) {
+
+                System.out.println("Disciplina -> " + d);
+                System.out.println("Bolsa -> " + b);
+                if (d.getCodigo().equals(b)) {
                     counter++;
                 }
             }
         }
-        if(counter>=this.bolsa.getPreRequisitos().size()){
-            this.bolsa.addAlunosCadastrados(user);
+        if (counter >= this.bolsa.getPreRequisitos().size()) {
+
+            String tipoDaBolsa = this.bolsa.retornaTipo();
+
+            if (tipoDaBolsa.equals("Treinamento Profissional")) {
+                TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+                List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
+                bolsasTP = tp.findAll();
+                for (TreinamentoProfissional a : bolsasTP) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        // bolsasTP.add(a);
+                        tp.replace(bolsasTP);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+
+            if (tipoDaBolsa.equals("Iniciação Científica")) {
+                IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+                List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
+                bolsasIC = ic.findAll();
+                for (IniciacaoCientifica a : bolsasIC) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        // bolsasIC.add(a);
+                        ic.replace(bolsasIC);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+            if (tipoDaBolsa.equals("Monitoria")) {
+                MonitoriaPersistence mo = new MonitoriaPersistence();
+                List<Monitoria> bolsasMonitoria = new ArrayList<>();
+                bolsasMonitoria = mo.findAll();
+                for (Monitoria a : bolsasMonitoria) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        //bolsasMonitoria.add(a);
+                        mo.replace(bolsasMonitoria);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+            if (tipoDaBolsa.equals("Bolsa Extensao")) {
+                BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+                List<Extensao> bolsasBE = new ArrayList<>();
+                bolsasBE = be.findAll();
+                for (Extensao a : bolsasBE) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        //bolsasBE.add(a);
+                        be.replace(bolsasBE);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+
             JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_bInscreverActionPerformed
 
     private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
@@ -274,7 +348,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         comboBoxModel.addElement("Veja mais");
         this.Lnome.setText(this.bolsa.getTitulo());
-        
+
         this.fieldProfessor.setText(this.bolsa.getProfessorResponsavel());
 
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
@@ -292,9 +366,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
-        
+
         this.fieldTipo.setText(this.bolsa.retornaTipo());
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void fieldRequisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldRequisitosActionPerformed

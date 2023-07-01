@@ -270,159 +270,184 @@
             <Component class="javax.swing.JList" name="listaPreRequisitosSelect">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="152">
-                    <StringItem index="0" value="ANE40"/>
-                    <StringItem index="1" value="CAD076"/>
-                    <StringItem index="2" value="DCC001"/>
-                    <StringItem index="3" value="DCC008"/>
-                    <StringItem index="4" value="DCC012"/>
-                    <StringItem index="5" value="DCC013"/>
-                    <StringItem index="6" value="DCC014"/>
-                    <StringItem index="7" value="DCC019"/>
-                    <StringItem index="8" value="DCC025"/>
-                    <StringItem index="9" value="DCC033"/>
-                    <StringItem index="10" value="DCC037"/>
-                    <StringItem index="11" value="DCC042"/>
-                    <StringItem index="12" value="DCC045"/>
-                    <StringItem index="13" value="DCC055"/>
-                    <StringItem index="14" value="DCC059"/>
-                    <StringItem index="15" value="DCC060"/>
-                    <StringItem index="16" value="DCC061"/>
-                    <StringItem index="17" value="DCC062"/>
-                    <StringItem index="18" value="DCC063"/>
-                    <StringItem index="19" value="DCC064"/>
-                    <StringItem index="20" value="DCC065"/>
-                    <StringItem index="21" value="DCC066"/>
-                    <StringItem index="22" value="DCC067"/>
-                    <StringItem index="23" value="DCC068"/>
-                    <StringItem index="24" value="DCC069"/>
-                    <StringItem index="25" value="DCC070"/>
-                    <StringItem index="26" value="DCC071"/>
-                    <StringItem index="27" value="DCC072"/>
-                    <StringItem index="28" value="DCC073"/>
-                    <StringItem index="29" value="DCC074"/>
-                    <StringItem index="30" value="DCC075"/>
-                    <StringItem index="31" value="DCC076"/>
-                    <StringItem index="32" value="DCC078"/>
-                    <StringItem index="33" value="DCC080"/>
-                    <StringItem index="34" value="DCC082"/>
-                    <StringItem index="35" value="DCC083"/>
-                    <StringItem index="36" value="DCC086"/>
-                    <StringItem index="37" value="DCC088"/>
-                    <StringItem index="38" value="DCC089"/>
-                    <StringItem index="39" value="DCC090"/>
-                    <StringItem index="40" value="DCC091"/>
-                    <StringItem index="41" value="DCC092"/>
-                    <StringItem index="42" value="DCC093"/>
-                    <StringItem index="43" value="DCC094"/>
-                    <StringItem index="44" value="DCC095"/>
-                    <StringItem index="45" value="DCC096"/>
-                    <StringItem index="46" value="DCC097"/>
-                    <StringItem index="47" value="DCC098"/>
-                    <StringItem index="48" value="DCC099"/>
-                    <StringItem index="49" value="DCC100"/>
-                    <StringItem index="50" value="DCC101"/>
-                    <StringItem index="51" value="DCC102"/>
-                    <StringItem index="52" value="DCC103"/>
-                    <StringItem index="53" value="DCC104"/>
-                    <StringItem index="54" value="DCC105"/>
-                    <StringItem index="55" value="DCC117"/>
-                    <StringItem index="56" value="DCC122"/>
-                    <StringItem index="57" value="DCC123"/>
-                    <StringItem index="58" value="DCC124"/>
-                    <StringItem index="59" value="DCC125"/>
-                    <StringItem index="60" value="DCC126"/>
-                    <StringItem index="61" value="DCC127"/>
-                    <StringItem index="62" value="DCC128"/>
-                    <StringItem index="63" value="DCC129"/>
-                    <StringItem index="64" value="DCC130"/>
-                    <StringItem index="65" value="DCC131"/>
-                    <StringItem index="66" value="DCC132"/>
-                    <StringItem index="67" value="DCC133"/>
-                    <StringItem index="68" value="DCC136"/>
-                    <StringItem index="69" value="DCC137"/>
-                    <StringItem index="70" value="DCC138"/>
-                    <StringItem index="71" value="DCC139"/>
-                    <StringItem index="72" value="DCC140"/>
-                    <StringItem index="73" value="DCC141"/>
-                    <StringItem index="74" value="DCC142"/>
-                    <StringItem index="75" value="DCC143"/>
-                    <StringItem index="76" value="DCC144"/>
-                    <StringItem index="77" value="DCC145"/>
-                    <StringItem index="78" value="DCC147"/>
-                    <StringItem index="79" value="DCC148"/>
-                    <StringItem index="80" value="DCC149"/>
-                    <StringItem index="81" value="DCC152"/>
-                    <StringItem index="82" value="DCC153"/>
-                    <StringItem index="83" value="DCC154"/>
-                    <StringItem index="84" value="DCC155"/>
-                    <StringItem index="85" value="DCC159"/>
-                    <StringItem index="86" value="DCC160"/>
-                    <StringItem index="87" value="DCC161"/>
-                    <StringItem index="88" value="DCC162"/>
-                    <StringItem index="89" value="DCC163"/>
-                    <StringItem index="90" value="DCC164"/>
-                    <StringItem index="91" value="DCC165"/>
-                    <StringItem index="92" value="DCC166"/>
-                    <StringItem index="93" value="DCC167"/>
-                    <StringItem index="94" value="DCC168"/>
-                    <StringItem index="95" value="DCC171"/>
-                    <StringItem index="96" value="DCC172"/>
-                    <StringItem index="97" value="DCC174"/>
-                    <StringItem index="98" value="DCC176"/>
-                    <StringItem index="99" value="DCC177"/>
-                    <StringItem index="100" value="DCC178"/>
-                    <StringItem index="101" value="DCC179"/>
-                    <StringItem index="102" value="DCC180"/>
-                    <StringItem index="103" value="DCC181"/>
-                    <StringItem index="104" value="DCC182"/>
-                    <StringItem index="105" value="DCC183"/>
-                    <StringItem index="106" value="DCC184"/>
-                    <StringItem index="107" value="DCC185"/>
-                    <StringItem index="108" value="DCC186"/>
-                    <StringItem index="109" value="DCC187"/>
-                    <StringItem index="110" value="DCC188"/>
-                    <StringItem index="111" value="DCC189"/>
-                    <StringItem index="112" value="DCC190"/>
-                    <StringItem index="113" value="DCC199"/>
-                    <StringItem index="114" value="DCC200"/>
-                    <StringItem index="115" value="DC5199"/>
-                    <StringItem index="116" value="DC5200"/>
-                    <StringItem index="117" value="DPR032"/>
-                    <StringItem index="118" value="EADCC037"/>
-                    <StringItem index="119" value="EADCC043"/>
-                    <StringItem index="120" value="EADCC044"/>
-                    <StringItem index="121" value="EADDCC048"/>
-                    <StringItem index="122" value="EADDCC049"/>
-                    <StringItem index="123" value="EST028"/>
-                    <StringItem index="124" value="EST029"/>
-                    <StringItem index="125" value="EST030"/>
-                    <StringItem index="126" value="FIL012"/>
-                    <StringItem index="127" value="FIN001"/>
-                    <StringItem index="128" value="FIS073"/>
-                    <StringItem index="129" value="FIS074"/>
-                    <StringItem index="130" value="FIS075"/>
-                    <StringItem index="131" value="FIS077"/>
-                    <StringItem index="132" value="FIS122"/>
-                    <StringItem index="133" value="ICE001"/>
-                    <StringItem index="134" value="LEC003"/>
-                    <StringItem index="135" value="LEM184"/>
-                    <StringItem index="136" value="MAC011"/>
-                    <StringItem index="137" value="MAC013"/>
-                    <StringItem index="138" value="MAT013"/>
-                    <StringItem index="139" value="MAT029"/>
-                    <StringItem index="140" value="MAT143"/>
-                    <StringItem index="141" value="MAT154"/>
-                    <StringItem index="142" value="MAT155"/>
-                    <StringItem index="143" value="MAT156"/>
-                    <StringItem index="144" value="MAT157"/>
-                    <StringItem index="145" value="MAT158"/>
-                    <StringItem index="146" value="QUI125"/>
-                    <StringItem index="147" value="QUI126"/>
-                    <StringItem index="148" value="QUI168"/>
-                    <StringItem index="149" value="UNI001"/>
-                    <StringItem index="150" value="UNI002"/>
-                    <StringItem index="151" value="UNI003"/>
+                  <StringArray count="177">
+                    <StringItem index="0" value="DCC001-ANALISE E PROJETO DE ALGORITMOS"/>
+                    <StringItem index="1" value="DCC008-CALCULO NUMERICO"/>
+                    <StringItem index="2" value="DCC012-ESTRUTURA DE DADOS II"/>
+                    <StringItem index="3" value="DCC013-ESTRUTURA DE DADOS"/>
+                    <StringItem index="4" value="DCC014-INTELIGENCIA ARTIFICIAL"/>
+                    <StringItem index="5" value="DCC019-LINGUAGEM DE PROGRAMACAO"/>
+                    <StringItem index="6" value="DCC025-ORIENTA&#xc7;&#xc3;O A OBJETOS"/>
+                    <StringItem index="7" value="DCC033-FLUXO EM REDES"/>
+                    <StringItem index="8" value="DCC037-LABORATORIO DE ORGANIZACAO DE COMPUTADORES"/>
+                    <StringItem index="9" value="DCC042-REDES DE COMPUTADORES"/>
+                    <StringItem index="10" value="DCC045-TEORIA DOS COMPILADORES"/>
+                    <StringItem index="11" value="DCC049-EMPREENDIMENTOS EM INFORMATICA"/>
+                    <StringItem index="12" value="DCC055-TEORIA DA COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="13" value="DCC057-ARQUITETURA DE COMPUTADORES"/>
+                    <StringItem index="14" value="DCC059-TEORIA DOS GRAFOS"/>
+                    <StringItem index="15" value="DCC060-BANCO DE DADOS"/>
+                    <StringItem index="16" value="DCC061-ENGENHARIA DE SOFTWARE"/>
+                    <StringItem index="17" value="DCC062-SISTEMAS OPERACIONAIS"/>
+                    <StringItem index="18" value="DCC063-LINGUAGENS FORMAIS E AUT&#xd4;MATOS"/>
+                    <StringItem index="19" value="DCC064-SISTEMAS DISTRIBU&#xcd;DOS"/>
+                    <StringItem index="20" value="DCC065-COMPUTACAO GRAFICA"/>
+                    <StringItem index="21" value="DCC066-PROCESSAMENTO DE IMAGENS"/>
+                    <StringItem index="22" value="DCC067-COMPUTA&#xc7;&#xc3;O EVOLUCIONISTA"/>
+                    <StringItem index="23" value="DCC068-REDES NEURAIS ARTIFICIAIS"/>
+                    <StringItem index="24" value="DCC069-PROGRAMA&#xc7;&#xc3;O N&#xc3;O LINEAR"/>
+                    <StringItem index="25" value="DCC070-ORGANIZA&#xc7;&#xc3;O DE COMPUTADORES"/>
+                    <StringItem index="26" value="DCC071-LABORAT&#xd3;RIO DE SISTEMAS OPERACIONAIS"/>
+                    <StringItem index="27" value="DCC072-LABORATORIO DE REDES DE COMPUTADORES"/>
+                    <StringItem index="28" value="DCC073-TEORIA DE FILAS"/>
+                    <StringItem index="29" value="DCC074-AVALIA&#xc7;&#xc3;O DE DESEMPENHO DE SISTEMAS"/>
+                    <StringItem index="30" value="DCC075-SEGURAN&#xc7;A EM SISTEMAS DE COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="31" value="DCC076-PROGRAMA&#xc7;&#xc3;O EM L&#xd3;GICA"/>
+                    <StringItem index="32" value="DCC077-ASPECTOS AVANCADOS EM BANCO DE DADOS"/>
+                    <StringItem index="33" value="DCC078-ASPECTOS AVANCADOS EM ENGENHARIA DE SOFTWARE"/>
+                    <StringItem index="34" value="DCC079-PROGRAMA&#xc7;&#xc3;O PARA A WEB"/>
+                    <StringItem index="35" value="DCC080-LAB.INTEGRADO DE DESENVOLVIMENTO DE SOFTWARE"/>
+                    <StringItem index="36" value="DCC082-SISTEMAS MULTIMIDIA"/>
+                    <StringItem index="37" value="DCC083-QUALIDADE DE SOFTWARE"/>
+                    <StringItem index="38" value="DCC086-INFORMATICA NA EDUCACAO"/>
+                    <StringItem index="39" value="DCC088-GESTAO DA TECNOLOGIA E INOVACAO TECNOLOGICA"/>
+                    <StringItem index="40" value="DCC089-TOPICOS EM COMPUTACAO CIENTIFICA I"/>
+                    <StringItem index="41" value="DCC090-TOPICOS EM COMPUTACAO CIENTIFICA II"/>
+                    <StringItem index="42" value="DCC091-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO I"/>
+                    <StringItem index="43" value="DCC092-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO II"/>
+                    <StringItem index="44" value="DCC093-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE I"/>
+                    <StringItem index="45" value="DCC094-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE II"/>
+                    <StringItem index="46" value="DCC095-TOPICOS EM CIENCIA"/>
+                    <StringItem index="47" value="TECNOLOGIA E SOCIEDADE I"/>
+                    <StringItem index="48" value="DCC096-TOPICOS EM CIENCIA"/>
+                    <StringItem index="49" value="TECNOLOGIA E SOCIEDADE II"/>
+                    <StringItem index="50" value="DCC097-SEMINARIO EM COMPUTACAO I"/>
+                    <StringItem index="51" value="DCC098-SEMINARIO EM COMPUTACAO II"/>
+                    <StringItem index="52" value="DCC099-SEMINARIO EM COMPUTACAO III"/>
+                    <StringItem index="53" value="DCC100-SEMINARIO EM COMPUTACAO IV"/>
+                    <StringItem index="54" value="DCC101-SEMINARIO EM COMPUTACAO V"/>
+                    <StringItem index="55" value="DCC102-SEMINARIO EM COMPUTACAO VI"/>
+                    <StringItem index="56" value="DCC103-SEMINARIO EM COMPUTACAO VII"/>
+                    <StringItem index="57" value="DCC104-SEMINARIO EM COMPUTACAO VIII"/>
+                    <StringItem index="58" value="DCC105-SEMINARIO EM COMPUTACAO IX"/>
+                    <StringItem index="59" value="DCC107-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O II"/>
+                    <StringItem index="60" value="DCC110-MONOGRAFIA FINAL EM COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="61" value="DCC117-MODELAGEM DE SISTEMAS"/>
+                    <StringItem index="62" value="DCC118-INFORM&#xc1;TICA E SOCIEDADE"/>
+                    <StringItem index="63" value="DCC119-ALGORITMOS"/>
+                    <StringItem index="64" value="DCC119E-ALGORITMOS"/>
+                    <StringItem index="65" value="DCC120-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O"/>
+                    <StringItem index="66" value="DCC121-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O WEB"/>
+                    <StringItem index="67" value="DCC122-CIRCUITOS DIGITAIS"/>
+                    <StringItem index="68" value="DCC123-METODOLOGIA CIENT&#xcd;FICA EM COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="69" value="DCC124-AMBIENTES VIRTUAIS DE APRENDIZAGEM"/>
+                    <StringItem index="70" value="DCC125-PROGRAMA&#xc7;&#xc3;O PARALELA"/>
+                    <StringItem index="71" value="DCC126-TV DIGITAL"/>
+                    <StringItem index="72" value="DCC127-MINERA&#xc7;&#xc3;O DE DADOS"/>
+                    <StringItem index="73" value="DCC128-GER&#xca;NCIA DE REDES"/>
+                    <StringItem index="74" value="DCC129-REALIDADE VIRTUAL E AUMENTADA"/>
+                    <StringItem index="75" value="DCC130-COMPUTA&#xc7;&#xc3;O M&#xd3;VEL"/>
+                    <StringItem index="76" value="&#xda;BIQUA E PERVASIVA"/>
+                    <StringItem index="77" value="DCC131-PROJETO DE REDES DE COMPUTADORES"/>
+                    <StringItem index="78" value="DCC132-ENGENHARIA DE SOFTWARE EXPERIMENTAL"/>
+                    <StringItem index="79" value="DCC133-INTRODU&#xc7;&#xc3;O A SISTEMAS DE INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="80" value="DCC134-MODELAGEM DE SISTEMAS DE INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="81" value="DCC136-INTELIG&#xca;NCIA COMPUTACIONAL"/>
+                    <StringItem index="82" value="DCC137-SISTEMAS NEBULOSOS"/>
+                    <StringItem index="83" value="DCC138-T&#xd3;PICOS DE LINGUAGEM PROGRAMA&#xc7;&#xc3;O I"/>
+                    <StringItem index="84" value="DCC139-T&#xd3;PICOS DE LINGUAGEM PROGRAMA&#xc7;&#xc3;O II"/>
+                    <StringItem index="85" value="DCC140-T&#xd3;PICOS EM INTELIG&#xca;NCIA COMPUTACIONAL I"/>
+                    <StringItem index="86" value="DCC141-T&#xd3;PICOS EM INTELIG&#xca;NCIA COMPUTACIONAL II"/>
+                    <StringItem index="87" value="DCC142-AN&#xc1;LISE E PROJETO DE ALGORITMOS II"/>
+                    <StringItem index="88" value="DCC143-ADMINISTRA&#xc7;&#xc3;O DE DADOS"/>
+                    <StringItem index="89" value="DCC144-ADMINISTRA&#xc7;&#xc3;O DE REDES"/>
+                    <StringItem index="90" value="DCC145-ASPECTOS ORGANIZACIONAIS DE SISTEMAS DE INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="91" value="DCC146-ASPECTOS TE&#xd3;RICOS DA COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="92" value="DCC147-DATA WAREHOUSE"/>
+                    <StringItem index="93" value="DCC148-DESENVOLVIMENTO DE JOGOS"/>
+                    <StringItem index="94" value="DCC149-ENGENHARIA DE REQUISITOS"/>
+                    <StringItem index="95" value="DCC152-FUNDAMENTOS DE DESENVOLVIMENTO WEB"/>
+                    <StringItem index="96" value="DCC153-GER&#xca;NCIA DE CONFIGURA&#xc7;&#xc3;O DE SOFTWARE"/>
+                    <StringItem index="97" value="DCC154-GER&#xca;NCIA DE PROJETOS"/>
+                    <StringItem index="98" value="DCC155-GEST&#xc3;O DO CONHECIMENTO"/>
+                    <StringItem index="99" value="DCC156-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O IV"/>
+                    <StringItem index="100" value="DCC157-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O V"/>
+                    <StringItem index="101" value="DCC158-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O VI"/>
+                    <StringItem index="102" value="DCC159-LABORAT&#xd3;RIO DE APLICA&#xc7;&#xd5;ES DE REDES DE COMPUTADORES"/>
+                    <StringItem index="103" value="DCC160-L&#xd3;GICA E FUNDAMENTOS PARA A COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="104" value="DCC161-MODELAGEM DE NEG&#xd3;CIO"/>
+                    <StringItem index="105" value="DCC162-PADR&#xd5;ES DE PROJETO"/>
+                    <StringItem index="106" value="DCC163-PESQUISA OPERACIONAL"/>
+                    <StringItem index="107" value="DCC164-RECUPERA&#xc7;&#xc3;O DA INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="108" value="DCC165-SEGURAN&#xc7;A E AUDITORIA DE SISTEMAS"/>
+                    <StringItem index="109" value="DCC166-SISTEMAS DE APOIO &#xc0; DECIS&#xc3;O"/>
+                    <StringItem index="110" value="DCC167-SISTEMAS INTELIGENTES"/>
+                    <StringItem index="111" value="DCC168-TESTE DE SOFTWARE"/>
+                    <StringItem index="112" value="DCC170-TRABALHO DE CONCLUS&#xc3;O DE BACHARELADO EM SISTEMAS DE INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="113" value="DCC171-LABORAT&#xd3;RIO DE PROGRAMA&#xc7;&#xc3;O III"/>
+                    <StringItem index="114" value="DCC172-PROGRAMA&#xc7;&#xc3;O COMPETITIVA"/>
+                    <StringItem index="115" value="DCC173-ANALISE NUMERICA"/>
+                    <StringItem index="116" value="DCC174-INTERA&#xc7;&#xc3;O HUMANO-COMPUTADOR"/>
+                    <StringItem index="117" value="DCC175-INTRODU&#xc7;&#xc3;O A CI&#xca;NCIA DA COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="118" value="DCC176-SISTEMAS COLABORATIVOS"/>
+                    <StringItem index="119" value="DCC177-PESQUISA OPERACIONAL II"/>
+                    <StringItem index="120" value="DCC178-PESQUISA OPERACIONAL III"/>
+                    <StringItem index="121" value="DCC179-LABORAT&#xd3;RIO DE CI&#xca;NCIA DA COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="122" value="DCC180-EST&#xc1;GIO SUPERVISIONADO"/>
+                    <StringItem index="123" value="DCC181-EST&#xc1;GIO SUPERVISIONADO II"/>
+                    <StringItem index="124" value="DCC182-EST&#xc1;GIO SUPERVISIONADO III"/>
+                    <StringItem index="125" value="DCC183-EST&#xc1;GIO SUPERVISIONADO IV"/>
+                    <StringItem index="126" value="DCC184-EST&#xc1;GIO SUPERVISIONADO V"/>
+                    <StringItem index="127" value="DCC185-EST&#xc1;GIO SUPERVISIONADO VI"/>
+                    <StringItem index="128" value="DCC186-EST&#xc1;GIO SUPERVISIONADO VII"/>
+                    <StringItem index="129" value="DCC187-EST&#xc1;GIO SUPERVISIONADO VIII"/>
+                    <StringItem index="130" value="DCC188-EST&#xc1;GIO SUPERVISIONADO IX"/>
+                    <StringItem index="131" value="DCC189-EST&#xc1;GIO SUPERVISIONADO X"/>
+                    <StringItem index="132" value="DCC190-SOLU&#xc7;&#xc3;O NUM&#xc9;RICA DE EQUA&#xc7;&#xd5;ES DIFERENCIAIS"/>
+                    <StringItem index="133" value="DCC191-VISUALIZA&#xc7;&#xc3;O CIENT&#xcd;FICA"/>
+                    <StringItem index="134" value="EADDCC001-INTRODU&#xc7;&#xc3;O &#xc0; EAD"/>
+                    <StringItem index="135" value="EADDCC002-INTRODU&#xc7;&#xc3;O &#xc0;S TECNOLOGIAS DA INFORMA&#xc7;&#xc3;O E DA COMUNICA&#xc7;&#xc3;O"/>
+                    <StringItem index="136" value="EADDCC003-L&#xd3;GICA PARA COMPUTA&#xc7;&#xc3;O"/>
+                    <StringItem index="137" value="EADDCC006-INTRODU&#xc7;&#xc3;O AOS SISTEMAS OPERACIONAIS"/>
+                    <StringItem index="138" value="EADDCC007-FUNDAMENTOS DA ORGANIZA&#xc7;&#xc3;O DE COMPUTADORES"/>
+                    <StringItem index="139" value="EADDCC008-ALGOR&#xcd;TMOS"/>
+                    <StringItem index="140" value="EADDCC009-FUNDAMENTOS DE REDES DE COMPUTADORES"/>
+                    <StringItem index="141" value="EADDCC011-INGL&#xca;S INSTRUMENTAL"/>
+                    <StringItem index="142" value="EADDCC012-METODOLOGIA DE PESQUISA CIENT&#xcd;FICA E EDUCACIONAL"/>
+                    <StringItem index="143" value="EADDCC013-SEMIN&#xc1;RIO INTEGRADO I"/>
+                    <StringItem index="144" value="EADDCC014-LINGUAGEM DE PROGRAMA&#xc7;&#xc3;O I"/>
+                    <StringItem index="145" value="EADDCC015-LABORAT&#xd3;RIO DE MONTAGEM E MANUTEN&#xc7;&#xc3;O"/>
+                    <StringItem index="146" value="EADDCC021-SEMIN&#xc1;RIO INTEGRADO II"/>
+                    <StringItem index="147" value="EADDCC023-PROGRAMA&#xc7;&#xc3;O PARA WEB I"/>
+                    <StringItem index="148" value="EADDCC024-FUNDAMENTOS DE SISTEMAS DE INFORMA&#xc7;&#xc3;O"/>
+                    <StringItem index="149" value="EADDCC025-MODELAGEM DE SISTEMAS"/>
+                    <StringItem index="150" value="EADDCC029-SISTEMAS MULTIM&#xcd;DIAS"/>
+                    <StringItem index="151" value="EADDCC030-FUNDAMENTOS DE BANCO DE DADOS"/>
+                    <StringItem index="152" value="EADDCC031-LINGUAGEM DE PROGRAMA&#xc7;&#xc3;O II"/>
+                    <StringItem index="153" value="EADDCC032-FUNDAMENTOS DE ENGENHARIA DE SOFTWARE"/>
+                    <StringItem index="154" value="EADDCC033-M&#xc9;TODOS DE ENSINO DE APRENDIZAGEM EM INFORM&#xc1;TICA"/>
+                    <StringItem index="155" value="EADDCC034-EST&#xc1;GIO SUPERVISIONADO I"/>
+                    <StringItem index="156" value="EADDCC035-PROGRAMA&#xc7;&#xc3;O PARA WEB II"/>
+                    <StringItem index="157" value="EADDCC036-INTERFACE USU&#xc1;RIO &#x2013; M&#xc1;QUINA"/>
+                    <StringItem index="158" value="EADDCC037-PROJETO DE SOFTWARE EDUCACIONAL"/>
+                    <StringItem index="159" value="EADDCC038-INFORM&#xc1;TICA NA EDUCA&#xc7;&#xc3;O"/>
+                    <StringItem index="160" value="EADDCC039-OFICINA DE GEST&#xc3;O DE SALA DE AULA"/>
+                    <StringItem index="161" value="EADDCC040-OFICINA DE AVALIA&#xc7;&#xc3;O EDUCACIONAL"/>
+                    <StringItem index="162" value="EADDCC041-EST&#xc1;GIO SUPERVISIONADO II"/>
+                    <StringItem index="163" value="EADDCC042-TRABALHO DE CONCLUS&#xc3;O DE CURSO I"/>
+                    <StringItem index="164" value="EADDCC043-AVALIA&#xc7;&#xc3;O DE SOFTWARE EDUCACIONAL"/>
+                    <StringItem index="165" value="EADDCC044-INFORM&#xc1;TICA E SOCIEDADE"/>
+                    <StringItem index="166" value="EADDCC045-FUNDAMENTOS DA INTELIG&#xca;NCIA ARTIFICIAL"/>
+                    <StringItem index="167" value="EADDCC046-EDUCA&#xc7;&#xc3;O DE JOVENS E ADULTOS"/>
+                    <StringItem index="168" value="EADDCC047-EST&#xc1;GIO SUPERVISIONADO III"/>
+                    <StringItem index="169" value="EADDCC048-OBJETOS DE APRENDIZAGEM"/>
+                    <StringItem index="170" value="EADDCC049-ASPECTOS LEGAIS DA INFORM&#xc1;TICA"/>
+                    <StringItem index="171" value="EADDCC050-EST&#xc1;GIO SUPERVISIONADO IV"/>
+                    <StringItem index="172" value="EADDCC052-TRABALHO DE CONCLUS&#xc3;O DE CURSO II"/>
+                    <StringItem index="173" value="EADQUI002-INTRODU&#xc7;&#xc3;O &#xc0;S TECNOLOGIAS DE COMUNICA&#xc7;&#xc3;O E INFORMA&#xc7;&#xc3;O I"/>
+                    <StringItem index="174" value="EADQUI009-INTRODU&#xc7;&#xc3;O &#xc0;S TECNOLOGIAS DE COMUNICA&#xc7;&#xc3;O E INFORMA&#xc7;&#xc3;O II"/>
+                    <StringItem index="175" value="UABFIS005-INTRODU&#xc7;&#xc3;O &#xc0; INFORM&#xc1;TICA"/>
+                    <StringItem index="176" value="UABMAT004-INTRODU&#xc7;&#xc3;O &#xc0; INFORM&#xc1;TICA"/>
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

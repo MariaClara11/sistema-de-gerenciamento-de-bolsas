@@ -28,6 +28,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
 
     public VisualizacaoDisciplinas() {
         initComponents();
+        this.listDisc.setModel(modelDisCursadas);
         setLocationRelativeTo(null);
 
     }

@@ -24,13 +24,10 @@ import javax.swing.JOptionPane;
  * @author igor
  */
 public class VisualizacaoBolsa extends javax.swing.JFrame {
-    
-    
-    List<Aluno> alunoLista = new ArrayList();
+
     DefaultListModel model = new DefaultListModel();
     Projeto bolsa;
-    
-    
+
     /**
      * Creates new form VisualizacaoBolsa
      */
@@ -274,30 +271,28 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
         String tipoDaBolsa = this.bolsa.retornaTipo();
-        
-        if(tipoDaBolsa.equals("Iniciação Científica")){
-            
+
+        if (tipoDaBolsa.equals("Iniciação Científica")) {
+
             IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
             List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
             bolsasIC = ic.findAll();
-            
-        int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 for (IniciacaoCientifica a : bolsasIC) {
-                if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                bolsasIC.remove(a);
-                ic.replace(bolsasIC);
-                    dispose();
-                break;
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasIC.remove(a);
+                        ic.replace(bolsasIC);
+                        dispose();
+                        break;
+                    }
                 }
-            }
-            }else{
+            } else {
                 dispose();
             }
-            
-            
-        }
-        else if (tipoDaBolsa.equals("Treinamento Profissional")){
+
+        } else if (tipoDaBolsa.equals("Treinamento Profissional")) {
             TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
             List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
             bolsasTP = tp.findAll();
@@ -316,8 +311,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                 dispose();
             }
 
-        }
-        else if (tipoDaBolsa.equals("Monitoria")){
+        } else if (tipoDaBolsa.equals("Monitoria")) {
             MonitoriaPersistence mo = new MonitoriaPersistence();
             List<Monitoria> bolsasMonitoria = new ArrayList<>();
             bolsasMonitoria = mo.findAll();
@@ -336,9 +330,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                 dispose();
             }
 
-        }
-        else if (tipoDaBolsa.equals("Bolsa Extensao")) {
-                        BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+        } else if (tipoDaBolsa.equals("Bolsa Extensao")) {
+            BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
             List<Extensao> bolsasBE = new ArrayList<>();
             bolsasBE = be.findAll();
 
@@ -386,33 +379,32 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_professorTFActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         this.Lnome.setText(this.bolsa.getTitulo());
-        
+
         this.professorTF.setText(this.bolsa.getProfessorResponsavel());
-        
+
         String listb = new String();
-        for(String p : this.bolsa.getPreRequisitos()){
+        for (String p : this.bolsa.getPreRequisitos()) {
             listb = listb.concat("[");
             listb = listb.concat(p);
             listb = listb.concat("]");
         }
         this.reqTF.setText(listb);
-        
+
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.valorTF.setText(valor);
-        
+
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
         this.horaTF.setText(hora);
-        
+
         this.tipoTF.setText(this.bolsa.retornaTipo());
-         
-        for(Aluno a : this.bolsa.getAlunosCadastrados()){
+
+        for (Aluno a : this.bolsa.getAlunosCadastrados()) {
             model.addElement(a.getNome());
         }
 
-        
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
@@ -433,27 +425,26 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         String valorS = valorTF.getText();
         String horariaS = horaTF.getText();
         String tipo = tipoTF.getText();
-        
+
         int valor;
         int horaria;
-        
+
         try {
             valor = Integer.parseInt(valorS);
             horaria = Integer.parseInt(horariaS);
             // Código a ser executado se a conversão for bem-sucedida
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
-                "Aviso", JOptionPane.WARNING_MESSAGE);
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
             // Código de tratamento para quando a conversão falha
         }
 
-        if (valor<=0 || horaria<=0) {
+        if (valor <= 0 || horaria <= 0) {
             JOptionPane.showMessageDialog(null, "Digite um Valor e uma Carga Horaria valida",
                     "Aviso", JOptionPane.WARNING_MESSAGE);
             return false; // Verifica se campos obrigatórios estão vazios
-        }
-        else {
+        } else {
             return true;
         }
     }
