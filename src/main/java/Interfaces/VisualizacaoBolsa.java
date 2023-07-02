@@ -4,8 +4,16 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -16,13 +24,10 @@ import javax.swing.JOptionPane;
  * @author igor
  */
 public class VisualizacaoBolsa extends javax.swing.JFrame {
-    
-    
-    List<Aluno> alunoLista = new ArrayList();
+
     DefaultListModel model = new DefaultListModel();
     Projeto bolsa;
-    
-    
+
     /**
      * Creates new form VisualizacaoBolsa
      */
@@ -42,20 +47,23 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        bInscrever = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        valorTF = new javax.swing.JTextField();
-        reqTF = new javax.swing.JTextField();
-        horaTF = new javax.swing.JTextField();
-        tipoTF = new javax.swing.JTextField();
-        professorTF = new javax.swing.JTextField();
         Lnome = new javax.swing.JLabel();
+        professorTF = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listAlunos = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        reqTF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        horaTF = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        valorTF = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        tipoTF = new javax.swing.JTextField();
+        btnExcluir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -64,171 +72,291 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(720, 398));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Professor : ");
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Pre-Requisitos : ");
-
-        bInscrever.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        bInscrever.setText("Alterar");
-        bInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                bInscreverMouseClicked(evt);
-            }
-        });
-        bInscrever.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInscreverActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Carga Horária :");
-
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Valor :");
-
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Tipo :");
-
-        valorTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        valorTF.setText("fieldValor");
-        valorTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorTFActionPerformed(evt);
-            }
-        });
-
-        reqTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        reqTF.setText("fieldRequisitos");
-        reqTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reqTFActionPerformed(evt);
-            }
-        });
-
-        horaTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        horaTF.setText("fieldHoraria");
-        horaTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                horaTFActionPerformed(evt);
-            }
-        });
-
-        tipoTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        tipoTF.setText("fieldTipo");
-        tipoTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoTFActionPerformed(evt);
-            }
-        });
+        Lnome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lnome.setText("Nome da Monitoria");
 
         professorTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        professorTF.setText("fieldProfessor");
         professorTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 professorTFActionPerformed(evt);
             }
         });
 
-        Lnome.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lnome.setText("Nome da Monitoria");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Pre-Requisitos : ");
 
         listAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(listAlunos);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Alunos inscritos:");
+
+        reqTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        reqTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reqTFActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Carga Horária :");
+
+        horaTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        horaTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horaTFActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Valor :");
+
+        valorTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        valorTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorTFActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Tipo :");
+
+        tipoTF.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        tipoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoTFActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setBackground(new java.awt.Color(255, 51, 51));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(65, 142, 218));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setText("Editar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+        });
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(Lnome, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addGap(71, 71, 71))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(professorTF)
+                                    .addComponent(reqTF, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(horaTF)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(valorTF)
+                                    .addComponent(tipoTF)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addGap(35, 35, 35))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Lnome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(professorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tipoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(reqTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(horaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(5, 5, 5)
+                        .addComponent(valorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Lnome, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(reqTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(valorTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tipoTF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(professorTF)
-                            .addComponent(horaTF, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
-                .addGap(62, 62, 62))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(304, 304, 304)
-                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Lnome)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(professorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(reqTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(valorTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(horaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(tipoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
-                .addGap(18, 18, 18)
-                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
-        String professor = professorTF.getText();
-        String requisitos = reqTF.getText();
-        String valor = valorTF.getText();
-        String horaria = horaTF.getText();
-        String tipo = tipoTF.getText();
+        String tipoDaBolsa = this.bolsa.retornaTipo();
 
-        if (bolsaIsValid()) {
-            
+        if (tipoDaBolsa.equals("Iniciação Científica")) {
+
+            IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+            List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
+            bolsasIC = ic.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (IniciacaoCientifica a : bolsasIC) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasIC.remove(a);
+                        ic.replace(bolsasIC);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
+        } else if (tipoDaBolsa.equals("Treinamento Profissional")) {
+            TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+            List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
+            bolsasTP = tp.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (TreinamentoProfissional a : bolsasTP) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasTP.remove(a);
+                        tp.replace(bolsasTP);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
+        } else if (tipoDaBolsa.equals("Monitoria")) {
+            MonitoriaPersistence mo = new MonitoriaPersistence();
+            List<Monitoria> bolsasMonitoria = new ArrayList<>();
+            bolsasMonitoria = mo.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (Monitoria a : bolsasMonitoria) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasMonitoria.remove(a);
+                        mo.replace(bolsasMonitoria);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
+        } else if (tipoDaBolsa.equals("Bolsa Extensao")) {
+            BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+            List<Extensao> bolsasBE = new ArrayList<>();
+            bolsasBE = be.findAll();
+
+            int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION) {
+                for (Extensao a : bolsasBE) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        bolsasBE.remove(a);
+                        be.replace(bolsasBE);
+                        dispose();
+                        break;
+                    }
+                }
+            } else {
+                dispose();
+            }
+
         }
 
 
-    }//GEN-LAST:event_bInscreverMouseClicked
+    }//GEN-LAST:event_btnExcluirMouseClicked
 
-    private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bInscreverActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void valorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTFActionPerformed
         // TODO add your handling code here:
@@ -251,34 +379,41 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_professorTFActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         this.Lnome.setText(this.bolsa.getTitulo());
-        
+
         this.professorTF.setText(this.bolsa.getProfessorResponsavel());
-        
+
         String listb = new String();
-        for(String p : this.bolsa.getPreRequisitos()){
+        for (String p : this.bolsa.getPreRequisitos()) {
             listb = listb.concat("[");
             listb = listb.concat(p);
             listb = listb.concat("]");
         }
         this.reqTF.setText(listb);
-        
+
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.valorTF.setText(valor);
-        
+
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
         this.horaTF.setText(hora);
-        
+
         this.tipoTF.setText(this.bolsa.retornaTipo());
-         
-        for(Aluno a : this.bolsa.getAlunosCadastrados()){
+
+        for (Aluno a : this.bolsa.getAlunosCadastrados()) {
             model.addElement(a.getNome());
         }
 
-        
-        
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,27 +425,26 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         String valorS = valorTF.getText();
         String horariaS = horaTF.getText();
         String tipo = tipoTF.getText();
-        
+
         int valor;
         int horaria;
-        
+
         try {
             valor = Integer.parseInt(valorS);
             horaria = Integer.parseInt(horariaS);
             // Código a ser executado se a conversão for bem-sucedida
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Por favor, complete as informações da bolsa",
-                "Aviso", JOptionPane.WARNING_MESSAGE);
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
             return false;
             // Código de tratamento para quando a conversão falha
         }
 
-        if (valor<=0 || horaria<=0) {
+        if (valor <= 0 || horaria <= 0) {
             JOptionPane.showMessageDialog(null, "Digite um Valor e uma Carga Horaria valida",
                     "Aviso", JOptionPane.WARNING_MESSAGE);
             return false; // Verifica se campos obrigatórios estão vazios
-        }
-        else {
+        } else {
             return true;
         }
     }
@@ -349,13 +483,16 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Lnome;
-    private javax.swing.JButton bInscrever;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JTextField horaTF;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Aluno> listAlunos;
     private javax.swing.JTextField professorTF;

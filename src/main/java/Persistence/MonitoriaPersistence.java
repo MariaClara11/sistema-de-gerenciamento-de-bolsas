@@ -53,4 +53,16 @@ public class MonitoriaPersistence implements Persistence<Monitoria>{
 
         return listaBolsasMonitoria;
     }
+        public void replace(List<Monitoria> bolsasMonitoria) {
+        Gson gson = new Gson();
+        String json = gson.toJson(bolsasMonitoria);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
+    }
 }

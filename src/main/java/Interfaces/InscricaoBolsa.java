@@ -4,9 +4,19 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -39,20 +49,21 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         Lnome = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        fieldProfessor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        fieldRequisitos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        fieldValor = new javax.swing.JTextField();
-        fieldRequisitos = new javax.swing.JTextField();
         fieldHoraria = new javax.swing.JTextField();
+        fieldValor = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         fieldTipo = new javax.swing.JTextField();
-        fieldProfessor = new javax.swing.JTextField();
-        bInscrever = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         preRequisitoComboBox = new javax.swing.JComboBox<>();
+        bInscrever = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,61 +72,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        Lnome.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lnome.setText("Nome da Monitoria");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        Lnome.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Lnome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lnome.setText("Titulo");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Professor : ");
-
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Pre-Requisitos : ");
-
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Carga Horária :");
-
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Valor :");
-
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setText("Tipo :");
-
-        fieldValor.setEditable(false);
-        fieldValor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldValorActionPerformed(evt);
-            }
-        });
-
-        fieldRequisitos.setEditable(false);
-        fieldRequisitos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldRequisitos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldRequisitosActionPerformed(evt);
-            }
-        });
-
-        fieldHoraria.setEditable(false);
-        fieldHoraria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldHoraria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldHorariaActionPerformed(evt);
-            }
-        });
-
-        fieldTipo.setEditable(false);
-        fieldTipo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        fieldTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldTipoActionPerformed(evt);
-            }
-        });
 
         fieldProfessor.setEditable(false);
         fieldProfessor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
@@ -125,8 +90,65 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        bInscrever.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        bInscrever.setText("Inscrever");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("Pre-Requisitos : ");
+
+        fieldRequisitos.setEditable(false);
+        fieldRequisitos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        fieldRequisitos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldRequisitosActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Carga Horária Semanal :");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Valor :");
+
+        fieldHoraria.setEditable(false);
+        fieldHoraria.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        fieldHoraria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldHorariaActionPerformed(evt);
+            }
+        });
+
+        fieldValor.setEditable(false);
+        fieldValor.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        fieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldValorActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Tipo :");
+
+        fieldTipo.setEditable(false);
+        fieldTipo.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        fieldTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldTipoActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("Pre-Requisitos : ");
+
+        preRequisitoComboBox.setEditable(false);
+        preRequisitoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        preRequisitoComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        bInscrever.setBackground(new java.awt.Color(65, 142, 218));
+        bInscrever.setForeground(new java.awt.Color(255, 255, 255));
+        bInscrever.setText("Me inscrever");
         bInscrever.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bInscreverMouseClicked(evt);
@@ -138,76 +160,78 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Pre-Requisitos : ");
-
-        preRequisitoComboBox.setEditable(false);
-        preRequisitoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        preRequisitoComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Lnome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldProfessor)
+                    .addComponent(fieldRequisitos, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                    .addComponent(fieldHoraria)
+                    .addComponent(fieldValor)
+                    .addComponent(fieldTipo)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(preRequisitoComboBox, 0, 438, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(Lnome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(2, 2, 2)
+                .addComponent(fieldRequisitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(preRequisitoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Lnome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fieldProfessor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldRequisitos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(fieldTipo)
-                            .addComponent(fieldValor)
-                            .addComponent(fieldHoraria, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(preRequisitoComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(62, 62, 62))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(Lnome)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(fieldProfessor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(fieldRequisitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(fieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(fieldHoraria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(fieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(preRequisitoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(bInscrever, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -230,23 +254,99 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldProfessorActionPerformed
 
     private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
+<<<<<<< HEAD
         
         int counter=0;
         
         for(Disciplina d: user.getDisciplinas()){
             for(String b: this.bolsa.getPreRequisitos()){
                 if(d.getCodigo().equals(b)){
+=======
+
+        int counter = 0;
+
+        for (Disciplina d : user.getDisciplinas()) {
+            for (String b : this.bolsa.getPreRequisitos()) {
+
+                System.out.println("Disciplina -> " + d);
+                System.out.println("Bolsa -> " + b);
+                if (d.getCodigo().equals(b)) {
+>>>>>>> 961df49d0ed240fb428a1e679e750a7cdcd346a4
                     counter++;
                 }
             }
         }
-        if(counter>=this.bolsa.getPreRequisitos().size()){
-            this.bolsa.addAlunosCadastrados(user);
+        if (counter >= this.bolsa.getPreRequisitos().size()) {
+
+            String tipoDaBolsa = this.bolsa.retornaTipo();
+
+            if (tipoDaBolsa.equals("Treinamento Profissional")) {
+                TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+                List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
+                bolsasTP = tp.findAll();
+                for (TreinamentoProfissional a : bolsasTP) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        // bolsasTP.add(a);
+                        tp.replace(bolsasTP);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+
+            if (tipoDaBolsa.equals("Iniciação Científica")) {
+                IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+                List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
+                bolsasIC = ic.findAll();
+                for (IniciacaoCientifica a : bolsasIC) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        // bolsasIC.add(a);
+                        ic.replace(bolsasIC);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+            if (tipoDaBolsa.equals("Monitoria")) {
+                MonitoriaPersistence mo = new MonitoriaPersistence();
+                List<Monitoria> bolsasMonitoria = new ArrayList<>();
+                bolsasMonitoria = mo.findAll();
+                for (Monitoria a : bolsasMonitoria) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        //bolsasMonitoria.add(a);
+                        mo.replace(bolsasMonitoria);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+            if (tipoDaBolsa.equals("Bolsa Extensao")) {
+                BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+                List<Extensao> bolsasBE = new ArrayList<>();
+                bolsasBE = be.findAll();
+                for (Extensao a : bolsasBE) {
+                    if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                        a.getAlunosCadastrados().add(this.user);
+                        //bolsasBE.add(a);
+                        be.replace(bolsasBE);
+                        dispose();
+                        break;
+                    }
+                }
+
+            }
+
             JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_bInscreverActionPerformed
 
     private void bInscreverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bInscreverMouseClicked
@@ -257,7 +357,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         comboBoxModel.addElement("Veja mais");
         this.Lnome.setText(this.bolsa.getTitulo());
-        
+
         this.fieldProfessor.setText(this.bolsa.getProfessorResponsavel());
 
         String hora = Integer.toString(this.bolsa.getQuantidadeHoras());
@@ -275,9 +375,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
-        
+
         this.fieldTipo.setText(this.bolsa.retornaTipo());
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void fieldRequisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldRequisitosActionPerformed
@@ -331,6 +431,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> preRequisitoComboBox;
     // End of variables declaration//GEN-END:variables
 }

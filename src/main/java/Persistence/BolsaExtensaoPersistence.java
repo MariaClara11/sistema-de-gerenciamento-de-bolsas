@@ -50,4 +50,16 @@ public class BolsaExtensaoPersistence implements Persistence<Extensao>{
 
         return listaBolsasBE;
     }
+            public void replace(List<Extensao> bolsasBE) {
+        Gson gson = new Gson();
+        String json = gson.toJson(bolsasBE);
+
+        File diretorio = new File(DIRECTORY);
+        if(!diretorio.exists())
+            diretorio.mkdirs();
+
+        Arquivo.replace(PATH, json);
+
+
+    }
     }

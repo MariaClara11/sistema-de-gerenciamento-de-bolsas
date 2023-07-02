@@ -43,19 +43,37 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        tituloPrincipal = new javax.swing.JLabel();
+        codigoDisciplinaSelect = new javax.swing.JComboBox<>();
         notaTF = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        btnVoltar = new java.awt.Button();
-        codigoDisciplinaSelect = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Código:");
 
-        jLabel4.setText("Nota tirada na disciplina:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Nota obtida:");
+
+        tituloPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tituloPrincipal.setForeground(new java.awt.Color(65, 142, 218));
+        tituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tituloPrincipal.setText("Cadastro de Disciplina");
+        tituloPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        codigoDisciplinaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "DCC001-ANALISE E PROJETO DE ALGORITMOS", "DCC008-CALCULO NUMERICO", "DCC012-ESTRUTURA DE DADOS II", "DCC013-ESTRUTURA DE DADOS", "DCC014-INTELIGENCIA ARTIFICIAL", "DCC019-LINGUAGEM DE PROGRAMACAO", "DCC025-ORIENTAÇÃO A OBJETOS", "DCC033-FLUXO EM REDES", "DCC037-LABORATORIO DE ORGANIZACAO DE COMPUTADORES", "DCC042-REDES DE COMPUTADORES", "DCC045-TEORIA DOS COMPILADORES", "DCC049-EMPREENDIMENTOS EM INFORMATICA", "DCC055-TEORIA DA COMPUTAÇÃO", "DCC057-ARQUITETURA DE COMPUTADORES", "DCC059-TEORIA DOS GRAFOS", "DCC060-BANCO DE DADOS", "DCC061-ENGENHARIA DE SOFTWARE", "DCC062-SISTEMAS OPERACIONAIS", "DCC063-LINGUAGENS FORMAIS E AUTÔMATOS", "DCC064-SISTEMAS DISTRIBUÍDOS", "DCC065-COMPUTACAO GRAFICA", "DCC066-PROCESSAMENTO DE IMAGENS", "DCC067-COMPUTAÇÃO EVOLUCIONISTA", "DCC068-REDES NEURAIS ARTIFICIAIS", "DCC069-PROGRAMAÇÃO NÃO LINEAR", "DCC070-ORGANIZAÇÃO DE COMPUTADORES", "DCC071-LABORATÓRIO DE SISTEMAS OPERACIONAIS", "DCC072-LABORATORIO DE REDES DE COMPUTADORES", "DCC073-TEORIA DE FILAS", "DCC074-AVALIAÇÃO DE DESEMPENHO DE SISTEMAS", "DCC075-SEGURANÇA EM SISTEMAS DE COMPUTAÇÃO", "DCC076-PROGRAMAÇÃO EM LÓGICA", "DCC077-ASPECTOS AVANCADOS EM BANCO DE DADOS", "DCC078-ASPECTOS AVANCADOS EM ENGENHARIA DE SOFTWARE", "DCC079-PROGRAMAÇÃO PARA A WEB", "DCC080-LAB.INTEGRADO DE DESENVOLVIMENTO DE SOFTWARE", "DCC082-SISTEMAS MULTIMIDIA", "DCC083-QUALIDADE DE SOFTWARE", "DCC086-INFORMATICA NA EDUCACAO", "DCC088-GESTAO DA TECNOLOGIA E INOVACAO TECNOLOGICA", "DCC089-TOPICOS EM COMPUTACAO CIENTIFICA I", "DCC090-TOPICOS EM COMPUTACAO CIENTIFICA II", "DCC091-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO I", "DCC092-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO II", "DCC093-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE I", "DCC094-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE II", "DCC095-TOPICOS EM CIENCIA", "TECNOLOGIA E SOCIEDADE I", "DCC096-TOPICOS EM CIENCIA", "TECNOLOGIA E SOCIEDADE II", "DCC097-SEMINARIO EM COMPUTACAO I", "DCC098-SEMINARIO EM COMPUTACAO II", "DCC099-SEMINARIO EM COMPUTACAO III", "DCC100-SEMINARIO EM COMPUTACAO IV", "DCC101-SEMINARIO EM COMPUTACAO V", "DCC102-SEMINARIO EM COMPUTACAO VI", "DCC103-SEMINARIO EM COMPUTACAO VII", "DCC104-SEMINARIO EM COMPUTACAO VIII", "DCC105-SEMINARIO EM COMPUTACAO IX", "DCC107-LABORATÓRIO DE PROGRAMAÇÃO II", "DCC110-MONOGRAFIA FINAL EM COMPUTAÇÃO", "DCC117-MODELAGEM DE SISTEMAS", "DCC118-INFORMÁTICA E SOCIEDADE", "DCC119-ALGORITMOS", "DCC119E-ALGORITMOS", "DCC120-LABORATÓRIO DE PROGRAMAÇÃO", "DCC121-LABORATÓRIO DE PROGRAMAÇÃO WEB", "DCC122-CIRCUITOS DIGITAIS", "DCC123-METODOLOGIA CIENTÍFICA EM COMPUTAÇÃO", "DCC124-AMBIENTES VIRTUAIS DE APRENDIZAGEM", "DCC125-PROGRAMAÇÃO PARALELA", "DCC126-TV DIGITAL", "DCC127-MINERAÇÃO DE DADOS", "DCC128-GERÊNCIA DE REDES", "DCC129-REALIDADE VIRTUAL E AUMENTADA", "DCC130-COMPUTAÇÃO MÓVEL", "ÚBIQUA E PERVASIVA", "DCC131-PROJETO DE REDES DE COMPUTADORES", "DCC132-ENGENHARIA DE SOFTWARE EXPERIMENTAL", "DCC133-INTRODUÇÃO A SISTEMAS DE INFORMAÇÃO", "DCC134-MODELAGEM DE SISTEMAS DE INFORMAÇÃO", "DCC136-INTELIGÊNCIA COMPUTACIONAL", "DCC137-SISTEMAS NEBULOSOS", "DCC138-TÓPICOS DE LINGUAGEM PROGRAMAÇÃO I", "DCC139-TÓPICOS DE LINGUAGEM PROGRAMAÇÃO II", "DCC140-TÓPICOS EM INTELIGÊNCIA COMPUTACIONAL I", "DCC141-TÓPICOS EM INTELIGÊNCIA COMPUTACIONAL II", "DCC142-ANÁLISE E PROJETO DE ALGORITMOS II", "DCC143-ADMINISTRAÇÃO DE DADOS", "DCC144-ADMINISTRAÇÃO DE REDES", "DCC145-ASPECTOS ORGANIZACIONAIS DE SISTEMAS DE INFORMAÇÃO", "DCC146-ASPECTOS TEÓRICOS DA COMPUTAÇÃO", "DCC147-DATA WAREHOUSE", "DCC148-DESENVOLVIMENTO DE JOGOS", "DCC149-ENGENHARIA DE REQUISITOS", "DCC152-FUNDAMENTOS DE DESENVOLVIMENTO WEB", "DCC153-GERÊNCIA DE CONFIGURAÇÃO DE SOFTWARE", "DCC154-GERÊNCIA DE PROJETOS", "DCC155-GESTÃO DO CONHECIMENTO", "DCC156-LABORATÓRIO DE PROGRAMAÇÃO IV", "DCC157-LABORATÓRIO DE PROGRAMAÇÃO V", "DCC158-LABORATÓRIO DE PROGRAMAÇÃO VI", "DCC159-LABORATÓRIO DE APLICAÇÕES DE REDES DE COMPUTADORES", "DCC160-LÓGICA E FUNDAMENTOS PARA A COMPUTAÇÃO", "DCC161-MODELAGEM DE NEGÓCIO", "DCC162-PADRÕES DE PROJETO", "DCC163-PESQUISA OPERACIONAL", "DCC164-RECUPERAÇÃO DA INFORMAÇÃO", "DCC165-SEGURANÇA E AUDITORIA DE SISTEMAS", "DCC166-SISTEMAS DE APOIO À DECISÃO", "DCC167-SISTEMAS INTELIGENTES", "DCC168-TESTE DE SOFTWARE", "DCC170-TRABALHO DE CONCLUSÃO DE BACHARELADO EM SISTEMAS DE INFORMAÇÃO", "DCC171-LABORATÓRIO DE PROGRAMAÇÃO III", "DCC172-PROGRAMAÇÃO COMPETITIVA", "DCC173-ANALISE NUMERICA", "DCC174-INTERAÇÃO HUMANO-COMPUTADOR", "DCC175-INTRODUÇÃO A CIÊNCIA DA COMPUTAÇÃO", "DCC176-SISTEMAS COLABORATIVOS", "DCC177-PESQUISA OPERACIONAL II", "DCC178-PESQUISA OPERACIONAL III", "DCC179-LABORATÓRIO DE CIÊNCIA DA COMPUTAÇÃO", "DCC180-ESTÁGIO SUPERVISIONADO", "DCC181-ESTÁGIO SUPERVISIONADO II", "DCC182-ESTÁGIO SUPERVISIONADO III", "DCC183-ESTÁGIO SUPERVISIONADO IV", "DCC184-ESTÁGIO SUPERVISIONADO V", "DCC185-ESTÁGIO SUPERVISIONADO VI", "DCC186-ESTÁGIO SUPERVISIONADO VII", "DCC187-ESTÁGIO SUPERVISIONADO VIII", "DCC188-ESTÁGIO SUPERVISIONADO IX", "DCC189-ESTÁGIO SUPERVISIONADO X", "DCC190-SOLUÇÃO NUMÉRICA DE EQUAÇÕES DIFERENCIAIS", "DCC191-VISUALIZAÇÃO CIENTÍFICA", "EADDCC001-INTRODUÇÃO À EAD", "EADDCC002-INTRODUÇÃO ÀS TECNOLOGIAS DA INFORMAÇÃO E DA COMUNICAÇÃO", "EADDCC003-LÓGICA PARA COMPUTAÇÃO", "EADDCC006-INTRODUÇÃO AOS SISTEMAS OPERACIONAIS", "EADDCC007-FUNDAMENTOS DA ORGANIZAÇÃO DE COMPUTADORES", "EADDCC008-ALGORÍTMOS", "EADDCC009-FUNDAMENTOS DE REDES DE COMPUTADORES", "EADDCC011-INGLÊS INSTRUMENTAL", "EADDCC012-METODOLOGIA DE PESQUISA CIENTÍFICA E EDUCACIONAL", "EADDCC013-SEMINÁRIO INTEGRADO I", "EADDCC014-LINGUAGEM DE PROGRAMAÇÃO I", "EADDCC015-LABORATÓRIO DE MONTAGEM E MANUTENÇÃO", "EADDCC021-SEMINÁRIO INTEGRADO II", "EADDCC023-PROGRAMAÇÃO PARA WEB I", "EADDCC024-FUNDAMENTOS DE SISTEMAS DE INFORMAÇÃO", "EADDCC025-MODELAGEM DE SISTEMAS", "EADDCC029-SISTEMAS MULTIMÍDIAS", "EADDCC030-FUNDAMENTOS DE BANCO DE DADOS", "EADDCC031-LINGUAGEM DE PROGRAMAÇÃO II", "EADDCC032-FUNDAMENTOS DE ENGENHARIA DE SOFTWARE", "EADDCC033-MÉTODOS DE ENSINO DE APRENDIZAGEM EM INFORMÁTICA", "EADDCC034-ESTÁGIO SUPERVISIONADO I", "EADDCC035-PROGRAMAÇÃO PARA WEB II", "EADDCC036-INTERFACE USUÁRIO – MÁQUINA", "EADDCC037-PROJETO DE SOFTWARE EDUCACIONAL", "EADDCC038-INFORMÁTICA NA EDUCAÇÃO", "EADDCC039-OFICINA DE GESTÃO DE SALA DE AULA", "EADDCC040-OFICINA DE AVALIAÇÃO EDUCACIONAL", "EADDCC041-ESTÁGIO SUPERVISIONADO II", "EADDCC042-TRABALHO DE CONCLUSÃO DE CURSO I", "EADDCC043-AVALIAÇÃO DE SOFTWARE EDUCACIONAL", "EADDCC044-INFORMÁTICA E SOCIEDADE", "EADDCC045-FUNDAMENTOS DA INTELIGÊNCIA ARTIFICIAL", "EADDCC046-EDUCAÇÃO DE JOVENS E ADULTOS", "EADDCC047-ESTÁGIO SUPERVISIONADO III", "EADDCC048-OBJETOS DE APRENDIZAGEM", "EADDCC049-ASPECTOS LEGAIS DA INFORMÁTICA", "EADDCC050-ESTÁGIO SUPERVISIONADO IV", "EADDCC052-TRABALHO DE CONCLUSÃO DE CURSO II", "EADQUI002-INTRODUÇÃO ÀS TECNOLOGIAS DE COMUNICAÇÃO E INFORMAÇÃO I", "EADQUI009-INTRODUÇÃO ÀS TECNOLOGIAS DE COMUNICAÇÃO E INFORMAÇÃO II", "UABFIS005-INTRODUÇÃO À INFORMÁTICA", "UABMAT004-INTRODUÇÃO À INFORMÁTICA" }));
+        codigoDisciplinaSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        codigoDisciplinaSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codigoDisciplinaSelectActionPerformed(evt);
+            }
+        });
 
         notaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +81,8 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrar.setBackground(new java.awt.Color(65, 142, 218));
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,74 +90,55 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Cadastro de Disciplinas");
-
-        btnVoltar.setLabel("<--");
-        btnVoltar.setName(""); // NOI18N
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-
-        codigoDisciplinaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "ANE40", "CAD076", "DCC001", "DCC008", "DCC012", "DCC013", "DCC014", "DCC019", "DCC025", "DCC033", "DCC037", "DCC042", "DCC045", "DCC055", "DCC059", "DCC060", "DCC061", "DCC062", "DCC063", "DCC064", "DCC065", "DCC066", "DCC067", "DCC068", "DCC069", "DCC070", "DCC071", "DCC072", "DCC073", "DCC074", "DCC075", "DCC076", "DCC078", "DCC080", "DCC082", "DCC083", "DCC086", "DCC088", "DCC089", "DCC090", "DCC091", "DCC092", "DCC093", "DCC094", "DCC095", "DCC096", "DCC097", "DCC098", "DCC099", "DCC100", "DCC101", "DCC102", "DCC103", "DCC104", "DCC105", "DCC117", "DCC122", "DCC123", "DCC124", "DCC125", "DCC126", "DCC127", "DCC128", "DCC129", "DCC130", "DCC131", "DCC132", "DCC133", "DCC136", "DCC137", "DCC138", "DCC139", "DCC140", "DCC141", "DCC142", "DCC143", "DCC144", "DCC145", "DCC147", "DCC148", "DCC149", "DCC152", "DCC153", "DCC154", "DCC155", "DCC159", "DCC160", "DCC161", "DCC162", "DCC163", "DCC164", "DCC165", "DCC166", "DCC167", "DCC168", "DCC171", "DCC172", "DCC174", "DCC176", "DCC177", "DCC178", "DCC179", "DCC180", "DCC181", "DCC182", "DCC183", "DCC184", "DCC185", "DCC186", "DCC187", "DCC188", "DCC189", "DCC190", "DCC199", "DCC200", "DC5199", "DC5200", "DPR032", "EADCC037", "EADCC043", "EADCC044", "EADDCC048", "EADDCC049", "EST028", "EST029", "EST030", "FIL012", "FIN001", "FIS073", "FIS074", "FIS075", "FIS077", "FIS122", "ICE001", "LEC003", "LEM184", "MAC011", "MAC013", "MAT013", "MAT029", "MAT143", "MAT154", "MAT155", "MAT156", "MAT157", "MAT158", "QUI125", "QUI126", "QUI168", "UNI001", "UNI002", "UNI003" }));
-        codigoDisciplinaSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tituloPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(codigoDisciplinaSelect, 0, 495, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(notaTF)
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(tituloPrincipal)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(codigoDisciplinaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(notaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(17, 17, 17))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(notaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(182, 182, 182)))
-                                .addGap(62, 62, 62))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(codigoDisciplinaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(codigoDisciplinaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(notaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(btnCadastrar)
-                .addContainerGap(78, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -173,12 +174,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-
-        HomeAluno homeAluno = new HomeAluno(this.user);
-        homeAluno.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnVoltarActionPerformed
+    private void codigoDisciplinaSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoDisciplinaSelectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigoDisciplinaSelectActionPerformed
 
     public boolean ehIgual(Disciplina newDisciplina) {
 
@@ -248,11 +246,11 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private java.awt.Button btnVoltar;
     private javax.swing.JComboBox<String> codigoDisciplinaSelect;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField notaTF;
+    private javax.swing.JLabel tituloPrincipal;
     // End of variables declaration//GEN-END:variables
 }

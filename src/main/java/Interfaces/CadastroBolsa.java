@@ -61,65 +61,102 @@ public class CadastroBolsa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         tituloPrincipal = new javax.swing.JLabel();
-        labelValor = new javax.swing.JLabel();
         labelCargaHor = new javax.swing.JLabel();
+        labelValor = new javax.swing.JLabel();
         labelTipo = new javax.swing.JLabel();
-        valorTf = new javax.swing.JTextField();
-        cadastrar = new javax.swing.JButton();
-        tipoBolsaSelect = new javax.swing.JComboBox<>();
         labelTitulo = new javax.swing.JLabel();
+        labelMetodoEntrada = new javax.swing.JLabel();
         tituloTf = new javax.swing.JTextField();
+        tipoBolsaSelect = new javax.swing.JComboBox<>();
+        valorTf = new javax.swing.JTextField();
+        cargaHorariaTf1 = new javax.swing.JTextField();
         metodoEntradaSelect = new javax.swing.JComboBox<>();
         labelVagas = new javax.swing.JLabel();
-        cargaHorariaTf1 = new javax.swing.JTextField();
-        labelMetodoEntrada = new javax.swing.JLabel();
         qtdVagasSpinner = new javax.swing.JSpinner();
         labelPreRequisitos1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaPreRequisitosSelect = new javax.swing.JList<>();
+        cadastrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(610, 410));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
         });
-        getContentPane().setLayout(null);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(6, 345, 0, 0);
 
-        tituloPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        tituloPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        tituloPrincipal.setForeground(new java.awt.Color(65, 142, 218));
         tituloPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tituloPrincipal.setText("Cadastro de Bolsa");
         tituloPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(tituloPrincipal);
-        tituloPrincipal.setBounds(70, 40, 350, 32);
 
-        labelValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelCargaHor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelCargaHor.setText("Carga Horária Semanal:");
+
+        labelValor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelValor.setText("Valor:");
-        getContentPane().add(labelValor);
-        labelValor.setBounds(20, 170, 35, 20);
 
-        labelCargaHor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelCargaHor.setText("Carga Horária:");
-        getContentPane().add(labelCargaHor);
-        labelCargaHor.setBounds(20, 200, 88, 20);
-
-        labelTipo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTipo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelTipo.setText("Tipo:");
-        getContentPane().add(labelTipo);
-        labelTipo.setBounds(20, 140, 29, 20);
+
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTitulo.setText("Título: ");
+
+        labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelMetodoEntrada.setText("Método de Entrada:");
+
+        tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
+        tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoBolsaSelectActionPerformed(evt);
+            }
+        });
 
         valorTf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorTfActionPerformed(evt);
             }
         });
-        getContentPane().add(valorTf);
-        valorTf.setBounds(160, 170, 311, 22);
 
+        cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargaHorariaTf1ActionPerformed(evt);
+            }
+        });
+
+        metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Prova", "Entrevista" }));
+        metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                metodoEntradaSelectActionPerformed(evt);
+            }
+        });
+
+        labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelVagas.setText("Vagas:");
+
+        qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelPreRequisitos1.setText("Pré-Requisitos:");
+
+        listaPreRequisitosSelect.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "DCC001-ANALISE E PROJETO DE ALGORITMOS", "DCC008-CALCULO NUMERICO", "DCC012-ESTRUTURA DE DADOS II", "DCC013-ESTRUTURA DE DADOS", "DCC014-INTELIGENCIA ARTIFICIAL", "DCC019-LINGUAGEM DE PROGRAMACAO", "DCC025-ORIENTAÇÃO A OBJETOS", "DCC033-FLUXO EM REDES", "DCC037-LABORATORIO DE ORGANIZACAO DE COMPUTADORES", "DCC042-REDES DE COMPUTADORES", "DCC045-TEORIA DOS COMPILADORES", "DCC049-EMPREENDIMENTOS EM INFORMATICA", "DCC055-TEORIA DA COMPUTAÇÃO", "DCC057-ARQUITETURA DE COMPUTADORES", "DCC059-TEORIA DOS GRAFOS", "DCC060-BANCO DE DADOS", "DCC061-ENGENHARIA DE SOFTWARE", "DCC062-SISTEMAS OPERACIONAIS", "DCC063-LINGUAGENS FORMAIS E AUTÔMATOS", "DCC064-SISTEMAS DISTRIBUÍDOS", "DCC065-COMPUTACAO GRAFICA", "DCC066-PROCESSAMENTO DE IMAGENS", "DCC067-COMPUTAÇÃO EVOLUCIONISTA", "DCC068-REDES NEURAIS ARTIFICIAIS", "DCC069-PROGRAMAÇÃO NÃO LINEAR", "DCC070-ORGANIZAÇÃO DE COMPUTADORES", "DCC071-LABORATÓRIO DE SISTEMAS OPERACIONAIS", "DCC072-LABORATORIO DE REDES DE COMPUTADORES", "DCC073-TEORIA DE FILAS", "DCC074-AVALIAÇÃO DE DESEMPENHO DE SISTEMAS", "DCC075-SEGURANÇA EM SISTEMAS DE COMPUTAÇÃO", "DCC076-PROGRAMAÇÃO EM LÓGICA", "DCC077-ASPECTOS AVANCADOS EM BANCO DE DADOS", "DCC078-ASPECTOS AVANCADOS EM ENGENHARIA DE SOFTWARE", "DCC079-PROGRAMAÇÃO PARA A WEB", "DCC080-LAB.INTEGRADO DE DESENVOLVIMENTO DE SOFTWARE", "DCC082-SISTEMAS MULTIMIDIA", "DCC083-QUALIDADE DE SOFTWARE", "DCC086-INFORMATICA NA EDUCACAO", "DCC088-GESTAO DA TECNOLOGIA E INOVACAO TECNOLOGICA", "DCC089-TOPICOS EM COMPUTACAO CIENTIFICA I", "DCC090-TOPICOS EM COMPUTACAO CIENTIFICA II", "DCC091-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO I", "DCC092-TOPICOS EM REDES E PROCESSAMENTO DISTRIBUIDO II", "DCC093-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE I", "DCC094-TOPICOS EM DESENVOLVIMENTO DE SOFTWARE II", "DCC095-TOPICOS EM CIENCIA", "TECNOLOGIA E SOCIEDADE I", "DCC096-TOPICOS EM CIENCIA", "TECNOLOGIA E SOCIEDADE II", "DCC097-SEMINARIO EM COMPUTACAO I", "DCC098-SEMINARIO EM COMPUTACAO II", "DCC099-SEMINARIO EM COMPUTACAO III", "DCC100-SEMINARIO EM COMPUTACAO IV", "DCC101-SEMINARIO EM COMPUTACAO V", "DCC102-SEMINARIO EM COMPUTACAO VI", "DCC103-SEMINARIO EM COMPUTACAO VII", "DCC104-SEMINARIO EM COMPUTACAO VIII", "DCC105-SEMINARIO EM COMPUTACAO IX", "DCC107-LABORATÓRIO DE PROGRAMAÇÃO II", "DCC110-MONOGRAFIA FINAL EM COMPUTAÇÃO", "DCC117-MODELAGEM DE SISTEMAS", "DCC118-INFORMÁTICA E SOCIEDADE", "DCC119-ALGORITMOS", "DCC119E-ALGORITMOS", "DCC120-LABORATÓRIO DE PROGRAMAÇÃO", "DCC121-LABORATÓRIO DE PROGRAMAÇÃO WEB", "DCC122-CIRCUITOS DIGITAIS", "DCC123-METODOLOGIA CIENTÍFICA EM COMPUTAÇÃO", "DCC124-AMBIENTES VIRTUAIS DE APRENDIZAGEM", "DCC125-PROGRAMAÇÃO PARALELA", "DCC126-TV DIGITAL", "DCC127-MINERAÇÃO DE DADOS", "DCC128-GERÊNCIA DE REDES", "DCC129-REALIDADE VIRTUAL E AUMENTADA", "DCC130-COMPUTAÇÃO MÓVEL", "ÚBIQUA E PERVASIVA", "DCC131-PROJETO DE REDES DE COMPUTADORES", "DCC132-ENGENHARIA DE SOFTWARE EXPERIMENTAL", "DCC133-INTRODUÇÃO A SISTEMAS DE INFORMAÇÃO", "DCC134-MODELAGEM DE SISTEMAS DE INFORMAÇÃO", "DCC136-INTELIGÊNCIA COMPUTACIONAL", "DCC137-SISTEMAS NEBULOSOS", "DCC138-TÓPICOS DE LINGUAGEM PROGRAMAÇÃO I", "DCC139-TÓPICOS DE LINGUAGEM PROGRAMAÇÃO II", "DCC140-TÓPICOS EM INTELIGÊNCIA COMPUTACIONAL I", "DCC141-TÓPICOS EM INTELIGÊNCIA COMPUTACIONAL II", "DCC142-ANÁLISE E PROJETO DE ALGORITMOS II", "DCC143-ADMINISTRAÇÃO DE DADOS", "DCC144-ADMINISTRAÇÃO DE REDES", "DCC145-ASPECTOS ORGANIZACIONAIS DE SISTEMAS DE INFORMAÇÃO", "DCC146-ASPECTOS TEÓRICOS DA COMPUTAÇÃO", "DCC147-DATA WAREHOUSE", "DCC148-DESENVOLVIMENTO DE JOGOS", "DCC149-ENGENHARIA DE REQUISITOS", "DCC152-FUNDAMENTOS DE DESENVOLVIMENTO WEB", "DCC153-GERÊNCIA DE CONFIGURAÇÃO DE SOFTWARE", "DCC154-GERÊNCIA DE PROJETOS", "DCC155-GESTÃO DO CONHECIMENTO", "DCC156-LABORATÓRIO DE PROGRAMAÇÃO IV", "DCC157-LABORATÓRIO DE PROGRAMAÇÃO V", "DCC158-LABORATÓRIO DE PROGRAMAÇÃO VI", "DCC159-LABORATÓRIO DE APLICAÇÕES DE REDES DE COMPUTADORES", "DCC160-LÓGICA E FUNDAMENTOS PARA A COMPUTAÇÃO", "DCC161-MODELAGEM DE NEGÓCIO", "DCC162-PADRÕES DE PROJETO", "DCC163-PESQUISA OPERACIONAL", "DCC164-RECUPERAÇÃO DA INFORMAÇÃO", "DCC165-SEGURANÇA E AUDITORIA DE SISTEMAS", "DCC166-SISTEMAS DE APOIO À DECISÃO", "DCC167-SISTEMAS INTELIGENTES", "DCC168-TESTE DE SOFTWARE", "DCC170-TRABALHO DE CONCLUSÃO DE BACHARELADO EM SISTEMAS DE INFORMAÇÃO", "DCC171-LABORATÓRIO DE PROGRAMAÇÃO III", "DCC172-PROGRAMAÇÃO COMPETITIVA", "DCC173-ANALISE NUMERICA", "DCC174-INTERAÇÃO HUMANO-COMPUTADOR", "DCC175-INTRODUÇÃO A CIÊNCIA DA COMPUTAÇÃO", "DCC176-SISTEMAS COLABORATIVOS", "DCC177-PESQUISA OPERACIONAL II", "DCC178-PESQUISA OPERACIONAL III", "DCC179-LABORATÓRIO DE CIÊNCIA DA COMPUTAÇÃO", "DCC180-ESTÁGIO SUPERVISIONADO", "DCC181-ESTÁGIO SUPERVISIONADO II", "DCC182-ESTÁGIO SUPERVISIONADO III", "DCC183-ESTÁGIO SUPERVISIONADO IV", "DCC184-ESTÁGIO SUPERVISIONADO V", "DCC185-ESTÁGIO SUPERVISIONADO VI", "DCC186-ESTÁGIO SUPERVISIONADO VII", "DCC187-ESTÁGIO SUPERVISIONADO VIII", "DCC188-ESTÁGIO SUPERVISIONADO IX", "DCC189-ESTÁGIO SUPERVISIONADO X", "DCC190-SOLUÇÃO NUMÉRICA DE EQUAÇÕES DIFERENCIAIS", "DCC191-VISUALIZAÇÃO CIENTÍFICA", "EADDCC001-INTRODUÇÃO À EAD", "EADDCC002-INTRODUÇÃO ÀS TECNOLOGIAS DA INFORMAÇÃO E DA COMUNICAÇÃO", "EADDCC003-LÓGICA PARA COMPUTAÇÃO", "EADDCC006-INTRODUÇÃO AOS SISTEMAS OPERACIONAIS", "EADDCC007-FUNDAMENTOS DA ORGANIZAÇÃO DE COMPUTADORES", "EADDCC008-ALGORÍTMOS", "EADDCC009-FUNDAMENTOS DE REDES DE COMPUTADORES", "EADDCC011-INGLÊS INSTRUMENTAL", "EADDCC012-METODOLOGIA DE PESQUISA CIENTÍFICA E EDUCACIONAL", "EADDCC013-SEMINÁRIO INTEGRADO I", "EADDCC014-LINGUAGEM DE PROGRAMAÇÃO I", "EADDCC015-LABORATÓRIO DE MONTAGEM E MANUTENÇÃO", "EADDCC021-SEMINÁRIO INTEGRADO II", "EADDCC023-PROGRAMAÇÃO PARA WEB I", "EADDCC024-FUNDAMENTOS DE SISTEMAS DE INFORMAÇÃO", "EADDCC025-MODELAGEM DE SISTEMAS", "EADDCC029-SISTEMAS MULTIMÍDIAS", "EADDCC030-FUNDAMENTOS DE BANCO DE DADOS", "EADDCC031-LINGUAGEM DE PROGRAMAÇÃO II", "EADDCC032-FUNDAMENTOS DE ENGENHARIA DE SOFTWARE", "EADDCC033-MÉTODOS DE ENSINO DE APRENDIZAGEM EM INFORMÁTICA", "EADDCC034-ESTÁGIO SUPERVISIONADO I", "EADDCC035-PROGRAMAÇÃO PARA WEB II", "EADDCC036-INTERFACE USUÁRIO – MÁQUINA", "EADDCC037-PROJETO DE SOFTWARE EDUCACIONAL", "EADDCC038-INFORMÁTICA NA EDUCAÇÃO", "EADDCC039-OFICINA DE GESTÃO DE SALA DE AULA", "EADDCC040-OFICINA DE AVALIAÇÃO EDUCACIONAL", "EADDCC041-ESTÁGIO SUPERVISIONADO II", "EADDCC042-TRABALHO DE CONCLUSÃO DE CURSO I", "EADDCC043-AVALIAÇÃO DE SOFTWARE EDUCACIONAL", "EADDCC044-INFORMÁTICA E SOCIEDADE", "EADDCC045-FUNDAMENTOS DA INTELIGÊNCIA ARTIFICIAL", "EADDCC046-EDUCAÇÃO DE JOVENS E ADULTOS", "EADDCC047-ESTÁGIO SUPERVISIONADO III", "EADDCC048-OBJETOS DE APRENDIZAGEM", "EADDCC049-ASPECTOS LEGAIS DA INFORMÁTICA", "EADDCC050-ESTÁGIO SUPERVISIONADO IV", "EADDCC052-TRABALHO DE CONCLUSÃO DE CURSO II", "EADQUI002-INTRODUÇÃO ÀS TECNOLOGIAS DE COMUNICAÇÃO E INFORMAÇÃO I", "EADQUI009-INTRODUÇÃO ÀS TECNOLOGIAS DE COMUNICAÇÃO E INFORMAÇÃO II", "UABFIS005-INTRODUÇÃO À INFORMÁTICA", "UABMAT004-INTRODUÇÃO À INFORMÁTICA" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listaPreRequisitosSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(listaPreRequisitosSelect);
+
+        cadastrar.setBackground(new java.awt.Color(65, 142, 218));
+        cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         cadastrar.setText("Cadastrar");
         cadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,74 +168,91 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 cadastrarActionPerformed(evt);
             }
         });
-        getContentPane().add(cadastrar);
-        cadastrar.setBounds(200, 450, 100, 23);
 
-        tipoBolsaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Monitoria", "Iniciação Científica", "Treinamento Profissional", "Bolsa Extensao" }));
-        tipoBolsaSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoBolsaSelectActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tipoBolsaSelect);
-        tipoBolsaSelect.setBounds(160, 140, 311, 22);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(labelVagas)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(qtdVagasSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelMetodoEntrada)
+                        .addComponent(labelCargaHor)
+                        .addComponent(labelValor)
+                        .addComponent(labelTitulo)
+                        .addComponent(tituloTf)
+                        .addComponent(labelTipo)
+                        .addComponent(tipoBolsaSelect, 0, 589, Short.MAX_VALUE)
+                        .addComponent(valorTf)
+                        .addComponent(cargaHorariaTf1)
+                        .addComponent(metodoEntradaSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelPreRequisitos1)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(tituloPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(tituloPrincipal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tituloTf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTipo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tipoBolsaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelValor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(valorTf, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelCargaHor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cargaHorariaTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelMetodoEntrada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(metodoEntradaSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelVagas)
+                    .addComponent(qtdVagasSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelPreRequisitos1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
 
-        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelTitulo.setText("Título: ");
-        getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(20, 110, 41, 16);
         labelTitulo.getAccessibleContext().setAccessibleName("Título");
 
-        getContentPane().add(tituloTf);
-        tituloTf.setBounds(160, 110, 311, 22);
-
-        metodoEntradaSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Prova", "Entrevista" }));
-        metodoEntradaSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                metodoEntradaSelectActionPerformed(evt);
-            }
-        });
-        getContentPane().add(metodoEntradaSelect);
-        metodoEntradaSelect.setBounds(160, 230, 311, 22);
-
-        labelVagas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelVagas.setText("Vagas:");
-        getContentPane().add(labelVagas);
-        labelVagas.setBounds(20, 260, 50, 20);
-
-        cargaHorariaTf1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargaHorariaTf1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cargaHorariaTf1);
-        cargaHorariaTf1.setBounds(160, 200, 311, 22);
-
-        labelMetodoEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelMetodoEntrada.setText("Método de Entrada:");
-        getContentPane().add(labelMetodoEntrada);
-        labelMetodoEntrada.setBounds(20, 230, 122, 20);
-
-        qtdVagasSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
-        qtdVagasSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(qtdVagasSpinner);
-        qtdVagasSpinner.setBounds(160, 260, 310, 22);
-
-        labelPreRequisitos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelPreRequisitos1.setText("Pré-Requisitos:");
-        getContentPane().add(labelPreRequisitos1);
-        labelPreRequisitos1.setBounds(20, 290, 91, 20);
-
-        listaPreRequisitosSelect.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "ANE40", "CAD076", "DCC001", "DCC008", "DCC012", "DCC013", "DCC014", "DCC019", "DCC025", "DCC033", "DCC037", "DCC042", "DCC045", "DCC055", "DCC059", "DCC060", "DCC061", "DCC062", "DCC063", "DCC064", "DCC065", "DCC066", "DCC067", "DCC068", "DCC069", "DCC070", "DCC071", "DCC072", "DCC073", "DCC074", "DCC075", "DCC076", "DCC078", "DCC080", "DCC082", "DCC083", "DCC086", "DCC088", "DCC089", "DCC090", "DCC091", "DCC092", "DCC093", "DCC094", "DCC095", "DCC096", "DCC097", "DCC098", "DCC099", "DCC100", "DCC101", "DCC102", "DCC103", "DCC104", "DCC105", "DCC117", "DCC122", "DCC123", "DCC124", "DCC125", "DCC126", "DCC127", "DCC128", "DCC129", "DCC130", "DCC131", "DCC132", "DCC133", "DCC136", "DCC137", "DCC138", "DCC139", "DCC140", "DCC141", "DCC142", "DCC143", "DCC144", "DCC145", "DCC147", "DCC148", "DCC149", "DCC152", "DCC153", "DCC154", "DCC155", "DCC159", "DCC160", "DCC161", "DCC162", "DCC163", "DCC164", "DCC165", "DCC166", "DCC167", "DCC168", "DCC171", "DCC172", "DCC174", "DCC176", "DCC177", "DCC178", "DCC179", "DCC180", "DCC181", "DCC182", "DCC183", "DCC184", "DCC185", "DCC186", "DCC187", "DCC188", "DCC189", "DCC190", "DCC199", "DCC200", "DC5199", "DC5200", "DPR032", "EADCC037", "EADCC043", "EADCC044", "EADDCC048", "EADDCC049", "EST028", "EST029", "EST030", "FIL012", "FIN001", "FIS073", "FIS074", "FIS075", "FIS077", "FIS122", "ICE001", "LEC003", "LEM184", "MAC011", "MAC013", "MAT013", "MAT029", "MAT143", "MAT154", "MAT155", "MAT156", "MAT157", "MAT158", "QUI125", "QUI126", "QUI168", "UNI001", "UNI002", "UNI003" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        listaPreRequisitosSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(listaPreRequisitosSelect);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 290, 310, 110);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(345, 345, 345)
+                .addComponent(jLabel1))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -392,6 +446,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
     private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cargaHorariaTf1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCargaHor;
     private javax.swing.JLabel labelMetodoEntrada;

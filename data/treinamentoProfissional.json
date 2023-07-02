@@ -1,3 +1,0 @@
-[{"titulo":"teste","preRequisitos":["DCC001"],"valor":62.0,"quantidadeHoras":4,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"testeeeeeeeeeeeeeee","preRequisitos":["CAD076"],"valor":4.0,"quantidadeHoras":2,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"laele","preRequisitos":["CAD076","DCC012"],"valor":23.0,"quantidadeHoras":54,"vagas":3,"professorResponsavel":"22322","metodoEntrada":"Prova","alunosCadastrados":[]}]
