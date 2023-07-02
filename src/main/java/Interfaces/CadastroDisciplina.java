@@ -25,11 +25,13 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     public CadastroDisciplina() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     public CadastroDisciplina(Aluno user) {
         this.user = user;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

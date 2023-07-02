@@ -308,12 +308,17 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
 
-        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user);
+        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user,this);
         viewPerfilAluno.setVisible(true);
 
 
     }//GEN-LAST:event_jMenuPerfilMouseClicked
-
+    
+    public void fecharHomeAluno(){
+        this.dispose();
+        this.setVisible(false);
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         this.modelBE.removeAllElements();

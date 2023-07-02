@@ -235,9 +235,6 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         
         for(Disciplina d: user.getDisciplinas()){
             for(String b: this.bolsa.getPreRequisitos()){
-                
-                System.out.println("Disciplina -> "+d);
-                System.out.println("Bolsa -> "+b);
                 if(d.getCodigo().equals(b)){
                     counter++;
                 }

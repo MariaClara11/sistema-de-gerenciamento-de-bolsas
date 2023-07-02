@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import Interfaces.HomeAluno;
+
 
 /**
  * Autores do trabalho:
@@ -31,13 +33,14 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
      * Creates new form VisualizaçãoPerfilAluno
      */
     private Aluno user;
+    private HomeAluno homealuno;
     
-    public VisualizacaoPerfilAluno(Aluno user) {
-        
-        this.user = user;
+    public VisualizacaoPerfilAluno(Aluno user, HomeAluno homealuno1) {
         
         initComponents();
         setLocationRelativeTo(null);
+        this.homealuno = new HomeAluno(this.user);
+        this.user = user;
 
     }
     
@@ -265,8 +268,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeTFActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        HomeAluno homeAluno = new HomeAluno(this.user);
-        homeAluno.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
@@ -357,9 +359,11 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 break;
                 }
             }
-            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
+            this.homealuno.dispose();
+            this.homealuno.setVisible(false);
+            //this.homealuno.fecharHomeAluno();
+            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.INFORMATION_MESSAGE);
             dispose();
-
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -396,7 +400,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             Aluno user = null;
-            new VisualizacaoPerfilAluno(user).setVisible(true);
+            new VisualizacaoPerfilAluno(user,null).setVisible(true);
         });
     }
 
