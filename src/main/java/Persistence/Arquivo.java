@@ -24,11 +24,13 @@ public class Arquivo {
 
         String conteudo = le(filePath);
 
-        if (conteudo.equals("[]")) {
-
-            conteudo = conteudo.replace("[", "");
+        if (conteudo.indexOf("]")== 1) {
+            System.out.println(conteudo);
+            //conteudo = conteudo.replace("[", "");
             conteudo = conteudo.replace("]", "");
-            conteudo = conteudo.substring(0, conteudo.length() - 2);
+            System.out.println(conteudo);
+            
+            // conteudo = conteudo.substring(0, conteudo.length() - 2);
             // conteudo = conteudo.concat(",\n");
 
             novo = novo.substring(1);

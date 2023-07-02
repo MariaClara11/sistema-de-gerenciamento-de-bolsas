@@ -1,11 +1,1 @@
-<<<<<<< HEAD
-[{"titulo":"teste","preRequisitos":["CAD076"],"valor":400.0,"quantidadeHoras":400,"vagas":1,"professorResponsavel":"90909","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"testeteste","preRequisitos":["CAD076"],"valor":400.0,"quantidadeHoras":400,"vagas":1,"professorResponsavel":"90909","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"testeagora","preRequisitos":["CAD076"],"valor":62.0,"quantidadeHoras":2,"vagas":1,"professorResponsavel":"90909","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"testeClicar","preRequisitos":["DCC008"],"valor":4.0,"quantidadeHoras":4,"vagas":1,"professorResponsavel":"70707","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"teste","preRequisitos":["CAD076"],"valor":7272.0,"quantidadeHoras":8288,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"teste","preRequisitos":["CAD076"],"valor":7272.0,"quantidadeHoras":8288,"vagas":1,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"teste","preRequisitos":["ANE40","CAD076","DCC001","DCC008"],"valor":5.0,"quantidadeHoras":21,"vagas":4,"professorResponsavel":"80808","metodoEntrada":"Prova","alunosCadastrados":[]},
-{"titulo":"monitoria de oo","preRequisitos":["ANE40","CAD076","DCC001"],"valor":450.0,"quantidadeHoras":12,"vagas":1,"professorResponsavel":"12312","metodoEntrada":"Prova","alunosCadastrados":[]}]
-=======
->>>>>>> 961df49d0ed240fb428a1e679e750a7cdcd346a4
+[{"titulo":"qweqwe","preRequisitos":["DCC001-ANALISE E PROJETO DE ALGORITMOS"],"valor":123.0,"quantidadeHoras":123,"vagas":1,"professorResponsavel":"12312","metodoEntrada":"Prova","alunosCadastrados":[]}]
