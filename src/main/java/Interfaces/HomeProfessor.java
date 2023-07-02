@@ -82,6 +82,7 @@ public class HomeProfessor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         BemVindo = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuPerfil = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
@@ -206,6 +207,13 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         BemVindo.setText("Bem-Vindo:");
 
+        jButton2.setText("ATUALIZAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
         Container.setLayout(ContainerLayout);
         ContainerLayout.setHorizontalGroup(
@@ -213,7 +221,9 @@ public class HomeProfessor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
                 .addGap(558, 558, 558)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                .addGap(551, 551, 551))
+                .addGap(44, 44, 44)
+                .addComponent(jButton2)
+                .addGap(416, 416, 416))
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +267,9 @@ public class HomeProfessor extends javax.swing.JFrame {
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addGap(21, 21, 21))
         );
 
@@ -401,6 +413,14 @@ public class HomeProfessor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        dispose();
+
+        new HomeProfessor(user).setVisible(true);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
     
      public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
@@ -485,6 +505,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     private javax.swing.JList<String> ListMonitoria;
     private javax.swing.JList<String> ListTP;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -39,7 +39,7 @@ public class HomeAluno extends javax.swing.JFrame {
     public List<Extensao> listaBExtensao = new ArrayList<>();
 
     Aluno user;
-
+    
     public HomeAluno(Aluno user) {
 
         this.user = user;
@@ -65,6 +65,7 @@ public class HomeAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         BemVindo = new javax.swing.JLabel();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Container = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         ListTP = new javax.swing.JList<>();
@@ -80,6 +81,7 @@ public class HomeAluno extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         BemVindo1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuPerfil = new javax.swing.JMenu();
         jMenuPerfil1 = new javax.swing.JMenu();
@@ -87,9 +89,10 @@ public class HomeAluno extends javax.swing.JFrame {
 
         BemVindo.setText("Bem-Vindo:");
 
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1288, 532));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -193,6 +196,13 @@ public class HomeAluno extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("BOLSAS DISPONÍVEIS PARA INSCRIÇÃO:");
 
+        jButton1.setText("ATUALIZAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ContainerLayout = new javax.swing.GroupLayout(Container);
         Container.setLayout(ContainerLayout);
         ContainerLayout.setHorizontalGroup(
@@ -200,14 +210,19 @@ public class HomeAluno extends javax.swing.JFrame {
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(BemVindo1)
                     .addGroup(ContainerLayout.createSequentialGroup()
-                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(ContainerLayout.createSequentialGroup()
+                                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,9 +230,7 @@ public class HomeAluno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel5)
-                    .addComponent(BemVindo1))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         ContainerLayout.setVerticalGroup(
@@ -239,7 +252,8 @@ public class HomeAluno extends javax.swing.JFrame {
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(27, 27, 27))
+                .addGap(4, 4, 4)
+                .addComponent(jButton1))
         );
 
         jMenuPerfil.setText("Perfil");
@@ -383,6 +397,14 @@ public class HomeAluno extends javax.swing.JFrame {
         viewCadastroDisciplinas.setVisible(true);
     }//GEN-LAST:event_jMenuPerfil1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        dispose();
+        
+        new HomeAluno(user).setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Extensao b : persistence) {
@@ -457,12 +479,14 @@ public class HomeAluno extends javax.swing.JFrame {
     private javax.swing.JList<String> ListIC;
     private javax.swing.JList<String> ListMonitoria;
     private javax.swing.JList<String> ListTP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMenuPerfil;
     private javax.swing.JMenu jMenuPerfil1;
     private javax.swing.JMenu jMenuSair;

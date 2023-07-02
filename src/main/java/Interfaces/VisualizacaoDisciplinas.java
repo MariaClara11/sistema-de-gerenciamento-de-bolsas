@@ -151,18 +151,21 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         this.modelDisCursadas.removeAllElements();
 
         AlunoPersistence materiasCursadas = new AlunoPersistence();
-        this.addListaCursadas(disciplinaCursada, this.modelDisCursadas, materiasCursadas.findAllSet());
+        this.addListaCursadas(materiasCursadas.findAllSet());
 
     }//GEN-LAST:event_formWindowOpened
 
-    public void addListaCursadas(Set<Disciplina> disciplina, DefaultListModel model, Set<Aluno> persistence) {
+    public void addListaCursadas(Set<Aluno> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Aluno a : persistence) {
             if (this.user.getMatricula().equals(a.getMatricula())) {
-                disciplinaCursada = this.user.getDisciplinas();
-                for (Disciplina b : disciplinaCursada) {
-                    model.addElement(b.getCodigo());
+
+                for (Disciplina b : a.getDisciplinas()) {
+
+                    this.modelDisCursadas.addElement(b.getCodigo());
+
                 }
+                this.listDisc.setModel(modelDisCursadas);
             }
         }
     }
