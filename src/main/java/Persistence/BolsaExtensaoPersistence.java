@@ -13,6 +13,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -61,5 +62,15 @@ public class BolsaExtensaoPersistence implements Persistence<Extensao>{
         Arquivo.replace(PATH, json);
 
 
+    }
+
+    @Override
+    public Set<Extensao> findAllSet() {
+        throw new UnsupportedOperationException("Not supported yet."); //Função apenas na Aluno, não necessaria sua implementação aqui
+    }
+
+    @Override
+    public void saveSet(Set<Extensao> itens) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     }

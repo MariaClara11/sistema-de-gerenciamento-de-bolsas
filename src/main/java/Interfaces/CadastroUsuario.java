@@ -17,7 +17,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
@@ -41,13 +43,16 @@ public class CadastroUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CadastroUsuario
      */
+    Aluno user = new Aluno();
     public CadastroUsuario() {
 
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        
-
+        //this.user = user;
     }
+    
+   
+
 
     public MaskFormatter Mascara(String Mascara) {
 
@@ -422,12 +427,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                             try {
                                                 String hash = gerarHash(senha);
                                                 Professor professor = new Professor(matricula, nome, cpf, nascimento, hash);
-                                                List<Professor> listaProfessor = new ArrayList<>();
+                                                Set<Professor> listaProfessor = new HashSet<>();
                                                 listaProfessor.add(professor);
 
                                                 Persistence<Professor> professorPersistence = new ProfessorPersistence();
 
-                                                professorPersistence.save(listaProfessor);
+                                                professorPersistence.saveSet(listaProfessor);
                                                 JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Sucesso", JOptionPane.DEFAULT_OPTION);
                                                 dispose();
 
@@ -467,12 +472,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                             try {
                                                 String hash = gerarHash(senha);
                                                 Aluno aluno = new Aluno(matricula, nome, cpf, nascimento, hash);
-                                                List<Aluno> listaAluno = new ArrayList<>();
+                                                Set<Aluno> listaAluno = new HashSet<>();
                                                 listaAluno.add(aluno);
 
                                                 Persistence<Aluno> alunoPersistence = new AlunoPersistence();
 
-                                                alunoPersistence.save(listaAluno);
+                                                alunoPersistence.saveSet(listaAluno);
                                                 JOptionPane.showMessageDialog(this, nome + " cadastrado com sucesso", "Cadastrado realizado!", JOptionPane.DEFAULT_OPTION);
                                                 dispose();
                                             } catch (NoSuchAlgorithmException e) {
@@ -620,7 +625,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         matricula = matricula.toUpperCase();
         if (matricula.length() >= 9 && matricula.length() <= 11) {
             AlunoPersistence alunos = new AlunoPersistence();
-            for (Aluno p : alunos.findAll()) {
+            for (Aluno p : alunos.findAllSet()) {
                 if (p.getMatricula().equals(matricula)) {
                     JOptionPane.showMessageDialog(this, "Matricula ja cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
                     return false;
@@ -658,26 +663,30 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
     }
 
-    public boolean validarData(String nascimento) {
+    public boolean validarData(String ingresso) {
 
         String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
 
-        if (!Pattern.matches(regexData, nascimento)) {
+        if (!Pattern.matches(regexData, ingresso)) {
             JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            Date nascimentoD = formato.parse(nascimento);
+            System.out.println(ingresso);
+            System.out.println(this.user.getDataNascimento());
+            Date ingressoD = formato.parse(ingresso);
             Date dataAtual = new Date();
+      
 
-            if (nascimentoD.after(dataAtual)) {
+            if (ingressoD.after(dataAtual)){
                 JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
         return true;
     }

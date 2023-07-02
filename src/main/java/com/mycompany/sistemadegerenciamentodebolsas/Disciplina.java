@@ -28,6 +28,10 @@ public class Disciplina {
     private List<String> preRequisitos;
     private float nota;
 
+    public void setNota(float nota) {
+        this.nota = nota;
+    }
+
     public Disciplina(String nome, String codigo, int creditos, List<String> preRequisitos) {
         this.nome = nome;
         this.codigo = codigo;

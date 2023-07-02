@@ -281,8 +281,8 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         
         ProfessorPersistence prof = new ProfessorPersistence();
                 
-        List<Professor> professores = new ArrayList<>();
-        professores = prof.findAll();
+        Set<Professor> professores = new HashSet<>();
+        professores = prof.findAllSet();
         
         if (validarData(this.ingressoTF.getText()) || this.ingressoTF.getText().isEmpty()) {
             if(!this.ingressoTF.getText().isEmpty()){
@@ -359,8 +359,8 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 ProfessorPersistence professor = new ProfessorPersistence();
 
-        List<Professor> professores = new ArrayList<>();
-        professores = professor.findAll();
+        Set<Professor> professores = new HashSet<>();
+        professores = professor.findAllSet();
         int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
         for (Professor p : professores) {
             if (p.getSiap().equals(this.user.getSiap())) {

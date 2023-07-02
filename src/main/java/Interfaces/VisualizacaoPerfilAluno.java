@@ -14,7 +14,12 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import Interfaces.HomeAluno;
-
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Autores do trabalho:
@@ -34,16 +39,16 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
      */
     private Aluno user;
     private HomeAluno homealuno;
-    
+
     public VisualizacaoPerfilAluno(Aluno user, HomeAluno homealuno1) {
-        
+
         initComponents();
         setLocationRelativeTo(null);
         this.homealuno = new HomeAluno(this.user);
         this.user = user;
 
     }
-    
+
     public MaskFormatter Mascara(String Mascara) {
 
         MaskFormatter F_Mascara = new MaskFormatter();
@@ -278,16 +283,14 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeTFActionPerformed
 
-<<<<<<< HEAD
+
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_button1ActionPerformed
 
-=======
->>>>>>> 961df49d0ed240fb428a1e679e750a7cdcd346a4
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
         this.nomeTF.setText(this.user.getNome());
         this.cpfTF.setText(this.user.getCPF());
         this.matriculaTF.setText(this.user.getMatricula());
@@ -298,61 +301,88 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        
+
         VisualizacaoDisciplinas tela = new VisualizacaoDisciplinas(this.user);
         tela.setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-       
-        
+
         CadastroUsuario user = new CadastroUsuario();
         AlunoPersistence aluno = new AlunoPersistence();
-                
-        List<Aluno> alunos = new ArrayList<>();
-        alunos = aluno.findAll();
-        
+
+        Set<Aluno> alunos = new HashSet<>();
+        alunos = aluno.findAllSet();
+
         //erro = false;
         boolean erro = false;
-        
+
         String dataIngresso = data_ingressoTF.getText();
-      
-        if (user.validarData(dataIngresso)) {
-            System.out.println(dataIngresso);
+
+        if (validarData(dataIngresso)) {
             this.user.setDataIngresso(dataIngresso);
-            
-            for(Aluno a : alunos){
-                    if(a.getMatricula().equals(this.user.getMatricula())){
-                        a.setDataIngresso(this.data_ingressoTF.getText());
-                        aluno.replace(alunos);
-                        break;
-                    }
+
+            for (Aluno a : alunos) {
+                if (a.getMatricula().equals(this.user.getMatricula())) {
+                    a.setDataIngresso(this.data_ingressoTF.getText());
+                    aluno.replace(alunos);
+                    break;
                 }
-        }else{
+            }
+        } else {
             erro = true;
         }
         if (ValidarTelefone(this.telTF.getText())) {
-            for(Aluno a : alunos){
-                    if(a.getMatricula().equals(this.user.getMatricula())){
-                        a.setTelefone(this.telTF.getText());
-                        aluno.replace(alunos);
-                        break;
-                    }
+            for (Aluno a : alunos) {
+                if (a.getMatricula().equals(this.user.getMatricula())) {
+                    a.setTelefone(this.telTF.getText());
+                    aluno.replace(alunos);
+                    break;
                 }
+            }
         } else {
             erro = true;
             JOptionPane.showMessageDialog(this, "Telefone Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-
         }
-        if (erro== false) {//ou seja, não tem erro
-            JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.OK_OPTION);
+        if (erro == false) {//ou seja, não tem erro
+            JOptionPane.showMessageDialog(this, "Alterado com sucesso", "Alterado", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    public boolean validarData(String ingresso) {
+
+        String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+
+        if (!Pattern.matches(regexData, ingresso)) {
+            JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            System.out.println(ingresso);
+            System.out.println(this.user.getDataNascimento());
+            Date ingressoD = formato.parse(ingresso);
+            Date dataAtual = new Date();
+            Date nascimentoD = formato.parse(this.user.getDataNascimento());
+ 
+            
+            if (ingressoD.before(nascimentoD) || ingressoD.after(dataAtual)) {
+                JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
 
     private void data_ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_ingressoTFActionPerformed
         // TODO add your handling code here:
@@ -361,16 +391,16 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         AlunoPersistence aluno = new AlunoPersistence();
 
-        List<Aluno> alunos = new ArrayList<>();
-        alunos = aluno.findAll();
+        Set<Aluno> alunos = new HashSet<>();
+        alunos = aluno.findAllSet();
         int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
-        
+
         if (resposta == JOptionPane.YES_OPTION) {
             for (Aluno a : alunos) {
                 if (a.getMatricula().equals(this.user.getMatricula())) {
-                alunos.remove(a);
-                aluno.replace(alunos);
-                break;
+                    alunos.remove(a);
+                    aluno.replace(alunos);
+                    break;
                 }
             }
             this.homealuno.dispose();
@@ -379,11 +409,11 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-            // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
 
     public static void main(String args[]) {
@@ -414,7 +444,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             Aluno user = null;
-            new VisualizacaoPerfilAluno(user,null).setVisible(true);
+            new VisualizacaoPerfilAluno(user, null).setVisible(true);
         });
     }
 

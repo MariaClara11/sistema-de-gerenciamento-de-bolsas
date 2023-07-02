@@ -8,7 +8,9 @@ import Persistence.AlunoPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.*;
 
 /**
@@ -153,21 +155,39 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         String nota = notaTF.getText();
 
         AlunoPersistence alunoP = new AlunoPersistence();
-        List<Aluno> todosAlunos = new ArrayList<>();
-        todosAlunos = alunoP.findAll();
+        Set<Aluno> todosAlunos = new HashSet<>();
+        todosAlunos = alunoP.findAllSet();
 
+        boolean erro = false;
         if (disciplinaIsValid()) {
             float notaFloat = Float.parseFloat(nota);
             String codigo = (String) codigoDisciplinaSelect.getSelectedItem();
             Disciplina cadDisciplina = new Disciplina(notaFloat, codigo);
             for (Aluno a : todosAlunos) {
                 if (a.getMatricula().equals(this.user.getMatricula())) {
-                    a.getDisciplinas().add(cadDisciplina);
-                    alunoP.replace(todosAlunos);
-                    JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
-                    break;
+                    for (Disciplina d : a.getDisciplinas()) {
+                        if (d.getCodigo().equals(cadDisciplina.getCodigo())) {
+                            int resposta = JOptionPane.showConfirmDialog(null, cadDisciplina.getCodigo() + " já cadastrada. \nDeseja alterar a nota?", "Confirmação de Alteração", JOptionPane.YES_NO_OPTION);
+                            if (resposta == JOptionPane.YES_OPTION) {
+                                d.setNota(notaFloat);
+                                JOptionPane.showMessageDialog(this, "Nota alterada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                                alunoP.replace(todosAlunos);
+                            }
+                            erro = true;
+                            codigoDisciplinaSelect.setSelectedIndex(0);
+                            notaTF.setText("");
+                            break;
+                        }
+                    }
+                    if (erro == false) {
 
+                        a.getDisciplinas().add(cadDisciplina);
+                        alunoP.replace(todosAlunos);
+                        JOptionPane.showMessageDialog(this, "Disciplina cadastrada", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                        codigoDisciplinaSelect.setSelectedIndex(0);
+                        notaTF.setText("");
+                        break;
+                    }
                 }
             }
         }

@@ -254,24 +254,13 @@ public class InscricaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldProfessorActionPerformed
 
     private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
-<<<<<<< HEAD
-        
-        int counter=0;
-        
-        for(Disciplina d: user.getDisciplinas()){
-            for(String b: this.bolsa.getPreRequisitos()){
-                if(d.getCodigo().equals(b)){
-=======
+
 
         int counter = 0;
 
         for (Disciplina d : user.getDisciplinas()) {
             for (String b : this.bolsa.getPreRequisitos()) {
-
-                System.out.println("Disciplina -> " + d);
-                System.out.println("Bolsa -> " + b);
                 if (d.getCodigo().equals(b)) {
->>>>>>> 961df49d0ed240fb428a1e679e750a7cdcd346a4
                     counter++;
                 }
             }

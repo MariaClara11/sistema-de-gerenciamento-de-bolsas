@@ -26,7 +26,7 @@ public class Aluno extends Usuario{
     private String contaBancaria;
     private int ira;
     private String dataIngresso;
-    List<Disciplina> disciplinas;
+    Set<Disciplina> disciplinas;
 
     public Aluno() {
         super();
@@ -34,17 +34,17 @@ public class Aluno extends Usuario{
         this.contaBancaria = "";
         this.ira = 0;
         this.dataIngresso = "";
-        this.disciplinas = new ArrayList<>();
+        this.disciplinas = new HashSet<>();
     }
 
     public Aluno(String matricula, String nome, String CPF, String dataNascimento, String senha) {
         super(nome,0, CPF, dataNascimento, senha, "");
         this.matricula = matricula;
-        this.disciplinas = new ArrayList<>();
+        this.disciplinas = new HashSet<>();
         this.ira= 0;
     }
     
-    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
+    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
         super(nome, idade, CPF, dataNascimento, senha, telefone);
         this.matricula = matricula;
         this.contaBancaria = contaBancaria;
@@ -60,7 +60,7 @@ public class Aluno extends Usuario{
         this.contaBancaria = contaBancaria;
         this.ira = ira;
         this.dataIngresso = dataIngresso;
-        this.disciplinas = new ArrayList<>();
+        this.disciplinas = new HashSet<>();
     }
     
     public String getMatricula() {
@@ -79,7 +79,7 @@ public class Aluno extends Usuario{
         return dataIngresso;
     }
 
-    public List<Disciplina> getDisciplinas() {
+    public Set<Disciplina> getDisciplinas() {
         return disciplinas;
     }
 
@@ -99,7 +99,7 @@ public class Aluno extends Usuario{
         this.dataIngresso = dataIngresso;
     }
 
-    public void setDisciplinas(List<Disciplina> disciplinas) {
+    public void setDisciplinas(Set<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
 
@@ -108,7 +108,7 @@ public class Aluno extends Usuario{
         return"Aluno{" + super.toString()+ ", matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
     }
     
-    public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, List<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
+    public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
         super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
         this.matricula = matricula;
         this.contaBancaria = contaBancaria;

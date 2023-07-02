@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ProfessorPersistence implements Persistence<Professor> {
 
     private static final String PATH = DIRECTORY+ File.separator +"professor.json";
     @Override
-    public void save(List<Professor> professor) {
+    public void saveSet(Set<Professor> professor) {
         Gson gson = new Gson();
         String json = gson.toJson(professor);
 
@@ -28,26 +30,26 @@ public class ProfessorPersistence implements Persistence<Professor> {
     }
 
     @Override
-    public List<Professor> findAll() {
+    public Set<Professor> findAllSet() {
         Gson gson = new Gson();
 
         String json = Arquivo.le(PATH);
 
-        List<Professor> prof = new ArrayList<>();
+        Set<Professor> prof = new HashSet<>();
         if(!json.trim().equals("")) {
 
-            Type tipoLista = new TypeToken<List<Professor>>() {
+            Type tipoLista = new TypeToken<Set<Professor>>() {
             }.getType();
         prof = gson.fromJson(json, tipoLista);
 
             if (prof == null)
-                prof = new ArrayList<>();
+                prof = new HashSet<>();
         }
 
         return prof;
     }
     
-    public void replace(List<Professor> professor) {
+    public void replace(Set<Professor> professor) {
         Gson gson = new Gson();
         String json = gson.toJson(professor);
 
@@ -57,7 +59,17 @@ public class ProfessorPersistence implements Persistence<Professor> {
 
         Arquivo.replace(PATH, json);
 
+    }
 
+
+    @Override
+    public void save(List<Professor> itens) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Professor> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 

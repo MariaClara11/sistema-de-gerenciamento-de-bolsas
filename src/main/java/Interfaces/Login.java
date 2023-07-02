@@ -11,6 +11,7 @@ import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -32,6 +33,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+  
     public Login() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -326,7 +328,7 @@ public class Login extends javax.swing.JFrame {
                 int verifica = 0;
                 if (rbProfessor.isSelected()) {
                     ProfessorPersistence prof = new ProfessorPersistence();
-                    List<Professor> professores = prof.findAll();
+                    Set<Professor> professores = prof.findAllSet();
                     for (Professor p : professores) {
                         if (p.getSiap().equals(login) && p.getSenha().equals(hash)) {
                             HomeProfessor tela = new HomeProfessor(p);
@@ -341,7 +343,7 @@ public class Login extends javax.swing.JFrame {
                 }
                 if (rbAluno.isSelected()) {
                     AlunoPersistence aluno = new AlunoPersistence();
-                    List<Aluno> alunos = aluno.findAll();
+                    Set<Aluno> alunos = aluno.findAllSet();
                     
                     for (Aluno a : alunos) {
                         if (a.getMatricula().equals(login) && a.getSenha().equals(hash)) {

@@ -10,12 +10,14 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AlunoPersistence implements Persistence<Aluno> {
 
     private static final String PATH = DIRECTORY+ File.separator +"alunos.json";
     @Override
-    public void save(List<Aluno> alunos) {
+    public void saveSet(Set<Aluno> alunos) {
         Gson gson = new Gson(); 
         String json = gson.toJson(alunos);
 
@@ -29,26 +31,26 @@ public class AlunoPersistence implements Persistence<Aluno> {
     }
 
     @Override
-    public List<Aluno> findAll() {
+    public Set<Aluno> findAllSet() {
         Gson gson = new Gson();
 
         String json = Arquivo.le(PATH);
 
-        List<Aluno> alunos = new ArrayList<>();
+        Set<Aluno> alunos = new HashSet<>();
         if(!json.trim().equals("")) {
 
-            Type tipoLista = new TypeToken<List<Aluno>>() {
+            Type tipoLista = new TypeToken<Set<Aluno>>() {
             }.getType();
         alunos = gson.fromJson(json, tipoLista);
 
             if (alunos == null)
-                alunos = new ArrayList<>();
+                alunos = new HashSet<>();
         }
 
         return alunos;
     }
     
-    public void replace(List<Aluno> alunos) {
+    public void replace(Set<Aluno> alunos) {
         Gson gson = new Gson();
         String json = gson.toJson(alunos);
 
@@ -59,6 +61,16 @@ public class AlunoPersistence implements Persistence<Aluno> {
         Arquivo.replace(PATH, json);
 
 
+    }
+
+    @Override
+    public List<Aluno> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //Função apenas na Aluno, não necessaria sua implementação aqui
+    }
+
+    @Override
+    public void save(List<Aluno> itens) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 

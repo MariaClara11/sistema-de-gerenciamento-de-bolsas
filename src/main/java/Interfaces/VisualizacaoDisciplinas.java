@@ -8,7 +8,9 @@ import Persistence.AlunoPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.DefaultListModel;
 
 /**
@@ -24,7 +26,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
 
     DefaultListModel modelDisCursadas = new DefaultListModel();
 
-    public List<Disciplina> disciplinaCursada = new ArrayList<>();
+    public Set<Disciplina> disciplinaCursada = new HashSet<>();
 
     public VisualizacaoDisciplinas() {
         initComponents();
@@ -149,11 +151,11 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         this.modelDisCursadas.removeAllElements();
 
         AlunoPersistence materiasCursadas = new AlunoPersistence();
-        this.addListaCursadas(disciplinaCursada, this.modelDisCursadas, materiasCursadas.findAll());
+        this.addListaCursadas(disciplinaCursada, this.modelDisCursadas, materiasCursadas.findAllSet());
 
     }//GEN-LAST:event_formWindowOpened
 
-    public void addListaCursadas(List<Disciplina> disciplina, DefaultListModel model, List<Aluno> persistence) {
+    public void addListaCursadas(Set<Disciplina> disciplina, DefaultListModel model, Set<Aluno> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Aluno a : persistence) {
             if (this.user.getMatricula().equals(a.getMatricula())) {
