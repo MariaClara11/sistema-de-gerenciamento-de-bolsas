@@ -439,16 +439,15 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        
+
         //String valor = String.format("%.2f", this.bolsa.getValor());
-        
         this.bolsa.setTitulo(this.nomeTF.getText());
-        
+
         String valorS = this.valorTF.getText();
         valorS = valorS.replace(",", ".");
         float valorF = Float.parseFloat(valorS);
         this.bolsa.setValor(valorF);
-        
+
         this.bolsa.setQuantidadeHoras(Integer.parseInt(this.horaTF.getText()));
         this.bolsa.setVagas((int) this.qtdVagas.getValue());
 
@@ -459,7 +458,26 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             tp.replace(tp.findAll());
         } else if (tipoDaBolsa.equals("Iniciação Científica")) {
             IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
-            ic.replace(ic.findAll());
+            List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
+            bolsasIC = ic.findAll();
+            for (IniciacaoCientifica a : bolsasIC) {
+                if (a.getTitulo().equals(this.bolsa.getTitulo())) {
+                    // bolsasIC.add(a);
+                    a.setTitulo(this.nomeTF.getText());
+
+                    valorS = this.valorTF.getText();
+                    valorS = valorS.replace(",", ".");
+                    valorF = Float.parseFloat(valorS);
+                    a.setValor(valorF);
+
+                    a.setQuantidadeHoras(Integer.parseInt(this.horaTF.getText()));
+                    a.setVagas((int) this.qtdVagas.getValue());
+
+                    ic.replace(bolsasIC);
+                    dispose();
+                    break;
+                }
+            }
         } else if (tipoDaBolsa.equals("Monitoria")) {
 
             MonitoriaPersistence mo = new MonitoriaPersistence();
