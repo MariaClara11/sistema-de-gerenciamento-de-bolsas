@@ -261,7 +261,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         AlunoPersistence aluno = new AlunoPersistence();
 
         for (Aluno a : aluno.findAllSet()) {
+
             if (a.getMatricula().equals(this.user.getMatricula())) {
+
                 for (Disciplina d : a.getDisciplinas()) {
                     for (String b : this.bolsa.getPreRequisitos()) {
                         if (d.getCodigo().equals(b)) {
@@ -282,12 +284,17 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
                 bolsasTP = tp.findAll();
                 for (TreinamentoProfissional a : bolsasTP) {
+
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        a.getAlunosCadastrados().add(this.user);
-                        // bolsasTP.add(a);
-                        tp.replace(bolsasTP);
-                        dispose();
-                        break;
+                        if (!a.getAlunosCadastrados().contains(this.user)) {
+                            a.getAlunosCadastrados().add(this.user);
+                            // bolsasTP.add(a);
+                            tp.replace(bolsasTP);
+                            dispose();
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
@@ -299,11 +306,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 bolsasIC = ic.findAll();
                 for (IniciacaoCientifica a : bolsasIC) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        a.getAlunosCadastrados().add(this.user);
-                        // bolsasIC.add(a);
-                        ic.replace(bolsasIC);
-                        dispose();
-                        break;
+                        if (!a.getAlunosCadastrados().contains(this.user)) {
+                            a.getAlunosCadastrados().add(this.user);
+                            // bolsasIC.add(a);
+                            ic.replace(bolsasIC);
+                            dispose();
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
@@ -314,11 +325,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 bolsasMonitoria = mo.findAll();
                 for (Monitoria a : bolsasMonitoria) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        a.getAlunosCadastrados().add(this.user);
-                        //bolsasMonitoria.add(a);
-                        mo.replace(bolsasMonitoria);
-                        dispose();
-                        break;
+                        if (!a.getAlunosCadastrados().contains(this.user)) {
+                            a.getAlunosCadastrados().add(this.user);
+                            //bolsasMonitoria.add(a);
+                            mo.replace(bolsasMonitoria);
+                            dispose();
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
@@ -329,11 +344,15 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 bolsasBE = be.findAll();
                 for (Extensao a : bolsasBE) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        a.getAlunosCadastrados().add(this.user);
-                        //bolsasBE.add(a);
-                        be.replace(bolsasBE);
-                        dispose();
-                        break;
+                        if (!a.getAlunosCadastrados().contains(this.user)) {
+                            a.getAlunosCadastrados().add(this.user);
+                            //bolsasBE.add(a);
+                            be.replace(bolsasBE);
+                            dispose();
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
 
