@@ -9,9 +9,11 @@ import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Disciplina;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,6 +60,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listDisc = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -74,6 +77,11 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Minhas Disciplinas");
 
+        listDisc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listDiscMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(listDisc);
 
         jButton1.setBackground(new java.awt.Color(65, 142, 218));
@@ -90,6 +98,20 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
             }
         });
 
+        btnExcluir.setBackground(new java.awt.Color(255, 0, 0));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExcluirMouseClicked(evt);
+            }
+        });
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,6 +124,8 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -116,7 +140,9 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -143,7 +169,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         CadastroDisciplina telaCadastro = new CadastroDisciplina();
-        telaCadastro.setVisible(true);// TODO add your handling code here:
+        telaCadastro.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -154,6 +180,48 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         this.addListaCursadas(materiasCursadas.findAllSet());
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+
+
+    }//GEN-LAST:event_btnExcluirMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+
+        AlunoPersistence alunos = new AlunoPersistence();
+        Set<Aluno> listAlunos = alunos.findAllSet();
+        String disciplinaRecebe = listDisc.getSelectedValuesList().toString();
+        disciplinaRecebe = disciplinaRecebe.substring(1, disciplinaRecebe.length() - 1);
+        System.out.println(disciplinaRecebe);
+
+        Iterator<Aluno> iterator = listAlunos.iterator();
+        while (iterator.hasNext()) {
+            Aluno aluno = iterator.next();
+            if (aluno.getMatricula().equals(this.user.getMatricula())) {
+                iterator.remove();
+                break;
+            }
+        }
+
+        for (Disciplina d : this.user.getDisciplinas()) {
+            if (d.getCodigo().equals(disciplinaRecebe)) {
+                this.user.getDisciplinas().remove(d);
+                break;
+            }
+        }
+
+        listAlunos.add(this.user);
+        alunos.replace(listAlunos);
+        dispose();
+        VisualizacaoDisciplinas reloadDisciplina = new VisualizacaoDisciplinas(this.user);
+        reloadDisciplina.setVisible(true);
+
+
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void listDiscMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listDiscMouseClicked
+
+    }//GEN-LAST:event_listDiscMouseClicked
 
     public void addListaCursadas(Set<Aluno> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
@@ -206,6 +274,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
