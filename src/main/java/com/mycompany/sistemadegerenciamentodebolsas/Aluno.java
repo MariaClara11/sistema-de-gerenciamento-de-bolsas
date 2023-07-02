@@ -5,23 +5,20 @@
 package com.mycompany.sistemadegerenciamentodebolsas;
 
 /**
- *Autores do trabalho:
- * 
- * Nome: Maria Clara Ribeiro de Menezes
- * Matricula: 202165101AC
- * 
- * Nome: Igor Titoneli Almeida
- * Matricula: 202165064AB
- * 
- * Nome: Christian Rafael De Oliveira Coelho
- * Matricula: 202065249AC
- * 
- * Nome: Marlon Ruffo Nascimento
- * Matricula: 202065165AC
+ * Autores do trabalho:
+ *
+ * Nome: Maria Clara Ribeiro de Menezes Matricula: 202165101AC
+ *
+ * Nome: Igor Titoneli Almeida Matricula: 202165064AB
+ *
+ * Nome: Christian Rafael De Oliveira Coelho Matricula: 202065249AC
+ *
+ * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
 import java.util.*;
 
-public class Aluno extends Usuario{
+public class Aluno extends Usuario {
+
     private String matricula;
     private String contaBancaria;
     private int ira;
@@ -38,12 +35,12 @@ public class Aluno extends Usuario{
     }
 
     public Aluno(String matricula, String nome, String CPF, String dataNascimento, String senha) {
-        super(nome,0, CPF, dataNascimento, senha, "");
+        super(nome, 0, CPF, dataNascimento, senha, "");
         this.matricula = matricula;
         this.disciplinas = new HashSet<>();
-        this.ira= 0;
+        this.ira = 0;
     }
-    
+
     public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
         super(nome, idade, CPF, dataNascimento, senha, telefone);
         this.matricula = matricula;
@@ -53,7 +50,6 @@ public class Aluno extends Usuario{
         this.disciplinas = disciplinas;
     }
 
-    
     public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
         super(nome, idade, CPF, dataNascimento, senha, telefone);
         this.matricula = matricula;
@@ -62,7 +58,7 @@ public class Aluno extends Usuario{
         this.dataIngresso = dataIngresso;
         this.disciplinas = new HashSet<>();
     }
-    
+
     public String getMatricula() {
         return matricula;
     }
@@ -105,9 +101,9 @@ public class Aluno extends Usuario{
 
     @Override
     public String toString() {
-        return"Aluno{" + super.toString()+ ", matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
+        return "Aluno{" + super.toString() + ", matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
     }
-    
+
     public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
         super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
         this.matricula = matricula;
@@ -116,7 +112,7 @@ public class Aluno extends Usuario{
         this.dataIngresso = dataIngresso;
         this.disciplinas = disciplinas;
     }
-    
+
     @Override
     public void resetaDadosUsuario() {
         super.resetaDadosUsuario();
@@ -127,11 +123,9 @@ public class Aluno extends Usuario{
         this.disciplinas.clear();
     }
 
-    @Override 
-    public String retornaId(){
+    @Override
+    public String retornaId() {
         return matricula;
     }
 
-    
-    
 }

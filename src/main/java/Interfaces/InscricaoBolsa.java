@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Persistence.AlunoPersistence;
 import Persistence.BolsaExtensaoPersistence;
 import Persistence.IniciacaoCientificaPersistence;
 import Persistence.MonitoriaPersistence;
@@ -255,16 +256,23 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
     private void bInscreverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInscreverActionPerformed
 
-
         int counter = 0;
 
-        for (Disciplina d : user.getDisciplinas()) {
-            for (String b : this.bolsa.getPreRequisitos()) {
-                if (d.getCodigo().equals(b)) {
-                    counter++;
+        AlunoPersistence aluno = new AlunoPersistence();
+
+        for (Aluno a : aluno.findAllSet()) {
+            if (a.getMatricula().equals(this.user.getMatricula())) {
+                for (Disciplina d : a.getDisciplinas()) {
+                    for (String b : this.bolsa.getPreRequisitos()) {
+                        if (d.getCodigo().equals(b)) {
+                            counter++;
+                            break;
+                        }
+                    }
                 }
             }
         }
+
         if (counter >= this.bolsa.getPreRequisitos().size()) {
 
             String tipoDaBolsa = this.bolsa.retornaTipo();
