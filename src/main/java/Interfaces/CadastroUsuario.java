@@ -607,7 +607,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         siape = siape.toUpperCase();
         if (siape.length() == 5) {
             ProfessorPersistence professores = new ProfessorPersistence();
-            for (Professor p : professores.findAll()) {
+            for (Professor p : professores.findAllSet()) {
                 if (p.getSiap().equals(siape)) {
                     JOptionPane.showMessageDialog(this, "Siape ja cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
                     return false;

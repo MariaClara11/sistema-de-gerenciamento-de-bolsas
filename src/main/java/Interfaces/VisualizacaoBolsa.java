@@ -94,6 +94,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Pre-Requisitos : ");
 
+        listAlunos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         listAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(listAlunos);
