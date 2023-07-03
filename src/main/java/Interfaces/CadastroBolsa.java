@@ -312,6 +312,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 Persistence<Monitoria> monitoriaPersistence = new MonitoriaPersistence();
                 monitoriaPersistence.save(listaMonitoria);
                 this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                tela.atualizarTela();
                 JOptionPane.showMessageDialog(null, "Bolsa Monitoria cadastrada com sucesso!");
                 
             }
@@ -322,6 +323,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 Persistence<IniciacaoCientifica> icPersistence = new IniciacaoCientificaPersistence();
                 icPersistence.save(listaIC);
                 this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                tela.atualizarTela();
                 JOptionPane.showMessageDialog(null, "Bolsa Iniciação Científica cadastrada com sucesso!");
             }
             if (tipoBolsa == 3) {
@@ -331,6 +333,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 Persistence<TreinamentoProfissional> tpPersistence = new TreinamentoProfissionalPersistence();
                 tpPersistence.save(listaTP);
                 this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                tela.atualizarTela();
                 JOptionPane.showMessageDialog(null, "Bolsa Treinamento Profissional cadastrada com sucesso!");
             }
             if (tipoBolsa == 4) {
@@ -340,11 +343,10 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 Persistence<Extensao> bePersistence = new BolsaExtensaoPersistence();
                 bePersistence.save(listaBExtensao);
                 this.user.cadastraBolsa(titulo, tipoBolsa, user.getNome(), valorFloat, cargaHorariaInt, nomeMetodoEntrada, vagas, listaPreRequisitos);
+                tela.atualizarTela();
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }
-        System.out.println("cadastrobolsa");
-        tela.atualizarTela();
         
     }//GEN-LAST:event_cadastrarActionPerformed
 
