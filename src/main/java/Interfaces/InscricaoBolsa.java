@@ -289,56 +289,63 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 bolsasIC = ic.findAll();
                 for (IniciacaoCientifica a : bolsasIC) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        if (!a.getAlunosCadastrados().contains(this.user)) {
-                            a.getAlunosCadastrados().add(this.user);
-                            // bolsasIC.add(a);
-                            ic.replace(bolsasIC);
-                            dispose();
-                            break;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        for (Aluno alun : a.getAlunosCadastrados()) {
+                            if (alun.getMatricula().equals(this.user.getMatricula())) {
+                                JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                                cadastrado = true;
+                            }
                         }
+                        if (cadastrado == false) 
+                        a.addAlunosCadastrados(this.user);
+                        ic.replace(bolsasIC);
+                        dispose();
+                        break;
                     }
                 }
 
             }
             if (tipoDaBolsa.equals("Monitoria")) {
                 MonitoriaPersistence mo = new MonitoriaPersistence();
-                List<Monitoria> bolsasMonitoria = new ArrayList<>();
-                bolsasMonitoria = mo.findAll();
-                for (Monitoria a : bolsasMonitoria) {
+                List<Monitoria> bolsasMO = new ArrayList<>();
+                bolsasMO = mo.findAll();
+                for (Monitoria a : bolsasMO) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        if (!a.getAlunosCadastrados().contains(this.user)) {
-                            a.getAlunosCadastrados().add(this.user);
-                            //bolsasMonitoria.add(a);
-                            mo.replace(bolsasMonitoria);
-                            dispose();
-                            break;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        for (Aluno alun : a.getAlunosCadastrados()) {
+                            if (alun.getMatricula().equals(this.user.getMatricula())) {
+                                JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                                cadastrado = true;
+                            }
                         }
+                        if (cadastrado == false) 
+                        a.addAlunosCadastrados(this.user);
+                        mo.replace(bolsasMO);
+                        dispose();
+                        break;
                     }
                 }
 
             }
             if (tipoDaBolsa.equals("Bolsa Extensao")) {
+                System.out.println("be entrou");
                 BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
                 List<Extensao> bolsasBE = new ArrayList<>();
                 bolsasBE = be.findAll();
                 for (Extensao a : bolsasBE) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        if (!a.getAlunosCadastrados().contains(this.user)) {
-                            a.getAlunosCadastrados().add(this.user);
-                            //bolsasBE.add(a);
-                            be.replace(bolsasBE);
-                            dispose();
-                            break;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        for (Aluno alun : a.getAlunosCadastrados()) {
+                            if (alun.getMatricula().equals(this.user.getMatricula())) {
+                                JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                                cadastrado = true;
+                            }
                         }
+                        if (cadastrado == false) 
+                        a.addAlunosCadastrados(this.user);
+                        be.replace(bolsasBE);
+                        dispose();
+                        break;
                     }
-                }
 
+            }
             }
 
             JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
