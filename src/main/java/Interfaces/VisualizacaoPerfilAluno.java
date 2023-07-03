@@ -50,6 +50,10 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
     }
 
+    VisualizacaoPerfilAluno(Aluno selectedValue) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public MaskFormatter Mascara(String Mascara) {
 
         MaskFormatter F_Mascara = new MaskFormatter();

@@ -19,7 +19,7 @@ import java.util.*;
  * Nome: Marlon Ruffo Nascimento
  * Matricula: 202065165AC
  */
-public class Projeto {
+public abstract class Projeto {
     private String titulo;
     private List<String> preRequisitos;
     //private String tipo;
@@ -105,9 +105,6 @@ public class Projeto {
         return metodoEntrada;
     }
     
-    public String retornaTipo(){
-        return "";
-    }
-
+    public abstract String retornaTipo();
     
 }

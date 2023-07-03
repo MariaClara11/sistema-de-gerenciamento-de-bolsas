@@ -343,13 +343,13 @@ public class CadastroBolsa extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Bolsa Extensão cadastrada com sucesso!");
             }
         }
+        System.out.println("cadastrobolsa");
+        tela.atualizarTela();
         
     }//GEN-LAST:event_cadastrarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        tela.dispose();
-        HomeProfessor telaRecarregar = new HomeProfessor(this.user);
-        telaRecarregar.setVisible(true);
+        
     }//GEN-LAST:event_formWindowClosed
 
     public static boolean validarValor(String valor) {

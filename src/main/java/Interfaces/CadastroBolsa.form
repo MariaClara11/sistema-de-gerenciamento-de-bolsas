@@ -3,9 +3,6 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[610, 410]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -73,7 +70,7 @@
                           <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
                           <Component id="tituloTf" max="32767" attributes="0"/>
                           <Component id="labelTipo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tipoBolsaSelect" alignment="0" pref="589" max="32767" attributes="0"/>
+                          <Component id="tipoBolsaSelect" alignment="0" max="32767" attributes="0"/>
                           <Component id="valorTf" alignment="0" max="32767" attributes="0"/>
                           <Component id="cargaHorariaTf1" alignment="0" max="32767" attributes="0"/>
                           <Component id="metodoEntradaSelect" alignment="0" max="32767" attributes="0"/>
@@ -83,7 +80,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="tituloPrincipal" alignment="1" pref="650" max="32767" attributes="0"/>
+              <Component id="tituloPrincipal" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -139,7 +136,7 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Cadastro de Bolsa"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
         </Component>
@@ -248,7 +245,7 @@
               <SpinnerModel initial="1" maximum="15" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
         </Component>
@@ -451,7 +448,7 @@
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Padr&#xe3;o"/>
                 </Property>
               </Properties>
               <AuxValues>

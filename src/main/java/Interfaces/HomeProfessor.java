@@ -7,6 +7,7 @@ package Interfaces;
 import Persistence.BolsaExtensaoPersistence;
 import Persistence.IniciacaoCientificaPersistence;
 import Persistence.MonitoriaPersistence;
+import Persistence.ProfessorPersistence;
 import Persistence.TreinamentoProfissionalPersistence;
 import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
@@ -29,33 +30,33 @@ public class HomeProfessor extends javax.swing.JFrame {
     /**
      * Creates new form HomeAluno
      */
-    
     DefaultListModel modelProfIC = new DefaultListModel();
     DefaultListModel modelProfTP = new DefaultListModel();
     DefaultListModel modelProfMo = new DefaultListModel();
     DefaultListModel modelProfBE = new DefaultListModel();
-    
+
     public List<IniciacaoCientifica> listaIC = new ArrayList<>();
     public List<TreinamentoProfissional> listaTP = new ArrayList<>();
     public List<Monitoria> listaMonitoria = new ArrayList<>();
     public List<Extensao> listaBExtensao = new ArrayList<>();
-    
+
     Professor user;
-    
+
     public HomeProfessor(Professor user) {
-        
+
         this.user = user;
-        
+
         initComponents();
-        
+
         this.ListExtensao.setModel(modelProfBE);
         this.ListIC.setModel(modelProfIC);
         this.ListMonitoria.setModel(modelProfMo);
         this.ListTP.setModel(modelProfTP);
-        
+
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -390,26 +391,26 @@ public class HomeProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuPerfilMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        this.BemVindo.setText("Bem-vindo: "+this.user.getNome());
-        
+
+        this.BemVindo.setText("Bem-vindo: " + this.user.getNome());
+
         this.modelProfBE.removeAllElements();
         this.modelProfIC.removeAllElements();
         this.modelProfMo.removeAllElements();
         this.modelProfTP.removeAllElements();
-        
+
         BolsaExtensaoPersistence pExtensao = new BolsaExtensaoPersistence();
         this.addListaExtensao(listaBExtensao, this.modelProfBE, pExtensao.findAll());
-        
+
         IniciacaoCientificaPersistence pIC = new IniciacaoCientificaPersistence();
         this.addListaIniciacaoCientifica(listaIC, this.modelProfIC, pIC.findAll());
-        
+
         MonitoriaPersistence pMoni = new MonitoriaPersistence();
         this.addListaMonitoria(listaMonitoria, this.modelProfMo, pMoni.findAll());
-        
+
         TreinamentoProfissionalPersistence pTP = new TreinamentoProfissionalPersistence();
-        this.addListaTreinamentoProfissional(listaTP,this.modelProfTP, pTP.findAll());
-             
+        this.addListaTreinamentoProfissional(listaTP, this.modelProfTP, pTP.findAll());
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -428,47 +429,85 @@ public class HomeProfessor extends javax.swing.JFrame {
 
         new HomeProfessor(user).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
+
+    public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Extensao b : persistence) {
-            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
-        } 
+        }
     }
-     
-     public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
+
+    public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (IniciacaoCientifica b : persistence) {
-            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
-        } 
+        }
     }
-     
-     public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
+
+    public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Monitoria b : persistence) {
-            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
-        } 
+        }
     }
-     
-     public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
+
+    public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (TreinamentoProfissional b : persistence) {
-            if(b.getProfessorResponsavel().equals(this.user.getSiap())){
+            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
-        } 
+        }
     }
-    
+
+    public void atualizarTela() {
+
+        this.modelProfBE.clear();
+        this.modelProfIC.clear();
+        this.modelProfMo.clear();
+        this.modelProfTP.clear();
+        
+        BolsaExtensaoPersistence ex = new BolsaExtensaoPersistence();
+        IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+        MonitoriaPersistence mo = new MonitoriaPersistence();
+        TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+        
+        for(Extensao be : ex.findAll()){
+            if(be.getProfessorResponsavel().equals(this.user.getSiap())){
+                this.modelProfBE.addElement(be.getTitulo());
+            }
+        }
+        
+        for(IniciacaoCientifica ice : ic.findAll()){
+            if(ice.getProfessorResponsavel().equals(this.user.getSiap())){
+                this.modelProfIC.addElement(ice.getTitulo());
+            }
+        }
+        
+        for(Monitoria moni : mo.findAll()){
+            if(moni.getProfessorResponsavel().equals(this.user.getSiap())){
+                this.modelProfMo.addElement(moni.getTitulo());
+            }
+        }
+        
+        for(TreinamentoProfissional tpe : tp.findAll()){
+            if(tpe.getProfessorResponsavel().equals(this.user.getSiap())){
+                this.modelProfTP.addElement(tpe.getTitulo());
+            }
+        }
+        
+    }
+
     /**
      * @param args the command line arguments
      */

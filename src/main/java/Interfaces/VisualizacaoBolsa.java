@@ -98,6 +98,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         listAlunos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         listAlunos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listAlunos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        listAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listAlunosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(listAlunos);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -440,7 +445,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
+        
         //String valor = String.format("%.2f", this.bolsa.getValor());
         String valorS = this.valorTF.getText();
         valorS = valorS.replace(",", ".");
@@ -549,12 +554,15 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             }
 
         }
-
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void reqTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_reqTFActionPerformed
+
+    private void listAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listAlunosMouseClicked
+        
+    }//GEN-LAST:event_listAlunosMouseClicked
 
     /**
      * @param args the command line arguments
