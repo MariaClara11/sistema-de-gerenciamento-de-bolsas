@@ -323,10 +323,8 @@ public class HomeProfessor extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int selectedIndex = ListMonitoria.getSelectedIndex();
             if (selectedIndex != -1) {
-                //abrirTelaSelecionada(selectedIndex);
-                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaMonitoria.get(selectedIndex),user);
-                //ViewBolsa.setVisible(true);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaMonitoria.get(selectedIndex));
+                
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaMonitoria.get(selectedIndex),this);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -336,10 +334,8 @@ public class HomeProfessor extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int selectedIndex = ListExtensao.getSelectedIndex();
             if (selectedIndex != -1) {
-                //abrirTelaSelecionada(selectedIndex);
-                //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaBExtensao.get(selectedIndex),user);
-                //ViewBolsa.setVisible(true);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaBExtensao.get(selectedIndex));
+                System.out.println(this.listaBExtensao.get(selectedIndex).getTitulo());
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaBExtensao.get(selectedIndex),this);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -352,7 +348,7 @@ public class HomeProfessor extends javax.swing.JFrame {
                 //abrirTelaSelecionada(selectedIndex);
                 //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaIC.get(selectedIndex),user);
                 //ViewBolsa.setVisible(true);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaIC.get(selectedIndex));
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaIC.get(selectedIndex),this);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -365,7 +361,7 @@ public class HomeProfessor extends javax.swing.JFrame {
                 //abrirTelaSelecionada(selectedIndex);
                 //InscricaoBolsa ViewBolsa = new InscricaoBolsa(this.listaTP.get(selectedIndex),user);
                 //ViewBolsa.setVisible(true);
-                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaTP.get(selectedIndex));
+                VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaTP.get(selectedIndex),this);
                 ViewBolsa.setVisible(true);
             }
         }
@@ -476,6 +472,10 @@ public class HomeProfessor extends javax.swing.JFrame {
         this.modelProfIC.clear();
         this.modelProfMo.clear();
         this.modelProfTP.clear();
+        this.listaBExtensao.clear();
+        this.listaIC.clear();
+        this.listaMonitoria.clear();
+        this.listaTP.clear();
         
         BolsaExtensaoPersistence ex = new BolsaExtensaoPersistence();
         IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
@@ -485,24 +485,28 @@ public class HomeProfessor extends javax.swing.JFrame {
         for(Extensao be : ex.findAll()){
             if(be.getProfessorResponsavel().equals(this.user.getSiap())){
                 this.modelProfBE.addElement(be.getTitulo());
+                this.listaBExtensao.add(be);
             }
         }
         
         for(IniciacaoCientifica ice : ic.findAll()){
             if(ice.getProfessorResponsavel().equals(this.user.getSiap())){
                 this.modelProfIC.addElement(ice.getTitulo());
+                this.listaIC.add(ice);
             }
         }
         
         for(Monitoria moni : mo.findAll()){
             if(moni.getProfessorResponsavel().equals(this.user.getSiap())){
                 this.modelProfMo.addElement(moni.getTitulo());
+                this.listaMonitoria.add(moni);
             }
         }
         
         for(TreinamentoProfissional tpe : tp.findAll()){
             if(tpe.getProfessorResponsavel().equals(this.user.getSiap())){
                 this.modelProfTP.addElement(tpe.getTitulo());
+                this.listaTP.add(tpe);
             }
         }
         

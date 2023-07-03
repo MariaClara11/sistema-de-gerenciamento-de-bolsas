@@ -12,6 +12,7 @@ import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
 import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
 import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
+import com.mycompany.sistemadegerenciamentodebolsas.Professor;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
@@ -29,14 +30,16 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
     DefaultListModel model = new DefaultListModel();
     Projeto bolsa;
 
+    HomeProfessor tela;
     /**
      * Creates new form VisualizacaoBolsa
      */
-    public VisualizacaoBolsa(Projeto bolsa) {
+    public VisualizacaoBolsa(Projeto bolsa, HomeProfessor tela) {
         initComponents();
         this.bolsa = bolsa;
         this.listAlunos.setModel(model);
         setLocationRelativeTo(null);
+        this.tela = tela;
         this.setResizable(false);
     }
 
@@ -302,6 +305,10 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirMouseClicked
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        
         String tipoDaBolsa = this.bolsa.retornaTipo();
 
         if (tipoDaBolsa.equals("Iniciação Científica")) {
@@ -309,13 +316,14 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
             List<IniciacaoCientifica> bolsasIC = new ArrayList<>();
             bolsasIC = ic.findAll();
-
+            
             int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir essa bolsa?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 for (IniciacaoCientifica a : bolsasIC) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
                         bolsasIC.remove(a);
                         ic.replace(bolsasIC);
+                        tela.atualizarTela();
                         dispose();
                         break;
                     }
@@ -335,6 +343,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
                         bolsasTP.remove(a);
                         tp.replace(bolsasTP);
+                        tela.atualizarTela();
                         dispose();
                         break;
                     }
@@ -354,6 +363,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
                         bolsasMonitoria.remove(a);
                         mo.replace(bolsasMonitoria);
+                        tela.atualizarTela();
                         dispose();
                         break;
                     }
@@ -373,6 +383,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
                         bolsasBE.remove(a);
                         be.replace(bolsasBE);
+                        tela.atualizarTela();
                         dispose();
                         break;
                     }
@@ -382,12 +393,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
             }
 
         }
-
-
-    }//GEN-LAST:event_btnExcluirMouseClicked
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void valorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTFActionPerformed
@@ -625,7 +631,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VisualizacaoBolsa(null).setVisible(true);
+                new VisualizacaoBolsa(null,null).setVisible(true);
             }
         });
     }
