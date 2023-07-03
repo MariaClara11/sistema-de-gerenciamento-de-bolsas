@@ -394,6 +394,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
 
         }
         
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void valorTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorTFActionPerformed
@@ -558,8 +559,11 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
                     break;
                 }
             }
-
         }
+        
+        tela.atualizarTela();
+        
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void reqTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reqTFActionPerformed
