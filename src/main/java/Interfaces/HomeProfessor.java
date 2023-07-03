@@ -362,7 +362,7 @@ public class HomeProfessor extends javax.swing.JFrame {
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
 
-        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor(user);
+        VisualizacaoPerfilProfessor viewPerfil = new VisualizacaoPerfilProfessor(user,this);
         viewPerfil.setVisible(true);
 
     }//GEN-LAST:event_jMenuPerfilMouseClicked

@@ -33,12 +33,13 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
     private Professor user;
 
+    HomeProfessor tela;
     /**
      * Creates new form VisualizaçãoPerfilProfessor
      */
-    public VisualizacaoPerfilProfessor(Professor user) {
+    public VisualizacaoPerfilProfessor(Professor user, HomeProfessor tela) {
         this.user = user;
-
+        this.tela = tela;
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
@@ -372,7 +373,11 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         }
         if (resposta == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
+            Login login = new Login();
+            login.setVisible(true);
+            tela.dispose();
             dispose();
+            
 
         } else if (resposta == JOptionPane.NO_OPTION) {
             dispose();
@@ -422,7 +427,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Professor user = null;
-                new VisualizacaoPerfilProfessor(user).setVisible(true);
+                new VisualizacaoPerfilProfessor(user,null).setVisible(true);
             }
         });
     }
