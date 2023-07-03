@@ -41,6 +41,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     public MaskFormatter Mascara(String Mascara) {

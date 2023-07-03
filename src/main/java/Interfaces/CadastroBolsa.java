@@ -46,6 +46,7 @@ public class CadastroBolsa extends javax.swing.JFrame {
         initComponents();
         setSize(700, 700);
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 

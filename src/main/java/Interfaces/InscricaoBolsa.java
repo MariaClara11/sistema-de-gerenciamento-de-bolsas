@@ -39,6 +39,7 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         this.user = user;
         initComponents();
         setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

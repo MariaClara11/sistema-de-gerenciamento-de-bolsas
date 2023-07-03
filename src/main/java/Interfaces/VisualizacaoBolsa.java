@@ -37,6 +37,7 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         this.bolsa = bolsa;
         this.listAlunos.setModel(model);
         setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

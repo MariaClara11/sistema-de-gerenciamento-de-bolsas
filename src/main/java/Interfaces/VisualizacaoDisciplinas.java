@@ -34,6 +34,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         initComponents();
         this.listDisc.setModel(modelDisCursadas);
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 
@@ -43,6 +44,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         initComponents();
         this.listDisc.setModel(modelDisCursadas);
         setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 
@@ -168,8 +170,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        CadastroDisciplina telaCadastro = new CadastroDisciplina();
-        telaCadastro.setVisible(true);
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -183,7 +184,6 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
 
-
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -193,29 +193,31 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         String disciplinaRecebe = listDisc.getSelectedValuesList().toString();
         disciplinaRecebe = disciplinaRecebe.substring(1, disciplinaRecebe.length() - 1);
         System.out.println(disciplinaRecebe);
-
+        Aluno a = new Aluno();
         Iterator<Aluno> iterator = listAlunos.iterator();
         while (iterator.hasNext()) {
             Aluno aluno = iterator.next();
             if (aluno.getMatricula().equals(this.user.getMatricula())) {
+                a = aluno;
                 iterator.remove();
-                break;
+                for (Disciplina d : a.getDisciplinas()) {
+                    if (d.getCodigo().equals(disciplinaRecebe)) {
+                        a.getDisciplinas().remove(d);
+                        break;
+                    }
+                }
             }
         }
 
-        for (Disciplina d : this.user.getDisciplinas()) {
-            if (d.getCodigo().equals(disciplinaRecebe)) {
-                this.user.getDisciplinas().remove(d);
-                break;
-            }
-        }
-
-        listAlunos.add(this.user);
+        listAlunos.add(a);
         alunos.replace(listAlunos);
+
+        atualizarLista(a);
+        /*
         dispose();
         VisualizacaoDisciplinas reloadDisciplina = new VisualizacaoDisciplinas(this.user);
         reloadDisciplina.setVisible(true);
-
+         */
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -235,6 +237,13 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
                 }
                 this.listDisc.setModel(modelDisCursadas);
             }
+        }
+    }
+    
+    public void atualizarLista(Aluno aluno){
+        this.modelDisCursadas.clear();
+        for (Disciplina d : aluno.getDisciplinas()) {
+            this.modelDisCursadas.addElement(d.getCodigo());
         }
     }
 

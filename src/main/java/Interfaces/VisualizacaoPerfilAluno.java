@@ -46,6 +46,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.homealuno = new HomeAluno(this.user);
         this.user = user;
+        this.setResizable(false);
 
     }
 
