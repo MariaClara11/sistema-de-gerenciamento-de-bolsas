@@ -222,8 +222,8 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             return false;
         } else {
             float notaFloat = Float.parseFloat(nota);
-            if (notaFloat > 100 || notaFloat < 0) {
-                JOptionPane.showMessageDialog(this, "Nota deve estar entre 0 e 100", "Erro", JOptionPane.ERROR_MESSAGE);
+            if (notaFloat > 100 || notaFloat < 60) {
+                JOptionPane.showMessageDialog(this, "Você deve ter passado na disciplina, (nota entre 60 e 100)", "Erro", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
 
