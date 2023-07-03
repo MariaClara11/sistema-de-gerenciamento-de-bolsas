@@ -16,6 +16,7 @@ import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
 import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
+import static java.lang.System.exit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -255,27 +256,28 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                 }
             }
         }
-
+        boolean cadastrado = false;
         if (counter >= this.bolsa.getPreRequisitos().size()) {
 
             String tipoDaBolsa = this.bolsa.retornaTipo();
-
+            
             if (tipoDaBolsa.equals("Treinamento Profissional")) {
                 TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
                 List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
                 bolsasTP = tp.findAll();
                 for (TreinamentoProfissional a : bolsasTP) {
-
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        if (!a.getAlunosCadastrados().contains(this.user)) {
-                            a.getAlunosCadastrados().add(this.user);
-                            // bolsasTP.add(a);
-                            tp.replace(bolsasTP);
-                            dispose();
-                            break;
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                        for(Aluno alun : a.getAlunosCadastrados()) {
+                            if (alun.getMatricula().equals(this.user.getMatricula())) {
+                                JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
+                                cadastrado = true;
+                            }
                         }
+                        if(cadastrado == false)
+                        a.addAlunosCadastrados(this.user);
+                        tp.replace(bolsasTP);
+                        dispose();
+                        break;
                     }
                 }
 
@@ -368,7 +370,6 @@ public class InscricaoBolsa extends javax.swing.JFrame {
             req = req.concat("]");
         }
         this.preRequisitoComboBox.setModel(comboBoxModel);
-        
 
         String valor = String.format("%.2f", this.bolsa.getValor());
         this.fieldValor.setText(valor);
