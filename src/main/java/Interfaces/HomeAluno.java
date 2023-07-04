@@ -269,6 +269,11 @@ public class HomeAluno extends javax.swing.JFrame {
                 jMenuPerfil1MouseClicked(evt);
             }
         });
+        jMenuPerfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPerfil1ActionPerformed(evt);
+            }
+        });
         jMenuBar2.add(jMenuPerfil1);
 
         jMenuSair.setText("Sair");
@@ -350,7 +355,13 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListTPMouseClicked
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            // Fechar a tela atual
+            dispose();
+        }
 
     }//GEN-LAST:event_jMenuSairMouseClicked
 
@@ -390,7 +401,8 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuPerfil1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfil1MouseClicked
-
+        CadastroDisciplina cadDisciplina = new CadastroDisciplina(this.user);
+        cadDisciplina.setVisible(true);
     }//GEN-LAST:event_jMenuPerfil1MouseClicked
 
     private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
@@ -406,6 +418,13 @@ public class HomeAluno extends javax.swing.JFrame {
     private void jMenuPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPerfilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuPerfilActionPerformed
+
+    private void jMenuPerfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPerfil1ActionPerformed
+        // TODO add your handling code here:
+        CadastroDisciplina cadDisciplina = new CadastroDisciplina(this.user);
+        cadDisciplina.setVisible(true);
+       
+    }//GEN-LAST:event_jMenuPerfil1ActionPerformed
 
     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
