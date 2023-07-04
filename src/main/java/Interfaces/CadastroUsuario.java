@@ -344,6 +344,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 jMenu1MouseClicked(evt);
             }
         });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -388,7 +393,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        dispose();
+        
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void cadastrarBTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarBTNMouseClicked
@@ -523,6 +528,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void nascimentoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nascimentoTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nascimentoTFActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments

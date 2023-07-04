@@ -38,7 +38,7 @@ public class HomeAluno extends javax.swing.JFrame {
     public List<Extensao> listaBExtensao = new ArrayList<>();
 
     Aluno user;
-    
+
     public HomeAluno(Aluno user) {
 
         this.user = user;
@@ -201,11 +201,8 @@ public class HomeAluno extends javax.swing.JFrame {
             .addGroup(ContainerLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ContainerLayout.createSequentialGroup()
-                        .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BemVindo1)
-                            .addComponent(jLabel5))
-                        .addContainerGap(962, Short.MAX_VALUE))
+                    .addComponent(BemVindo1)
+                    .addComponent(jLabel5)
                     .addGroup(ContainerLayout.createSequentialGroup()
                         .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,8 +218,8 @@ public class HomeAluno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(50, Short.MAX_VALUE))))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,6 +249,11 @@ public class HomeAluno extends javax.swing.JFrame {
                 jMenuPerfilMouseClicked(evt);
             }
         });
+        jMenuPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPerfilActionPerformed(evt);
+            }
+        });
         jMenuBar2.add(jMenuPerfil);
 
         jMenuPerfil1.setText("Cadastrar Disciplinas");
@@ -268,6 +270,11 @@ public class HomeAluno extends javax.swing.JFrame {
         jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuSairMouseClicked(evt);
+            }
+        });
+        jMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSairActionPerformed(evt);
             }
         });
         jMenuBar2.add(jMenuSair);
@@ -337,32 +344,25 @@ public class HomeAluno extends javax.swing.JFrame {
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
 
-        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
-        if (option == JOptionPane.YES_OPTION) {
-            Login login = new Login();
-            login.setVisible(true);
-            // Fechar a tela atual
-            dispose();
-        }
 
     }//GEN-LAST:event_jMenuSairMouseClicked
 
     private void jMenuPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfilMouseClicked
 
-        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user,this);
+        VisualizacaoPerfilAluno viewPerfilAluno = new VisualizacaoPerfilAluno(user, this);
         viewPerfilAluno.setVisible(true);
 
 
     }//GEN-LAST:event_jMenuPerfilMouseClicked
-    
-    public void fecharHomeAluno(){
+
+    public void fecharHomeAluno() {
         this.dispose();
         this.setVisible(false);
     }
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        this.BemVindo1.setText("Bem-vindo: "+this.user.getNome());
+        this.BemVindo1.setText("Bem-vindo: " + this.user.getNome());
         this.modelBE.removeAllElements();
         this.modelIC.removeAllElements();
         this.modelMo.removeAllElements();
@@ -383,9 +383,22 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuPerfil1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfil1MouseClicked
-        CadastroDisciplina viewCadastroDisciplinas = new CadastroDisciplina(user);
-        viewCadastroDisciplinas.setVisible(true);
+
     }//GEN-LAST:event_jMenuPerfil1MouseClicked
+
+    private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            // Fechar a tela atual
+            dispose();
+        }
+    }//GEN-LAST:event_jMenuSairActionPerformed
+
+    private void jMenuPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuPerfilActionPerformed
 
     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
