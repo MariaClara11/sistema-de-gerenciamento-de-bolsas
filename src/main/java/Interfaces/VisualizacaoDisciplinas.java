@@ -199,7 +199,7 @@ public class VisualizacaoDisciplinas extends javax.swing.JFrame {
         Set<Aluno> listAlunos = alunos.findAllSet();
         String disciplinaRecebe = listDisc.getSelectedValuesList().toString();
         disciplinaRecebe = disciplinaRecebe.substring(1, disciplinaRecebe.length() - 1);
-        System.out.println(disciplinaRecebe);
+        
         Aluno a = new Aluno();
         Iterator<Aluno> iterator = listAlunos.iterator();
         while (iterator.hasNext()) {

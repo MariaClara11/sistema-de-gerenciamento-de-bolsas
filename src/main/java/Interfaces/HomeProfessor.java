@@ -319,7 +319,7 @@ public class HomeProfessor extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int selectedIndex = ListExtensao.getSelectedIndex();
             if (selectedIndex != -1) {
-                System.out.println(this.listaBExtensao.get(selectedIndex).getTitulo());
+                
                 VisualizacaoBolsa ViewBolsa = new VisualizacaoBolsa(this.listaBExtensao.get(selectedIndex),this);
                 ViewBolsa.setVisible(true);
             }

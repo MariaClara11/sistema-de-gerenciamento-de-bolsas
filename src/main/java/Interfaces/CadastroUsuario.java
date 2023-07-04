@@ -45,7 +45,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         this.jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
-        //this.user = user;
     }
     
    
@@ -678,8 +677,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            System.out.println(ingresso);
-            System.out.println(this.user.getDataNascimento());
+            
             Date ingressoD = formato.parse(ingresso);
             Date dataAtual = new Date();
       

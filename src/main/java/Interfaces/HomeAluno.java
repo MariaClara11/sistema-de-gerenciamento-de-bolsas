@@ -350,7 +350,14 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_ListTPMouseClicked
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
-
+        
+        int option = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            // Fechar a tela atual
+            dispose();
+        }
 
     }//GEN-LAST:event_jMenuSairMouseClicked
 
@@ -390,7 +397,10 @@ public class HomeAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuPerfil1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPerfil1MouseClicked
-
+        
+        CadastroDisciplina cadDisciplina = new CadastroDisciplina(this.user);
+        cadDisciplina.setVisible(true);
+        
     }//GEN-LAST:event_jMenuPerfil1MouseClicked
 
     private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed

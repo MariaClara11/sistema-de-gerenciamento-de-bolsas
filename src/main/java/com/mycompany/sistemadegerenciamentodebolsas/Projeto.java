@@ -22,7 +22,6 @@ import java.util.*;
 public abstract class Projeto {
     private String titulo;
     private List<String> preRequisitos;
-    //private String tipo;
     private float valor;
     private int quantidadeHoras;
     private int vagas;
