@@ -23,25 +23,25 @@ import java.util.List;
  * Matricula: 202065165AC
  */
 public class Professor extends Usuario {
-    private String siap;
+    private String siape;
     private String dataContratacao;
     
     public Professor(String siape, String nome, String CPF, String dataNascimento, String senha) {
         super(nome, 0, CPF, dataNascimento, senha, "");
-        this.siap = siape;
+        this.siape = siape;
         this.dataContratacao = "";
     }
 
-    public String getSiap() {
-        return siap;
+    public String getSiape() {
+        return siape;
     }
 
     public String getDataContratacao() {
         return dataContratacao;
     }
 
-    public void setSiap(String siap) {
-        this.siap = siap;
+    public void setSiape(String siape) {
+        this.siape = siape;
     }
 
     public void setDataContratacao(String dataContratacao) {
@@ -67,6 +67,6 @@ public class Professor extends Usuario {
     
     @Override 
     public String retornaId(){
-        return siap;
+        return siape;
     }
 }

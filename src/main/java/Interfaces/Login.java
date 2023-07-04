@@ -330,7 +330,7 @@ public class Login extends javax.swing.JFrame {
                     ProfessorPersistence prof = new ProfessorPersistence();
                     Set<Professor> professores = prof.findAllSet();
                     for (Professor p : professores) {
-                        if (p.getSiap().equals(login) && p.getSenha().equals(hash)) {
+                        if (p.getSiape().equals(login) && p.getSenha().equals(hash)) {
                             HomeProfessor tela = new HomeProfessor(p);
                             tela.setVisible(true);
                             dispose();

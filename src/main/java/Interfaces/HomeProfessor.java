@@ -407,7 +407,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     public void addListaExtensao(List<Extensao> bolsa, DefaultListModel model, List<Extensao> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Extensao b : persistence) {
-            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
+            if (b.getProfessorResponsavel().equals(this.user.getSiape())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
@@ -417,7 +417,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     public void addListaIniciacaoCientifica(List<IniciacaoCientifica> bolsa, DefaultListModel model, List<IniciacaoCientifica> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (IniciacaoCientifica b : persistence) {
-            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
+            if (b.getProfessorResponsavel().equals(this.user.getSiape())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
@@ -427,7 +427,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     public void addListaMonitoria(List<Monitoria> bolsa, DefaultListModel model, List<Monitoria> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (Monitoria b : persistence) {
-            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
+            if (b.getProfessorResponsavel().equals(this.user.getSiape())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
@@ -437,7 +437,7 @@ public class HomeProfessor extends javax.swing.JFrame {
     public void addListaTreinamentoProfissional(List<TreinamentoProfissional> bolsa, DefaultListModel model, List<TreinamentoProfissional> persistence) {
         //DefaultListModel<Bolsa> model = (DefaultListModel<Bolsa>)this.jListBolsa.getModel();
         for (TreinamentoProfissional b : persistence) {
-            if (b.getProfessorResponsavel().equals(this.user.getSiap())) {
+            if (b.getProfessorResponsavel().equals(this.user.getSiape())) {
                 bolsa.add(b);
                 model.addElement(b.getTitulo());
             }
@@ -461,28 +461,28 @@ public class HomeProfessor extends javax.swing.JFrame {
         TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
         
         for(Extensao be : ex.findAll()){
-            if(be.getProfessorResponsavel().equals(this.user.getSiap())){
+            if(be.getProfessorResponsavel().equals(this.user.getSiape())){
                 this.modelProfBE.addElement(be.getTitulo());
                 this.listaBExtensao.add(be);
             }
         }
         
         for(IniciacaoCientifica ice : ic.findAll()){
-            if(ice.getProfessorResponsavel().equals(this.user.getSiap())){
+            if(ice.getProfessorResponsavel().equals(this.user.getSiape())){
                 this.modelProfIC.addElement(ice.getTitulo());
                 this.listaIC.add(ice);
             }
         }
         
         for(Monitoria moni : mo.findAll()){
-            if(moni.getProfessorResponsavel().equals(this.user.getSiap())){
+            if(moni.getProfessorResponsavel().equals(this.user.getSiape())){
                 this.modelProfMo.addElement(moni.getTitulo());
                 this.listaMonitoria.add(moni);
             }
         }
         
         for(TreinamentoProfissional tpe : tp.findAll()){
-            if(tpe.getProfessorResponsavel().equals(this.user.getSiap())){
+            if(tpe.getProfessorResponsavel().equals(this.user.getSiape())){
                 this.modelProfTP.addElement(tpe.getTitulo());
                 this.listaTP.add(tpe);
             }

@@ -272,7 +272,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
         this.nomeTF.setText(this.user.getNome());
         this.cpfTF.setText(this.user.getCPF());
-        this.siapeTF.setText(this.user.getSiap());
+        this.siapeTF.setText(this.user.getSiape());
         this.ingressoTF.setText(this.user.getDataContratacao());
         this.telTF.setText(this.user.getTelefone());
         this.nascimentoTF.setText(this.user.getDataNascimento());
@@ -300,7 +300,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
                 this.user.setDataContratacao(this.ingressoTF.getText());
 
                 for (Professor p : professores) {
-                    if (p.getSiap().equals(this.user.getSiap())) {
+                    if (p.getSiape().equals(this.user.getSiape())) {
                         p.setDataContratacao(this.ingressoTF.getText());
                         prof.replace(professores);
                         break;
@@ -315,7 +315,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
             if (!this.telTF.getText().isEmpty()) {
                 this.user.setTelefone(this.telTF.getText());
                 for (Professor p : professores) {
-                    if (p.getSiap().equals(this.user.getSiap())) {
+                    if (p.getSiape().equals(this.user.getSiape())) {
                         p.setTelefone(this.telTF.getText());
                         prof.replace(professores);
                         break;
@@ -377,7 +377,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
             //Exlui o professor
             for (Professor p : professores) {
-                if (p.getSiap().equals(this.user.getSiap())) {
+                if (p.getSiape().equals(this.user.getSiape())) {
                     professores.remove(p);
                     professor.replace(professores);
                     JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
@@ -396,7 +396,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
             List<Extensao> benova = new ArrayList<>();
             for (Extensao ex : be.findAll()) {
-                if (!ex.getProfessorResponsavel().equals(this.user.getSiap())) {
+                if (!ex.getProfessorResponsavel().equals(this.user.getSiape())) {
                     benova.add(ex);
                 }
             }
@@ -404,7 +404,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
             
             List<Monitoria> monova = new ArrayList<>();
             for (Monitoria moni : mo.findAll()) {
-                if (!moni.getProfessorResponsavel().equals(this.user.getSiap())) {
+                if (!moni.getProfessorResponsavel().equals(this.user.getSiape())) {
                     monova.add(moni);
                 }
             }
@@ -412,7 +412,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
             List<IniciacaoCientifica> icnova = new ArrayList<>();
             for (IniciacaoCientifica ice : ic.findAll()) {
-                if (!ice.getProfessorResponsavel().equals(this.user.getSiap())) {
+                if (!ice.getProfessorResponsavel().equals(this.user.getSiape())) {
                     icnova.add(ice);
                 }
             }
@@ -420,7 +420,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
             List<TreinamentoProfissional> tpnova = new ArrayList<>();
             for (TreinamentoProfissional tpe : tp.findAll()) {
-                if (!tpe.getProfessorResponsavel().equals(this.user.getSiap())) {
+                if (!tpe.getProfessorResponsavel().equals(this.user.getSiape())) {
                     tpnova.add(tpe);
                 }
             }
