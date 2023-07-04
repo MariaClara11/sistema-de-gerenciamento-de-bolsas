@@ -28,7 +28,6 @@ public abstract class Usuario {
     private String dataNascimento;
     private String senha;
     private String telefone;
-    //private Date dataDeInscricao;
 
     public Usuario(){
         this.nome = "";
@@ -46,13 +45,8 @@ public abstract class Usuario {
         this.dataNascimento = dataNascimento;
         this.senha = senha;
         this.telefone = telefone;
-        //this.dataDeInscricao = new Date();
-// para aparecer inscrito desde hoje
+        
     }
-
-    /*public Date getDataDeInscricao() {
-        return dataDeInscricao;
-    }*/
 
     public String getNome() {
         return nome;

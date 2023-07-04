@@ -378,8 +378,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
 
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            System.out.println(ingresso);
-            System.out.println(this.user.getDataNascimento());
+            
             Date ingressoD = formato.parse(ingresso);
             Date dataAtual = new Date();
             Date nascimentoD = formato.parse(this.user.getDataNascimento());
@@ -420,7 +419,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             MonitoriaPersistence mo = new MonitoriaPersistence();
             IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
             TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
-            System.out.println(this.user);
+            
 
             List<Extensao> benova = new ArrayList<>();
             for (Extensao ex : be.findAll()) {

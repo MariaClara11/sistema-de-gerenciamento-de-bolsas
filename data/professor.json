@@ -1,2 +1,6 @@
 [{"siape":"12345","dataContratacao":"","nome":"teste","idade":0,"CPF":"126.577.566-46","dataNascimento":"04/06/2002","senha":"ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f","telefone":""},
+<<<<<<< HEAD
 {"siape":"10101","dataContratacao":"","nome":"teste","idade":0,"CPF":"189.197.971-97","dataNascimento":"04/06/2002","senha":"ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f","telefone":""}]
+=======
+{"siape":"12312","dataContratacao":"","nome":"jorge","idade":0,"CPF":"111.111.111-11","dataNascimento":"11/11/1111","senha":"932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef","telefone":""}]
+>>>>>>> 88177dfd4a01486aad575318551bd915a255fdc6
