@@ -16,8 +16,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
+ * Autores do trabalho:
  *
- * @author marlo
+ * Nome: Maria Clara Ribeiro de Menezes Matricula: 202165101AC
+ *
+ * Nome: Igor Titoneli Almeida Matricula: 202165064AB
+ *
+ * Nome: Christian Rafael De Oliveira Coelho Matricula: 202065249AC
+ *
+ * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
 public class BolsaExtensaoPersistence implements Persistence<Extensao>{
      private static final String PATH = DIRECTORY+ File.separator +"bolsaExtensao.json";

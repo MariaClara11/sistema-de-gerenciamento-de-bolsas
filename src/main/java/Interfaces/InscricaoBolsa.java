@@ -23,8 +23,15 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
+ * Autores do trabalho:
  *
- * @author igor
+ * Nome: Maria Clara Ribeiro de Menezes Matricula: 202165101AC
+ *
+ * Nome: Igor Titoneli Almeida Matricula: 202165064AB
+ *
+ * Nome: Christian Rafael De Oliveira Coelho Matricula: 202065249AC
+ *
+ * Nome: Marlon Ruffo Nascimento Matricula: 202065165AC
  */
 public class InscricaoBolsa extends javax.swing.JFrame {
 
