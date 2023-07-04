@@ -134,6 +134,11 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         preRequisitoComboBox.setEditable(false);
         preRequisitoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         preRequisitoComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        preRequisitoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preRequisitoComboBoxActionPerformed(evt);
+            }
+        });
 
         bInscrever.setBackground(new java.awt.Color(65, 142, 218));
         bInscrever.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,21 +265,22 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         if (counter >= this.bolsa.getPreRequisitos().size()) {
 
             String tipoDaBolsa = this.bolsa.retornaTipo();
-            
+
             if (tipoDaBolsa.equals("Treinamento Profissional")) {
                 TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
                 List<TreinamentoProfissional> bolsasTP = new ArrayList<>();
                 bolsasTP = tp.findAll();
                 for (TreinamentoProfissional a : bolsasTP) {
                     if (a.getTitulo().equals(this.bolsa.getTitulo())) {
-                        for(Aluno alun : a.getAlunosCadastrados()) {
+                        for (Aluno alun : a.getAlunosCadastrados()) {
                             if (alun.getMatricula().equals(this.user.getMatricula())) {
                                 JOptionPane.showMessageDialog(this, "Aluno já inscrito na bolsa!!!", "Já inscrito!", JOptionPane.INFORMATION_MESSAGE);
                                 cadastrado = true;
                             }
                         }
-                        if(cadastrado == false)
-                        a.addAlunosCadastrados(this.user);
+                        if (cadastrado == false) {
+                            a.addAlunosCadastrados(this.user);
+                        }
                         tp.replace(bolsasTP);
                         dispose();
                         break;
@@ -295,8 +301,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                                 cadastrado = true;
                             }
                         }
-                        if (cadastrado == false) 
-                        a.addAlunosCadastrados(this.user);
+                        if (cadastrado == false) {
+                            a.addAlunosCadastrados(this.user);
+                        }
                         ic.replace(bolsasIC);
                         dispose();
                         break;
@@ -316,8 +323,9 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                                 cadastrado = true;
                             }
                         }
-                        if (cadastrado == false) 
-                        a.addAlunosCadastrados(this.user);
+                        if (cadastrado == false) {
+                            a.addAlunosCadastrados(this.user);
+                        }
                         mo.replace(bolsasMO);
                         dispose();
                         break;
@@ -326,7 +334,6 @@ public class InscricaoBolsa extends javax.swing.JFrame {
 
             }
             if (tipoDaBolsa.equals("Bolsa Extensao")) {
-                System.out.println("be entrou");
                 BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
                 List<Extensao> bolsasBE = new ArrayList<>();
                 bolsasBE = be.findAll();
@@ -338,17 +345,19 @@ public class InscricaoBolsa extends javax.swing.JFrame {
                                 cadastrado = true;
                             }
                         }
-                        if (cadastrado == false) 
-                        a.addAlunosCadastrados(this.user);
+                        if (cadastrado == false) {
+                            a.addAlunosCadastrados(this.user);
+                        }
                         be.replace(bolsasBE);
                         dispose();
                         break;
                     }
 
+                }
             }
+            if (cadastrado == false) {
+                JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             }
-
-            JOptionPane.showMessageDialog(this, "Inscrito com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Você ainda não cursou as disciplinas requisitadas.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -384,6 +393,10 @@ public class InscricaoBolsa extends javax.swing.JFrame {
         this.fieldTipo.setText(this.bolsa.retornaTipo());
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void preRequisitoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preRequisitoComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_preRequisitoComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

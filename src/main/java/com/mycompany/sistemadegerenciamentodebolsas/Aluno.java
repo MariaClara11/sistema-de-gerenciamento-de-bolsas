@@ -36,8 +36,6 @@ public class Aluno extends Usuario {
         this.disciplinas = new HashSet<>();
     }
 
-   
-
     public String getMatricula() {
         return matricula;
     }
@@ -61,9 +59,6 @@ public class Aluno extends Usuario {
     public void setDisciplinas(Set<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
-
-
-    
 
     @Override
     public String retornaId() {

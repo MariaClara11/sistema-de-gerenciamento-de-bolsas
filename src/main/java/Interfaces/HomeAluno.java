@@ -12,7 +12,6 @@ import com.mycompany.sistemadegerenciamentodebolsas.Aluno;
 import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
 import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
 import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
-import com.mycompany.sistemadegerenciamentodebolsas.Projeto;
 import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.util.ArrayList;
 import java.util.List;
