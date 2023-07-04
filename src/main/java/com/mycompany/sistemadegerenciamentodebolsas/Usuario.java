@@ -103,23 +103,6 @@ public abstract class Usuario {
         this.telefone = telefone;
     }
     
-    public void editaDadosUsuario(String nome, int idade, String CPF, String dataNascimento, String senha, String telefone, String DataNascimento) {
-        this.nome = nome;
-        this.idade = idade;
-        this.CPF = CPF;
-        this.dataNascimento = dataNascimento;
-        this.senha = senha;
-        this.telefone = telefone;
-    }
-    
-    public void resetaDadosUsuario() {
-        this.nome = "";
-        this.idade = 0;
-        this.CPF = "";
-        this.dataNascimento = "";
-        this.senha = "";
-        this.telefone = "";
-    }
     
     public abstract String retornaId();
 
