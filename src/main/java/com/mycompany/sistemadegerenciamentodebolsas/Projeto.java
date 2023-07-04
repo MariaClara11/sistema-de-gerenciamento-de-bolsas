@@ -28,7 +28,7 @@ public abstract class Projeto {
     private int vagas;
     private String professorResponsavel;
     private String metodoEntrada;
-    private List<Aluno> alunosCadastrados;
+    public List<Aluno> alunosCadastrados;
     
     public Projeto(String titulo, List<String> preRequisitos, float valor, int quantidadeHoras, int vagas, String professorResponsavel, String metodoEntrada) {
         this.titulo = titulo;
@@ -106,5 +106,10 @@ public abstract class Projeto {
     }
     
     public abstract String retornaTipo();
+
+    public void setAlunosCadastrados(List<Aluno> alunosCadastrados) {
+        this.alunosCadastrados = alunosCadastrados;
+    }
+   
     
 }

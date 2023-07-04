@@ -20,16 +20,12 @@ import java.util.*;
 public class Aluno extends Usuario {
 
     private String matricula;
-    private String contaBancaria;
-    private int ira;
     private String dataIngresso;
     Set<Disciplina> disciplinas;
 
     public Aluno() {
         super();
         this.matricula = "";
-        this.contaBancaria = "";
-        this.ira = 0;
         this.dataIngresso = "";
         this.disciplinas = new HashSet<>();
     }
@@ -38,39 +34,14 @@ public class Aluno extends Usuario {
         super(nome, 0, CPF, dataNascimento, senha, "");
         this.matricula = matricula;
         this.disciplinas = new HashSet<>();
-        this.ira = 0;
     }
 
-    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
-        super(nome, idade, CPF, dataNascimento, senha, telefone);
-        this.matricula = matricula;
-        this.contaBancaria = contaBancaria;
-        this.ira = ira;
-        this.dataIngresso = dataIngresso;
-        this.disciplinas = disciplinas;
-    }
-
-    public Aluno(String matricula, String contaBancaria, int ira, String dataIngresso, String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
-        super(nome, idade, CPF, dataNascimento, senha, telefone);
-        this.matricula = matricula;
-        this.contaBancaria = contaBancaria;
-        this.ira = ira;
-        this.dataIngresso = dataIngresso;
-        this.disciplinas = new HashSet<>();
-    }
+   
 
     public String getMatricula() {
         return matricula;
     }
-
-    public String getContaBancaria() {
-        return contaBancaria;
-    }
-
-    public int getIra() {
-        return ira;
-    }
-
+    
     public String getDataIngresso() {
         return dataIngresso;
     }
@@ -83,14 +54,6 @@ public class Aluno extends Usuario {
         this.matricula = matricula;
     }
 
-    public void setContaBancaria(String contaBancaria) {
-        this.contaBancaria = contaBancaria;
-    }
-
-    public void setIra(int ira) {
-        this.ira = ira;
-    }
-
     public void setDataIngresso(String dataIngresso) {
         this.dataIngresso = dataIngresso;
     }
@@ -99,33 +62,16 @@ public class Aluno extends Usuario {
         this.disciplinas = disciplinas;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno{" + super.toString() + ", matricula=" + matricula + ", contaBancaria=" + contaBancaria + ", ira=" + ira + ", dataIngresso=" + dataIngresso + ", disciplinas=" + disciplinas + '}';
-    }
 
-    public void editaDadosUsuario(String matricula, String contaBancaria, int ira, String dataIngresso, Set<Disciplina> disciplinas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
-        this.matricula = matricula;
-        this.contaBancaria = contaBancaria;
-        this.ira = ira;
-        this.dataIngresso = dataIngresso;
-        this.disciplinas = disciplinas;
-    }
-
-    @Override
-    public void resetaDadosUsuario() {
-        super.resetaDadosUsuario();
-        this.matricula = "";
-        this.contaBancaria = "";
-        this.ira = 0;
-        this.dataIngresso = "";
-        this.disciplinas.clear();
-    }
+    
 
     @Override
     public String retornaId() {
-        return matricula;
+        return this.matricula;
     }
+
+  
+
+    
 
 }

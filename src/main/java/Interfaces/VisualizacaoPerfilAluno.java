@@ -14,6 +14,14 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 import Interfaces.HomeAluno;
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,13 +46,13 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
      * Creates new form VisualizaçãoPerfilAluno
      */
     private Aluno user;
-    private HomeAluno homealuno;
+    private HomeAluno tela;
 
-    public VisualizacaoPerfilAluno(Aluno user, HomeAluno homealuno1) {
+    public VisualizacaoPerfilAluno(Aluno user, HomeAluno tela) {
 
         initComponents();
         setLocationRelativeTo(null);
-        this.homealuno = new HomeAluno(this.user);
+        this.tela = tela;
         this.user = user;
         this.setResizable(false);
 
@@ -375,8 +383,7 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
             Date ingressoD = formato.parse(ingresso);
             Date dataAtual = new Date();
             Date nascimentoD = formato.parse(this.user.getDataNascimento());
- 
-            
+
             if (ingressoD.before(nascimentoD) || ingressoD.after(dataAtual)) {
                 JOptionPane.showMessageDialog(this, "Insira uma data valida (dd/mm/aaaa)", "Erro", JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -408,9 +415,70 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                     break;
                 }
             }
-            this.homealuno.dispose();
-            this.homealuno.setVisible(false);
-            //this.homealuno.fecharHomeAluno();
+
+            BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+            MonitoriaPersistence mo = new MonitoriaPersistence();
+            IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+            TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+            System.out.println(this.user);
+
+            List<Extensao> benova = new ArrayList<>();
+            for (Extensao ex : be.findAll()) {
+                List<Aluno> listaluno = new ArrayList<>();
+                for (Aluno a : ex.getAlunosCadastrados()) {
+                    if (!a.getMatricula().equals(this.user.getMatricula())) {
+                        listaluno.add(a);
+                    }
+                }
+                ex.setAlunosCadastrados(listaluno);
+                benova.add(ex);
+            }
+            be.replace(benova);
+
+            List<Monitoria> monova = new ArrayList<>();
+            for (Monitoria moni : mo.findAll()) {
+                List<Aluno> listaluno = new ArrayList<>();
+                for (Aluno a : moni.getAlunosCadastrados()) {
+                    if (!a.getMatricula().equals(this.user.getMatricula())) {
+                        listaluno.add(a);
+                    }
+                }
+                moni.setAlunosCadastrados(listaluno);
+                monova.add(moni);
+            }
+            mo.replace(monova);
+
+            List<IniciacaoCientifica> icnova = new ArrayList<>();
+            for (IniciacaoCientifica ice : ic.findAll()) {
+                
+                List<Aluno> listaluno = new ArrayList<>();
+                for (Aluno a : ice.getAlunosCadastrados()) {
+                    if (!a.getMatricula().equals(this.user.getMatricula())) {
+                        listaluno.add(a);
+                    }
+                }
+                ice.setAlunosCadastrados(listaluno);
+                icnova.add(ice);
+            }
+
+            ic.replace(icnova);
+
+            List<TreinamentoProfissional> tpnova = new ArrayList<>();
+            for (TreinamentoProfissional tpe : tp.findAll()) {
+                List<Aluno> listaluno = new ArrayList<>();
+                for (Aluno a : tpe.getAlunosCadastrados()) {
+                    if (!a.getMatricula().equals(this.user.getMatricula())) {
+                        listaluno.add(a);
+                    }
+                }
+                tpe.setAlunosCadastrados(listaluno);
+                tpnova.add(tpe);
+            }
+            tp.replace(tpnova);
+
+            Login login = new Login();
+            login.setVisible(true);
+            tela.dispose();
             JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }

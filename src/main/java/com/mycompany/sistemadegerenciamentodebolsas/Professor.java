@@ -25,20 +25,11 @@ import java.util.List;
 public class Professor extends Usuario {
     private String siap;
     private String dataContratacao;
-    List<Projeto> bolsasCadastradas;
-    /*
-    public Professor() {
-        super();
-        this.siap = "";
-        this.dataContratacao = "";
-        this.bolsasCadastradas.clear();
-    }
-    */
+    
     public Professor(String siape, String nome, String CPF, String dataNascimento, String senha) {
         super(nome, 0, CPF, dataNascimento, senha, "");
         this.siap = siape;
         this.dataContratacao = "";
-        this.bolsasCadastradas = new ArrayList<>();
     }
 
     public String getSiap() {
@@ -49,10 +40,6 @@ public class Professor extends Usuario {
         return dataContratacao;
     }
 
-    public List<Projeto> getBolsasCadastradas() {
-        return bolsasCadastradas;
-    }
-
     public void setSiap(String siap) {
         this.siap = siap;
     }
@@ -61,29 +48,7 @@ public class Professor extends Usuario {
         this.dataContratacao = dataContratacao;
     }
 
-    public void setBolsasCadastradas(List<Projeto> bolsasCadastradas) {
-        this.bolsasCadastradas = bolsasCadastradas;
-    }
-
-    @Override
-    public String toString() {
-        return "Funcionario{" + super.toString()+ ", siap=" + siap + ", dataContratacao=" + dataContratacao + ", bolsasCadastradas=" + bolsasCadastradas + '}';
-    }
     
-    public void editaDadosUsuario(String siap, String dataContratacao, List<Projeto> bolsasCadastradas, String nome, int idade, String CPF, String dataNascimento, String login, String senha, String telefone, String DataNascimento) {
-        super.editaDadosUsuario(nome, idade, CPF, dataNascimento, senha, telefone, DataNascimento);
-        this.siap = siap;
-        this.dataContratacao = dataContratacao;
-        this.bolsasCadastradas = bolsasCadastradas;
-    }
-    
-    @Override
-    public void resetaDadosUsuario() {
-        super.resetaDadosUsuario();
-        this.siap = "";
-        this.dataContratacao = "";
-        this.bolsasCadastradas.clear();
-    }
     
     //O professor cadastra a bolsa
     public Projeto cadastraBolsa(String titulo, int tipo, String professor, float valor, int cargaHoraria, String metodoEntrada, int vagas, List<String> preRequisitos){
@@ -97,7 +62,6 @@ public class Professor extends Usuario {
         }else{
             bolsa = new Extensao(titulo, preRequisitos, valor, cargaHoraria, vagas, professor, metodoEntrada);
         }
-        bolsasCadastradas.add(bolsa);
         return bolsa;
     }
     

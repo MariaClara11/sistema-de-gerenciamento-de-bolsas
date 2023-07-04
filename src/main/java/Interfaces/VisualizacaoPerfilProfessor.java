@@ -4,8 +4,16 @@
  */
 package Interfaces;
 
+import Persistence.BolsaExtensaoPersistence;
+import Persistence.IniciacaoCientificaPersistence;
+import Persistence.MonitoriaPersistence;
 import Persistence.ProfessorPersistence;
+import Persistence.TreinamentoProfissionalPersistence;
+import com.mycompany.sistemadegerenciamentodebolsas.Extensao;
+import com.mycompany.sistemadegerenciamentodebolsas.IniciacaoCientifica;
+import com.mycompany.sistemadegerenciamentodebolsas.Monitoria;
 import com.mycompany.sistemadegerenciamentodebolsas.Professor;
+import com.mycompany.sistemadegerenciamentodebolsas.TreinamentoProfissional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,6 +42,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private Professor user;
 
     HomeProfessor tela;
+
     /**
      * Creates new form VisualizaçãoPerfilProfessor
      */
@@ -280,19 +289,18 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         int cont = 0;
 
         CadastroUsuario user = new CadastroUsuario();
-        
+
         ProfessorPersistence prof = new ProfessorPersistence();
-                
+
         Set<Professor> professores = new HashSet<>();
         professores = prof.findAllSet();
-        
+
         if (validarData(this.ingressoTF.getText()) || this.ingressoTF.getText().isEmpty()) {
-            if(!this.ingressoTF.getText().isEmpty()){
+            if (!this.ingressoTF.getText().isEmpty()) {
                 this.user.setDataContratacao(this.ingressoTF.getText());
-                
-                
-                for(Professor p : professores){
-                    if(p.getSiap().equals(this.user.getSiap())){
+
+                for (Professor p : professores) {
+                    if (p.getSiap().equals(this.user.getSiap())) {
                         p.setDataContratacao(this.ingressoTF.getText());
                         prof.replace(professores);
                         break;
@@ -304,10 +312,10 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Data Inválida", "Erro", JOptionPane.ERROR_MESSAGE);
         }
         if (ValidarTelefone(this.telTF.getText())) {
-            if(!this.telTF.getText().isEmpty()){
+            if (!this.telTF.getText().isEmpty()) {
                 this.user.setTelefone(this.telTF.getText());
-                for(Professor p : professores){
-                    if(p.getSiap().equals(this.user.getSiap())){
+                for (Professor p : professores) {
+                    if (p.getSiap().equals(this.user.getSiap())) {
                         p.setTelefone(this.telTF.getText());
                         prof.replace(professores);
                         break;
@@ -324,8 +332,8 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton1MouseClicked
-     
-   public boolean validarData(String ingresso) {
+
+    public boolean validarData(String ingresso) {
 
         String regexData = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
 
@@ -349,7 +357,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         return false;
     }
 
-    
+
     private void ingressoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingressoTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ingressoTFActionPerformed
@@ -359,28 +367,65 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     }//GEN-LAST:event_telTFActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                ProfessorPersistence professor = new ProfessorPersistence();
+        ProfessorPersistence professor = new ProfessorPersistence();
 
         Set<Professor> professores = new HashSet<>();
         professores = professor.findAllSet();
         int resposta = JOptionPane.showConfirmDialog(null, "Gostaria mesmo de excluir esse perfil?", "Confirmação de Exclusão", JOptionPane.YES_NO_OPTION);
-        for (Professor p : professores) {
-            if (p.getSiap().equals(this.user.getSiap())) {
-                professores.remove(p);
-                professor.replace(professores);
-                break;
-            }
-        }
-        if (resposta == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
-            Login login = new Login();
-            login.setVisible(true);
-            tela.dispose();
-            dispose();
-            
 
-        } else if (resposta == JOptionPane.NO_OPTION) {
-            dispose();
+        if (resposta == JOptionPane.YES_OPTION) {
+
+            //Exlui o professor
+            for (Professor p : professores) {
+                if (p.getSiap().equals(this.user.getSiap())) {
+                    professores.remove(p);
+                    professor.replace(professores);
+                    JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.OK_OPTION);
+                    Login login = new Login();
+                    login.setVisible(true);
+                    tela.dispose();
+                    dispose();
+                    break;
+                }
+            }
+
+            BolsaExtensaoPersistence be = new BolsaExtensaoPersistence();
+            MonitoriaPersistence mo = new MonitoriaPersistence();
+            IniciacaoCientificaPersistence ic = new IniciacaoCientificaPersistence();
+            TreinamentoProfissionalPersistence tp = new TreinamentoProfissionalPersistence();
+
+            List<Extensao> benova = new ArrayList<>();
+            for (Extensao ex : be.findAll()) {
+                if (!ex.getProfessorResponsavel().equals(this.user.getSiap())) {
+                    benova.add(ex);
+                }
+            }
+            be.replace(benova);
+            
+            List<Monitoria> monova = new ArrayList<>();
+            for (Monitoria moni : mo.findAll()) {
+                if (!moni.getProfessorResponsavel().equals(this.user.getSiap())) {
+                    monova.add(moni);
+                }
+            }
+            mo.replace(monova);
+
+            List<IniciacaoCientifica> icnova = new ArrayList<>();
+            for (IniciacaoCientifica ice : ic.findAll()) {
+                if (!ice.getProfessorResponsavel().equals(this.user.getSiap())) {
+                    icnova.add(ice);
+                }
+            }
+            ic.replace(icnova);
+
+            List<TreinamentoProfissional> tpnova = new ArrayList<>();
+            for (TreinamentoProfissional tpe : tp.findAll()) {
+                if (!tpe.getProfessorResponsavel().equals(this.user.getSiap())) {
+                    tpnova.add(tpe);
+                }
+            }
+            tp.replace(tpnova);
+
         }
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -427,7 +472,7 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Professor user = null;
-                new VisualizacaoPerfilProfessor(user,null).setVisible(true);
+                new VisualizacaoPerfilProfessor(user, null).setVisible(true);
             }
         });
     }
@@ -451,5 +496,4 @@ public class VisualizacaoPerfilProfessor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField telTF;
     // End of variables declaration//GEN-END:variables
 
-    
 }
