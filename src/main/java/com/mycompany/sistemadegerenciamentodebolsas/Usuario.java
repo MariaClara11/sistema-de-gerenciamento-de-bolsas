@@ -23,7 +23,6 @@ import java.util.Date;
  */
 public abstract class Usuario {
     private String nome;
-    private int idade;
     private String CPF;
     private String dataNascimento;
     private String senha;
@@ -31,16 +30,14 @@ public abstract class Usuario {
 
     public Usuario(){
         this.nome = "";
-        this.idade = 0;
         this.CPF = "";
         this.dataNascimento = "";
         this.senha = "";
         this.telefone = "";
     };
     
-    public Usuario(String nome, int idade, String CPF, String dataNascimento, String senha, String telefone) {
+    public Usuario(String nome, String CPF, String dataNascimento, String senha, String telefone) {
         this.nome = nome;
-        this.idade = idade;
         this.CPF = CPF;
         this.dataNascimento = dataNascimento;
         this.senha = senha;
@@ -50,10 +47,6 @@ public abstract class Usuario {
 
     public String getNome() {
         return nome;
-    }
-
-    public int getIdade() {
-        return idade;
     }
 
     public String getCPF() {
@@ -77,10 +70,6 @@ public abstract class Usuario {
         this.nome = nome;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
@@ -102,6 +91,8 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "nome=" + nome + ", idade=" + idade + ", CPF=" + CPF + ", dataNascimento=" + dataNascimento + ", senha=" + senha + ", telefone=" + telefone;
+        return "Usuario{" + "nome=" + nome + ", CPF=" + CPF + ", dataNascimento=" + dataNascimento + ", senha=" + senha + ", telefone=" + telefone + '}';
     }
+
+ 
 }

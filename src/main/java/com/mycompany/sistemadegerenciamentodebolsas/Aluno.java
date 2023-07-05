@@ -31,7 +31,7 @@ public class Aluno extends Usuario {
     }
 
     public Aluno(String matricula, String nome, String CPF, String dataNascimento, String senha) {
-        super(nome, 0, CPF, dataNascimento, senha, "");
+        super(nome,  CPF, dataNascimento, senha, "");
         this.matricula = matricula;
         this.disciplinas = new HashSet<>();
     }

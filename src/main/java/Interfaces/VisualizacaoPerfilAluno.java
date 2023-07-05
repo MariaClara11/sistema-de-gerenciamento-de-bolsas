@@ -474,11 +474,11 @@ public class VisualizacaoPerfilAluno extends javax.swing.JFrame {
                 tpnova.add(tpe);
             }
             tp.replace(tpnova);
-
+            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.INFORMATION_MESSAGE);
             Login login = new Login();
             login.setVisible(true);
             tela.dispose();
-            JOptionPane.showMessageDialog(this, "Perfil Excluído com sucesso", "Excluído", JOptionPane.INFORMATION_MESSAGE);
+            
             dispose();
         }
 

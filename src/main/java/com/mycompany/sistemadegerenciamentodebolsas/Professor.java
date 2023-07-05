@@ -27,7 +27,7 @@ public class Professor extends Usuario {
     private String dataContratacao;
     
     public Professor(String siape, String nome, String CPF, String dataNascimento, String senha) {
-        super(nome, 0, CPF, dataNascimento, senha, "");
+        super(nome, CPF, dataNascimento, senha, "");
         this.siape = siape;
         this.dataContratacao = "";
     }

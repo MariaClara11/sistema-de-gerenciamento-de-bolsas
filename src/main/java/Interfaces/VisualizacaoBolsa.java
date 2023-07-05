@@ -457,7 +457,8 @@ public class VisualizacaoBolsa extends javax.swing.JFrame {
         String listb = new String();
         for (String p : this.bolsa.getPreRequisitos()) {
             listb = listb.concat("[");
-            listb = listb.concat(p);
+            String[] cod = p.split("-");
+            listb = listb.concat(cod[0]);
             listb = listb.concat("]");
         }
 
